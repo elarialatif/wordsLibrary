@@ -1,0 +1,341 @@
+.emp-profile {
+    padding: 3%;
+    /*margin-top: 12%;*/
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #fff;
+    -webkit-box-shadow: 0 10px 18px 0 rgba(62, 57, 107, 0.2);
+    box-shadow: 0 10px 18px 0 rgba(62, 57, 107, 0.2);
+}
+
+.profile-head {
+    text-align: right;
+}
+
+.profile-tab {
+    display: block;
+    text-align: right;
+    box-shadow: none;
+}
+.emp-profile .content {
+    display: block;
+    margin: auto auto 1rem;
+}
+.profile-img {
+    display: block;
+    text-align: center;
+}
+.profile-img .details {}
+.profile-img .details h3,
+.profile-img .details h4 {
+    display: block;
+}
+.profile-img .details h3 {
+    color: #3490dc;
+    font-size: 1.8rem;
+    margin: 0;
+    font-weight: 600;
+    padding: 1rem 0;
+}
+.profile-img .details h4 {
+    font-size: 1.1rem;
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+.profile-img img {
+    width: auto;
+    height: auto;
+}
+
+.profile-img .file {
+    display: block;
+    margin: auto;
+    width: 25%;
+    background: #3490dc;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+.profile-img .file:focus,
+.profile-img .file:hover {
+    color: #fff;
+    background: #007bff;
+}
+
+.profile-img .file input {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+
+.profile-head h5 {
+    color: #333;
+}
+
+.profile-head h6 {
+    color: #0062cc;
+}
+
+a.profile-edit-btn {
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    color: #fff;
+    cursor: pointer;
+    background-color: #0386c3;
+    border-color: #037eb6;
+    margin: 1rem 0;
+    display: block;
+    font-size: 14PX;
+    padding: 1rem;
+    text-decoration: none;
+    -webkit-box-shadow: 0 10px 18px 0 rgba(62, 57, 107, 0.2);
+    box-shadow: 0 10px 18px 0 rgba(62, 57, 107, 0.2);
+}
+a.profile-edit-btn:focus,
+a.profile-edit-btn:hover {
+    color: #fff;
+    background-color: #0062cc;
+    border-color: #005cbf;
+}
+
+.proile-rating {
+    font-size: 12px;
+    color: #818182;
+    margin-top: 5%;
+}
+
+.proile-rating span {
+    color: #495057;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.profile-head .nav-tabs {
+    margin-bottom: 5%;
+}
+
+.profile-head .nav-tabs .nav-link {
+    font-weight: 600;
+    border: none;
+}
+
+.profile-head .nav-tabs .nav-link.active {
+    border: none;
+    border-bottom: 2px solid #0062cc;
+}
+
+.profile-work {
+    padding: 14%;
+    margin-top: -15%;
+}
+
+.profile-work p {
+    font-size: 12px;
+    color: #818182;
+    font-weight: 600;
+    margin-top: 10%;
+}
+
+.profile-work a {
+    text-decoration: none;
+    color: #495057;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.profile-work ul {
+    list-style: none;
+}
+
+.profile-tab label {
+    color: #6c757d;
+    font-size: 1.2rem;
+}
+
+.profile-tab p {
+    font-weight: 600;
+    color: #6c757d;
+}
+
+/* ========================================================================================= */
+
+/* edit */
+
+.emp-profile .edit {
+    display: block;
+    text-align: right;
+    padding: 1rem 3rem;
+}
+
+.emp-profile .edit input {
+    text-align: right;
+}
+
+.emp-profile .edit .edit_img {
+    direction: rtl;
+}
+.emp-profile .edit .personal-info {
+    margin: 3rem 0;
+}
+.emp-profile .edit input.save {
+    font-size: 1.5rem;
+    padding: 0.4rem 2rem;
+    border-radius: 30px;
+}
+.emp-profile .edit input.cancel {
+    font-size: 1.5rem;
+    padding: 0.4rem 2rem;
+    border-radius: 30px;
+    color: #fff;
+    background: #c3a036;
+}
+/* popup */
+
+.popup {
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.popup {
+    text-align: center;
+}
+
+.popup:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    margin-right: -4px;
+    vertical-align: middle;
+}
+
+.popup-inner {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+    position: relative;
+    max-width: 700px;
+    width: 90%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 1);
+    border-radius: 3px;
+    background: #fff;
+    text-align: center;
+    top: 2rem;
+}
+.popup-inner .modal-header .close {
+    padding: 1rem;
+    margin: -1rem;
+}
+.popup-inner h1 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+}
+
+.popup-inner p {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.popup-close {
+    }
+
+.popup-close:after,
+.popup-close:before {
+    content: "";
+    position: absolute;
+    top: 11px;
+    left: 5px;
+    height: 4px;
+    width: 16px;
+    border-radius: 30px;
+    background: #808080;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.popup-close:after {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.popup-close:hover {
+    -webkit-transform: translate(50%, -50%) rotate(180deg);
+    transform: translate(50%, -50%) rotate(180deg);
+    background: #f00;
+    text-decoration: none;
+    border-color: #f00;
+}
+
+.popup-close:hover:after,
+.popup-close:hover:before {
+    background: #fff;
+}
+/*  */
+
+.thumbnail {
+    display: block;
+    padding: 4px;
+    margin-bottom: 20px;
+    line-height: 1.42857143;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    border-radius: 0;
+    border: none;
+    background-color: none;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 15%;
+    opacity: 0.5;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    text-shadow: none;
+}
+.carousel-control.left {
+    background-image: none;
+}
+.carousel-control.right {
+    left: auto;
+    right: 0;
+    background-image: none;
+}
+
+.carousel-control {
+    padding-top: 10.25%;
+    width: 5%;
+}
+.popup-inner .carousel-inner .item {
+    border: 1px solid #3490dc;
+}
+.popup-inner .carousel-inner .row {
+    display: inline-flex;
+    margin: auto;
+}
+.popup-inner .carousel-inner .row img {
+    cursor: pointer;
+}
+#foo{
+    display: flex;
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    margin-bottom: 1rem;
+}
+.center {
+    margin: auto;
+}
+
+

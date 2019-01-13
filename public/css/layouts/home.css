@@ -1,0 +1,108 @@
+.home {
+    direction: rtl;
+    display: block;
+    text-align: start;
+}
+.home .row {
+    text-align: start;
+    margin-bottom: 2rem;
+}
+.home .row .card h5 {
+    color: #111;
+    font-size: 1.125rem;
+}
+.home .row .card {
+    min-height: 200px;
+    max-height: 210px;
+}
+.home .topics .icon {
+    display: block;
+    padding: 2rem 0rem;
+}
+.home .all .card-block {
+    padding-bottom: 0;
+}
+.home .all h5 {
+    display: inline-block;
+}
+.home .all i {
+    margin-left: 0.5rem;
+}
+.home .articles .article_media {
+    display: block;
+    width: 90%;
+}
+.home .articles label.label {
+    bottom: 2rem;
+    right: 1rem;
+    float: left;
+}
+.home .articles .user .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    background-color: #ffffff;
+}
+.home .articles .user .card {
+    max-height: 420px;
+    height: 400px;
+    border-top: none;
+}
+.home .articles .card.statistial-visit{
+    height: 405px;
+    margin-top: 2.5rem;
+    max-height: 420px;
+}
+.home .articles .card.statistial-visit i{
+    padding-left: 0.2rem;
+    font-size: 1rem;
+}
+.home .articles .user .permition{
+    display: inline;
+    padding: 0 8rem;
+}
+.home .visitor .card-block,
+.home .levels .card-block,
+.home .categories .card-block {
+    display: block;
+    margin: auto;
+}
+.home .visitor .card-block i,
+.home .levels .card-block i,
+.home .categories .card-block i {
+    padding: 0 0.5rem;
+    font-size: 1.5rem;
+} 
+.home .full_result {
+    background: #04a9f5;
+}
+.home .nested-content .media{
+    display: block;
+    padding: 1rem 0;
+}
+.home .nested-content {
+    padding: 1rem;
+    background: #fff;
+    -webkit-box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.05);
+    max-height: 340px;
+    min-height: 340px;
+}
+.home .nested-content .m-r-10,
+.home .nested-content .media-body {
+    display: inline-block;
+}
+.nested-content>.tab-pane {
+    display: none;
+}
+.nested-content .fade.show {
+    display: block;
+}
+.nested-tab>.tab-pane {
+    display: none;
+}
+.nested-tab .fade.show {
+    display: block;
+}
+.home .nav-tabs .nav-link {
+    border: none;
+    color: #888;
+    padding: 1rem;
+}

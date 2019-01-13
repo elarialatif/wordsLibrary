@@ -1,0 +1,128 @@
+.login_page .auth-wrapper {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    overflow: hidden;
+    min-width: 100%;
+    min-height: 100vh;
+}
+.login_page .auth-wrapper .auth-content {
+    position: relative;
+    width: 390px;
+    padding: 15px;
+    z-index: 5;
+}
+.login_page .auth-wrapper .login_card {
+    margin-bottom: 0 !important;
+    border-radius: 0;
+    -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+    box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+    border: none;
+    margin-bottom: 30px;
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+.login_page .login_card .card-block, .login_card .card-body {
+    padding: 30px 25px;
+}
+.login_page .auth-wrapper .auth-icon {
+    font-size: 30px;
+}
+.login_page .auth-wrapper .auth-icon:before {
+    background: linear-gradient(-135deg, #1de9b6 0%, #1dc4e9 100%);
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.login_page .form-control {
+    background: #f4f7fa;
+    padding: 10px 20px;
+    font-size: 14px;
+}
+.login_page .shadow-2 {
+    -webkit-box-shadow: 0 10px 18px 0 rgba(62, 57, 107, 0.2);
+    box-shadow: 0 10px 18px 0 rgba(62, 57, 107, 0.2);
+    display: block;
+    margin: auto;
+    width: 60%;
+    border-radius: 25px;
+}
+.login_page .checkbox.checkbox-fill input[type=checkbox]:checked + .cr:before {
+    opacity: 1;
+    background: transparent;
+    color: #1dd5d2;
+    border-color: transparent;
+}
+.login_page .checkbox.checkbox-fill input[type=checkbox] + .cr:before {
+    opacity: 0;
+    content: "\e840";
+    font-size: 27px;
+    background: transparent;
+}
+.login_page .checkbox input[type=checkbox]:checked + .cr:before {
+    background: #1dd5d2;
+    border-color: #1dd5d2;
+    color: #ffffff;
+}
+.login_pagecheckbox input[type=checkbox] + .cr:before {
+    content: "\e83f";
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    margin-right: 10px;
+    border: 2px solid #e9eaec;
+    border-radius: 3px;
+    font-size: 15px;
+    font-family: 'feather';
+    font-weight: 400;
+    line-height: 19px;
+    vertical-align: bottom;
+    text-align: center;
+    background: #ffffff;
+    color: transparent;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+.login_page .checkbox.checkbox-fill input[type=checkbox]:checked + .cr:after {
+    opacity: 0;
+}
+.login_page .checkbox.checkbox-fill input[type=checkbox] + .cr:after {
+    content: "";
+    width: 22.5px;
+    height: 22.5px;
+    display: inline-block;
+    margin-right: 10px;
+    border: 2px solid #e9eaec;
+    border-radius: 2px;
+    vertical-align: bottom;
+    text-align: center;
+    background: transparent;
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    position: absolute;
+    top: 8.5px;
+    left: 3px;
+}
+.login_page .checkbox.checkbox-fill input[type=checkbox] + .cr:after {
+    margin-right: 0;
+    margin-left: 10px;
+    left: auto;
+    right: 1px;
+}
+.login_page .checkbox {
+    display: block !important;
+    text-align: right;
+}
+.login_page .checkbox label {
+    color: #888;
+}

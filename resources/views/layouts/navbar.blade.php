@@ -1,0 +1,23 @@
+@if(auth()->check())
+    @if(auth()->user()->role==\App\Helper\UsersTypes::EDITOR)
+        @include('layouts.side_bars.side_bar_editor')
+    @elseif(auth()->user()->role==\App\Helper\UsersTypes::LISTMAKER)
+        @include('layouts.side_bars.side_bar_listmaker')
+    @elseif(auth()->user()->role==\App\Helper\UsersTypes::LISTANALYZER)
+        @include('layouts.side_bars.side_bar_listsanalayzer')
+    @elseif(auth()->user()->role==\App\Helper\UsersTypes::REVIEWER)
+        @include('layouts.side_bars.side_bar_reviewer')
+    @elseif(auth()->user()->role==\App\Helper\UsersTypes::QuestionCreator)
+        @include('layouts.side_bars.side_bar_questionCreator')
+    @elseif(auth()->user()->role==\App\Helper\UsersTypes::QuestionReviewer)
+        @include('layouts.side_bars.side_bar_questionReviewer')
+    @elseif(auth()->user()->role==\App\Helper\UsersTypes::Languestic)
+        @include('layouts.side_bars.side_bar_lang')
+    @elseif(auth()->user()->role==\App\Helper\UsersTypes::Sound)
+        @include('layouts.side_bars.side_bar_vicerecoder')
+    @elseif(auth()->user()->role==\App\Helper\UsersTypes::quality)
+        @include('layouts.side_bars.side_bar_quality')
+    @else
+        @include('layouts.sidebar')
+    @endif
+@endif
