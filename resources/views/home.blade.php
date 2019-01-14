@@ -1,27 +1,8 @@
 @extends('layouts.app')
 @section('content')
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-@section ('css')
-<link href="{{ asset('public/css/layouts/home.css') }}" rel="stylesheet">
 
-<!-- Required Js -->
-<script src="{{ asset('public/js/vendor-all.min.js') }}"></script>
-<script src="{{ asset('public/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('public/js/pcoded.min.js') }}"></script>
-<!-- amchart js -->
-<script src="{{ asset('public/plugins/amchart/js/amcharts.js') }}"></script>
-<script src="{{ asset('public/plugins/amchart/js/gauge.js') }}"></script>
-<script src="{{ asset('public/plugins/amchart/js/serial.js') }}"></script>
-<script src="{{ asset('public/plugins/amchart/js/light.js') }}"></script>
-<script src="{{ asset('public/plugins/amchart/js/pie.min.js') }}"></script>
-<script src="{{ asset('public/plugins/amchart/js/ammap.min.js') }}"></script>
-<script src="{{ asset('public/plugins/amchart/js/usaLow.js') }}"></script>
-<script src="{{ asset('public/plugins/amchart/js/radar.js') }}"></script>
-<script src="{{ asset('public/plugins/amchart/js/worldLow.js') }}"></script>
-<!-- chart js -->
-<script src= "{{ asset('public/js/pages/chart.js') }}"></script>
-@endsection
 
+<<<<<<< HEAD
 {{-- ///////////////////////////////////////////////////////////////////////// --}}
 <div class="container home">
     <div class="main-body">
@@ -1173,6 +1154,8 @@
 
     });
 </script>
+=======
+>>>>>>> d310e11f27d9a76cd248b7df514aa7396b0dbe8c
 
 
 @endsection

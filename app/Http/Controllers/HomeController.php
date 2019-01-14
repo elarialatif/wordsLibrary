@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\UsersTypes;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        if(auth()->user()->role==UsersTypes::SUPERADMIN){
+            return view('superadmin.home');
+        }
+        else{
+            return view('home');
+        }
+
     }
 }
