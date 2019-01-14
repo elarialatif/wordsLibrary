@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Observers\UserActionsObserver;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -18,6 +19,11 @@ class ContentList extends Model
     public function level()
     {
         return $this->belongsTo(Level::class, 'level_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public static function boot()
