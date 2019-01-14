@@ -2,7 +2,6 @@
 @section('content')
 
 
-<<<<<<< HEAD
 {{-- ///////////////////////////////////////////////////////////////////////// --}}
 <div class="container home">
     <div class="main-body">
@@ -1154,8 +1153,6 @@
 
     });
 </script>
-=======
->>>>>>> d310e11f27d9a76cd248b7df514aa7396b0dbe8c
 
 
 @endsection
