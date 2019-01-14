@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Observers\UserActionsObserver;
 use Illuminate\Database\Eloquent\Model;
 
 class ListCategory extends Model
@@ -14,5 +15,12 @@ class ListCategory extends Model
     public function catg()
     {
         return $this->belongsTo(Categery::class, 'cat_id');
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        ListCategory::observe(UserActionsObserver::class);
     }
 }

@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
+use App\Observers\UserActionsObserver;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\App;
+
 
 class ContentList extends Model
 {
@@ -19,6 +20,12 @@ class ContentList extends Model
         return $this->belongsTo(Level::class, 'level_id');
     }
 
+    public static function boot()
+    {
+        parent::boot();
+
+        ContentList::observe(UserActionsObserver::class);
+    }
 //    public function country()
 //    {
 //        return $this->belongsTo(Country::class, 'country_id');

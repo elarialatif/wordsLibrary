@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Observers\UserActionsObserver;
 use Illuminate\Database\Eloquent\Model;
 
 class ArticleFiles extends Model
@@ -14,5 +15,11 @@ class ArticleFiles extends Model
     public function user()
     {
         return $this->belongsTo('App\User', 'user_id', 'id');
+    }
+    public static function boot()
+    {
+        parent::boot();
+
+        ArticleFiles::observe(UserActionsObserver::class);
     }
 }
