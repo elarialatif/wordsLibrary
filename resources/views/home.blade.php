@@ -81,33 +81,37 @@
             <div class="row">
                 <!-- [ Visitors section ] start -->
                 <div class="col-md-4 col-xl-4">
-                    <div class="card theme-bg visitor">
+                    <div class="card theme-bg visitor"><a>
                         <div class="card-block text-center">
                             <img class="img-female" src="{{asset('public/images/user/user-1.png')}}" alt="visitor-user">
                             <h5 class="text-white m-0"> <i class="fas fa-users"> </i>عدد المستخدمين</h5>
                             <h3 class="text-white m-t-20 f-w-300">235</h3>
                             <img class="img-men" src="{{asset('public/images/user/user-2.png')}}" alt="visitor-user">
-                        </div>
+                        </div></a>
                     </div>
                 </div>
                 <!-- [ Visitors section ] end -->
                 <!-- [ Categories section ] start -->
                 <div class="col-md-4 col-xl-4">
-                    <div class="card theme-bg2 categories">
+                    <div class="card theme-bg2 categories"><a>
                         <div class="card-block text-center">
+                            <img class="img-female" src="{{asset('public/images/widget/category.png')}}">
                             <h5 class="text-white m-0"> <i class="fas fa-sitemap"> </i> عدد التصنيفات</h5>
                             <h3 class="text-white m-t-20 f-w-300">235</h3>
-                        </div>
+                            <img class="img-men" src="{{asset('public/images/widget/category.png')}}">
+                        </div></a>
                     </div>
                 </div>
                 <!-- [ Categories section ] end -->
                 <!-- [ Levels section ] start -->
                 <div class="col-md-4 col-xl-4">
-                    <div class="card theme-bg levels">
+                    <div class="card theme-bg levels"><a>
                         <div class="card-block text-center">
+                            <img class="img-female" src="{{asset('public/images/widget/cline.png')}}">
                             <h5 class="text-white m-0"> <i class="fas fa-chart-line"> </i> عدد المراحل</h5>
                             <h3 class="text-white m-t-20 f-w-300">235</h3>
-                        </div>
+                            <img class="img-men" src="{{asset('public/images/widget/cline.png')}}">
+                        </div></a>
                     </div>
                 </div>
                 <!-- [ Levels section ] end -->
@@ -119,7 +123,7 @@
                 <!-- [ user web-list ] start -->
                 <div class="col-md-6 col-xl-6 m-b-30 user">
                     <div class="tabbable boxed parentTabs">
-                        <ul  id="myTab1" role="tablist" class="nav nav-tabs">
+                        <ul  id="myTab1" role="tablist" class="nav nav-tabs tab1">
                             <li class="nav-item" >
                                 <a class="nav-link active" data-toggle="tab"  role="tab" href="#day" data->اليوم</a>
                             </li>
@@ -138,25 +142,19 @@
                                             <a class="nav-link active" data-toggle="tab"  role="tab" href="#daysub1">مدخل مقالات</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#daysub2">معدل مواضيع</a>
+                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#daysub2">محلل مقالات </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#daysub3">محلل مقالات </a>
+                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#daysub3">مراجع محتوى</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#daysub4">مراجع محتوى</a>
+                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#daysub4">مدخل اسئلة</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#daysub5">مدخل اسئلة</a>
+                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#daysub5">مراجع اسئلة</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#daysub6">مراجع اسئلة</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#daysub7">مراجع لغوي</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#daysub8">تسجيل صوت</a>
+                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#daysub6">مراجع لغوي</a>
                                         </li>
                                     </ul>
                                     <div class="nested-content">
@@ -451,25 +449,19 @@
                                             <a class="nav-link active" data-toggle="tab"  role="tab" href="#weeksub1">مدخل مقالات</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#weeksub2">معدل مواضيع</a>
+                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#weeksub2">محلل مقالات </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#weeksub3">محلل مقالات </a>
+                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#weeksub3">مراجع محتوى</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#weeksub4">مراجع محتوى</a>
+                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#weeksub4">مدخل اسئلة</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#weeksub5">مدخل اسئلة</a>
+                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#weeksub5">مراجع اسئلة</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#weeksub6">مراجع اسئلة</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#weeksub7">مراجع لغوي</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#weeksub8">تسجيل صوت</a>
+                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#weeksub6">مراجع لغوي</a>
                                         </li>
                                     </ul>
                                     <div class="nested-content">
@@ -764,25 +756,19 @@
                                             <a class="nav-link active" data-toggle="tab"  role="tab" href="#allsub1">مدخل مقالات</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#allsub2">معدل مواضيع</a>
+                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#allsub2">محلل مقالات </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#allsub3">محلل مقالات </a>
+                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#allsub3">مراجع محتوى</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#allsub4">مراجع محتوى</a>
+                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#allsub4">مدخل اسئلة</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#allsub5">مدخل اسئلة</a>
+                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#allsub5">مراجع اسئلة</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#allsub6">مراجع اسئلة</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#allsub7">مراجع لغوي</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#allsub8">تسجيل صوت</a>
+                                            <a class="nav-link " data-toggle="tab"  role="tab" href="#allsub6">مراجع لغوي</a>
                                         </li>
                                     </ul>
                                     <div class="nested-content">
