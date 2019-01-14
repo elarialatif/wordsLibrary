@@ -20,6 +20,7 @@ class CreateLogTimesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('type');
             $table->string('table_name');
+            $table->integer('row_id');
             $table->timestamps();
         });
     }

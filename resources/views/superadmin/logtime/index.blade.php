@@ -98,9 +98,9 @@
 
                     <td>
 
-                        {{$logtimes[$i]['user_name']}} {{$logtimes[$i]['type']}}
-                        {{ $logtimes[$i]['table']}}
-                        {{$logtimes[$i]['name']}}
+                        {{$logtimes[$i]['user_name']}} &nbsp; {{$logtimes[$i]['type']}}&nbsp;
+                           {{ $logtimes[$i]['table']}}&nbsp;
+                         {{$logtimes[$i]['name']}}
                     </td>
                     <td>
                     <span class="badge badge-warning pull-left"
@@ -156,9 +156,9 @@
 
                         $('#numberOfsearch').html(i + 1);
 
-                        $('#Table tbody').append('<tr><td >' + value.user_name + ' (' + value.type + ' ) (' + value.table + ') ' + value.name + '</td>' +
+                        $('#Table tbody').append('<tr><td >' + value.user_name + '  ' + value.type + '  ' + value.table + ' ' + value.name + '</td>' +
 
-                            ' <td><span class="badge badge-warning pull-left" style="background-color: #59b0f2">' + value.created_at.date + '</span> </td>' +
+                            ' <td><span class="badge badge-warning pull-left" style="background-color: #59b0f2">' + value.created_at + '</span> </td>' +
 
                             '</tr>');
 

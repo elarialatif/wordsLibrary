@@ -26,19 +26,22 @@ class QuestionsRepository
         $question = Question::find($id);
         return $question;
     }
-    static function findWhere($att,$value)
+
+    static function findWhere($att, $value)
     {
-        $question = Question::where($att,$value)->get();
+        $question = Question::where($att, $value)->get();
         return $question;
     }
-    static function findWhereIn($att,$value)
+
+    static function findWhereIn($att, $value)
     {
-        $question = Question::whereIn($att,$value)->get();
+        $question = Question::whereIn($att, $value)->get();
         return $question;
     }
-    static function findIds($att,$value)
+
+    static function findIds($att, $value)
     {
-        $question = Question::where($att,$value)->get()->pluck('id')->toArray();
+        $question = Question::where($att, $value)->get()->pluck('id')->toArray();
         return $question;
     }
 
@@ -47,21 +50,24 @@ class QuestionsRepository
         $list_id = $data['list_id'];
         $artical_id = $data['artical_id'];
         $array = [];
+        $question = [];
         foreach ($data['question'] as $key => $value) {
-            $new['question'] = $data['question'][$key];
-            $new['ans1'] = $data['ans1'][$key];
-            $new['ans2'] = $data['ans2'][$key];
-            $new['ans3'] = $data['ans3'][$key];
-            $new['ans4'] = $data['ans4'][$key];
-            $new['true_answer'] = $data['true_answer'][$key];
-            $new['list_id'] = $list_id;
-            $new['artical_id'] = $artical_id;
-            $new['user_id'] = auth()->id();
-            $new['created_at'] = Carbon::now();
-            $new['updated_at'] = Carbon::now();
-            array_push($array, $new);
+            $new = new Question();
+            $new->question = $data['question'][$key];
+            $new->ans1 = $data['ans1'][$key];
+            $new->ans2 = $data['ans2'][$key];
+            $new->ans3 = $data['ans3'][$key];
+            $new->ans4 = $data['ans4'][$key];
+            $new->true_answer = $data['true_answer'][$key];
+            $new->list_id = $list_id;
+            $new->artical_id = $artical_id;
+            $new->user_id = auth()->id();
+            $new->created_at = Carbon::now();
+            $new->updated_at = Carbon::now();
+            $new->save();
+            $question = array_push($array, $new);
         }
-        $question = Question::insert($array);
+
         return $question;
     }
 

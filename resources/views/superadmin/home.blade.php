@@ -39,7 +39,7 @@
                                     <h5 class="m-0">عدد الموضوعات الكلية</h5>
                                 </div>
                                 <div class="col-auto">
-                                    <label class="label theme-bg text-white f-14 f-w-400 float-right">1400</label>
+                                    <label class="label theme-bg text-white f-14 f-w-400 float-right">{{$allLists}}</label>
                                 </div>
                             </div>
                             <div class="row align-items-center justify-content-center">
@@ -48,7 +48,7 @@
                                     <h5 class="m-0">عدد الموضوعات التي تم رفع مقال لها</h5>
                                 </div>
                                 <div class="col-auto">
-                                    <label class="label theme-bg text-white f-14 f-w-400 float-right">1000</label>
+                                    <label class="label theme-bg text-white f-14 f-w-400 float-right">{{$listsByArtical}}</label>
                                 </div>
                             </div>
                         </div>
@@ -64,10 +64,10 @@
                                     <h5 class="m-0">عدد الموضوعات المنتهية</h5>
                                 </div>
                                 <div class="col-auto">
-                                    <label class="label theme-bg text-white f-14 f-w-400 float-right">50</label>
+                                    <label class="label theme-bg text-white f-14 f-w-400 float-right">{{$complete}}</label>
                                 </div>
                             </div>
-                            <h6 class="text-muted mt-4 mb-3">الموضوعات المنتهية    50/1400 </h6>
+                            <h6 class="text-muted mt-4 mb-3">الموضوعات المنتهية    {{$complete}}/{{$allLists}} </h6>
                             <div class="progress">
                                 <div class="progress-bar progress-c-theme" role="progressbar" style="width:60%;height:6px;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
@@ -81,11 +81,11 @@
             <div class="row">
                 <!-- [ Visitors section ] start -->
                 <div class="col-md-4 col-xl-4">
-                    <div class="card theme-bg visitor"><a>
+                    <div class="card theme-bg visitor"><a  href="{{url('users')}}">
                         <div class="card-block text-center">
                             <img class="img-female" src="{{asset('public/images/user/user-1.png')}}" alt="visitor-user">
                             <h5 class="text-white m-0"> <i class="fas fa-users"> </i>عدد المستخدمين</h5>
-                            <h3 class="text-white m-t-20 f-w-300">235</h3>
+                            <h3 class="text-white m-t-20 f-w-300">{{$allUsers}}</h3>
                             <img class="img-men" src="{{asset('public/images/user/user-2.png')}}" alt="visitor-user">
                         </div></a>
                     </div>
@@ -93,11 +93,11 @@
                 <!-- [ Visitors section ] end -->
                 <!-- [ Categories section ] start -->
                 <div class="col-md-4 col-xl-4">
-                    <div class="card theme-bg2 categories"><a>
+                    <div class="card theme-bg2 categories"><a href="{{url('categories')}}">
                         <div class="card-block text-center">
                             <img class="img-female" src="{{asset('public/images/widget/category.png')}}">
                             <h5 class="text-white m-0"> <i class="fas fa-sitemap"> </i> عدد التصنيفات</h5>
-                            <h3 class="text-white m-t-20 f-w-300">235</h3>
+                            <h3 class="text-white m-t-20 f-w-300">{{$allCats}}</h3>
                             <img class="img-men" src="{{asset('public/images/widget/category.png')}}">
                         </div></a>
                     </div>
@@ -105,11 +105,11 @@
                 <!-- [ Categories section ] end -->
                 <!-- [ Levels section ] start -->
                 <div class="col-md-4 col-xl-4">
-                    <div class="card theme-bg levels"><a>
+                    <div class="card theme-bg levels"><a href="{{url('levels')}}">
                         <div class="card-block text-center">
                             <img class="img-female" src="{{asset('public/images/widget/cline.png')}}">
                             <h5 class="text-white m-0"> <i class="fas fa-chart-line"> </i> عدد المراحل</h5>
-                            <h3 class="text-white m-t-20 f-w-300">235</h3>
+                            <h3 class="text-white m-t-20 f-w-300">{{$allGrades}}</h3>
                             <img class="img-men" src="{{asset('public/images/widget/cline.png')}}">
                         </div></a>
                     </div>
@@ -1075,42 +1075,42 @@
                 <div class="col-md-6 col-xl-6">
                     <div class="card statistial-visit">
                         <div class="card-header">
-                            <h5>المقالات</h5>
+                            <h5>الموضوعات</h5>
                         </div>
                         <div class="card-block">
-                            <span class="d-block"><i class="fas fa-sort-amount-up"></i>عدد الدروس الكليه </span>
-                            <h3 class="f-w-300">4000</h3>
+                            <span class="d-block"><i class="fas fa-sort-amount-up"></i>عدد الموضوعات الكليه </span>
+                            <h3 class="f-w-300">{{$allLists}}</h3>
                             <div class="media mt-4 article_media">
                                 <div class="photo-table">
-                                    <h6> دروس تم رفعها</h6>
+                                    <h6>مواضوعات بدون ملفات</h6>
                                     <div class="progress">
-                                        <div class="progress-bar progress-c-theme" role="progressbar" style="width:80%;height:6px;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar progress-c-theme" role="progressbar" style="width:{{round(($fileUnderUploading/$allLists)*100)}}%;height:6px;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                                 <div class="media-body">
-                                    <label class="label theme-bg text-white f-14">20%</label>
+                                    <label class="label theme-bg text-white f-14">{{round(($fileUnderUploading/$allLists)*100)}}%</label>
                                 </div>
                             </div>
                             <div class="media mt-4 article_media">
                                 <div class="photo-table">
-                                    <h6>دروس تحت التحليل</h6>
+                                    <h6>مواضوعات تحت التحليل</h6>
                                     <div class="progress">
-                                        <div class="progress-bar progress-c-theme2" role="progressbar" style="width:70%;height:6px;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar progress-c-theme2" role="progressbar" style="width:{{round(($fileUnderAnalizing/$allLists)*100)}}%;height:6px;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                                 <div class="media-body">
-                                    <label class="label theme-bg2 text-white f-14">15%</label>
+                                    <label class="label theme-bg2 text-white f-14">{{round(($fileUnderAnalizing/$allLists)*100)}}%</label>
                                 </div>
                             </div>
                             <div class="media mt-4 article_media">
                                 <div class="photo-table">
-                                    <h6>دروس تم تحليلها</h6>
+                                    <h6>مواضوعات تم تحليلها</h6>
                                     <div class="progress">
-                                        <div class="progress-bar progress-c-blue" role="progressbar" style="width:60%;height:6px;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar progress-c-blue" role="progressbar" style="width:{{round(($analizingFile/$allLists)*100)}}%;height:6px;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                                 <div class="media-body">
-                                    <label class="label bg-c-blue text-white f-14 ">10%</label>
+                                    <label class="label bg-c-blue text-white f-14 ">{{round(($analizingFile/$allLists)*100)}}%</label>
                                 </div>
                             </div>
                         </div>

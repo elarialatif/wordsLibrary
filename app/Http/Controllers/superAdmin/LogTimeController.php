@@ -67,7 +67,7 @@ class LogTimeController extends Controller
     static function getDetailsOfLogtimesRows($timeStart = null, $timeEnd = null, $table = null)
     {
         if ($table[0] == "content_lists") {
-            $table = array('article', 'article_files', 'sounds', 'questions','content_lists');
+            $table = array('article', 'article_files', 'sounds', 'questions', 'content_lists');
         }
 
         $res = LogTime::orderBy('created_at', 'desc')->get();
@@ -96,17 +96,29 @@ class LogTimeController extends Controller
 
             $row = \Illuminate\Support\Facades\DB::table($table)->where('id', $data->row_id)->first();
 
-            $name = 'رقم' . $data->row_id;
+            $name = ' رقم ' . $data->row_id;
 //            if ($data->name != 'null') {
 //                $name = 'رقم' . $data->row_id . '(' . $data->name . ')';
 //            }
             $row = \Illuminate\Support\Facades\DB::table($table)->where('id', $data->row_id)->first();
             $userPermission = UsersTypes::ArrayOfPermission[$data->user->role];
             if (isset($row) && $table == 'content_lists') {
-                $name = $row->list.' رقم ' . $data->row_id;
+                $name = $row->list . ' رقم ' . $data->row_id;
             }
+            if (isset($row) && $table != 'content_lists' && isset($row->list_id)) {
 
-            $arr[] = array('name' => $name, 'user_name' => $data->user->name . '    رقم  ' . $data->user->id . ' ' . ' ' . $userPermission . ' ', 'type' => $data->type, 'created_at' => $data->created_at, 'table' => $table_name);
+                $list = ContentList::find($row->list_id);
+                $name = ' رقم ' . $data->row_id . '  للموضوع  ' . $list->list . ' رقم ' . $list->id;
+
+            }
+            if (isset($row) && $table != 'content_lists' && isset($row->name)) {
+
+
+                $name = ' رقم ' . $data->row_id . '    ' . $row->name ;
+
+            }
+            $date = $data->created_at->format('Y:m:d') . " الساعه " . $data->created_at->format('H');
+            $arr[] = array('name' => $name, 'user_name' => $data->user->name . '    رقم  ' . $data->user->id . ' ' . ' ' . $userPermission . ' ', 'type' => $data->type, 'created_at' => $date, 'table' => $table_name);
         }
         return $arr;
     }

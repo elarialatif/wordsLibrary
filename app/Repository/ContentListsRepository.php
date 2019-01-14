@@ -40,16 +40,18 @@ class ContentListsRepository
             if ($data['list'][$key] == "") {
                 continue;
             }
-            $array[] = array(
-                'list' => $data['list'][$key],
+            $list = New ContentList();
+            $list->list = $data['list'][$key];
 
-                'grade_id' => $data['grade_id'],
-                'user_id' => auth()->id(),
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            );
+            $list->grade_id = $data['grade_id'];
+            $list->user_id = auth()->id();
+            $list->created_at = Carbon::now();
+            $list->updated_at = Carbon::now();
+
+            $list->save();
         }
-        $list = ContentList::insert($array);
+
+
         return $list;
     }
 
@@ -78,7 +80,7 @@ class ContentListsRepository
     {
 
         $query = ContentList::orderBy("id", "desc");
-        if ($data['grade_id'] != null && $data['grade_id'] !='all') {
+        if ($data['grade_id'] != null && $data['grade_id'] != 'all') {
             $query->where('grade_id', $data['grade_id']);
         }
         $lists = $query->get();
@@ -112,7 +114,13 @@ class ContentListsRepository
     static function findWhere($paramter, $value)
     {
 
-        return ContentList::with('level',  'grade')->where($paramter, $value)->get();
+        return ContentList::with('level', 'grade')->where($paramter, $value)->get();
+
+    }
+    static function findStep($paramter,$sign, $value)
+    {
+
+        return ContentList::where($paramter, $sign,$value)->get();
 
     }
 

@@ -51,8 +51,7 @@
                                                                   $normal=App\Repository\ArticalRepository::getArticleByLevel($file->list_id,\App\Helper\ArticleLevels::Normal);
                                                                    $hard=App\Repository\ArticalRepository::getArticleByLevel($file->list_id,\App\Helper\ArticleLevels::Hard);
                                                         @endphp
-                                                        <tr data-toggle="modal"
-                                                            data-target="#myModal{{$file->list_id}}">
+                                                        <tr >
                                                             <!-- Modal -->
                                                             <div id="myModal{{$file->list_id}}" class="modal fade"
                                                                  role="dialog">
@@ -107,7 +106,8 @@
 
                                                             <td>{{$list->id}}</td>
                                                             {{--<td>{{$file->articleName}}</td>--}}
-                                                            <td>{{$file->lists->list}}</td>
+                                                               <td data-toggle="modal"
+                                                                data-target="#myModal{{$file->list_id}}"><a href="#">{{$file->lists->list}}</a></td>
 
                                                             <td>{{$list->grade->name}}</td>
                                                             <td> @if($easy)<a

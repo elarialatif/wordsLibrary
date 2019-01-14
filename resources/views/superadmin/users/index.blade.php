@@ -140,8 +140,8 @@
                                         </thead>
                                         <tbody>
                                         @foreach($users as $user)
-                                            <tr id="example" onclick="test({{$user->id}})">
-                                                <td> {{$user->name}}</td>
+                                            <tr >
+                                                <td id="example" onclick="test({{$user->id}})"> <a href="#"> {{$user->name}}</a></td>
                                                 <td>{{$user->email}}</td>
                                                 <td>{{\App\Helper\UsersTypes::ArrayOfPermission[$user->role]}}</td>
                                                 <td>
