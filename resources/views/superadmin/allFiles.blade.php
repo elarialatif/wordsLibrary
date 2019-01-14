@@ -41,12 +41,14 @@
                                                     </thead>
                                                     <tbody>
                                                     @foreach($allFiles as $file)
+
                                                         @php
-                                                            $list=\App\Models\ContentList::with('level','grade')->where('id',$file->list_id)->first();
-                                                             $grade=\App\Models\Grade::with('level')->where('id',$list->grade->id)->first();
-                                                        $easy=App\Repository\ArticalRepository::getArticleByLevel($file->list_id,\App\Helper\ArticleLevels::Easy);
-                                                        $normal=App\Repository\ArticalRepository::getArticleByLevel($file->list_id,\App\Helper\ArticleLevels::Normal);
-                                                        $hard=App\Repository\ArticalRepository::getArticleByLevel($file->list_id,\App\Helper\ArticleLevels::Hard);
+                                                            $AssignTsaks=\App\Models\AssignTask::where('list_id',$file->list_id)->get()->pluck();
+                                                                $list=\App\Models\ContentList::with('level','grade')->where('id',$file->list_id)->first();
+                                                                 $grade=\App\Models\Grade::with('level')->where('id',$list->grade->id)->first();
+                                                            $easy=App\Repository\ArticalRepository::getArticleByLevel($file->list_id,\App\Helper\ArticleLevels::Easy);
+                                                            $normal=App\Repository\ArticalRepository::getArticleByLevel($file->list_id,\App\Helper\ArticleLevels::Normal);
+                                                            $hard=App\Repository\ArticalRepository::getArticleByLevel($file->list_id,\App\Helper\ArticleLevels::Hard);
                                                         @endphp
                                                         <tr>
                                                             <td>{{$list->id}}</td>

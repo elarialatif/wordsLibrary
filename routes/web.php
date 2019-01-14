@@ -128,7 +128,8 @@ Route::group(['middleware' => 'superadmin'], function () {
             'destroy'
         ]);
         Route::get("categories/{id}/delete", "CategoriesController@destroy");
-
+        Route::get("log", "LogTimeController@index");
+        Route::get('logfiltertime', ['as' => 'logfiltertime', 'uses' => 'LogTimeController@logfiltertime']);
         // show is reserved to another routes written bello
 
         Route::resource('country', 'CountryController');

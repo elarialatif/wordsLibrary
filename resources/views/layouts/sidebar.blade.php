@@ -58,6 +58,11 @@
                         <span class="pcoded-micon"><i class="mdi mdi-chart-donut-variant"></i></span>
                         <span class="pcoded-mtext">التصنيفات</span>
                     </a>
+                </li>   <li class="nav-item {{request()->is("log")?"active":""}}">
+                    <a href="{{url('log')}}" class="nav-link">
+                        <span class="pcoded-micon"><i class="mdi mdi-chart-donut-variant"></i></span>
+                        <span class="pcoded-mtext">الاحداث اليومية</span>
+                    </a>
                 </li>
                 <li class="nav-item {{request()->is("/tashkel")?"active":""}}">
                     <a href="{{url('/tashkel')}}" class="nav-link">

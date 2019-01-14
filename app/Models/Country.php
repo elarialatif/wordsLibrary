@@ -8,4 +8,5 @@ class Country extends Model
 {
     protected $guarded = [];
     protected $table = 'country';
+
 }
