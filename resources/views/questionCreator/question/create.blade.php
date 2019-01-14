@@ -1,6 +1,13 @@
 @extends('layouts.app')
 @section('content')
-
+<style>
+    #target {
+        height:  fill-available;
+        -ms-height: fill-available;
+        
+    }
+    
+</style>
     <div class="container">
         <div class="container">
 
@@ -24,6 +31,8 @@
                                                 {{-- <div id="tinymcFont" style="max-width: 200px">  --}} {{--</div>--}}
                                                 <span id="articaasdasdl" >{!! $artical->article !!}</span>
                                             </div>
+                                            {{--  --}}
+                                            {{--  --}}
                                             <div class="col-md-6"  id="target" style="overflow: scroll; width: 200px; height:-webkit-fill-available;">
                                                 <div class="row">
                                                     <div class="col-md-3">
