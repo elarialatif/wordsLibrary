@@ -122,6 +122,11 @@
             <div class="row articles"> 
                 <!-- [ user web-list ] start -->
                 <div class="col-md-6 col-xl-6 m-b-30 user">
+                    {{-- title --}}
+                    <div class="card-header">
+                        <h5>معدلات الأنتاج</h5>
+                    </div>
+                    {{-- title end --}}
                     <div class="tabbable boxed parentTabs">
                         <ul  id="myTab1" role="tablist" class="nav nav-tabs tab1">
                             <li class="nav-item" >
