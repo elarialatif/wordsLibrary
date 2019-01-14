@@ -1,6 +1,54 @@
 @extends('layouts.app')
 @section('content')
+<style>
+    .modalDetails .modal-content{
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        max-width: 700px;
+        width: 90%;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 1);
+        border-radius: 3px;
+        background: #fff;
+        text-align: center;
+        top: 2rem;
+        border: 0;
+    }
+    .modalDetails .modal-title {
+        font-size: 18px !important;
+    }
+    .modalDetails.modal {
+        background: rgba(0, 0, 0, 0.75);
+    }
+    .modalDetails .modal-body {
+        position: inherit;
+        display: block;
+        margin: auto;
+        text-align: center;
+        padding: 1rem;
+    }
+    .modalDetails .modal-body .details {
+        display: block;
+        padding: 0.5rem 0;
+        border: 1px solid #04a9f5;
+        margin: auto;
+        margin-bottom: 1rem;
+        width: 60%;
+        border-radius: 10px;
+        background-color: #04a9f5;
+        opacity: 0.8;
+    }
+    .modalDetails .modal-body .details span:first-child {
+        font-size: 1rem;
+        margin-left: 1rem;
+        font-weight: 600;
+    }
+    .modalDetails .modal-body .details span:last-child {
+        font-size: 1rem;
+        color: #fff;
+    }
 
+</style>
     <div class="container">
         <div class="container">
 
@@ -54,57 +102,70 @@
                                                         <tr data-toggle="modal"
                                                             data-target="#myModal{{$file->list_id}}">
                                                             <!-- Modal -->
-                                                            <div id="myModal{{$file->list_id}}" class="modal fade"
+                                                            <div id="myModal{{$file->list_id}}" class="modalDetails modal fade"
                                                                  role="dialog">
                                                                 <div class="modal-dialog">
 
                                                                     <!-- Modal content-->
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
+                                                                            <h4 class="modal-title">قائمة
+                                                                                        المستخدمين
+                                                                            </h4>
                                                                             <button type="button" class="close"
                                                                                     data-dismiss="modal">&times;
                                                                             </button>
-                                                                            <h4 class="modal-title">قائمة
-                                                                                المستخدمين</h4>
+                                                                            
                                                                         </div>
                                                                         <div class="modal-body">
-                                                                            <h4>
-                                                                                معد مواضيع: {{$list->user->name}}
-                                                                                <br>
-                                                                                محرر: {{($users->where('role',\App\Helper\UsersTypes::EDITOR)->first())?$users->where('role',\App\Helper\UsersTypes::EDITOR)->first()->name:"لا يوجد"}}
-
-                                                                                <br>
-                                                                                محلل
-                                                                                مواضيع: {{($users->where('role',\App\Helper\UsersTypes::LISTANALYZER)->first())?$users->where('role',\App\Helper\UsersTypes::LISTANALYZER)->first()->name:"لا يوجد"}}
-                                                                                <br>
-                                                                                مراجع:{{($users->where('role',\App\Helper\UsersTypes::REVIEWER)->first())?$users->where('role',\App\Helper\UsersTypes::REVIEWER)->first()->name:"لا يوجد"}}
-                                                                                <br>
-                                                                                مدخل
-                                                                                اسئلة:{{($users->where('role',\App\Helper\UsersTypes::QuestionCreator)->first())?$users->where('role',\App\Helper\UsersTypes::QuestionCreator)->first()->name:"لا يوجد"}}
-                                                                                <br>
-                                                                                مراجع
-                                                                                اسئلة:{{($users->where('role',\App\Helper\UsersTypes::QuestionReviewer)->first())?$users->where('role',\App\Helper\UsersTypes::QuestionReviewer)->first()->name:"لا يوجد"}}
-                                                                                <br>
-                                                                                مراجع
-                                                                                لغوى:{{($users->where('role',\App\Helper\UsersTypes::Languestic)->first())?$users->where('role',\App\Helper\UsersTypes::Languestic)->first()->name:"لا يوجد"}}
-                                                                                <br>
-                                                                                مدخل
-                                                                                صوت:{{($users->where('role',\App\Helper\UsersTypes::Sound)->first())?$users->where('role',\App\Helper\UsersTypes::Sound)->first()->name:"لا يوجد"}}
-                                                                                <br>
-                                                                                جودة:{{($users->where('role',\App\Helper\UsersTypes::quality)->first())?$users->where('role',\App\Helper\UsersTypes::quality)->first()->name:"لا يوجد"}}
-                                                                            </h4>
+                                                                            <div class="details">
+                                                                                <span>معد مواضيع:</span>
+                                                                                <span>{{$list->user->name}}</span>
+                                                                            </div>
+                                                                            <div class="details">
+                                                                                <span>محرر:</span>
+                                                                                <span>{{($users->where('role',\App\Helper\UsersTypes::EDITOR)->first())?$users->where('role',\App\Helper\UsersTypes::EDITOR)->first()->name:"لا يوجد"}}</span>
+                                                                            </div>
+                                                                            <div class="details">
+                                                                                <span>محلل مواضيع:</span>
+                                                                                <span>{{($users->where('role',\App\Helper\UsersTypes::LISTANALYZER)->first())?$users->where('role',\App\Helper\UsersTypes::LISTANALYZER)->first()->name:"لا يوجد"}}</span>
+                                                                            </div>
+                                                                            <div class="details">
+                                                                                <span>مراجع:</span>
+                                                                                <span> {{($users->where('role',\App\Helper\UsersTypes::REVIEWER)->first())?$users->where('role',\App\Helper\UsersTypes::REVIEWER)->first()->name:"لا يوجد"}}</span>
+                                                                            </div>
+                                                                            <div class="details">
+                                                                                <span> مدخل اسئلة:</span>
+                                                                                <span>{{($users->where('role',\App\Helper\UsersTypes::QuestionCreator)->first())?$users->where('role',\App\Helper\UsersTypes::QuestionCreator)->first()->name:"لا يوجد"}}</span>
+                                                                            </div>
+                                                                            <div class="details">
+                                                                                <span>مراجع اسئلة:</span>
+                                                                                <span>{{($users->where('role',\App\Helper\UsersTypes::QuestionReviewer)->first())?$users->where('role',\App\Helper\UsersTypes::QuestionReviewer)->first()->name:"لا يوجد"}}</hspan6>
+                                                                            </div>
+                                                                            <div class="details">
+                                                                                <span>مراجع لغوى:</span>
+                                                                                <span>{{($users->where('role',\App\Helper\UsersTypes::Languestic)->first())?$users->where('role',\App\Helper\UsersTypes::Languestic)->first()->name:"لا يوجد"}}</span>
+                                                                            </div>
+                                                                            <div class="details">
+                                                                                <span>مدخل صوت:</span>
+                                                                                <span>{{($users->where('role',\App\Helper\UsersTypes::Sound)->first())?$users->where('role',\App\Helper\UsersTypes::Sound)->first()->name:"لا يوجد"}}</span>
+                                                                            </div>
+                                                                            <div class="details">
+                                                                                <span>جودة:</span>
+                                                                                <span>{{($users->where('role',\App\Helper\UsersTypes::quality)->first())?$users->where('role',\App\Helper\UsersTypes::quality)->first()->name:"لا يوجد"}}</span>
+                                                                            </div>
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button"
                                                                                     class="btn btn-default"
-                                                                                    data-dismiss="modal">Close
+                                                                                    data-dismiss="modal">غلق
                                                                             </button>
                                                                         </div>
                                                                     </div>
 
                                                                 </div>
                                                             </div>
-
+                                                            {{-- end of modal--}}
                                                             <td>{{$list->id}}</td>
                                                             {{--<td>{{$file->articleName}}</td>--}}
                                                             <td>{{$file->lists->list}}</td>
