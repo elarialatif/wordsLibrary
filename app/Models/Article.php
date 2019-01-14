@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Observers\UserActionsObserver;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User;
 
@@ -17,5 +18,12 @@ class Article extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        Article::observe(UserActionsObserver::class);
     }
 }

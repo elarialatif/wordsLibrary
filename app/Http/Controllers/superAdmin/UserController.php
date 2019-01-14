@@ -18,7 +18,6 @@ class UserController extends Controller
      */
     public function index()
     {
-
         $users=UsersRepository::all();
         return view('superadmin.users.index', compact('users'));
     }
@@ -33,6 +32,12 @@ class UserController extends Controller
        $users=$request->except('_token');
        UsersRepository::profile($id,$users);
        return redirect(url('profile'))->with('success', 'تم التعديل بنجاح ');
+   }
+
+   public function userArchive($id){
+       $user=UsersRepository::find($id);
+       $tasks=TaskRepository::findAllWhere('user_id',$user->id);
+       return view('superadmin.users.archive',compact('user','tasks'));
    }
 
     public function edit($id)
@@ -72,5 +77,6 @@ class UserController extends Controller
         UsersRepository::delete($id);
         return redirect(url('users'))->with('success', 'تم الحذف بنجاح ');
     }
+
 }
 

@@ -41,14 +41,70 @@
                                                     </thead>
                                                     <tbody>
                                                     @foreach($allFiles as $file)
+
                                                         @php
-                                                            $list=\App\Models\ContentList::with('level','grade')->where('id',$file->list_id)->first();
-                                                             $grade=\App\Models\Grade::with('level')->where('id',$list->grade->id)->first();
-                                                        $easy=App\Repository\ArticalRepository::getArticleByLevel($file->list_id,\App\Helper\ArticleLevels::Easy);
-                                                        $normal=App\Repository\ArticalRepository::getArticleByLevel($file->list_id,\App\Helper\ArticleLevels::Normal);
-                                                        $hard=App\Repository\ArticalRepository::getArticleByLevel($file->list_id,\App\Helper\ArticleLevels::Hard);
+                                                            $AssignTsaks=\App\Models\AssignTask::where('list_id',$file->list_id)->get()->pluck('user_id')->toArray();
+                                                            $users=\App\User::whereIn('id',$AssignTsaks)->get();
+                                                               $list=\App\Models\ContentList::with('level','grade','user')->where('id',$file->list_id)->first();
+                                                                 $grade=\App\Models\Grade::with('level')->where('id',$list->grade->id)->first();
+                                                                  $easy=App\Repository\ArticalRepository::getArticleByLevel($file->list_id,\App\Helper\ArticleLevels::Easy);
+                                                                  $normal=App\Repository\ArticalRepository::getArticleByLevel($file->list_id,\App\Helper\ArticleLevels::Normal);
+                                                                   $hard=App\Repository\ArticalRepository::getArticleByLevel($file->list_id,\App\Helper\ArticleLevels::Hard);
                                                         @endphp
-                                                        <tr>
+                                                        <tr data-toggle="modal"
+                                                            data-target="#myModal{{$file->list_id}}">
+                                                            <!-- Modal -->
+                                                            <div id="myModal{{$file->list_id}}" class="modal fade"
+                                                                 role="dialog">
+                                                                <div class="modal-dialog">
+
+                                                                    <!-- Modal content-->
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <button type="button" class="close"
+                                                                                    data-dismiss="modal">&times;
+                                                                            </button>
+                                                                            <h4 class="modal-title">قائمة
+                                                                                المستخدمين</h4>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <h4>
+                                                                                معد مواضيع: {{$list->user->name}}
+                                                                                <br>
+                                                                                محرر: {{($users->where('role',\App\Helper\UsersTypes::EDITOR)->first())?$users->where('role',\App\Helper\UsersTypes::EDITOR)->first()->name:"لا يوجد"}}
+
+                                                                                <br>
+                                                                                محلل
+                                                                                مواضيع: {{($users->where('role',\App\Helper\UsersTypes::LISTANALYZER)->first())?$users->where('role',\App\Helper\UsersTypes::LISTANALYZER)->first()->name:"لا يوجد"}}
+                                                                                <br>
+                                                                                مراجع:{{($users->where('role',\App\Helper\UsersTypes::REVIEWER)->first())?$users->where('role',\App\Helper\UsersTypes::REVIEWER)->first()->name:"لا يوجد"}}
+                                                                                <br>
+                                                                                مدخل
+                                                                                اسئلة:{{($users->where('role',\App\Helper\UsersTypes::QuestionCreator)->first())?$users->where('role',\App\Helper\UsersTypes::QuestionCreator)->first()->name:"لا يوجد"}}
+                                                                                <br>
+                                                                                مراجع
+                                                                                اسئلة:{{($users->where('role',\App\Helper\UsersTypes::QuestionReviewer)->first())?$users->where('role',\App\Helper\UsersTypes::QuestionReviewer)->first()->name:"لا يوجد"}}
+                                                                                <br>
+                                                                                مراجع
+                                                                                لغوى:{{($users->where('role',\App\Helper\UsersTypes::Languestic)->first())?$users->where('role',\App\Helper\UsersTypes::Languestic)->first()->name:"لا يوجد"}}
+                                                                                <br>
+                                                                                مدخل
+                                                                                صوت:{{($users->where('role',\App\Helper\UsersTypes::Sound)->first())?$users->where('role',\App\Helper\UsersTypes::Sound)->first()->name:"لا يوجد"}}
+                                                                                <br>
+                                                                                جودة:{{($users->where('role',\App\Helper\UsersTypes::quality)->first())?$users->where('role',\App\Helper\UsersTypes::quality)->first()->name:"لا يوجد"}}
+                                                                            </h4>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                    class="btn btn-default"
+                                                                                    data-dismiss="modal">Close
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+
                                                             <td>{{$list->id}}</td>
                                                             {{--<td>{{$file->articleName}}</td>--}}
                                                             <td>{{$file->lists->list}}</td>
