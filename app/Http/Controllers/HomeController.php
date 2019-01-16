@@ -65,7 +65,7 @@ class HomeController extends Controller
     {
 
         $users = UsersRepository::findWhere('role', $userRole);
-        $query = UserRate::whereIn('user_id', $users->pluck('id')->toArray());
+        $query = UserRate::whereIn('user_id', $users->pluck('id')->toArray())->where('active',1);
         if ($time == 'yesterday') {
             $time = Carbon::yesterday()->toDateString();
             $query->where('created_at', 'like', $time . '%');
@@ -75,14 +75,6 @@ class HomeController extends Controller
             $query->where('created_at', '>', $lastWeek)->where('created_at', '<=', $today);
         }
         $topUsers = $query->get();
-//        // if ($userRole == UsersTypes::EDITOR) {
-//        $editor = UserRate::select('user_id')
-//            ->whereIn('user_id', $users->pluck('user_id')->toArray())
-//            ->groupBy('user_id')
-//            ->orderByRaw('COUNT(*) DESC')
-//            ->limit(3)
-//            ->get()->pluck('user_id')->toArray();
-//        //  }
         $multiplied = $topUsers->groupBy('user_id')->map(function ($item, $key) {
             return count($item);
         });
