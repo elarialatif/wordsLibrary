@@ -36,6 +36,12 @@ class UserRateRepository
     static function update($user_id, $list_id, $data)
     {
         $rate = UserRate::where(['user_id' => $user_id, 'list_id' => $list_id])->first();
+        if (!$rate) {
+            $data2['user_id'] = $user_id;
+            $data2['list_id'] = $list_id;
+            $data2['active'] = 1;
+            self::save($data2);
+        }
         $rate = $rate->update($data);
         return $rate;
     }
@@ -50,10 +56,10 @@ class UserRateRepository
         }
     }
 
-    static function findWhere( $value, $value2)
+    static function findWhere($value, $value2)
     {
 
-            $rate = UserRate::where(['list_id' => $value, 'user_id' => $value2])->first();
+        $rate = UserRate::where(['list_id' => $value, 'user_id' => $value2])->first();
 
         return $rate;
     }
