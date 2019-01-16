@@ -523,18 +523,17 @@
             success: function (result) {
                 $("#daysub1").empty();
                 var i = 0;
-                console.log(result)
                 jQuery.each(result, function (key, value) {
                     $("#daysub1").append(' <div class="media">\n' +
                         '                                                <div class="m-r-10 photo-table">\n' +
                         '                                                    <a href="#!" id="insertTopic">\n' +
                         '                                                        <img class="rounded-circle" style="width:40px;"\n' +
-                        '                                                             src="{{url("")}}/public/images/user/'+ value.img + '.jpg"\n' +
+                        '                                                             src="{{url("")}}/public/images/user/' + value.img + '.jpg"\n' +
                         '                                                             alt="activity-user"></a>\n' +
                         '                                                </div>\n' +
                         '                                                <div class="media-body">\n' +
-                        '                                                    <h6 class="m-0 d-inline">' + value.name +
-                        '</h6>\n' +
+                        '                                                    <h6 class="m-0 d-inline"><a href="" onclick="profile(' + value.id + ')">' + value.name +
+                        '</a></h6>\n' +
                         '                                                    <h6 class="permition">' + value.role +
                         '</h6>\n' +
                         '                                                    <span class="float-right d-flex  align-items-center"><i\n' +
@@ -548,6 +547,10 @@
             }
 
         });
+    }
+
+    function profile(id) {
+        window.location = "{{url("")}}/archive/" + id
     }
 </script>
 

@@ -118,12 +118,12 @@ Route::post('listsFilter', 'ContentListController@listsFilter')->middleware('lis
 Route::group(['middleware' => 'superadmin'], function () {
     Route::get('allFiles', 'ArticalController@allFiles');
     Route::get('filterFiles/{grade_id}', 'ArticalController@filterFiles');
-
+    Route::get('Rates/{userRole}/{time}', 'HomeController@Rates');
     Route::group(['namespace' => 'superAdmin', 'middleware' => 'superadmin'], function () {
         Route::resource('users', 'UserController');
         Route::get('users/delete/{user_id}', 'UserController@destroy');
         Route::get('viewArticle/{article_id}', 'SuperAdminController@viewArticle');
-        Route::get('Rates/{userRole}/{time}', 'SuperAdminController@Rates');
+
 
         Route::resource('categories', 'CategoriesController')->except([
             'destroy'
