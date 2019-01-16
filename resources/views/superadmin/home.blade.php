@@ -70,7 +70,7 @@
                             <h6 class="text-muted mt-4 mb-3">الموضوعات المنتهية {{$complete}}/{{$allLists}} </h6>
                             <div class="progress">
                                 <div class="progress-bar progress-c-theme" role="progressbar"
-                                     style="width:60%;height:6px;" aria-valuenow="60" aria-valuemin="0"
+                                     style="width:{{round(($complete/$allLists)*100)}}%;height:6px;" aria-valuenow="60" aria-valuemin="0"
                                      aria-valuemax="100"></div>
                             </div>
                         </div>
