@@ -11,6 +11,7 @@ use App\Models\Issues;
 use App\Repository\ArticalRepository;
 use App\Repository\IssuesRepository;
 use App\Repository\NotificationRepository;
+use App\Repository\UserRateRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers;
 use App\Helper\Steps;
@@ -128,6 +129,9 @@ class QuestionReviewerController extends Controller
             //Notification/////
             NotificationRepository::notify($list_id, Steps::Create_Question);
             ///end Notification////
+            $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Create_Question);
+            $data['active'] = 0;
+            UserRateRepository::update($user_id, $list_id, $data);
             return redirect()->back()->with('success', 'تم الارسال الي مدخل الاسئله بنجاح ');
         } else {
             if (!empty($lang)) {
@@ -137,6 +141,10 @@ class QuestionReviewerController extends Controller
                 ///end Notification////
                 return redirect()->back()->with('success', 'تم اعاده الارسال الي المراجع اللغوي بنجاح ');
             }
+            $data['user_id'] = auth()->id();
+            $data['list_id'] = $list_id;
+            $data['active'] = 1;
+            UserRateRepository::save($data);
             ContentListsRepository::updateStep($list_id, Steps::Languestic);
             return redirect()->back()->with('success', 'تم الارسال الي المراجع اللغوي بنجاح ');
         }

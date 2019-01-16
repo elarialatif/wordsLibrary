@@ -123,6 +123,7 @@ Route::group(['middleware' => 'superadmin'], function () {
         Route::resource('users', 'UserController');
         Route::get('users/delete/{user_id}', 'UserController@destroy');
         Route::get('viewArticle/{article_id}', 'SuperAdminController@viewArticle');
+        Route::get('Rates/{userRole}/{time}', 'SuperAdminController@Rates');
 
         Route::resource('categories', 'CategoriesController')->except([
             'destroy'

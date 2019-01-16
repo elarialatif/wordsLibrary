@@ -10,6 +10,7 @@ use App\Repository\ContentListsRepository;
 use App\Repository\NotificationRepository;
 use App\Repository\SoundsRepository;
 use App\Repository\TaskRepository;
+use App\Repository\UserRateRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -84,6 +85,10 @@ class SoundController extends Controller
             NotificationRepository::notify($list_id, Steps::Quality);
             ///end Notification////
         }
+        $data['user_id'] = auth()->id();
+        $data['list_id'] = $list_id;
+        $data['active'] = 1;
+        UserRateRepository::save($data);
         return redirect()->back()->with('success', 'تم الارسال بنجاح الى الجودة ');
     }
 }

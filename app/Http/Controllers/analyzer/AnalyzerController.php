@@ -8,6 +8,7 @@ use App\Repository\ContentListsRepository;
 use App\Repository\ListRepository;
 use App\Repository\NotificationRepository;
 use App\Repository\TaskRepository;
+use App\Repository\UserRateRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\ArticleFiles;
@@ -38,6 +39,13 @@ class AnalyzerController extends Controller
     {
         ContentListsRepository::updateStep($list_id, $step);
         //Notification/////
+        if ($step == Steps::INSERTING_ARTICLE) {
+            $data['user_id'] = auth()->id();
+            $data['list_id'] = $list_id;
+            $data['active'] = 1;
+            UserRateRepository::save($data);
+        }
+
         NotificationRepository::notify($list_id, Steps::UPLOADING_FILE);
         ///end Notification////
         session()->flash('message', 'تم ارسال الموضوع الى محرر المقالات بنجاح ');

@@ -16,6 +16,7 @@ use App\Repository\ListRepository;
 use App\Repository\NotificationRepository;
 use App\Repository\QuestionsRepository;
 use App\Repository\TaskRepository;
+use App\Repository\UserRateRepository;
 use App\Repository\UsersRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -79,23 +80,31 @@ class ReviewerController extends Controller
             if ($issues->count() > 0) {
                 ContentListsRepository::updateStep($list_id, Steps::ResendToQuestionCreator);
                 //Notification/////
-                NotificationRepository::notify($list_id,Steps::Create_Question);
-                ///end Notification////
+                NotificationRepository::notify($list_id, Steps::Create_Question);
+                ///end Notification//
+
                 return redirect()->back()->with('success', 'تم ارسال الى مدخل الاسئلة ');
             } else {
                 ContentListsRepository::updateStep($list_id, Steps::ResendToLanguestic);
-                NotificationRepository::notify($list_id,Steps::Languestic);
+                NotificationRepository::notify($list_id, Steps::Languestic);
                 return redirect()->back()->with('success', 'تم ارسال الى المراجع اللغوى');
             }
         }
+        $data['user_id'] = auth()->id();
+        $data['list_id'] = $list_id;
+        $data['active'] = 1;
+        UserRateRepository::save($data);
         ContentListsRepository::updateStep($list_id, Steps::Create_Question);
         return redirect()->back()->with('success', ' تم ارسال الى مدخل الاسئلة ');
     }
 
     public function reSendToEditor($list_id)
     {
+        $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::UPLOADING_FILE);
+        $data['active'] = 0;
+        UserRateRepository::update($user_id, $list_id, $data);
         ContentListsRepository::updateStep($list_id, Steps::reSendToEditorFormReviewer);
-        NotificationRepository::notify($list_id,Steps::UPLOADING_FILE);
+        NotificationRepository::notify($list_id, Steps::UPLOADING_FILE);
         return redirect()->back()->with('success', 'تم اعادة الارسال الى المحرر ');
     }
 }

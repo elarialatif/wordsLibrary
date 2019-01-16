@@ -4,6 +4,7 @@ namespace App\Http\Controllers\LanguesticReviewer;
 
 use App\Repository\NotificationRepository;
 use App\Repository\SoundsRepository;
+use App\Repository\UserRateRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Helper\ArticleLevels;
@@ -103,8 +104,8 @@ class LanguesticController extends Controller
     public function done($artical_id)
     {
         $questionsIds = QuestionsRepository::findIds('artical_id', $artical_id);
-        $issuesQuestions = IssuesRepository::getIssuesForQuestion($questionsIds, 'question', IssuesSteps::DoneByEditor,auth()->id());
-        $issuesArtical = IssuesRepository::getAllIssuesForArticle($artical_id, 'article', IssuesSteps::DoneByEditor,auth()->id());
+        $issuesQuestions = IssuesRepository::getIssuesForQuestion($questionsIds, 'question', IssuesSteps::DoneByEditor, auth()->id());
+        $issuesArtical = IssuesRepository::getAllIssuesForArticle($artical_id, 'article', IssuesSteps::DoneByEditor, auth()->id());
         if ($issuesQuestions->count() > 0 || $issuesArtical->count() > 0) {
             return redirect()->back()->withError('يجب الانتهاء من كل الملاحظات');
         }
@@ -119,7 +120,7 @@ class LanguesticController extends Controller
         $artical = Article::where('list_id', $list_id)->get()->pluck('id')->toArray();
         $sound = SoundsRepository::findWhereIn('article_id', $artical)->pluck('id')->toArray();
         $questions = QuestionsRepository::findIds('list_id', $list_id);
-        $list=ContentListsRepository::find($list_id);
+        $list = ContentListsRepository::find($list_id);
         $status = Article::where(['list_id' => $list_id, 'status' => 0])->first();
         if (!empty($status)) {
             return redirect()->back()->withErrors(' يجب مراجعه كافه المحتوي اولا');
@@ -130,15 +131,26 @@ class LanguesticController extends Controller
         // $issuesSound = IssuesRepository::getAllIssuesForQuestion($sound, 'sound', IssuesSteps::CloseByCreator);
         if ($issuesArtical->count() > 0) {
             ContentListsRepository::updateStep($list_id, Steps::reSendToEditorFormReviewer);
+            $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::UPLOADING_FILE);
+            $data['active'] = 0;
+            UserRateRepository::update($user_id, $list_id, $data);
+            if ($issuesQuestion->count() > 0) {
+                $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Create_Question);
+                $data['active'] = 0;
+                UserRateRepository::update($user_id, $list_id, $data);
+            }
             //Notification/////
-            NotificationRepository::notify($list_id,Steps::UPLOADING_FILE);
+            NotificationRepository::notify($list_id, Steps::UPLOADING_FILE);
             ///end Notification////
             return redirect()->back()->with('success', 'تم الارسال الي مدخل المقالات بنجاح ');
         }
         if ($issuesQuestion->count() > 0) {
             ContentListsRepository::updateStep($list_id, Steps::ResendToQuestionCreator);
+            $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Create_Question);
+            $data['active'] = 0;
+            UserRateRepository::update($user_id, $list_id, $data);
             //Notification/////
-            NotificationRepository::notify($list_id,Steps::Create_Question);
+            NotificationRepository::notify($list_id, Steps::Create_Question);
             ///end Notification////
             return redirect()->back()->with('success', 'تم الارسال الي مدخل الاسئله بنجاح ');
         }
@@ -147,6 +159,10 @@ class LanguesticController extends Controller
 //            return redirect()->back()->with('success', 'تم اعاده الارسال الي مدخل الصوت بنجاح ');
 //        }
         else {
+            $data['user_id'] = auth()->id();
+            $data['list_id'] = $list_id;
+            $data['active'] = 1;
+            UserRateRepository::save($data);
             ContentListsRepository::updateStep($list_id, Steps::Quality);
             return redirect()->back()->with('success', 'تم الارسال الي مدخل الصوت بنجاح ');
         }

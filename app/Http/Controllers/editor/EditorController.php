@@ -14,6 +14,7 @@ use App\Repository\ContentListsRepository;
 use App\Repository\ListRepository;
 use App\Repository\NotificationRepository;
 use App\Repository\TaskRepository;
+use App\Repository\UserRateRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Notifications\Notification;
@@ -97,6 +98,11 @@ class EditorController extends Controller
 
     public function sendArticleOfListToReviewer($List_id)
     {
+        $data['user_id'] = auth()->id();
+        $data['list_id'] = $List_id;
+        $data['active'] = 1;
+        UserRateRepository::save($data);
+
         ContentListsRepository::updateStep($List_id, Steps::REVIEW_ARTICLE);
 
         return redirect('editor/index')->with('success', 'تم الارسال بنجاح');
@@ -104,6 +110,8 @@ class EditorController extends Controller
 
     public function reSendListOfArticleToReviewer($List_id)
     {
+        $data['active'] = 1;
+        UserRateRepository::update(auth()->id(), $List_id, $data);
         ContentListsRepository::updateStep($List_id, Steps::reSendToReviewerFormEditor);
 //Notification/////
         NotificationRepository::notify($List_id, Steps::REVIEW_ARTICLE);
@@ -120,7 +128,7 @@ class EditorController extends Controller
 
         $Refusedlists = ContentList::with('level', 'grade')->where('step', Steps::UPLOADING_FILE)->whereIn('id', $tasksForAnlazer)->get();
 
-        return view('editor.refusedLists', compact('lists', 'categories_all','Refusedlists'));
+        return view('editor.refusedLists', compact('lists', 'categories_all', 'Refusedlists'));
 
     }
 

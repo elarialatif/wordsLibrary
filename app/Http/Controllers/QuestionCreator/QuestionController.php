@@ -8,6 +8,7 @@ use App\Http\Requests\Question;
 use App\Models\AssignTask;
 use App\Repository\IssuesRepository;
 use App\Repository\NotificationRepository;
+use App\Repository\UserRateRepository;
 use Illuminate\Notifications\Notification;
 use StreamLab\StreamLabProvider\Facades\StreamLabFacades;
 use Validator;
@@ -40,18 +41,20 @@ class QuestionController extends Controller
     {
 
         $tasks = TaskRepository::userTasks(Steps::Create_Question, '\App\Models\ContentList');
-        $list = ContentList::where('step', Steps::Create_Question)->whereIn('id',$tasks)->get();
+        $list = ContentList::where('step', Steps::Create_Question)->whereIn('id', $tasks)->get();
 //        dd($list);
         return view('questionCreator.question.myList', compact('list'));
     }
+
     public function backFromReviewer()
     {
         $tasks = TaskRepository::userTasks(Steps::Create_Question, '\App\Models\ContentList');
 
-        $list = ContentList::where('step', Steps::ResendToQuestionCreator)->whereIn('id',$tasks)->get();
+        $list = ContentList::where('step', Steps::ResendToQuestionCreator)->whereIn('id', $tasks)->get();
 //        dd($list);
         return view('questionCreator.question.backContent', compact('list'));
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -109,9 +112,9 @@ class QuestionController extends Controller
             $rules_array ["ans2.$arrIndex"] = ["required", Rule::notIn([$request->ans1[$arrIndex], $request->ans3[$arrIndex], $request->ans4[$arrIndex]]), "max:191"];
             $rules_array ["ans3.$arrIndex"] = ["required", Rule::notIn([$request->ans1[$arrIndex], $request->ans2[$arrIndex], $request->ans4[$arrIndex]]), "max:191"];
             $rules_array ["ans4.$arrIndex"] = ["required", Rule::notIn([$request->ans1[$arrIndex], $request->ans2[$arrIndex], $request->ans3[$arrIndex]]), "max:191"];
-            $rules_array["question.$arrIndex"]=["required","max:191"];
+            $rules_array["question.$arrIndex"] = ["required", "max:191"];
         }
-        request()->validate($rules_array,$messages_array);
+        request()->validate($rules_array, $messages_array);
         $question = $request->except('_token');
         $question = QuestionsRepository::save($question);
         return redirect(url('question/myList'))->with('success', 'تم الاضافه بنجاح ');
@@ -123,11 +126,11 @@ class QuestionController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($artical_id,$page = 'myList')
+    public function show($artical_id, $page = 'myList')
     {
         $questions = QuestionsRepository::findWhere('artical_id', $artical_id);
         $artical = Article::where('id', $artical_id)->first();
-        return view('questionCreator.question.show', compact('questions','page','artical'));
+        return view('questionCreator.question.show', compact('questions', 'page', 'artical'));
     }
 
     /**
@@ -159,20 +162,26 @@ class QuestionController extends Controller
     public function send($list_id)
     {
 
-        $questions=QuestionsRepository::findIds('list_id',$list_id);
-        $currentIssues=IssuesRepository::findWhereIn($questions,'question');
-        $issues=IssuesRepository::getIssuesForQuestion( $questions,'question',IssuesSteps::Open);
+        $questions = QuestionsRepository::findIds('list_id', $list_id);
+        $currentIssues = IssuesRepository::findWhereIn($questions, 'question');
+        $issues = IssuesRepository::getIssuesForQuestion($questions, 'question', IssuesSteps::Open);
 
-        if($currentIssues->count()>0){
-            if($issues->count()>0){
-                return redirect()->back()->withErrors( 'يوجد اسئله لم يتم الانتهاء من حل مشاكلها');
+        if ($currentIssues->count() > 0) {
+            if ($issues->count() > 0) {
+                return redirect()->back()->withErrors('يوجد اسئله لم يتم الانتهاء من حل مشاكلها');
             }
             ContentListsRepository::updateStep($list_id, Steps::ResendToQuestionReviewer);
             //Notification/////
-            NotificationRepository::notify($list_id,Steps::Review_Question);
+            NotificationRepository::notify($list_id, Steps::Review_Question);
             ///end Notification////
+            $data['active'] = 1;
+            UserRateRepository::update(auth()->id(), $list_id, $data);
             return redirect()->back()->with('success', 'تم اعاده الارسال الي مراجع الاسئله بنجاح ');
         }
+        $data['user_id'] = auth()->id();
+        $data['list_id'] = $list_id;
+        $data['active'] = 1;
+        UserRateRepository::save($data);
         ContentListsRepository::updateStep($list_id, Steps::Review_Question);
         return redirect()->back()->with('success', 'تم الارسال الي مراجع الاسئله بنجاح ');
     }

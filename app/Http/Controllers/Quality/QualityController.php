@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Quality;
 
 use App\Repository\NotificationRepository;
 use App\Repository\SoundsRepository;
+use App\Repository\UserRateRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Helper\ArticleLevels;
@@ -117,9 +118,9 @@ class QualityController extends Controller
     public function done($artical_id)
     {
         $questionsIds = QuestionsRepository::findIds('artical_id', $artical_id);
-        $issuesQuestions = IssuesRepository::findWhereInAndStatus($questionsIds, 'question', IssuesSteps::DoneByEditor,auth()->id());
-        $issuesArtical = IssuesRepository::getAllIssuesForArticle($artical_id, 'article', IssuesSteps::DoneByEditor,auth()->id());
-        $issuesSound = IssuesRepository::getAllIssuesForArticle($artical_id, 'sound', IssuesSteps::DoneByEditor,auth()->id());
+        $issuesQuestions = IssuesRepository::findWhereInAndStatus($questionsIds, 'question', IssuesSteps::DoneByEditor, auth()->id());
+        $issuesArtical = IssuesRepository::getAllIssuesForArticle($artical_id, 'article', IssuesSteps::DoneByEditor, auth()->id());
+        $issuesSound = IssuesRepository::getAllIssuesForArticle($artical_id, 'sound', IssuesSteps::DoneByEditor, auth()->id());
         if ($issuesQuestions->count() > 0 || $issuesArtical->count() > 0 || $issuesSound->count() > 0) {
             return redirect()->back()->withError('يجب الانتهاء من كل الملاحظات');
         }
@@ -145,32 +146,51 @@ class QualityController extends Controller
         if ($issuesArtical->count() > 0) {
             ContentListsRepository::updateStep($list_id, Steps::reSendToEditorFormReviewer);
             //Notification/////
-            NotificationRepository::notify($list_id,Steps::UPLOADING_FILE);
+            NotificationRepository::notify($list_id, Steps::UPLOADING_FILE);
             ///end Notification////
+
+            $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::UPLOADING_FILE);
+            $data['active'] = 0;
+            UserRateRepository::update($user_id, $list_id, $data);
+            if ($issuesQuestion->count() > 0) {
+                $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Create_Question);
+                $data['active'] = 0;
+                UserRateRepository::update($user_id, $list_id, $data);
+            }
             return redirect()->back()->with('success', 'تم الارسال الي مدخل المقالات بنجاح ');
         }
         if ($issuesQuestion->count() > 0) {
             ContentListsRepository::updateStep($list_id, Steps::ResendToQuestionCreator);
             //Notification/////
-            NotificationRepository::notify($list_id,Steps::Create_Question);
+            NotificationRepository::notify($list_id, Steps::Create_Question);
             ///end Notification////
+            $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Create_Question);
+            $data['active'] = 0;
+            UserRateRepository::update($user_id, $list_id, $data);
             return redirect()->back()->with('success', 'تم الارسال الي مدخل الاسئله بنجاح ');
         }
-        if(count($sound) == 0){
+        if (count($sound) == 0) {
             ContentListsRepository::updateStep($list_id, Steps::Sound);
             return redirect()->back()->with('success', 'تم  الارسال الي مدخل الصوت بنجاح ');
         }
         if ($issuesSound->count() > 0 && count($sound) > 0) {
             ContentListsRepository::updateStep($list_id, Steps::ResendToSound);
             //Notification/////
-            NotificationRepository::notify($list_id,Steps::Sound);
+            NotificationRepository::notify($list_id, Steps::Sound);
             ///end Notification////
+            $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Sound);
+            $data['active'] = 0;
+            UserRateRepository::update($user_id, $list_id, $data);
             return redirect()->back()->with('success', 'تم اعاده الارسال الي مدخل الصوت بنجاح ');
         } else {
             ContentListsRepository::updateStep($list_id, Steps::Publish);
             //Notification/////
-            NotificationRepository::notify($list_id,Steps::Publish);
+            NotificationRepository::notify($list_id, Steps::Publish);
             ///end Notification////
+            $data['user_id'] = auth()->id();
+            $data['list_id'] = $list_id;
+            $data['active'] = 1;
+            UserRateRepository::save($data);
             return redirect()->back()->with('success', 'تم النشر بنجاح ');
         }
     }

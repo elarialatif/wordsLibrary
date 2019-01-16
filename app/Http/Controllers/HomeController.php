@@ -10,6 +10,7 @@ use App\Models\Categery;
 use App\Models\ContentList;
 use App\Models\Grade;
 use App\Repository\ContentListsRepository;
+use App\Repository\UserRateRepository;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -44,6 +45,11 @@ class HomeController extends Controller
         $fileUnderAnalizing=ContentListsRepository::findStep('step','=',Steps::ANALYZING_FILE)->count();
         $fileUnderUploading=ContentListsRepository::findStep('step','=',Steps::UPLOADING_FILE)->count();
 //      dd($fileUnderAnalizing);
+//        $users=User::all()->pluck('id')->toArray();
+//        foreach ($users as $user){
+//            $data['user_id']=$user;
+//            $rate=UserRateRepository::save($data);
+//        }
         if(auth()->user()->role==UsersTypes::SUPERADMIN){
             return view('superadmin.home',compact('allLists','listsByArtical','complete','allUsers','allCats','allGrades','allArtical','analizingFile','fileUnderAnalizing','allFiles','fileUnderUploading'));
         }
