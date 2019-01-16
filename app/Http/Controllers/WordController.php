@@ -68,13 +68,12 @@ class WordController extends Controller
     {
         $client = new \GuzzleHttp\Client();
         $URI = 'http://tahadz.com/mishkal/ajaxGet';
-        $params['form_params'] = array('text' => \request('text'), 'action' => 'LightStemmer');
+        $params['form_params'] = array('text' => \request('text'), 'action' => 'TashkeelText');
         $response = $client->post($URI, $params);
         $body = $response->getBody();
         $content = json_decode($body);
         $textTaskel  = $content->result;
         $text=\request('text');
-        dd($textTaskel);
         return view('taskel',compact('textTaskel','text'));
     }
 }
