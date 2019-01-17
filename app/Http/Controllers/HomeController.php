@@ -90,4 +90,8 @@ class HomeController extends Controller
 
         return response()->json($result);
     }
+    public function notify(){
+        return view('layouts.notify');
+    }
+
 }

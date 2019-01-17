@@ -54,7 +54,7 @@ class NotificationRepository
         Notification::send($user, new ResendList($list));
 
 
-        StreamLabFacades::pushMessage('test', $event, $users_id);
+        //StreamLabFacades::pushMessage('test', $event, $users_id);
         //    StreamLabFacades::pushMessage('test', $event, $data);
         ///end Notification////
     }

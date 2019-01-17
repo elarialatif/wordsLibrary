@@ -1,14 +1,10 @@
 @extends('layouts.app')
 @section('content')
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
+
 @section ('css')
     <link href="{{ asset('public/css/layouts/home.css') }}" rel="stylesheet">
 
-    <!-- Required Js -->
-    <script src="{{ asset('public/js/vendor-all.min.js') }}"></script>
-    <script src="{{ asset('public/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('public/js/pcoded.min.js') }}"></script>
-    <!-- amchart js -->
+
     <script src="{{ asset('public/plugins/amchart/js/amcharts.js') }}"></script>
     <script src="{{ asset('public/plugins/amchart/js/gauge.js') }}"></script>
     <script src="{{ asset('public/plugins/amchart/js/serial.js') }}"></script>

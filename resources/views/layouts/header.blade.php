@@ -48,52 +48,9 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li>
-                <div class="dropdown">
-                    <a class="dropdown-toggle" href="javascript:" data-toggle="dropdown" onclick="test()"><span
-                                id="count"> @php
-                                $notify=auth()->user()->notifications;
-
- $grouped = $notify->where('read_at',null);
-
-                            @endphp {{$grouped->count()}}</span><i
-                                class="icon feather icon-bell"></i></a>
-                    <div class="dropdown-menu dropdown-menu-right notification">
-                        <div class="noti-head">
-                            <h6 class="d-inline-block m-b-0">الاشعارات</h6>
-                            {{--<div class="float-right">--}}
-                            {{--<a href="javascript:" class="m-r-10">تم الاطلاع علي الكل</a>--}}
-                            {{--<a href="javascript:">حذف الكل</a>--}}
-                            {{--</div>--}}
-                        </div>
-                        <ul class="noti-body" id="note">
-
-
-                            <li class="n-title">
-                                <div class="media" id="newNote">
-
-                                </div>
-                            </li>
-                            <?php  $i = 0;?>
-                            @foreach(auth()->user()->notifications as $note)
-                                <li class="notification">
-                                    <div class="media @if ($note->read_at == null) unread @endif">
-
-                                        <div class="media-body">
-                                            {{--<p><strong>محمد ابراهيم</strong><span class="n-time text-muted"><i class="icon feather icon-clock m-r-10"></i>30 min</span></p>--}}
-                                            <p>{!! $note->data['data'] !!}</p>
-
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <?php  $i++;?>
-                            @endforeach
-                        </ul>
-                        <div class="noti-footer">
-                            <a  id="showall"></a>
-                        </div>
+                <div class="dropdown" id="notify" >
                     </div>
-                </div>
+
             </li>
             <li>
                 <div class="dropdown drp-user">
@@ -134,37 +91,37 @@
 
 <script>
 
-    var message, ShowDiv = $('#showNofication'), count = $('#count'), c;
-    var slh = new StreamLabHtml();
-    var sls = new StreamLabSocket({
-        appId: "{{ config('stream_lab.app_id') }}",
-        channelName: "test",
-        event: "*"
-    });
-    sls.socket.onmessage = function (res) {
-        slh.setData(res);
-        // $('#note').empty();
-        if (slh.getSource() === 'messages') {
+    {{--var message, ShowDiv = $('#showNofication'), count = $('#count'), c;--}}
+    {{--var slh = new StreamLabHtml();--}}
+    {{--var sls = new StreamLabSocket({--}}
+        {{--appId: "{{ config('stream_lab.app_id') }}",--}}
+        {{--channelName: "test",--}}
+        {{--event: "*"--}}
+    {{--});--}}
+    {{--sls.socket.onmessage = function (res) {--}}
+        {{--slh.setData(res);--}}
+        {{--// $('#note').empty();--}}
+        {{--if (slh.getSource() === 'messages') {--}}
 
-            message = slh.getMessage();
-            console.log(message);
-            if (message.indexOf({{auth()->id()}}) != -1) {
-                c = parseInt(count.html());
-                count.html(c + 1);
+            {{--message = slh.getMessage();--}}
+            {{--console.log(message);--}}
+            {{--if (message.indexOf({{auth()->id()}}) != -1) {--}}
+                {{--c = parseInt(count.html());--}}
+                {{--count.html(c + 1);--}}
 
-                slh.append('newNote', '<li>' +
-                    '<div class="media-body unread">\n' +
+                {{--slh.append('newNote', '<li>' +--}}
+                    {{--'<div class="media-body unread">\n' +--}}
 
-                    ' <p>' +
-                    message[message.length - 1] +
-                    '</p>\n' +
+                    {{--' <p>' +--}}
+                    {{--message[message.length - 1] +--}}
+                    {{--'</p>\n' +--}}
 
-                    '</div>'
-                    + '</li>')
-            }
+                    {{--'</div>'--}}
+                    {{--+ '</li>')--}}
+            {{--}--}}
 
-        }
-    }
+        {{--}--}}
+    {{--}--}}
 
     function test() {
         var li = $("#note li");
@@ -181,11 +138,10 @@
         $("#test").remove();
     }
 
-    $("#showall").hover(function (event) {
-        $("#showall").empty();
-        var li = $("#note li");
-        li.slice(0, li.length).css("display", "block");
-    });
 
 
+    setTimeout(function() {
+        $('#notify').load("{{url('notify')}}");
+
+    }, 1000);
 </script>

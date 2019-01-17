@@ -20,6 +20,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', function () {
         return redirect('/home');
     });
+    Route::get('notify', 'HomeController@notify');
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');//add to fix an issues
 
 

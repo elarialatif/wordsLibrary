@@ -141,7 +141,7 @@
                                         <tbody>
                                         @foreach($users as $user)
                                             <tr >
-                                                <td id="example" onclick="test({{$user->id}})"> <a href="#"> {{$user->name}}</a></td>
+                                                <td id="example" onclick="archive({{$user->id}})"> <a href="#"> {{$user->name}}</a></td>
                                                 <td>{{$user->email}}</td>
                                                 <td>{{\App\Helper\UsersTypes::ArrayOfPermission[$user->role]}}</td>
                                                 <td>
@@ -290,7 +290,7 @@
     </div>
     <script>
 
-        function test(id) {
+        function archive(id) {
             window.location.assign("{{url('archive/')}}/"+id);
             //  window.location = {{url('archive/')}}+'/' + id;
          //   alert(id);
