@@ -1,13 +1,14 @@
 
-<a class="dropdown-toggle" href="javascript:" data-toggle="dropdown" onclick="test()"><span
-            id="count"> @php
+<a id="showW" onclick="test()"><span
+            id="count">@php
             $notify=auth()->user()->notifications;
 
 $grouped = $notify->where('read_at',null);
 
         @endphp {{$grouped->count()}}</span><i
-            class="icon feather icon-bell"></i></a>
-<div class="dropdown-menu dropdown-menu-right notification" >
+            class="icon feather icon-bell"></i><i
+            class="fa fa-angle-down"></i></a>
+<div id="hiddenDiv" style="display: none" class="dropdown-menu dropdown-menu-right notification" >
 <div class="noti-head">
     <h6 class="d-inline-block m-b-0">الاشعارات</h6>
     {{--<div class="float-right">--}}
@@ -16,11 +17,8 @@ $grouped = $notify->where('read_at',null);
     {{--</div>--}}
 </div>
 <ul class="noti-body" id="note">
-
-
     <li class="n-title">
         <div class="media" id="newNote">
-
         </div>
     </li>
     <?php  $i = 0;?>
@@ -49,7 +47,8 @@ $grouped = $notify->where('read_at',null);
         var li = $("#note li");
         li.slice(0, li.length).css("display", "block");
     });
-    setTimeout(function() {
+    var time;
+    time=setTimeout(function() {
         $('#notify').load("{{url('notify')}}");
     }, 10000);
 </script>

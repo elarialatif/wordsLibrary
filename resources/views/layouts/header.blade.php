@@ -48,7 +48,8 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li>
-                <div class="dropdown" id="notify" >
+                <div class="dropdown"  id="notify" >
+
                     </div>
 
             </li>
@@ -127,21 +128,28 @@
         var li = $("#note li");
         $("#showall").html('إظهار الكل');
         li.slice(8, li.length).css("display", "none");
-        setTimeout(function () {
-            count.html(0);
-            $('.unread').each(function () {
-                $(this).removeClass('unread');
-            });
-        }, 5000);
+        // setTimeout(function () {
+        //     count.html(0);
+        //     $('.unread').each(function () {
+        //         $(this).removeClass('unread');
+        //     });
+        // }, 5000);
         $.get('{{url('MarkAllSeen')}}', function () {
         });
         $("#test").remove();
+        $('#hiddenDiv').toggle();
+        if($('#hiddenDiv').css('display')=='block'){
+            clearTimeout(time);
+        }else{
+            time=setTimeout(function() {
+                $('#notify').load("{{url('notify')}}");
+            }, 10000);
+        }
     }
 
 
 
     setTimeout(function() {
-        $('#notify').load("{{url('notify')}}");
-
-    }, 1000);
+       $('#notify').load("{{url('notify')}}");
+       }, 1000);
 </script>
