@@ -6,6 +6,7 @@ use App\Http\Middleware\Editor;
 use App\Http\Middleware\Languestic;
 use App\Http\Middleware\ListAnalyzer;
 use App\Http\Middleware\ListsMaker;
+use App\Http\Middleware\PlacementTestEditor;
 use App\Http\Middleware\Quality;
 use App\Http\Middleware\QuestionCreator;
 use App\Http\Middleware\QuestionReviewer;
@@ -45,6 +46,12 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+        'placement_editor' => [
+            \Illuminate\Session\Middleware\AuthenticateSession::class,
+            \Illuminate\Auth\Middleware\Authenticate::class,
+            PlacementTestEditor::class,
+
         ],
         'editor' => [
             \Illuminate\Session\Middleware\AuthenticateSession::class,

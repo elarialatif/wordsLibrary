@@ -17,6 +17,8 @@
         @include('layouts.side_bars.side_bar_vicerecoder')
     @elseif(auth()->user()->role==\App\Helper\UsersTypes::quality)
         @include('layouts.side_bars.side_bar_quality')
+    @elseif(auth()->user()->role==\App\Helper\UsersTypes::PlacementTestEditor)
+        @include('layouts.side_bars.side_bar_placement_editor')
     @else
         @include('layouts.sidebar')
     @endif

@@ -22,6 +22,7 @@ class UsersTypes
     const Languestic = 8;
     const Sound = 9;
     const quality = 10;
+    const PlacementTestEditor = 11;
 
     const ArrayOfPermission = array(
         '0' => 'الادراة',
@@ -35,5 +36,6 @@ class UsersTypes
         '8' => 'مراجع لغوى',
         '9' => 'تسجيل صوت ',
         '10' => 'الجودة',
+        '11' => 'مدخل اختبارات',
     );
 }

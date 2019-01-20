@@ -23,7 +23,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('notify', 'HomeController@notify');
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');//add to fix an issues
 
-
+    Route::get('profile', 'superAdmin\UserController@profile');
+    Route::post('profile/{id}', 'superAdmin\UserController@updateProfile');
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/tashkel', 'WordController@teshkelGet');
     Route::get('/MarkAllSeen', function () {
@@ -199,15 +200,17 @@ Route::group(['middleware' => 'quality', 'namespace' => 'Quality', 'prefix' => '
     Route::get('resend', 'QualityController@backFromCreator');
 
 });
-Route::get('profile', 'superAdmin\UserController@profile');
-Route::post('profile/{id}', 'superAdmin\UserController@updateProfile');
-Route::get('PlacementTests', 'PlacementTest\PlacementTestController@index');
-Route::post('PlacementTests/save', 'PlacementTest\PlacementTestController@save');
-Route::post('PlacementTests/update/{id}', 'PlacementTest\PlacementTestController@update');
-Route::get('PlacementTests/delete/{id}', 'PlacementTest\PlacementTestController@delete');
+
+Route::group(['middleware' => 'placement_editor', 'namespace' => 'PlacementTest'], function () {
+    Route::get('PlacementTests', 'PlacementTestController@index');
+    Route::post('PlacementTests/save', 'PlacementTestController@save');
+    Route::post('PlacementTests/update/{id}', 'PlacementTestController@update');
+    Route::get('PlacementTests/delete/{id}', 'PlacementTestController@delete');
 //-------------------------------------------------------------------------------------------------
-Route::get('PlacementTests/questions/index/{placement_id}', 'PlacementTest\PlacementTestQuestionsController@index');
-Route::get('PlacementTests/questions/create/{placement_id}', 'PlacementTest\PlacementTestQuestionsController@create');
-Route::post('PlacementTests/questions/save', 'PlacementTest\PlacementTestQuestionsController@save');
-Route::post('PlacementTests/questions/update/{id}', 'PlacementTest\PlacementTestQuestionsController@update');
-Route::get('PlacementTests/question/delete/{id}', 'PlacementTest\PlacementTestQuestionsController@destroy');
+    Route::get('PlacementTests/questions/index/{placement_id}', 'PlacementTestQuestionsController@index');
+    Route::get('PlacementTests/questions/create/{placement_id}', 'PlacementTestQuestionsController@create');
+    Route::post('PlacementTests/questions/save', 'PlacementTestQuestionsController@save');
+    Route::post('PlacementTests/questions/update/{id}', 'PlacementTestQuestionsController@update');
+    Route::get('PlacementTests/question/delete/{id}', 'PlacementTestQuestionsController@destroy');
+
+});
