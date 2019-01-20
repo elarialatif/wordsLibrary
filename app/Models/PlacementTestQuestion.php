@@ -12,6 +12,10 @@ class PlacementTestQuestion extends Model
     {
         return $this->belongsTo(Grade::class, 'grade_id');
     }
+    public function PlacementTest()
+    {
+        return $this->belongsTo(PlacementTest::class, 'exam_id');
+    }
     public static function boot()
     {
         parent::boot();
