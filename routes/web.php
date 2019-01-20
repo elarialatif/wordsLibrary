@@ -201,3 +201,6 @@ Route::group(['middleware' => 'quality', 'namespace' => 'Quality', 'prefix' => '
 });
 Route::get('profile', 'superAdmin\UserController@profile');
 Route::post('profile/{id}', 'superAdmin\UserController@updateProfile');
+Route::get('PlacementTests', 'PlacementTest\PlacementTestController@index');
+Route::post('PlacementTests/save', 'PlacementTest\PlacementTestController@save');
+Route::post('PlacementTests/update/{id}', 'PlacementTest\PlacementTestController@update');
