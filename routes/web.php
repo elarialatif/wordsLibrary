@@ -204,3 +204,10 @@ Route::post('profile/{id}', 'superAdmin\UserController@updateProfile');
 Route::get('PlacementTests', 'PlacementTest\PlacementTestController@index');
 Route::post('PlacementTests/save', 'PlacementTest\PlacementTestController@save');
 Route::post('PlacementTests/update/{id}', 'PlacementTest\PlacementTestController@update');
+Route::get('PlacementTests/delete/{id}', 'PlacementTest\PlacementTestController@delete');
+//-------------------------------------------------------------------------------------------------
+Route::get('PlacementTests/questions/index/{placement_id}', 'PlacementTest\PlacementTestQuestionsController@index');
+Route::get('PlacementTests/questions/create/{placement_id}', 'PlacementTest\PlacementTestQuestionsController@create');
+Route::post('PlacementTests/questions/save', 'PlacementTest\PlacementTestQuestionsController@save');
+Route::post('PlacementTests/questions/update/{id}', 'PlacementTest\PlacementTestQuestionsController@update');
+Route::get('PlacementTests/question/delete/{id}', 'PlacementTest\PlacementTestQuestionsController@destroy');

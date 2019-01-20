@@ -16,7 +16,7 @@ class CreatePlacementTestQuestionsTable extends Migration
         Schema::create('placement_test_questions', function (Blueprint $table) {
             $table->increments('id');
             $table->integer("exam_id")->unsigned();
-            $table->string("question");
+            $table->text("question");
             $table->foreign('exam_id')->references('id')->on('placement_tests')->onDelete('RESTRICT')->onUpdate('cascade');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('RESTRICT')->onUpdate('cascade');

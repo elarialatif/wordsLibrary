@@ -154,6 +154,30 @@ class QuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $messages_array = [
+            'question.question.required' => 'من فضلك ادخل اسم السؤال',
+            'question.question.max' => 'اسم السوال يجب الا يزيد عن 191 حرف',
+            'question.ans1.required' => 'من فضلك الاجابه الاولى',
+            'question.ans2.required' => 'من فضلك الاجابه الثانيه',
+            'question.ans3.required' => 'من فضلك الاجابه الثالثه',
+            'question.ans4.required' => 'من فضلك الاجابه الرابعه',
+            'question.ans1.max' => 'الاجابه الاولى يجب الا تزيد عن 191 حرف',
+            'question.ans2.max' => 'الاجابه الثانيه يجب الا تزيد عن 191 حرف',
+            'question.ans3.max' => 'الاجابه الثالثه يجب الا تزيد عن 191 حرف',
+            'question.ans4.max' => 'الاجابه الرابعه يجب الا تزيد عن 191 حرف',
+        ];
+
+        $messages_array["ans1.not_in"] = "لابد ان تكون الاجابه الاولي مختلفه";
+        $messages_array["ans2.not_in"] = "لابد ان تكون الاجابه الثانيه مختلفه";
+        $messages_array["ans3.not_in"] = "لابد ان تكون الاجابه الثالثه مختلفه";
+        $messages_array["ans4.not_in"] = "لابد ان تكون الاجابه الرابعه مختلفه";
+        $rules_array ["ans1"] = ["required", Rule::notIn([$request->ans2, $request->ans3, $request->ans4]), "max:191"];
+        $rules_array ["ans2"] = ["required", Rule::notIn([$request->ans1, $request->ans3, $request->ans4]), "max:191"];
+        $rules_array ["ans3"] = ["required", Rule::notIn([$request->ans1, $request->ans2, $request->ans4]), "max:191"];
+        $rules_array ["ans4"] = ["required", Rule::notIn([$request->ans1, $request->ans2, $request->ans3]), "max:191"];
+        $rules_array["question"] = ["required", "max:191"];
+
+        request()->validate($rules_array, $messages_array);
         $question = $request->except('_token');
         $question = QuestionsRepository::update($id, $question);
         return redirect()->back()->with('success', 'تم التعديل بنجاح ');

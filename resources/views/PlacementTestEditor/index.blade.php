@@ -125,9 +125,9 @@
                                                     <td>{{$test->created_at->format('Y:m:d') . " الساعه " . $test->created_at->format('H')}}</td>
                                                     <td>{{$test->updated_at->format('Y:m:d') . " الساعه " . $test->created_at->format('H')}}</td>
                                                     <td>
-                                                        <a href="" class="btn btn-icon btn-outline-success radbor"><i class="fa fa-plus-square"></i></a>
+                                                        <a href="{{url('PlacementTests/questions/index/'.$test->id)}}" class="btn btn-icon btn-outline-success radbor"><i class="fa fa-plus-square"></i></a>
                                                         <a href="" data-toggle="modal" data-target="#editModal{{$test->id}}" class="btn btn-icon btn-outline-info radbor"> <i class="fa fa-edit"></i></a>
-                                                        <a href="" class="btn btn-icon btn-outline-danger radbor"><i class="fa fa-trash"></i></a>
+                                                        <a href="{{url('PlacementTests/delete/'.$test->id)}}" class="btn btn-icon btn-outline-danger radbor"><i class="fa fa-trash"></i></a>
 
                                                     </td>
                                                     {{--model for edit user--}}

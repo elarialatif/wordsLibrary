@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PlacementTestQuestion extends Model
 {
+    protected $guarded=[];
     public function grade()
     {
         return $this->belongsTo(Grade::class, 'grade_id');

@@ -114,7 +114,7 @@
             {{--model for edit question--}}
             <div class="modal fade" id="editModal{{$question->id}}" tabindex="-1" role="dialog"
                  aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog"style="max-width: 70% !important;" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">تعديل السؤال</h5>
@@ -129,7 +129,7 @@
                                 <div class="col-md-8">
                                     السؤال:<br>
                                     <div class="form-group">
-                                        <textarea required type="text" name="question" > {{$question->question}}</textarea>
+                                        <textarea class="mceEditor" type="text" name="question" > {{$question->question}}</textarea>
                                     </div>
                                 </div>
                         </div>
