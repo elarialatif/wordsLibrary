@@ -82,10 +82,8 @@ class ArticalController extends Controller
             DB::transaction(function () use ($request) {
 
 
-                $article = ArticleFiles::where('list_id', $request->list_id)->first();
-                if ($article) {
-                    return redirect('allLists')->withErrors('توجد ملفات لهذا الموضوع ');
-                }
+
+
                 $task = AssignTask::where(['list_id' => $request->list_id, 'step' => Steps::UPLOADING_FILE])->first();
                 if ($task) {
                     if ($task->user_id != auth()->id()) {

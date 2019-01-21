@@ -23,7 +23,9 @@ class UsersTypes
     const Sound = 9;
     const quality = 10;
     const PlacementTestEditor = 11;
-
+////////////////////////////////////////
+/// types of user for student pedia project
+    const School = 0;
     const ArrayOfPermission = array(
         '0' => 'الادراة',
         '1' => 'رئيس',
@@ -37,5 +39,9 @@ class UsersTypes
         '9' => 'تسجيل صوت ',
         '10' => 'الجودة',
         '11' => 'مدخل اختبارات',
+    );
+    const PermissionForShool = array(
+        '0' => 'مدرسة',
+
     );
 }

@@ -90,7 +90,12 @@ class ArticalRepository
             $filename2 = $request->file('filename');
 
             $filename2->move(storage_path() . '/' . 'files', $filename2->getClientOriginalName());
+            $article = ArticleFiles::where('list_id', $request->list_id)->first();
             $NewArticle = new ArticleFiles();
+            if ($article) {
+                $NewArticle = $article;
+            }
+
             $NewArticle->articleName = $request->articleName;
             $NewArticle->list_id = $request->list_id;
             $NewArticle->publish_details = $request->publish_details;

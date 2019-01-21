@@ -30,7 +30,6 @@ class PlacementTestQuestionsController extends Controller
     {
         $messages_array = [
             'question.*.question.required' => 'من فضلك ادخل اسم السؤال',
-            'question.*.question.max' => 'اسم السوال يجب الا يزيد عن 191 حرف',
             'question.*.ans1.required' => 'من فضلك الاجابه الاولى',
             'question.*.ans2.required' => 'من فضلك الاجابه الثانيه',
             'question.*.ans3.required' => 'من فضلك الاجابه الثالثه',
@@ -45,10 +44,10 @@ class PlacementTestQuestionsController extends Controller
             $messages_array["ans2.$arrIndex.not_in"] = "لابد ان تكون الاجابه الثانيه مختلفه";
             $messages_array["ans3.$arrIndex.not_in"] = "لابد ان تكون الاجابه الثالثه مختلفه";
             $messages_array["ans4.$arrIndex.not_in"] = "لابد ان تكون الاجابه الرابعه مختلفه";
-            $rules_array ["ans1.$arrIndex"] = ["required", Rule::notIn([$request->ans2[$arrIndex], $request->ans3[$arrIndex], $request->ans4[$arrIndex]]), "max:191"];
-            $rules_array ["ans2.$arrIndex"] = ["required", Rule::notIn([$request->ans1[$arrIndex], $request->ans3[$arrIndex], $request->ans4[$arrIndex]]), "max:191"];
-            $rules_array ["ans3.$arrIndex"] = ["required", Rule::notIn([$request->ans1[$arrIndex], $request->ans2[$arrIndex], $request->ans4[$arrIndex]]), "max:191"];
-            $rules_array ["ans4.$arrIndex"] = ["required", Rule::notIn([$request->ans1[$arrIndex], $request->ans2[$arrIndex], $request->ans3[$arrIndex]]), "max:191"];
+            $rules_array ["ans1.$arrIndex"] = ["required", Rule::notIn([$request->ans2[$arrIndex], $request->ans3[$arrIndex], $request->ans4[$arrIndex]])];
+            $rules_array ["ans2.$arrIndex"] = ["required", Rule::notIn([$request->ans1[$arrIndex], $request->ans3[$arrIndex], $request->ans4[$arrIndex]])];
+            $rules_array ["ans3.$arrIndex"] = ["required", Rule::notIn([$request->ans1[$arrIndex], $request->ans2[$arrIndex], $request->ans4[$arrIndex]])];
+            $rules_array ["ans4.$arrIndex"] = ["required", Rule::notIn([$request->ans1[$arrIndex], $request->ans2[$arrIndex], $request->ans3[$arrIndex]])];
             $rules_array["question.$arrIndex"] = ["required", "max:191"];
         }
         request()->validate($rules_array, $messages_array);
@@ -63,7 +62,6 @@ class PlacementTestQuestionsController extends Controller
     {
         $messages_array = [
             'question.question.required' => 'من فضلك ادخل اسم السؤال',
-            'question.question.max' => 'اسم السوال يجب الا يزيد عن 191 حرف',
             'question.ans1.required' => 'من فضلك الاجابه الاولى',
             'question.ans2.required' => 'من فضلك الاجابه الثانيه',
             'question.ans3.required' => 'من فضلك الاجابه الثالثه',
@@ -78,10 +76,10 @@ class PlacementTestQuestionsController extends Controller
         $messages_array["ans2.not_in"] = "لابد ان تكون الاجابه الثانيه مختلفه";
         $messages_array["ans3.not_in"] = "لابد ان تكون الاجابه الثالثه مختلفه";
         $messages_array["ans4.not_in"] = "لابد ان تكون الاجابه الرابعه مختلفه";
-        $rules_array ["ans1"] = ["required", Rule::notIn([$request->ans2, $request->ans3, $request->ans4]), "max:191"];
-        $rules_array ["ans2"] = ["required", Rule::notIn([$request->ans1, $request->ans3, $request->ans4]), "max:191"];
-        $rules_array ["ans3"] = ["required", Rule::notIn([$request->ans1, $request->ans2, $request->ans4]), "max:191"];
-        $rules_array ["ans4"] = ["required", Rule::notIn([$request->ans1, $request->ans2, $request->ans3]), "max:191"];
+        $rules_array ["ans1"] = ["required", Rule::notIn([$request->ans2, $request->ans3, $request->ans4])];
+        $rules_array ["ans2"] = ["required", Rule::notIn([$request->ans1, $request->ans3, $request->ans4])];
+        $rules_array ["ans3"] = ["required", Rule::notIn([$request->ans1, $request->ans2, $request->ans4])];
+        $rules_array ["ans4"] = ["required", Rule::notIn([$request->ans1, $request->ans2, $request->ans3])];
         $rules_array["question"] = ["required", "max:191"];
 
         request()->validate($rules_array, $messages_array);
