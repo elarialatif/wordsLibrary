@@ -126,7 +126,10 @@ Route::group(['middleware' => 'superadmin'], function () {
         Route::get('users/delete/{user_id}', 'UserController@destroy');
         Route::get('viewArticle/{article_id}', 'SuperAdminController@viewArticle');
         Route::post('add/school', 'SchoolController@save');
+        Route::get('add/school', 'SchoolController@create');
         Route::get('view/schools', 'SchoolController@index');
+        Route::get('edit/school/{school_id}', 'SchoolController@edit');
+        Route::post('edit/school/{school_id}', 'SchoolController@update');
 
         Route::resource('categories', 'CategoriesController')->except([
             'destroy'

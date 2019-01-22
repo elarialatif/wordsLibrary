@@ -18,7 +18,9 @@
                                     <a data-toggle="modal" data-target="#exampleModal" class="btn btn-primary"
                                        style="color: white;float: left;font-weight: bold">اضافه مستخدم
                                         جديد<i
-                                                class="fa fa-plus"></i></a>
+                                                class="fa fa-plus"></i></a>         <a href="{{url('view/schools')}}" class="btn btn-success"
+                                       style="color: white;float: left;font-weight: bold"> المدارس<i
+                                                class="fa fa-eye"></i></a>
                                     {{--model for add new user--}}
                                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                                          aria-labelledby="exampleModalLabel" aria-hidden="true">
