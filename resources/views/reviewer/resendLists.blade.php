@@ -51,9 +51,9 @@
                                                         $issueshard=\App\Repository\IssuesRepository::getAllIssuesForArticle($hard->id,'article',\App\Helper\IssuesSteps::DoneByEditor,\App\Helper\IssuesSteps::Open);
                                                         @endphp
 
-                                                        @if($list->step!=\App\Helper\Steps::reSendToReviewerFormEditor)
-                                                            @continue
-                                                        @endif
+                                                        {{--@if($list->step!=\App\Helper\Steps::reSendToReviewerFormEditor)--}}
+                                                            {{--@continue--}}
+                                                        {{--@endif--}}
                                                         <tr id="{{$list->id}}">
 
                                                             <td>{{$list->id}}</td>

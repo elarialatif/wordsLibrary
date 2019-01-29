@@ -10,6 +10,7 @@ namespace App\Repository;
 
 
 use App\Helper\ArticleLevels;
+use App\Helper\Steps;
 use App\Models\Article;
 use App\Models\Country;
 use App\Models\ContentList;
@@ -65,10 +66,10 @@ class ContentListsRepository
     static function delete($id)
     {
         try {
-            $check = ArticleFiles::where('list_id', $id)->first();
-            if ($check) {
-                return false;
-            }
+            $check = ContentList::find($id);
+//            if ($check->step == Steps::Publish) {
+//                return false;
+//            }
             ContentList::destroy($id);
             return true;
         } catch (\Exception $e) {
@@ -117,10 +118,11 @@ class ContentListsRepository
         return ContentList::with('level', 'grade')->where($paramter, $value)->get();
 
     }
-    static function findStep($paramter,$sign, $value)
+
+    static function findStep($paramter, $sign, $value)
     {
 
-        return ContentList::where($paramter, $sign,$value)->get();
+        return ContentList::where($paramter, $sign, $value)->get();
 
     }
 

@@ -68,6 +68,7 @@ class ReviewerController extends Controller
     {
 
         $tasks = AssignTask::where(['step' => Steps::REVIEW_ARTICLE, 'user_id' => auth()->id()])->get()->pluck('list_id')->toArray();
+
         $lists = ContentList::whereIn('id', $tasks)->where('step', Steps::reSendToReviewerFormEditor)->get();
         return view('reviewer.resendLists', compact('lists'));
     }

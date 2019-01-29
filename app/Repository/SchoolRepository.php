@@ -29,7 +29,7 @@ class SchoolRepository
                     ->where('user_id', '=', $id)->first();
                 $logoName = $SchoolLogo->logo;
             }
-            if ($request->file('logo')!=null) {
+            if ($request->file('logo') != null) {
                 $logo = $request->file('logo');
                 $destinationPath = 'public/schoolsLogos/';
                 $extension = $logo->getClientOriginalExtension();
@@ -46,38 +46,27 @@ class SchoolRepository
             }
             $school->type = UsersTypes::School;
             $school->save();
+            $query = ['start_at' => $request->start_at,
+                'created_by' => auth()->id(),
+                'user_id' => $school->id,
+                'end_at' => $request->end_at,
+                'num_acc' => $request->acc_num,
+                'student_num' => $request->student_num,
+                'lat' => $request->lat,
+                'lng' => $request->lng,
+                'logo' => $logoName,
+                'website' => $request->website,
+                'mobile' => $request->mobile,
+                'facebook' => $request->facebook,];
             if ($id != null) {
                 DB::table('studentpedia.schools')->where('user_id', $id)
                     ->update(
-                        ['start_at' => $request->start_at,
-                            'created_by' => auth()->id(),
-                            'user_id' => $school->id,
-                            'end_at' => $request->end_at,
-                            'num_acc' => $request->acc_num,
-                            'student_num' => $request->student_num,
-                            'lat' => $request->lat,
-                            'lng' => $request->lng,
-                            'logo' => $logoName,
-                            'website' => $request->website,
-                            'mobile' => $request->mobile,
-                            'facebook' => $request->facebook,
-                        ]);
-
+                        $query
+                    );
             } else {
                 DB::table('studentpedia.schools')->insert([
                     [
-                        'start_at' => $request->start_at,
-                        'created_by' => auth()->id(),
-                        'user_id' => $school->id,
-                        'end_at' => $request->end_at,
-                        'num_acc' => $request->acc_num,
-                        'student_num' => $request->student_num,
-                        'lat' => $request->lat,
-                        'lng' => $request->lng,
-                        'logo' => $logoName,
-                        'website' => $request->website,
-                        'mobile' => $request->mobile,
-                        'facebook' => $request->facebook,
+                        $query
                     ],
 
                 ]);

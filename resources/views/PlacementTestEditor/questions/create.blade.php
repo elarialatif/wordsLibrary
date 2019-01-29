@@ -2,7 +2,7 @@
 @section('content')
     <style>
         #target {
-            height:  fill-available;
+            height: fill-available;
             -ms-height: fill-available;
 
         }
@@ -23,11 +23,11 @@
                                         صفحة اضافه الاسئله
                                     </h5>
                                 </div>
-                                <?php $m=1;?>
+                                <?php $m = 1;?>
                                 <div class="card-block">
                                     <div class="form-group">
                                         <div class="row">
-                                            <div class="col-md-12"  id="target" >
+                                            <div class="col-md-12" id="target">
                                                 <div class="row">
                                                     <div class="col-md-3">
                                                         <button class="btn btn-primary" id="add">اضافه عدد معين</button>
@@ -61,22 +61,24 @@
 
                                                             <div class="col-md-12"><span id="indexNum">{{$m}}-</span>السؤال:<br>
                                                                 <div class="form-group">
-                                        <textarea class="mceEditor"  type="text" name="question[0]" rows="8"
+                                        <textarea class="mceEditor" type="text" name="question[{{$i}}]" rows="8"
                                                   cols="90">{{$questions}}</textarea>
+                                                                    <input name="image" type="file" id="upload" hidden
+                                                                           onchange="">
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     الاختيار الاول:<br>
                                                                     <div class="form-group">
-                                                                        <input required type="text" name="ans1[0]"
+                                                                        <input required type="text" name="ans1[{{$i}}]"
                                                                                value="{{$ans1[$i]}}">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     الاختيار الثاني:<br>
                                                                     <div class="form-group">
-                                                                        <input required type="text" name="ans2[0]"
+                                                                        <input required type="text" name="ans2[{{$i}}]"
                                                                                value="{{$ans2[$i]}}">
                                                                     </div>
                                                                 </div>
@@ -85,14 +87,14 @@
                                                                 <div class="col-md-6">
                                                                     الاختيار الثالث:<br>
                                                                     <div class="form-group">
-                                                                        <input required type="text" name="ans3[0]"
+                                                                        <input required type="text" name="ans3[{{$i}}]"
                                                                                value="{{$ans3[$i]}}">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     الاختيار الرابع:<br>
                                                                     <div class="form-group">
-                                                                        <input required type="text" name="ans4[0]"
+                                                                        <input required type="text" name="ans4[{{$i}}]"
                                                                                value="{{$ans4[$i]}}">
                                                                     </div>
                                                                 </div>
@@ -103,7 +105,7 @@
                                                                     الاجابه الصحيحه:<br>
                                                                     <div class="form-group">
                                                                         <select class="form-control"
-                                                                                name="true_answer[0]" required>
+                                                                                name="true_answer[{{$i}}]" required>
                                                                             <option value="">اختر الاجابه</option>
                                                                             <option value="ans1"
                                                                                     @if($trueans[$i]=='ans1') selected @endif>
@@ -135,8 +137,10 @@
                                                         <div class="col-md-12"><span id="indexNum">{{$m}}-</span>
                                                             السؤال:<br>
                                                             <div class="form-group">
-                                    <textarea  class="mceEditor" type="text" name="question[0]" rows="8"
-                                               cols="90"></textarea>
+                                    <textarea class="mceEditor" type="text" name="question[0]" rows="8"
+                                              cols="90"></textarea>
+                                                                <input name="image" type="file" id="upload" hidden
+                                                                       onchange="">
                                                             </div>
                                                         </div>
                                                         <div class="row">
@@ -220,10 +224,11 @@
                                                                     '<div class = "form-group" id="btn[' + i + ']" >\n' +
                                                                     '<div class="row">\n' +
                                                                     '                <div class="col-md-12">\n' +
-                                                                    '<span id="indexNum2">'+ (i+1) +'-</span>'+
+                                                                    '<span id="indexNum2">' + (i + 1) + '-</span>' +
                                                                     '                    السؤال:<br>\n' +
                                                                     '                    <div class="form-group">\n' +
                                                                     '                        <textarea class="mceEditor"  type="text"  rows="8" cols="90" name="question[' + i + ']"></textarea>\n' +
+                                                                    '<input name="image" type="file" id="upload" hidden onchange="">' +
                                                                     '                    </div>\n' +
                                                                     '                </div>\n' +
                                                                     '            </div>\n' +

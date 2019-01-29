@@ -100,7 +100,7 @@ class ArticalController extends Controller
 
             return redirect('allLists')->with('success', 'تم رفع الملف بنجاح');
         } catch (Exception $e) {
-            return redirect('allLists')->with('success', 'تم رفع الملف بنجاح');
+           // return redirect('allLists')->with('success', 'تم رفع الملف بنجاح');
         }
     }
 
@@ -143,6 +143,7 @@ class ArticalController extends Controller
         }
         if ($file) {
             $data = $this->articalRepo->analyze($id);
+
             if ($data == false) {
                 return redirect()->back()->withErrors(['الملف فارغ او مكتوب بالانجليزية']);
             }

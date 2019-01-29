@@ -32,7 +32,7 @@ class SoundsRepository
             $sound->name = $file->getClientOriginalName();
             $sound->article_id = $article_id;
             $sound->extension = $file->getClientOriginalExtension();
-            $sound->path = $destinationPath . '/' . $filename;
+            $sound->path = $destinationPath . $filename;
             $sound->user_id = auth()->id();
             $sound->save();
 
