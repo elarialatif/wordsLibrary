@@ -92,7 +92,8 @@ class QualityController extends Controller
         $sound = SoundsRepository::findWhere('article_id', $artical_id);
         $questions = QuestionsRepository::findWhere('artical_id', $artical_id);
         $artical = Article::where('id', $artical_id)->first();
-        if ($artical == null) {
+        $list = ContentList::find($artical->list_id);
+        if ($list == null) {
             return redirect()->back()->with('error', 'المقال غير موجود');
         }
         if (auth()->user()->role != UsersTypes::SUPERADMIN && auth()->user()->role != UsersTypes::ADMIN) {
@@ -105,7 +106,7 @@ class QualityController extends Controller
                 TaskRepository::save($artical->list_id, Steps::Quality);
             }
         }
-        $list = ContentList::find($artical->list_id);
+
         if ($list->step != Steps::Quality && $list->step != Steps::ResendToQuality) {
             return redirect('quality/myList')->withErrors('غير مسموح لك الدخول الى هنا');
         }
