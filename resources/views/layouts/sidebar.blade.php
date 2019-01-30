@@ -48,10 +48,10 @@
                     </a>
                 </li>
                 {{--<li class="nav-item {{request()->is("country")?"active":""}}">--}}
-                    {{--<a href="{{url('country')}}" class="nav-link">--}}
-                        {{--<span class="pcoded-micon"><i class="fas fa-flag"></i></span>--}}
-                        {{--<span class="pcoded-mtext">الدول</span>--}}
-                    {{--</a>--}}
+                {{--<a href="{{url('country')}}" class="nav-link">--}}
+                {{--<span class="pcoded-micon"><i class="fas fa-flag"></i></span>--}}
+                {{--<span class="pcoded-mtext">الدول</span>--}}
+                {{--</a>--}}
                 {{--</li>--}}
                 <li class="nav-item {{request()->is("categories")?"active":""}}">
                     <a href="{{url('categories')}}" class="nav-link">
@@ -69,6 +69,12 @@
                     <a href="{{url('log')}}" class="nav-link">
                         <span class="pcoded-micon"><i class="mdi mdi-chart-donut-variant"></i></span>
                         <span class="pcoded-mtext">الاحداث اليومية</span>
+                    </a>
+                </li>
+                <li class="nav-item {{request()->is("log")?"active":""}}">
+                    <a href="{{url('archive')}}" class="nav-link">
+                        <span class="pcoded-micon"><i class="mdi mdi-chart-donut-variant"></i></span>
+                        <span class="pcoded-mtext">الارشيف</span>
                     </a>
                 </li>
                 <li class="nav-item {{request()->is("/tashkel")?"active":""}}">
