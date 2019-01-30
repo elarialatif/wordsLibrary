@@ -6,10 +6,14 @@ use App\Observers\UserActionsObserver;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ContentList extends Model
 {
+
+    use SoftDeletes;
     protected $guarded = [];
+    protected $dates = ['deleted_at'];
 
     public function grade()
     {

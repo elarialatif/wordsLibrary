@@ -56,6 +56,9 @@ class EditorController extends Controller
 
         $orginalFile = $data['orginalFile'];
         $list = $data['list'];
+        if ($list == null) {
+            return redirect()->back()->with('error', ' الموضوع غير موجود');
+        }
         $categories_all = Categery::all();
         if ($list->step != Steps::INSERTING_ARTICLE && $list->step != Steps::reSendToEditorFormReviewer) {
             return redirect('editor/mylists')->withErrors('غير مسموح لك الدخول الى هنا');

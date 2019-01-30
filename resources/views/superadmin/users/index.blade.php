@@ -16,25 +16,25 @@
                                         صفحة المستخدمين
                                     </h5>
                                     <a data-toggle="modal" data-target="#exampleModal" class="btn btn-primary"
-                                                       style="color: white;float: left;font-weight: bold">اضافه مستخدم
-                                    جديد<i
-                                            class="fa fa-plus"></i></a>
-                                {{--model for add new user--}}
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <form method="POST" action="{{ route('register') }}">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">اضافه مستخدم
-                                                        جديد</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-
+                                       style="color: white;float: left;font-weight: bold">اضافه مستخدم
+                                        جديد<i class="fa fa-plus"></i></a>
+                                    <a href="{{url('view/schools')}}" class="btn btn-success" style="color: white;float: left;font-weight: bold"> المدارس<i
+                                                class="fa fa-eye"></i></a>
+                                    {{--model for add new user--}}
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <form method="POST" action="{{ route('register') }}">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">اضافه مستخدم
+                                                            جديد</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
                                                     @csrf
                                                     <div class="form-group row">
                                                         <label for="name"

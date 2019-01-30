@@ -3,7 +3,8 @@
     <br>
     <br>
     <div class="container">
-        <a href="{{url('question/create/'.$questions[0]->artical_id)}}" class="btn btn-primary"> اضافه اسئله جديده <i class="fa fa-plus"></i></a>
+        <a href="{{url('question/create/'.$questions[0]->artical_id)}}" class="btn btn-primary"> اضافه اسئله جديده <i
+                    class="fa fa-plus"></i></a>
         <a style="float: left" href="{{url('question/'.$page)}}" class="btn btn-dark"> رجوع </a>
         <br>
         <br>
@@ -12,9 +13,10 @@
             <table class="table table-condensed">
                 <thead>
                 <tr>
-                    <th>{{$question->question}}
+                    <th>{!! $question->question !!}
                         <a style="float:left" href="{{url('question/delete/'.$question->id)}}" class="btn btn-danger">مسح</a>
-                        <a style="float:left" data-toggle="modal" data-target="#editModal{{$question->id}}" class="btn btn-info">تعديل</a>
+                        <a style="float:left" data-toggle="modal" data-target="#editModal{{$question->id}}"
+                           class="btn btn-info">تعديل</a>
                     </th>
                 </tr>
                 </thead>
@@ -84,7 +86,8 @@
                                                        value="{{$issue->title}}">
                                                 <br>
                                                 <label><h4>الملاحظه</h4></label>
-                                                <textarea disabled name="name" rows="6" cols="60"> {!!$issue->name!!}</textarea>
+                                                <textarea disabled name="name" rows="6"
+                                                          cols="60"> {!!$issue->name!!}</textarea>
                                                 <input type="hidden" name="field_id" value="{{$question->id}}">
                                                 <input type="hidden" name="table" value="question">
                                                 <select class="form-control" name="step" required>
@@ -114,7 +117,7 @@
             {{--model for edit question--}}
             <div class="modal fade" id="editModal{{$question->id}}" tabindex="-1" role="dialog"
                  aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog"style="max-width: 70% !important;" role="document">
+                <div class="modal-dialog" style="max-width: 70% !important;" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">تعديل السؤال</h5>
@@ -126,56 +129,66 @@
                             <form method="POST" action="{{url('question/edit')}}/{{$question->id}}">
                                 @csrf
                                 <div class="row">
-                                <div class="col-md-8">
-                                    السؤال:<br>
-                                    <div class="form-group">
-                                        <textarea class="mceEditor" type="text" name="question" > {{$question->question}}</textarea>
+                                    <div class="col-md-8">
+                                        السؤال:<br>
+                                        <div class="form-group">
+                                            <textarea class="mceEditor" type="text"
+                                                      name="question"> {!! $question->question !!}</textarea>
+                                        </div>
                                     </div>
                                 </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                الاختيار الاول:<br>
-                                <div class="form-group">
-                                    <input required type="text" name="ans1" value="{{$question->ans1}}">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        الاختيار الاول:<br>
+                                        <div class="form-group">
+                                            <input required type="text" name="ans1" value="{{$question->ans1}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        الاختيار الثاني:<br>
+                                        <div class="form-group">
+                                            <input required type="text" name="ans2" value="{{$question->ans2}}">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                الاختيار الثاني:<br>
-                                <div class="form-group">
-                                    <input required type="text" name="ans2" value="{{$question->ans2}}">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        الاختيار الثالث:<br>
+                                        <div class="form-group">
+                                            <input required type="text" name="ans3" value="{{$question->ans3}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        الاختيار الرابع:<br>
+                                        <div class="form-group">
+                                            <input required type="text" name="ans4" value="{{$question->ans4}}">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                الاختيار الثالث:<br>
-                                <div class="form-group">
-                                    <input required type="text" name="ans3" value="{{$question->ans3}}">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        الاجابه الصحيحه:<br>
+                                        <div class="form-group">
+                                            <select class="form-control" name="true_answer" required>
+                                                <option value="">اختر الاجابه</option>
+                                                <option value="ans1" {{($question->true_answer=='ans1')?'selected':''}}>
+                                                    الاختيار الاول
+                                                </option>
+                                                <option value="ans2" {{($question->true_answer=='ans2')?'selected':''}}>
+                                                    الاختيار الثاني
+                                                </option>
+                                                <option value="ans3" {{($question->true_answer=='ans3')?'selected':''}}>
+                                                    الاختيار الثالث
+                                                </option>
+                                                <option value="ans4" {{($question->true_answer=='ans4')?'selected':''}}>
+                                                    الاختيار الرابع
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                الاختيار الرابع:<br>
-                                <div class="form-group">
-                                    <input required type="text" name="ans4" value="{{$question->ans4}}">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                الاجابه الصحيحه:<br>
-                                <div class="form-group">
-                                    <select class="form-control" name="true_answer" required>
-                                        <option value="">اختر الاجابه</option>
-                                        <option value="ans1" {{($question->true_answer=='ans1')?'selected':''}}>الاختيار الاول</option>
-                                        <option value="ans2" {{($question->true_answer=='ans2')?'selected':''}}>الاختيار الثاني</option>
-                                        <option value="ans3" {{($question->true_answer=='ans3')?'selected':''}}>الاختيار الثالث</option>
-                                        <option value="ans4" {{($question->true_answer=='ans4')?'selected':''}}>الاختيار الرابع</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary" type="submit"><span class="fa fa-plus"></span>إضافة</button>
+                                <button class="btn btn-primary" type="submit"><span class="fa fa-plus"></span>إضافة
+                                </button>
                             </form>
                         </div>
                         <div class="modal-footer">

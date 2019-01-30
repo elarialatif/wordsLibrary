@@ -16,7 +16,7 @@ class ContentListController extends Controller
     public function index()
     {
         $lists = ContentListsRepository::all();
-       // $countries = CountryRepository::all();
+        // $countries = CountryRepository::all();
         $grades = GradesRepository::all();
         $levels = LevelsRepository::all();
 
@@ -25,10 +25,10 @@ class ContentListController extends Controller
 
     public function create()
     {
-      //  $countries = CountryRepository::all();
+        //  $countries = CountryRepository::all();
         $grades = GradesRepository::all();
         $levels = LevelsRepository::all();
-        return view('listsmaker.lists.create', compact( 'grades', 'levels'));
+        return view('listsmaker.lists.create', compact('grades', 'levels'));
     }
 
     public function save(Request $request)
@@ -100,5 +100,28 @@ class ContentListController extends Controller
     {
         $lists = ContentListsRepository::AjaxGetLists($grade_id);
         return response()->json($lists);
+    }
+
+    public function archive()
+    {
+        $lists = ContentList::onlyTrashed()->get();
+        return view('superadmin.archive', compact('lists'));
+    }
+
+    public function restoreList($id)
+    {
+        ContentList::withTrashed()
+            ->where('id', $id)
+            ->restore();
+
+        return redirect()->back()->with('success', 'تمت الاستعادة بنجاح');
+    }
+
+    public function forceDeleteList($id)
+    {
+        ContentList::withTrashed()
+            ->where('id', $id)
+            ->forceDelete();
+        return redirect()->back()->with('success', 'تم المسح بنجاح');
     }
 }

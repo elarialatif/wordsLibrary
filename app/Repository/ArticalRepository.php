@@ -4,10 +4,12 @@ namespace App\Repository;
 
 use App\ArticleCategory;
 use App\Helper\ArticleLevels;
+use App\Helper\Steps;
 use App\Models\Article;
 use App\Models\ArticleFiles;
 use App\Models\ListCategory;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Notification;
 
 class ArticalRepository
 {
@@ -90,7 +92,15 @@ class ArticalRepository
             $filename2 = $request->file('filename');
 
             $filename2->move(storage_path() . '/' . 'files', $filename2->getClientOriginalName());
+            $article = ArticleFiles::where('list_id', $request->list_id)->first();
             $NewArticle = new ArticleFiles();
+            if ($article) {
+                $NewArticle = $article;
+                ContentListsRepository::updateStep($request->list_id, Steps::ANALYZING_FILE);
+                //Notification/////
+                NotificationRepository::notify($request->list_id, Steps::ANALYZING_FILE);
+                ///end Notification////
+            }
             $NewArticle->articleName = $request->articleName;
             $NewArticle->list_id = $request->list_id;
             $NewArticle->publish_details = $request->publish_details;

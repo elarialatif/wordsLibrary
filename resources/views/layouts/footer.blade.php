@@ -4,6 +4,7 @@
 </div>
 </div>
 </div>
+
 <!-- /#wrapper -->
 <!-- Bootstrap core JavaScript -->
 <script src="{{asset('public/vendor/jquery/jquery.min.js')}}"></script>

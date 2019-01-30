@@ -36,17 +36,30 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $allLists = ContentList::all()->count();
-        $listsByArtical = ContentListsRepository::findStep('step', '>', Steps::INSERTING_ARTICLE)->count();
-        $complete = ContentListsRepository::findWhere('step', Steps::Publish)->count();
-        $allUsers = User::all()->count();
-        $allCats = Categery::all()->count();
-        $allGrades = Grade::all()->count();
-        $allArtical = Article::all()->count();
-        $allFiles = ArticleFiles::all()->count();
-        $analizingFile = ContentListsRepository::findStep('step', '>', Steps::ANALYZING_FILE)->count();
-        $fileUnderAnalizing = ContentListsRepository::findStep('step', '=', Steps::ANALYZING_FILE)->count();
-        $fileUnderUploading = ContentListsRepository::findStep('step', '=', Steps::UPLOADING_FILE)->count();
+        $analizingFile = \App\Repository\ContentListsRepository::findStep('step', '>', \App\Helper\Steps::ANALYZING_FILE)->count();
+        $fileUnderAnalizing = \App\Repository\ContentListsRepository::findStep('step', '=', \App\Helper\Steps::ANALYZING_FILE)->count();
+        $fileUnderUploading = \App\Repository\ContentListsRepository::findStep('step', '=', \App\Helper\Steps::UPLOADING_FILE)->count();
+
+        $listsByArtical = \App\Repository\ContentListsRepository::findStep('step', '>', \App\Helper\Steps::INSERTING_ARTICLE)->count();
+        $complete = \App\Repository\ContentListsRepository::findWhere('step', \App\Helper\Steps::Publish)->count();
+
+        $allCats = \App\Models\Categery::all()->count();
+        $allGrades = \App\Models\Grade::all()->count();
+        //$allArtical = Article::all()->count();
+        $allLists = \App\Models\ContentList::all()->count();
+        $allUsers = \App\User::all()->count();
+
+//        $allLists = ContentList::all()->count();
+//        $listsByArtical = ContentListsRepository::findStep('step', '>', Steps::INSERTING_ARTICLE)->count();
+//        $complete = ContentListsRepository::findWhere('step', Steps::Publish)->count();
+//        $allUsers = User::all()->count();
+//        $allCats = Categery::all()->count();
+//        $allGrades = Grade::all()->count();
+//        $allArtical = Article::all()->count();
+//        $allFiles = ArticleFiles::all()->count();
+//        $analizingFile = ContentListsRepository::findStep('step', '>', Steps::ANALYZING_FILE)->count();
+//        $fileUnderAnalizing = ContentListsRepository::findStep('step', '=', Steps::ANALYZING_FILE)->count();
+//        $fileUnderUploading = ContentListsRepository::findStep('step', '=', Steps::UPLOADING_FILE)->count();
 //      dd($fileUnderAnalizing);
 //        $users=User::all()->pluck('id')->toArray();
 //        foreach ($users as $user){
@@ -65,7 +78,7 @@ class HomeController extends Controller
     {
 
         $users = UsersRepository::findWhere('role', $userRole);
-        $query = UserRate::whereIn('user_id', $users->pluck('id')->toArray())->where('active',1);
+        $query = UserRate::whereIn('user_id', $users->pluck('id')->toArray())->where('active', 1);
         if ($time == 'yesterday') {
             $time = Carbon::yesterday()->toDateString();
             $query->where('created_at', 'like', $time . '%');
@@ -81,16 +94,22 @@ class HomeController extends Controller
         $arr = $multiplied->toArray();
         arsort($arr);
         $result = [];
+        $i = 0;
         foreach ($arr as $key => $value) {
+            if ($i == 3) {
+                break;
+            }
             $user = UsersRepository::find($key);
 
             $result[] = array('img' => $user->img, 'name' => $user->name, 'rate' => $value, 'role' => UsersTypes::ArrayOfPermission[$user->role], 'id' => $user->id);
-
+            $i++;
         }
 
         return response()->json($result);
     }
-    public function notify(){
+
+    public function notify()
+    {
         return view('layouts.notify');
     }
 

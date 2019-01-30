@@ -28,5 +28,6 @@
                             <div class="row">
                                 <!-- [ sample-page ] start -->
 
+
 @yield('content')
 @include('layouts.footer')

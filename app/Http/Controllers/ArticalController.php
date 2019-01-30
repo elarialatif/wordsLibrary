@@ -82,10 +82,6 @@ class ArticalController extends Controller
             DB::transaction(function () use ($request) {
 
 
-                $article = ArticleFiles::where('list_id', $request->list_id)->first();
-                if ($article) {
-                    return redirect('allLists')->withErrors('توجد ملفات لهذا الموضوع ');
-                }
                 $task = AssignTask::where(['list_id' => $request->list_id, 'step' => Steps::UPLOADING_FILE])->first();
                 if ($task) {
                     if ($task->user_id != auth()->id()) {
@@ -102,7 +98,7 @@ class ArticalController extends Controller
 
             return redirect('allLists')->with('success', 'تم رفع الملف بنجاح');
         } catch (Exception $e) {
-            return redirect('allLists')->with('success', 'تم رفع الملف بنجاح');
+            // return redirect('allLists')->with('success', 'تم رفع الملف بنجاح');
         }
     }
 
@@ -145,6 +141,7 @@ class ArticalController extends Controller
         }
         if ($file) {
             $data = $this->articalRepo->analyze($id);
+
             if ($data == false) {
                 return redirect()->back()->withErrors(['الملف فارغ او مكتوب بالانجليزية']);
             }
@@ -153,6 +150,10 @@ class ArticalController extends Controller
             $Array = $data['Array'];
             $orginalFile = $data['orginalFile'];
             $list = $data['list'];
+
+            if ($list == null) {
+                return redirect()->back()->with('error', 'الموضوع  غير موجود');
+            }
             $File = $data['file'];
             return view('listsanalayzer.articles.results')->with(compact('finalArray'))->with(compact('Array', 'orginalFile', 'list', 'file_id', 'File'));
         }

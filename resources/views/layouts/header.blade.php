@@ -55,10 +55,11 @@
             </li>
             <li>
                 <div class="dropdown drp-user">
-                    <a href="javascript:" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="icon feather icon-settings"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right profile-notification">
+
+                    <a id="showUser" onclick="showUser()"  ><span
+                                id="count"> </span> <i class="icon feather icon-settings"></i><i
+                                class="fa fa-angle-down"></i></a>
+                    <div id="hiddenDivUser" style="display: none" class="dropdown-menu dropdown-menu-right profile-notification showUser">
                         <div class="pro-head">
                             <a href="{{url('profile')}}"  >
                                 @if(auth()->user()->img !=null)
@@ -83,6 +84,7 @@
                     </div>
                 </div>
             </li>
+
         </ul>
     </div>
 </header>
@@ -123,7 +125,9 @@
 
         {{--}--}}
     {{--}--}}
-
+function showUser(){
+        $('#hiddenDivUser').toggle();
+    }
     function test() {
         var li = $("#note li");
         $("#showall").html('إظهار الكل');
