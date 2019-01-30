@@ -25,7 +25,9 @@ class SoundController extends Controller
 
     public function upload($list_id, $level, $page = null)
     {
-
+        if ($list_id == null) {
+            return redirect()->back()->with('error', 'الموضوع  غير موجود');
+        }
         $task = AssignTask::where(['list_id' => $list_id, 'step' => Steps::Sound])->first();
         if ($task) {
             if ($task->user_id != auth()->id()) {
@@ -38,6 +40,9 @@ class SoundController extends Controller
 
         $article = Article::where(['list_id' => $list_id, 'level' => $level])->first();
         $list = ContentList::find($article->list_id);
+        if ($list == null) {
+            return redirect()->back()->with('error', 'الموضوع  غير موجود');
+        }
         if ($list->step != Steps::Sound && $list->step != Steps::ResendToSound) {
             return redirect('VoiceRecorder/mySounds')->withErrors('غير مسموح لك الدخول الى هنا');
         }

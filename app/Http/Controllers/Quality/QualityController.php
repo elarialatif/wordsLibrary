@@ -92,6 +92,9 @@ class QualityController extends Controller
         $sound = SoundsRepository::findWhere('article_id', $artical_id);
         $questions = QuestionsRepository::findWhere('artical_id', $artical_id);
         $artical = Article::where('id', $artical_id)->first();
+        if ($artical == null) {
+            return redirect()->back()->with('error', 'المقال غير موجود');
+        }
         if (auth()->user()->role != UsersTypes::SUPERADMIN && auth()->user()->role != UsersTypes::ADMIN) {
             $task = AssignTask::where(['list_id' => $artical->list_id, 'step' => Steps::Quality])->first();
             if ($task) {

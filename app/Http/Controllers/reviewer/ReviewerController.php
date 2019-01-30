@@ -35,6 +35,9 @@ class ReviewerController extends Controller
 
     public function viewArticle($list_id, $level, $page = null)
     {
+        if ($list_id == null) {
+            return redirect()->back()->with('error', 'الموضوع  غير موجود');
+        }
         $task = AssignTask::where(['list_id' => $list_id, 'step' => Steps::REVIEW_ARTICLE])->first();
         if ($task) {
             if ($task->user_id != auth()->id()) {
@@ -45,7 +48,11 @@ class ReviewerController extends Controller
             TaskRepository::save($list_id, Steps::REVIEW_ARTICLE);
         }
         $article = Article::where(['list_id' => $list_id, 'level' => $level])->first();
+
         $list = ContentList::find($list_id);
+        if ($list == null) {
+            return redirect()->back()->with('error', 'الموضوع  غير موجود');
+        }
         if ($list->step != Steps::REVIEW_ARTICLE && $list->step != Steps::reSendToReviewerFormEditor) {
             return redirect('reviewer/mylists')->withErrors('غير مسموح لك الدخول الى هنا');
         }

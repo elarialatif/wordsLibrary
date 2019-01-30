@@ -130,6 +130,9 @@ class QuestionController extends Controller
     {
         $questions = QuestionsRepository::findWhere('artical_id', $artical_id);
         $artical = Article::where('id', $artical_id)->first();
+        if ($artical == null) {
+            return redirect()->back()->with('error', 'المقال غير موجود');
+        }
         return view('questionCreator.question.show', compact('questions', 'page', 'artical'));
     }
 
