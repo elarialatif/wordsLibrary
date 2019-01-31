@@ -6,7 +6,7 @@
     <br>
     <br>
     <div class="container">
-    <form action="{{url('editList/')}}/{{$lists->id}}" method="post">
+    <form action="{{url('editList/')}}/{{$lists->id}}" method="post" enctype="multipart/form-data">
         {{ method_field('POST') }}
         {{csrf_field()}}
         <div class="row">
@@ -18,16 +18,27 @@
             </div>
         </div>
         <div class="row">
-
             <div class="col-md-4">
                 الصف:<br>
                 <div class="form-group">
                     <select class="form-control" id="grade" name="grade_id">
-
                         @foreach($grades as $grade)
                             <option value="{{$grade->id}}" {{($lists->grade_id==$grade->id)?'selected':''}}>{{$grade->name}}</option>
                         @endforeach
                     </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                الصوره:<br>
+                <div class="form-group">
+                    <input type="file" class="form-control" value="{{$lists->list}}" name="image">
+                    @if($lists->image != null)
+                        <div>
+                            <img  style="height: 250px;width: 250px;" src="{{asset('public/listsImage/'.$lists->image)}}">
+                        </div>
+                        @endif
                 </div>
             </div>
         </div>

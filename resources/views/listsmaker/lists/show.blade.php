@@ -32,7 +32,7 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <form action="{{url('createList')}}" method="post">
+                                            <form action="{{url('createList')}}" method="post" enctype="multipart/form-data">
                                                 {{csrf_field()}}
                                                 <div class="modal-body">
 
@@ -55,7 +55,7 @@
                                                                 <input type="hidden" name="user_id"
                                                                        value="{{auth()->id()}}">
                                                                 <label> اسم الموضوع :</label>
-                                                                <input style="margin-bottom: 50px" type="text"
+                                                                <input  type="text"
                                                                        class="form-control" name="list[0]"
                                                                        placeholder="اسم الموضوع">
                                                             </div>
