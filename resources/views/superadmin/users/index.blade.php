@@ -329,8 +329,8 @@
             var input, filter, table, tr, td, i, txtValue;
             input = document.getElementById("roleFilter");
             filter = input.value.toUpperCase();
-            table = document.getElementById("key-act-button");
-            tr = table.getElementsByTagName("tr");
+            var dataTable = $('#key-act-button').dataTable();
+            tr = dataTable.fnGetNodes();
 
             // Loop through all table rows, and hide those who don't match the search query
             for (i = 0; i < tr.length; i++) {
