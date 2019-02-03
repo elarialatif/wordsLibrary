@@ -272,6 +272,7 @@
                     "<div class=\"col-md-6\">" +
                     "<div class=\"form-group\">" +
                     "<select placeholder=\"المرحله\" onchange=\"myFunction()\" id=\"stepFilter\" class=\"form-control\" name=\"step_filter\" onchange='change()'> " +
+                    "<option value=\"\">------</option>" +
                     "<option value=\"\">كل المراحل</option>" +
                     "@foreach(\App\Helper\Steps::ArrayOfSteps as $key=>$value)" +
                     "<option value=\"{{$value}}\">{{$value}}</option>" +
@@ -291,12 +292,48 @@
     </script>
     <script>
         function myFunction() {
-            // Declare variables
             var input, filter, table, tr, td, i, txtValue;
             input = document.getElementById("stepFilter");
             filter = input.value.toUpperCase();
-            table = document.getElementById("key-act-button");
-            var dataTable = $('#key-act-button').dataTable();
+
+            $('#key-act-button').attr('id', 'key-act-button3');
+            table = $('#key-act-button3').DataTable();
+            table.destroy();
+            $('#key-act-button3').DataTable({
+                dom: 'Bfrtip',
+                paginate: false,
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'print'
+                ]
+            });
+            // Declare variables
+            $(" <div class=\"row\">" +
+                "<div class=\"col-md-4\">" +
+                "<div class=\"form-group\">" +
+                "<select class=\"form-control\" name=\"grade_id\"  id=\"grade_id\" onchange='change()'>" +
+                "<option value=\"\">الصفوف</option>" +
+                "<option value=\"all\">الكل</option>" +
+                "@foreach($grades as $grade)" +
+                "<option value=\"{{$grade->id}}\">{{$grade->name}}</option>" +
+                "@endforeach" +
+                "</select>" +
+                "</div>" +
+                "</div>" +
+                "<div class=\"col-md-6\">" +
+                "<div class=\"form-group\">" +
+                "<select placeholder=\"المرحله\" onchange=\"myFunction()\" id=\"stepFilter\" class=\"form-control\" name=\"step_filter\" onchange='change()'> " +
+                "<option value=\"\">-------</option>" +
+                "<option value=\"\">كل المراحل</option>" +
+                "@foreach(\App\Helper\Steps::ArrayOfSteps as $key=>$value)" +
+                "<option value=\"{{$value}}\">{{$value}}</option>" +
+                "@endforeach" +
+                "</select>" +
+                "</div>" +
+                "</div>" +
+                "</div>").insertAfter(".dataTables_filter");
+            var dataTable = $('#key-act-button3').dataTable();
             tr = dataTable.fnGetNodes();
 
             // Loop through all table rows, and hide those who don't match the search query
@@ -310,6 +347,47 @@
                         tr[i].style.display = "none";
                     }
                 }
+            }
+
+            if (input.value.length == 0) {
+
+                $('#key-act-button3').attr('id', 'key-act-button');
+                table = $('#key-act-button').DataTable();
+                table.destroy();
+                $('#key-act-button').DataTable({
+                    dom: 'Bfrtip',
+                    paginate: true,
+                    displayLength: 50,
+                    buttons: [
+                        'copyHtml5',
+                        'excelHtml5',
+                        'print'
+                    ]
+                });
+                $(" <div class=\"row\">" +
+                    "<div class=\"col-md-4\">" +
+                    "<div class=\"form-group\">" +
+                    "<select class=\"form-control\" name=\"grade_id\"  id=\"grade_id\" onchange='change()'>" +
+                    "<option value=\"\">الصفوف</option>" +
+                    "<option value=\"all\">الكل</option>" +
+                    "@foreach($grades as $grade)" +
+                    "<option value=\"{{$grade->id}}\">{{$grade->name}}</option>" +
+                    "@endforeach" +
+                    "</select>" +
+                    "</div>" +
+                    "</div>" +
+                    "<div class=\"col-md-6\">" +
+                    "<div class=\"form-group\">" +
+                    "<select placeholder=\"المرحله\" onchange=\"myFunction()\" id=\"stepFilter\" class=\"form-control\" name=\"step_filter\" onchange='change()'> " +
+                    "<option value=\"\">---------</option>" +
+                    "<option value=\"\">كل المراحل</option>" +
+                    "@foreach(\App\Helper\Steps::ArrayOfSteps as $key=>$value)" +
+                    "<option value=\"{{$value}}\">{{$value}}</option>" +
+                    "@endforeach" +
+                    "</select>" +
+                    "</div>" +
+                    "</div>" +
+                    "</div>").insertAfter(".dataTables_filter");
             }
         }
     </script>
