@@ -76,6 +76,7 @@
                                     <div class="card-header">
                                         <div class="form-group">
                                             <div class="table-responsive">
+                                                
                                                 <table id="key-act-button"
                                                        class="display table nowrap table-striped table-hover"
                                                        style="width:100%">

@@ -16,7 +16,14 @@
                                     صفحة الموضوعات
                                 </h5>
                                 @if(auth()->user()->role!=\App\Helper\UsersTypes::EDITOR)
-                                <a href="#" class="btn btn-primary" data-toggle="modal"
+                                    @php $article=\App\Models\ArticleFiles::whereIn('list_id',$lists->pluck('id')->toArray())->get(); @endphp
+                                    <br>
+                                <h4>
+                                    {{$lists->count()}} موضوع
+                                    <br>
+                                          تم رفع ملف الى{{$article->count()}} موضوع
+                                </h4>
+                                    <a href="#" class="btn btn-primary" data-toggle="modal"
                                    data-target="#exampleModal0"
                                    style="color: white;float: left;font-weight: bold"> اضافه موضوع جديد <i
                                             class="fa fa-plus"></i></a>
