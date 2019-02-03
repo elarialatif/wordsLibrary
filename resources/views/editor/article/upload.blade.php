@@ -187,13 +187,20 @@
                                                                            placeholder="الصوره">
 
                                                                 </div>
+
                                                                 <div class="form-group">
-                                                                <label>اللينك:</label>
-                                                                <input  type="url"
-                                                                class="form-control" name="link[]"
-                                                                placeholder="اللينك">
+                                                                    <label>اسم اللينك:</label>
+                                                                    <input type="text"
+                                                                           class="form-control" name="name[]"
+                                                                           placeholder="اللينك">
+                                                                    <label>اللينك:</label>
+                                                                    <input type="url"
+                                                                           class="form-control" name="link[]"
+                                                                           placeholder="اللينك">
                                                                 </div>
-                                                                <button class="btn btn-outline-info" id="btn" ><i class="fa fa-plus"></i></button>
+
+                                                                <button class="btn btn-outline-info" id="btn"><i
+                                                                            class="fa fa-plus"></i></button>
                                                                 <div id="emptyLink">
                                                                 </div>
                                                             </div>
@@ -277,18 +284,23 @@
         var i = 1;
         $("#btn").click(function (event) {
             event.preventDefault();
-                $("#emptyLink").append("<div class='row' id='btn[" + i + "]' >" +
-                    "<div class = 'form-group' >" +
-                    "<label for= 'link' >  اللينك</label> " +
-                    "<input type = 'url' class = 'form-control' id= 'link[]' placeholder = 'اللينك' name = 'link[]' >" +
-                    "</br>" +
-                    "<button class='btn btn-danger' id=\"btn[" + i + "]\" onclick='remove()'> حذف</button>" +
-                    "</div>" +
-                    "</div>"
-                )
-                ;
-                i++;
+            $("#emptyLink").append("<div class='row' id='btn[" + i + "]' >" +
+                "<div class = 'form-group' >" +
+                "        <label>اسم اللينك:</label>\n" +
+                "                                                                    <input  type=\"text\"\n" +
+                "                                                                            class=\"form-control\" name=\"name[]\"\n" +
+                "                                                                            placeholder=\"اللينك\">" +
+                "<label for= 'link' >  اللينك</label> " +
+                "<input type = 'url' class = 'form-control' id= 'link[]' placeholder = 'اللينك' name = 'link[]' >" +
+                "</br>" +
+                "<button class='btn btn-danger' id=\"btn[" + i + "]\" onclick='remove()'> حذف</button>" +
+                "</div>" +
+                "</div>"
+            )
+            ;
+            i++;
         });
+
         function remove() {
             var id = event.target.id;
             var remove = document.getElementById(id);

@@ -31,8 +31,9 @@ class LinksRepository
     {
 
         $arr=[];
-        foreach ($data['link'] as $link){
-            $new['link']=$link;
+        foreach ($data['link'] as $key=>$value){
+            $new['link']=$value;
+            $new['name']=$data['name'][$key];
             $new['list_id']=$data['list_id'];
             array_push($arr,$new);
         }
