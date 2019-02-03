@@ -34,6 +34,7 @@
                                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
                                         data-target="#myModal" style="float: left">عرض الملف الاصلى
                                 </button>
+
                                 @if($list->step ==\App\Helper\Steps::ANALYZING_FILE)
                                     <a style="float: left" class="btn btn-success btn-lg"
                                        href="{{url('analyzer/SendListToEditor/'.$list->id.'/'.\App\Helper\Steps::INSERTING_ARTICLE)}}">
@@ -41,13 +42,23 @@
                                         المقالات</a>
                                     <a style="float: left" class="btn btn-danger btn-lg"
                                        href="{{url('analyzer/SendListToEditor/'.$list->id.'/'.\App\Helper\Steps::UPLOADING_FILE)}}">
-                                     رفع الملف مجددا
-                                        </a>
+                                        رفع الملف مجددا
+                                    </a>
                                 @else
                                     <h3 style="float: left" class="btn btn-info btn btn-glow-success btn-lg">تم
                                         ارسال الموضوع الى محرر المقالات مسبقا </h3>
 
                                 @endif
+                                <br>
+                                <br>
+                                @php $links = App\Models\Link::where('list_id',$list->id)->get(); @endphp
+                                @foreach($links as $link)
+                                    <a  href="{{$link->link}}">{{$link->name}}</a>
+                                    <br>
+                                @endforeach
+                                <img src="{{url('/public/'.$list->image)}}">
+
+
                             </div>
                             <div class="card-block">
                                 <div class="table-responsive">

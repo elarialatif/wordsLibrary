@@ -82,7 +82,6 @@
                                                     <thead>
                                                     <tr>
                                                         <th>الكود</th>
-                                                        {{--<th>الملف</th>--}}
                                                         <th>الموضوع</th>
 
                                                         <th>الصف</th>
@@ -99,7 +98,7 @@
                                                             $list=\App\Models\ContentList::with('level','grade','user')->where('id',$file->list_id)->first();
 
                                                         @endphp
-                                                        @if ($list==null){
+                                                        @if ($list==null)
 
                                                         @continue;
                                                         @endif
