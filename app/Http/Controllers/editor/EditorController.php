@@ -71,12 +71,8 @@ class EditorController extends Controller
 
         $request->validate([
             'article' => 'required',
-
-
         ],
-            ['articlearticle.required' => 'المقال مطلوب ',
-
-            ]);
+            ['articlearticle.required' => 'المقال مطلوب ',]);
 
         DB::transaction(function () {
             $articleCheck = Article::where(['list_id' => \request('list_id'), 'level' => \request('level')])->first();

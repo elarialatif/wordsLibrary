@@ -7,6 +7,7 @@ use Closure;
 
 class Editor
 {
+
     /**
      * Handle an incoming request.
      *

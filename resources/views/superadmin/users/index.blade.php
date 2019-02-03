@@ -17,9 +17,8 @@
                                     </h5>
                                     <a data-toggle="modal" data-target="#exampleModal" class="btn btn-primary"
                                        style="color: white;float: left;font-weight: bold">اضافه مستخدم
-                                        جديد<i
-                                                class="fa fa-plus"></i></a>         <a href="{{url('view/schools')}}" class="btn btn-success"
-                                       style="color: white;float: left;font-weight: bold"> المدارس<i
+                                        جديد<i class="fa fa-plus"></i></a>
+                                    <a href="{{url('view/schools')}}" class="btn btn-success" style="color: white;float: left;font-weight: bold"> المدارس<i
                                                 class="fa fa-eye"></i></a>
                                     {{--model for add new user--}}
                                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
@@ -36,96 +35,92 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-
-                                                        @csrf
-                                                        <div class="form-group row">
-                                                            <label for="name"
-                                                                   class="col-md-4 col-form-label text-md-right">{{ __('الاسم ') }}</label>
-                                                            <div class="col-md-6">
-                                                                <input id="name" type="text"
-                                                                       class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                                                       name="name" value="{{ old('name') }}" required
-                                                                       autofocus>
-                                                                @if ($errors->has('name'))
-                                                                    <span class="invalid-feedback" role="alert">
+                                                    @csrf
+                                                    <div class="form-group row">
+                                                        <label for="name"
+                                                               class="col-md-4 col-form-label text-md-right">{{ __('الاسم ') }}</label>
+                                                        <div class="col-md-6">
+                                                            <input id="name" type="text"
+                                                                   class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                                                   name="name" value="{{ old('name') }}" required
+                                                                   autofocus>
+                                                            @if ($errors->has('name'))
+                                                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span>
-                                                                @endif
-                                                            </div>
+                                                            @endif
                                                         </div>
-                                                        <div class="form-group row">
-                                                            <label for="email"
-                                                                   class="col-md-4 col-form-label text-md-right">{{ __('البريد الالكترونى') }}</label>
-                                                            <div class="col-md-6">
-                                                                <input id="email" type="email"
-                                                                       class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                                                       name="email" value="{{ old('email') }}" required>
-                                                                @if ($errors->has('email'))
-                                                                    <span class="invalid-feedback" role="alert">
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="email"
+                                                               class="col-md-4 col-form-label text-md-right">{{ __('البريد الالكترونى') }}</label>
+                                                        <div class="col-md-6">
+                                                            <input id="email" type="email"
+                                                                   class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                                                   name="email" value="{{ old('email') }}" required>
+                                                            @if ($errors->has('email'))
+                                                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
-                                                                @endif
-                                                            </div>
+                                                            @endif
                                                         </div>
-                                                        <div class="form-group row">
-                                                            <label for="role"
-                                                                   class="col-md-4 col-form-label text-md-right">{{ __('الصلاحية') }}</label>
-                                                            <div class="col-md-6">
-                                                                <select name="role" class="form-control">
-                                                                    @foreach(\App\Helper\UsersTypes::ArrayOfPermission as $key=>$value)
-                                                                        <option value="{{$key}}"> {{$value}}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                                @if ($errors->has('password'))
-                                                                    <span class="invalid-feedback" role="alert">
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="role"
+                                                               class="col-md-4 col-form-label text-md-right">{{ __('الصلاحية') }}</label>
+                                                        <div class="col-md-6">
+                                                            <select name="role" class="form-control">
+                                                                @foreach(\App\Helper\UsersTypes::ArrayOfPermission as $key=>$value)
+                                                                    <option value="{{$key}}"> {{$value}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            @if ($errors->has('password'))
+                                                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
-                                                                @endif
-                                                            </div>
+                                                            @endif
                                                         </div>
-                                                        <div class="form-group row">
-                                                            <label for="password"
-                                                                   class="col-md-4 col-form-label text-md-right">{{ __('كلمة السر') }}</label>
-                                                            <div class="col-md-6">
-                                                                <input id="password" type="password"
-                                                                       class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
-                                                                       name="password" required>
-                                                                @if ($errors->has('password'))
-                                                                    <span class="invalid-feedback" role="alert">
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="password"
+                                                               class="col-md-4 col-form-label text-md-right">{{ __('كلمة السر') }}</label>
+                                                        <div class="col-md-6">
+                                                            <input id="password" type="password"
+                                                                   class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                                                   name="password" required>
+                                                            @if ($errors->has('password'))
+                                                                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
-                                                                @endif
-                                                            </div>
+                                                            @endif
                                                         </div>
-                                                        <div class="form-group row">
-                                                            <label for="password-confirm"
-                                                                   class="col-md-4 col-form-label text-md-right">{{ __('تاكيد كلمة السر ') }}</label>
-
-                                                            <div class="col-md-6">
-                                                                <input id="password-confirm" type="password"
-                                                                       class="form-control"
-                                                                       name="password_confirmation" required>
-                                                            </div>
-                                                        </div>
-
-
                                                     </div>
-                                                    <div class="modal-footer">
-                                                        <div class="form-group row mb-0">
-                                                            <div class="col-md-6 offset-md-4">
-                                                                <button type="submit" class="btn btn-primary">تسجيل
-                                                                </button>
-                                                            </div>
+                                                    <div class="form-group row">
+                                                        <label for="password-confirm"
+                                                               class="col-md-4 col-form-label text-md-right">{{ __('تاكيد كلمة السر ') }}</label>
+                                                        <div class="col-md-6">
+                                                            <input id="password-confirm" type="password"
+                                                                   class="form-control"
+                                                                   name="password_confirmation" required>
                                                         </div>
-                                                        <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">غلق
-                                                        </button>
                                                     </div>
-                                            </form>
-                                        </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <div class="form-group row mb-0">
+                                                        <div class="col-md-6 offset-md-4">
+                                                            <button type="submit" class="btn btn-primary">تسجيل
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">غلق
+                                                    </button>
+                                                </div>
+                                        </form>
                                     </div>
                                 </div>
-                                {{--end modal--}}
+                            </div>
+                            {{--end modal--}}
                             </div>
                             <div class="card-block">
                                 <div class="table-responsive">

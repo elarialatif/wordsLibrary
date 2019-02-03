@@ -41,18 +41,19 @@ class ContentListsRepository
             if ($data['list'][$key] == "") {
                 continue;
             }
+//            if($data['image'] && $data['image']!=null){
+//                $filename = $data['image']->getClientOriginalName();
+//                $data['image']->move(public_path() . '/' . 'listsImage', $filename);
+//            }
             $list = New ContentList();
+//            $list->image=$filename;
             $list->list = $data['list'][$key];
-
             $list->grade_id = $data['grade_id'];
             $list->user_id = auth()->id();
             $list->created_at = Carbon::now();
             $list->updated_at = Carbon::now();
-
             $list->save();
         }
-
-
         return $list;
     }
 

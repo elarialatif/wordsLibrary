@@ -19,7 +19,6 @@ class CreateArticalsTable extends Migration
             $table->integer('list_id')->unsigned();
             $table->foreign('list_id')->references('id')->on('content_lists')->onDelete('cascade')->onUpdate('cascade');
             $table->string('path');
-    
             $table->string('fileName');
             $table->string('extension');
             $table->string('editor');
