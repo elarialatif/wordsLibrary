@@ -258,13 +258,23 @@
         $(document).ready(function () {
             setTimeout(function () {
                 $(" <div class=\"row\">" +
-                    "<div class=\"col-md-6\">" +
+                    "<div class=\"col-md-4\">" +
                     "<div class=\"form-group\">" +
                     "<select class=\"form-control\" name=\"grade_id\"  id=\"grade_id\" onchange='change()'>" +
-                    "<option value=\"\">----</option>" +
+                    "<option value=\"\">الصفوف</option>" +
                     "<option value=\"all\">الكل</option>" +
                     "@foreach($grades as $grade)" +
                     "<option value=\"{{$grade->id}}\">{{$grade->name}}</option>" +
+                    "@endforeach" +
+                    "</select>" +
+                    "</div>" +
+                    "</div>" +
+                    "<div class=\"col-md-6\">" +
+                    "<div class=\"form-group\">" +
+                    "<select placeholder=\"المرحله\" onchange=\"myFunction()\" id=\"stepFilter\" class=\"form-control\" name=\"step_filter\" onchange='change()'> " +
+                    "<option value=\"\">كل المراحل</option>" +
+                    "@foreach(\App\Helper\Steps::ArrayOfSteps as $key=>$value)" +
+                    "<option value=\"{{$value}}\">{{$value}}</option>" +
                     "@endforeach" +
                     "</select>" +
                     "</div>" +
@@ -278,6 +288,29 @@
             window.location = '{{url('filterFiles')}}/' + test;
         }
 
+    </script>
+    <script>
+        function myFunction() {
+            // Declare variables
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("stepFilter");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("key-act-button");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[7];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
     </script>
 
 
