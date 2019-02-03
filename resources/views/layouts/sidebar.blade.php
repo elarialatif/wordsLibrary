@@ -71,7 +71,7 @@
                         <span class="pcoded-mtext">الاحداث اليومية</span>
                     </a>
                 </li>
-                <li class="nav-item {{request()->is("log")?"active":""}}">
+                <li class="nav-item {{request()->is("archive")?"active":""}}">
                     <a href="{{url('archive')}}" class="nav-link">
                         <span class="pcoded-micon"><i class="mdi mdi-chart-donut-variant"></i></span>
                         <span class="pcoded-mtext">الارشيف</span>

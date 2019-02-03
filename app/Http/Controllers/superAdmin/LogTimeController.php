@@ -107,7 +107,7 @@ class LogTimeController extends Controller
             }
             if (isset($row) && $table != 'content_lists' && isset($row->list_id)) {
 
-                $list = ContentList::find($row->list_id);
+                $list = ContentList::withTrashed()->find($row->list_id);
                 $name = ' رقم ' . $data->row_id . '  للموضوع  ' . $list->list . ' رقم ' . $list->id;
 
             }
