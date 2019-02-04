@@ -1,4 +1,5 @@
 @include('layouts.head')
+
 @if(auth()->check())
     @include('layouts.header')
 @endif
@@ -28,6 +29,17 @@
                             <div class="row">
                                 <!-- [ sample-page ] start -->
 
+                                <div id='cntnr' style="z-index: 10000">
+                                    <ul id='items'>
+                                        <li>
+                                            <button onclick="a()">قاموس المتحدة</button>
+                                        </li>
+                                    </ul>
+                                </div>
 
-@yield('content')
+
+                                        @yield('content')
+
+
+
 @include('layouts.footer')
