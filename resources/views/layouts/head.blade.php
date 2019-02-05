@@ -85,6 +85,12 @@
             border-radius: 2px;
 
         }
+        #asd{
+            font-size: 20px !important;
+        }
+        #asd p{
+            font-size: 20px !important;
+        }
 
     </style>
     @yield('css')
