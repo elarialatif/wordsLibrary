@@ -13,7 +13,7 @@
             display: none;
         }
     </style>
-    <div class="contranier" style="width: 55%;margin: auto; position: relative;">
+    <div class="contranier" style="width: 55%;margin: auto; position: relative;" id="hideContent">
         <br>
 
 
@@ -86,7 +86,7 @@
                 <div style="position: absolute;
                         /*left:50%;*/
                         /*top: 30%;*/
-                        z-index: 1000;margin: auto;display: block;text-align: center; width: 100%"
+                        z-index: 1000;margin: auto;display: block;text-align: center; width: 100%;margin-top:5rem;"
                      id="loadingDiv">
 <img src="{{url('public/images/tenor.gif')}}" style="">
                 </div>
@@ -151,11 +151,11 @@
                 type: 'get',
                 beforeSend: function () {
                     $loading.show();
-                    $("#Table").css('opacity', '0.3');
+                    $("#hideContent").css('opacity', '0.5');
                 },
                 complete: function () {
                     $loading.hide();
-                    $("#Table").css('opacity', '1');
+                    $("#hideContent").css('opacity', '1');
                 },
                 url: '{{url('')}}/logfiltertime/?timeStart=' + timeStart + '&table=' + myTable + '&timeEnd=' + timeEnd + '',
                 success: function (data) {
