@@ -190,11 +190,11 @@
 
                                                                 <div class="form-group">
                                                                     <label>اسم اللينك:</label>
-                                                                    <input type="text"
+                                                                    <input type="text" required
                                                                            class="form-control" name="name[]"
                                                                            placeholder="اللينك">
                                                                     <label>اللينك:</label>
-                                                                    <input type="url"
+                                                                    <input type="url" required
                                                                            class="form-control" name="link[]"
                                                                            placeholder="اللينك">
                                                                 </div>
@@ -288,10 +288,10 @@
                 "<div class = 'form-group' >" +
                 "        <label>اسم اللينك:</label>\n" +
                 "                                                                    <input  type=\"text\"\n" +
-                "                                                                            class=\"form-control\" name=\"name[]\"\n" +
+                "                                                                            class=\"form-control\" required name=\"name[]\"\n" +
                 "                                                                            placeholder=\"اللينك\">" +
                 "<label for= 'link' >  اللينك</label> " +
-                "<input type = 'url' class = 'form-control' id= 'link[]' placeholder = 'اللينك' name = 'link[]' >" +
+                "<input type = 'url' required class = 'form-control' id= 'link[]' placeholder = 'اللينك' name = 'link[]' >" +
                 "</br>" +
                 "<button class='btn btn-danger' id=\"btn[" + i + "]\" onclick='remove()'> حذف</button>" +
                 "</div>" +
