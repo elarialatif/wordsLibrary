@@ -70,7 +70,7 @@ class LogTimeController extends Controller
             $table = array('article', 'article_files', 'sounds', 'questions', 'content_lists');
         }
 
-        $res = LogTime::orderBy('created_at', 'desc')->get();
+        $res = LogTime::orderBy('created_at', 'desc')->paginate(1500);
 
         if ($timeStart != null && $timeEnd != null && $table[0] != 'all') {
 
@@ -89,6 +89,7 @@ class LogTimeController extends Controller
 
         }
         $arr = [];
+
         foreach ($res as $data) {
             $table = $data->table_name;
             $table_name = \App\Helper\TABLES_NAMES_IN_ARABIC::getTableNameInArabic($data->table_name);
@@ -114,12 +115,13 @@ class LogTimeController extends Controller
             if (isset($row) && $table != 'content_lists' && isset($row->name)) {
 
 
-                $name = ' رقم ' . $data->row_id . '    ' . $row->name ;
+                $name = ' رقم ' . $data->row_id . '    ' . $row->name;
 
             }
             $date = $data->created_at->format('Y:m:d') . " الساعه " . $data->created_at->format('H');
             $arr[] = array('name' => $name, 'user_name' => $data->user->name . '    رقم  ' . $data->user->id . ' ' . ' ' . $userPermission . ' ', 'type' => $data->type, 'created_at' => $date, 'table' => $table_name);
         }
+
         return $arr;
     }
 

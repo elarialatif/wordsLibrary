@@ -159,7 +159,6 @@
 
 @endsection
 @section('js')
-    <script src="{{ asset('public/js/jquery.min.js')}}"></script>
     <script src="{{ asset('public/plugins/data-tables/js/datatables.min.js')}}"></script>
     <script src="{{ asset('public/js/pages/tbl-datatable-custom.js')}}"></script>
 

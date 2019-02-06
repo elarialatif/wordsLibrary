@@ -77,8 +77,8 @@
                         <span class="pcoded-mtext">الارشيف</span>
                     </a>
                 </li>
-                <li class="nav-item {{request()->is("/tashkel")?"active":""}}">
-                    <a href="{{url('/tashkel')}}" class="nav-link">
+                <li class="nav-item {{request()->is("tashkel")?"active":""}}">
+                    <a href="{{url('tashkel')}}" class="nav-link">
                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                         <span class="pcoded-mtext">تشكيل</span></a>
                 </li>
