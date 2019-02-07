@@ -6,6 +6,10 @@
             -ms-height: fill-available;
 
         }
+        body{
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
 
     </style>
     <div class="container">
@@ -28,7 +32,7 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-6"
-                                                 style="border-left: solid 2px black;font-size:18px;line-height: 1.5"
+                                                 style="border-left: solid 2px black;font-size:18px;line-height: 1.5;overflow: scroll; width: 200px; height:-webkit-fill-available;"
                                                  id="pinned">
                                                 {{-- <div id="tinymcFont" style="max-width: 200px">  --}} {{--</div>--}}
                                                 <span id="articaasdasdl">{!! $artical->article !!}</span>
