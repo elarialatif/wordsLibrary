@@ -1,10 +1,13 @@
 @extends('layouts.app')
 @section('content')
+<style>
+    .mce-menu {position:fixed !important}
 
+</style>
     <div class="container">
         <div class="container">
 
-            <div class="main-body">
+            <div class="main-body placement_modal">
                 <div class="page-wrapper">
                     <!-- [ Main Content ] start -->
                     <div class="row">
@@ -65,10 +68,10 @@
                                                     </td>
                                                 </tr>
                                                 {{-- question edit--}}
-                                                <div class="modal fade" id="viewModal{{$testQuestion->id}}"
+                                                <div class="modal fade " id="viewModal{{$testQuestion->id}}"
                                                      tabindex="-1"
                                                      role="dialog"
-                                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                      aria-hidden="true">
                                                     <div class="modal-dialog" style="max-width: 70% !important;"
                                                          role="document">
                                                         <div class="modal-content">
@@ -167,10 +170,9 @@
                                                 {{-- end question edit--}}
                                                 {{-- question edit--}}
                                                 <div class="modal fade" id="editModal{{$testQuestion->id}}"
-                                                     tabindex="-1"
                                                      role="dialog"
-                                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog" style="max-width: 70% !important;" role="document">
+                                                     aria-labelledby="exampleModalLabel" aria-hidden="true" >
+                                                    <div class="modal-dialog"  style="max-width: 70% !important;" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="exampleModalLabel">تعديل
@@ -190,7 +192,7 @@
                                                                             السؤال:<br>
                                                                             <div class="form-group">
                                                                                 <textarea type="text" class="mceEditor"
-                                                                                          name="question"> {!! $testQuestion->question !!}</textarea>
+                                                                                          name="question"> </textarea>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -273,6 +275,7 @@
                                             @endforeach
                                             </tbody>
                                         </table>
+
                                     </div>
                                 </div>
                             </div>

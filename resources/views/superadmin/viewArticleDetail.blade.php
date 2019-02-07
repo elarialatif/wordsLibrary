@@ -65,7 +65,7 @@
                                                                  السؤال
                                                             </td>
                                                             <td>
-                                                                {{$question->question}}
+                                                                {!! $question->question !!}
                                                             </td>
                                                         </tr>
                                                         <tr>

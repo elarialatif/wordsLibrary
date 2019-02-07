@@ -36,7 +36,7 @@
                                     </v>
                                     <h6 style="font-size: 20px">المقال
                                     </h6>
-                                    @if($artical->status!=\App\Helper\ArticleLevels::Review)
+
                                         <a href="" style="float:left" data-toggle="modal"
                                            data-target="#articalModal{{$artical->id}}"
                                            class="btn btn-icon btn-outline-warning radbor"><i
@@ -44,7 +44,6 @@
                                         <a href="" style="float:left" data-toggle="modal"
                                            data-target="#editartical{{$artical->id}}"
                                            class="btn btn-icon btn-outline-info radbor"><i class="fas fa-edit"></i></a>
-                                    @endif
                                     <div id="tinymcFont">    {!! $artical->article !!} </div>
                                     <div id="Issues">
                                         <div class="table-responsive">
