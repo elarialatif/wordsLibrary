@@ -10,6 +10,7 @@ namespace App\Repository;
 
 
 use App\Helper\ArticleLevels;
+use App\Helper\Steps;
 use App\Models\Article;
 use App\Models\Country;
 use App\Models\ContentList;
@@ -40,18 +41,19 @@ class ContentListsRepository
             if ($data['list'][$key] == "") {
                 continue;
             }
+//            if($data['image'] && $data['image']!=null){
+//                $filename = $data['image']->getClientOriginalName();
+//                $data['image']->move(public_path() . '/' . 'listsImage', $filename);
+//            }
             $list = New ContentList();
+//            $list->image=$filename;
             $list->list = $data['list'][$key];
-
             $list->grade_id = $data['grade_id'];
             $list->user_id = auth()->id();
             $list->created_at = Carbon::now();
             $list->updated_at = Carbon::now();
-
             $list->save();
         }
-
-
         return $list;
     }
 
@@ -65,10 +67,10 @@ class ContentListsRepository
     static function delete($id)
     {
         try {
-            $check = ArticleFiles::where('list_id', $id)->first();
-            if ($check) {
-                return false;
-            }
+            $check = ContentList::find($id);
+//            if ($check->step == Steps::Publish) {
+//                return false;
+//            }
             ContentList::destroy($id);
             return true;
         } catch (\Exception $e) {
@@ -117,10 +119,11 @@ class ContentListsRepository
         return ContentList::with('level', 'grade')->where($paramter, $value)->get();
 
     }
-    static function findStep($paramter,$sign, $value)
+
+    static function findStep($paramter, $sign, $value)
     {
 
-        return ContentList::where($paramter, $sign,$value)->get();
+        return ContentList::where($paramter, $sign, $value)->get();
 
     }
 

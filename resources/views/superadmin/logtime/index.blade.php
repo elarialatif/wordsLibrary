@@ -13,7 +13,7 @@
             display: none;
         }
     </style>
-    <div class="contranier" style="width: 55%;margin: auto;">
+    <div class="contranier" style="width: 55%;margin: auto; position: relative;" id="hideContent">
         <br>
 
 
@@ -44,7 +44,6 @@
                                 <option value="content_lists">الموضوعات</option>
                                 <option value="categories">التصنيفات</option>
                                 <option value="questions">الانشطه</option>
-
 
 
                             </select>
@@ -82,36 +81,47 @@
                                                                            class="badge badge-warning" style="    background-color: #5cb85c;
     padding: 7px;
     border-radius: 50px;">  {{count($logtimes)}}  </span></h3> <span class="fa fa-arrow-down"></span></div>
+        <center>
+            <div>
+                <div style="position: absolute;
+                        /*left:50%;*/
+                        /*top: 30%;*/
+                        z-index: 1000;margin: auto;display: block;text-align: center; width: 100%;margin-top:5rem;"
+                     id="loadingDiv">
+<img src="{{url('public/images/tenor.gif')}}" style="">
+                </div>
 
-        {{--<div id="filter">--}}
-        <table class="table table-striped table-dark table-bordered  table-hover" id="Table">
-            <thead>
+                {{--<div id="filter">--}}
+                <table class="table table-striped table-dark table-bordered  table-hover" id="Table">
+                    <thead>
 
-            <th style="text-align: center"> الحدث</th>
-            <th style="text-align: center;width: 15%"> التاريخ</th>
+                    <th style="text-align: center"> الحدث</th>
+                    <th style="text-align: center;width: 15%"> التاريخ</th>
 
-            </thead>
-            <tbody id="myTable">
+                    </thead>
+                    <tbody id="myTable">
 
-            @for($i=0;  $i<count($logtimes);$i++)
-                <tr>
+                    @for($i=0;  $i<count($logtimes);$i++)
+                        <tr>
 
-                    <td>
+                            <td>
 
-                        {{$logtimes[$i]['user_name']}} &nbsp; {{$logtimes[$i]['type']}}&nbsp;
-                           {{ $logtimes[$i]['table']}}&nbsp;
-                         {{$logtimes[$i]['name']}}
-                    </td>
-                    <td>
+                                {{$logtimes[$i]['user_name']}} &nbsp; {{$logtimes[$i]['type']}}&nbsp;
+                                {{ $logtimes[$i]['table']}}&nbsp;
+                                {{$logtimes[$i]['name']}}
+                            </td>
+                            <td>
                     <span class="badge badge-warning pull-left"
                           style="background-color: #59b0f2">  {{$logtimes[$i]['created_at']}} </span>
-                    </td>
+                            </td>
 
-                </tr>
-            @endfor
+                        </tr>
+                    @endfor
 
-            </tbody>
-        </table>
+                    </tbody>
+                </table>
+            </div>
+        </center>
         <center>
             <a href="#" id="load"><span class="badge badge-success"
                                         style="background-color: #5cb85c;border-radius: 50px;padding: 10px">  <span
@@ -136,9 +146,17 @@
             var timeStart = document.getElementById("timeStart").value;
             var timeEnd = document.getElementById("timeEnd").value;
             var myTable = document.getElementById("myTable").value;
-
+            var $loading = $('#loadingDiv');
             $.ajax({
                 type: 'get',
+                beforeSend: function () {
+                    $loading.show();
+                    $("#hideContent").css('opacity', '0.5');
+                },
+                complete: function () {
+                    $loading.hide();
+                    $("#hideContent").css('opacity', '1');
+                },
                 url: '{{url('')}}/logfiltertime/?timeStart=' + timeStart + '&table=' + myTable + '&timeEnd=' + timeEnd + '',
                 success: function (data) {
                     $('#Table tbody').empty();
@@ -247,7 +265,8 @@
 
                     $("#load").css("display", "");
                     // alert("No more divs"); // alert if there are none left
-                }   if ($("#Table tbody tr:visible").length <= 25) { // check if any hidden divs still exist
+                }
+                if ($("#Table tbody tr:visible").length <= 25) { // check if any hidden divs still exist
 
                     document.getElementById("hide").disabled = true;
                     // alert("No more divs"); // alert if there are none left
@@ -257,9 +276,8 @@
     </script>
     <script>
 
-
+        var $loading = $('#loadingDiv').hide();
         $(document).ready(function () {
-
 
             // $("#myInput").on("keyup", function () {
             //     var value = $(this).val().toLowerCase();

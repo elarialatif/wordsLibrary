@@ -78,6 +78,10 @@ class LanguesticController extends Controller
     {
         $questions = QuestionsRepository::findWhere('artical_id', $artical_id);
         $artical = Article::where('id', $artical_id)->first();
+        $list = ContentList::find($artical->list_id);
+        if ($list == null) {
+            return redirect()->back()->with('error', 'المقال غير موجود');
+        }
         if (auth()->user()->role != UsersTypes::SUPERADMIN && auth()->user()->role != UsersTypes::ADMIN) {
             $task = AssignTask::where(['list_id' => $artical->list_id, 'step' => Steps::Languestic])->first();
             if ($task) {
@@ -88,7 +92,7 @@ class LanguesticController extends Controller
                 TaskRepository::save($artical->list_id, Steps::Languestic);
             }
         }
-        $list = ContentList::find($artical->list_id);
+
         if ($list->step != Steps::Languestic && $list->step != Steps::ResendToLanguestic) {
             return redirect('languestic/mylists')->withErrors('غير مسموح لك الدخول الى هنا');
         }

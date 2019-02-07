@@ -45,7 +45,14 @@
                                                 </thead>
                                                 <tbody>
                                                 @foreach($files as $file)
+                                                    @php
+                                                        $list=\App\Models\ContentList::with('level','grade','user')->where('id',$file->list_id)->first();
 
+                                                    @endphp
+                                                    @if ($list==null){
+
+                                                    @continue;
+                                                    @endif
                                                     @php  $list=\App\Models\ContentList::with('grade')->where('id',$file->list_id)->first();
             $grade=\App\Models\Grade::where('id',$list->grade->id)->first(); @endphp
                                                     @if($list->step!=\App\Helper\Steps::ANALYZING_FILE)
@@ -102,7 +109,15 @@
                                             </thead>
                                             <tbody>
                                             @foreach($files as $file)
-                                                @php  $list=\App\Models\ContentList::with('grade')->where('id',$file->list_id)->first();
+                                                @php
+                                                    $list=\App\Models\ContentList::with('level','grade','user')->where('id',$file->list_id)->first();
+
+                                                @endphp
+                                                @if ($list==null){
+
+                                                @continue;
+                                                @endif
+                                                @php
             $grade=\App\Models\Grade::where('id',$list->grade->id)->first(); @endphp
                                                 @if($list->step!=\App\Helper\Steps::INSERTING_ARTICLE)
                                                     @continue
@@ -144,7 +159,7 @@
 
 @endsection
 @section('js')
-    <script src="{{ asset('public/js/jquery.min.js')}}"></script>
+
     <script src="{{ asset('public/plugins/data-tables/js/datatables.min.js')}}"></script>
     <script src="{{ asset('public/js/pages/tbl-datatable-custom.js')}}"></script>
 

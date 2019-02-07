@@ -109,7 +109,6 @@ $easySound=\App\Repository\IssuesRepository::getAllIssuesForArticle($soundEasy->
     <link rel="stylesheet" href="{{url('public/plugins/data-tables/css/datatables.min.css')}}">
 @endsection
 @section('js')
-    <script src="{{ asset('public/js/jquery.min.js')}}"></script>
     <script src="{{ asset('public/plugins/data-tables/js/datatables.min.js')}}"></script>
     <script src="{{ asset('public/js/pages/tbl-datatable-custom.js')}}"></script>
 

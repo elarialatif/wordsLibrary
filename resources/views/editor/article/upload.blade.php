@@ -20,25 +20,24 @@
                                 <div class="card-block">
                                     <div class="table-responsive">
 
-                                        <form action="{{url('saveUploadArticle')}}" method="post" enctype="multipart/form-data">
+                                        <form action="{{url('saveUploadArticle')}}" method="post"
+                                              enctype="multipart/form-data">
                                             {{csrf_field()}}
                                             <div id="page-content-wrapper">
-
                                                 <br>
                                                 <br>
-
-
-
                                                 <br>
                                                 <br>
                                                 <br>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="jumbotron">
-                                                            <h6><img src="{{url('public/images/1.png')}}" width="40px"> من فضلك قم برفع الملف</h6><br>
+                                                            <h6><img src="{{url('public/images/1.png')}}" width="40px">
+                                                                من فضلك قم برفع الملف</h6><br>
                                                             <form method="post" action="#" id="#">
                                                                 <div class="form-group files">
-                                                                    <label for="kkk" style="border-style: dotted;height: 400px;width:100%; background-color: white">
+                                                                    <label for="kkk"
+                                                                           style="border-style: dotted;height: 400px;width:100%; background-color: white">
                                                                         <div style="text-align: center;margin-top: 50px;font-size: 200px;color: #6c757d">
                                                                             <i class="feather icon-upload"></i>
                                                                         </div>
@@ -46,8 +45,10 @@
                                                                             <span style="font-weight: bold">لرفع الملف اضغط هنا</span>
                                                                         </div>
                                                                     </label>
-                                                                    <input type="file" id="kkk" class="form-control" multiple="" style="display: none;"
-                                                                           name="filename" accept=".doc,.docx,.txt"> <h4 id="empty"></h4>
+                                                                    <input type="file" id="kkk" class="form-control"
+                                                                           multiple="" style="display: none;"
+                                                                           name="filename" accept=".doc,.docx,.txt"> <h4
+                                                                            id="empty"></h4>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -56,32 +57,37 @@
 
                                                     <div class="col-md-6">
                                                         <div class="jumbotron">
-                                                            <h6><img src="{{url('public/images/2.png')}}" width="40px"> التصنيف </h6>
+                                                            <h6><img src="{{url('public/images/2.png')}}" width="40px">
+                                                                التصنيف </h6>
                                                             <div class="form-group">
                                                                 <label for="sel1"> </label>
                                                                 <select name="cat_id_list[]" multiple=""
-                                                                        class=" form-control ui fluid dropdown" id="sell">
+                                                                        class=" form-control ui fluid dropdown"
+                                                                        id="sell">
                                                                     @foreach($categories_all as $parent)
                                                                         @if($parent->parent_id==null)
-                                                                            <option  value="{{$parent->id}}">
+                                                                            <option value="{{$parent->id}}">
                                                                                 &#10000; {{$parent->name}}  </option>
 
                                                                             @if ($parent->children->count())
                                                                                 @foreach ($parent->children as $child)
 
-                                                                                    <option value="{{ $child->id }}"> &emsp;
+                                                                                    <option value="{{ $child->id }}">
+                                                                                        &emsp;
                                                                                         &#9000;
                                                                                         &#9000; {{ $child->name }}</option>
                                                                                     @if($child->children->count())
                                                                                         @foreach ($child->children as $child)
 
                                                                                             <option value="{{ $child->id }}">
-                                                                                                &emsp; &nbsp; &nbsp; &#9000;&#9000;&#9000; {{ $child->name }}</option>
+                                                                                                &emsp; &nbsp; &nbsp;
+                                                                                                &#9000;&#9000;&#9000; {{ $child->name }}</option>
                                                                                             @if($child->children->count())
                                                                                                 @foreach ($child->children as $child)
 
                                                                                                     <option value="{{ $child->id }}">
-                                                                                                        &emsp; &nbsp; &nbsp;&nbsp;&nbsp;
+                                                                                                        &emsp; &nbsp;
+                                                                                                        &nbsp;&nbsp;&nbsp;
                                                                                                         &#9000;&#9000;&#9000;&#9000; {{ $child->name }}</option>
                                                                                                     @if($child->children->count())
                                                                                                         @foreach ($child->children as $child)
@@ -153,25 +159,50 @@
                                                                 <br>
                                                                 <div class="form-group">
                                                                     <label> المؤلف</label>
-                                                                    <input class="form-control" type="text" name="editor">
+                                                                    <input class="form-control" type="text"
+                                                                           name="editor">
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label> اسم المقال</label>
-                                                                    <input class="form-control" type="text" name="articleName">
+                                                                    <input class="form-control" type="text"
+                                                                           name="articleName">
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label> بيانات النشر</label>
-                                                                    <input class="form-control" type="text" name="publish_details">
+                                                                    <input class="form-control" type="text"
+                                                                           name="publish_details">
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label> المرجع</label>
-                                                                    <input class="form-control" type="text" name="reference">
+                                                                    <input class="form-control" type="text"
+                                                                           name="reference">
+                                                                </div>
+                                                                <input type="hidden" name="list_id"
+                                                                       value="{{$list_id}}">
+
+                                                                <div class="form-group">
+                                                                    <label>الصوره:</label>
+                                                                    <input type="file"
+                                                                           class="form-control" name="image"
+                                                                           placeholder="الصوره">
+
                                                                 </div>
 
+                                                                <div class="form-group">
+                                                                    <label>اسم اللينك:</label>
+                                                                    <input type="text" required
+                                                                           class="form-control" name="name[]"
+                                                                           placeholder="اللينك">
+                                                                    <label>اللينك:</label>
+                                                                    <input type="url" required
+                                                                           class="form-control" name="link[]"
+                                                                           placeholder="اللينك">
+                                                                </div>
 
-                                                                <input type="hidden" name="list_id" value="{{$list_id}}">
-
-
+                                                                <button class="btn btn-outline-info" id="btn"><i
+                                                                            class="fa fa-plus"></i></button>
+                                                                <div id="emptyLink">
+                                                                </div>
                                                             </div>
                                                             <br><br><br><br><br>
                                                         </div>
@@ -179,7 +210,8 @@
 
                                                 </div>
                                                 <br>
-                                                <button type="submit" class="btn btn-primary btn-block" style="height: 56px !important;padding: 15px;"><span
+                                                <button type="submit" class="btn btn-primary btn-block"
+                                                        style="height: 56px !important;padding: 15px;"><span
                                                             class="fa fa-check-circle"></span> رفع الملف
                                                 </button>
 
@@ -220,8 +252,9 @@
         });
     </script>
     <script>
-        $('.ui.fluid.dropdown') .dropdown();
+        $('.ui.fluid.dropdown').dropdown();
         $('.item').css("text-align", "right");
+
         function lists() {
             $("#filter").click(function (event) {
                 event.preventDefault();
@@ -246,6 +279,33 @@
         }
 
 
+    </script>
+    <script>
+        var i = 1;
+        $("#btn").click(function (event) {
+            event.preventDefault();
+            $("#emptyLink").append("<div class='row' id='btn[" + i + "]' >" +
+                "<div class = 'form-group' >" +
+                "        <label>اسم اللينك:</label>\n" +
+                "                                                                    <input  type=\"text\"\n" +
+                "                                                                            class=\"form-control\" required name=\"name[]\"\n" +
+                "                                                                            placeholder=\"اللينك\">" +
+                "<label for= 'link' >  اللينك</label> " +
+                "<input type = 'url' required class = 'form-control' id= 'link[]' placeholder = 'اللينك' name = 'link[]' >" +
+                "</br>" +
+                "<button class='btn btn-danger' id=\"btn[" + i + "]\" onclick='remove()'> حذف</button>" +
+                "</div>" +
+                "</div>"
+            )
+            ;
+            i++;
+        });
+
+        function remove() {
+            var id = event.target.id;
+            var remove = document.getElementById(id);
+            remove.remove();
+        }
     </script>
 @endsection
 

@@ -17,8 +17,8 @@
                                     </h5>
                                     <a data-toggle="modal" data-target="#exampleModal" class="btn btn-primary"
                                        style="color: white;float: left;font-weight: bold">اضافه مستخدم
-                                        جديد<i
-                                                class="fa fa-plus"></i></a>         <a href="{{url('view/schools')}}" class="btn btn-success"
+                                        جديد<i class="fa fa-plus"></i></a>
+                                    <a href="{{url('view/schools')}}" class="btn btn-success"
                                        style="color: white;float: left;font-weight: bold"> المدارس<i
                                                 class="fa fa-eye"></i></a>
                                     {{--model for add new user--}}
@@ -36,7 +36,6 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-
                                                         @csrf
                                                         <div class="form-group row">
                                                             <label for="name"
@@ -100,15 +99,12 @@
                                                         <div class="form-group row">
                                                             <label for="password-confirm"
                                                                    class="col-md-4 col-form-label text-md-right">{{ __('تاكيد كلمة السر ') }}</label>
-
                                                             <div class="col-md-6">
                                                                 <input id="password-confirm" type="password"
                                                                        class="form-control"
                                                                        name="password_confirmation" required>
                                                             </div>
                                                         </div>
-
-
                                                     </div>
                                                     <div class="modal-footer">
                                                         <div class="form-group row mb-0">
@@ -142,8 +138,9 @@
                                         </thead>
                                         <tbody>
                                         @foreach($users as $user)
-                                            <tr >
-                                                <td id="example" onclick="archive({{$user->id}})"> <a href="#"> {{$user->name}}</a></td>
+                                            <tr>
+                                                <td id="example" onclick="archive({{$user->id}})"><a
+                                                            href="#"> {{$user->name}}</a></td>
                                                 <td>{{$user->email}}</td>
                                                 <td>{{\App\Helper\UsersTypes::ArrayOfPermission[$user->role]}}</td>
                                                 <td>
@@ -293,9 +290,9 @@
     <script>
 
         function archive(id) {
-            window.location.assign("{{url('archive/')}}/"+id);
+            window.location.assign("{{url('archive/')}}/" + id);
             //  window.location = {{url('archive/')}}+'/' + id;
-         //   alert(id);
+            //   alert(id);
         }
 
         // $('#example').click(function () {
@@ -307,12 +304,113 @@
 
 
     </script>
+    <script>
+        $(document).ready(function () {
+            setTimeout(function () {
+                $(" <div class=\"row\">" +
+                    "<div class=\"col-md-6\">" +
+                    "<div class=\"form-group\">" +
+                    "<select placeholder=\"الصلاحيات\" onchange=\"myFunction()\" id=\"roleFilter\" class=\"form-control\" name=\"role_filter\" onchange='change()'> " +
+                    "<option value=\"\">----</option>" +
+                    "<option value=\"\">كل الصلاحيات</option>" +
+                    "@foreach(\App\Helper\UsersTypes::ArrayOfPermission as $key=>$value)" +
+                    "<option value=\"{{$value}}\">{{$value}}</option>" +
+                    "@endforeach" +
+                    "</select>" +
+                    "</div>" +
+                    "</div>" +
+                    "</div>"
+                ).insertAfter(".dataTables_filter");
+            }, 1000);
+        });
+    </script>
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("roleFilter");
+            filter = input.value.toUpperCase();
+
+            $('#key-act-button').attr('id', 'key-act-button3');
+            table = $('#key-act-button3').DataTable();
+            table.destroy();
+            $('#key-act-button3').DataTable({
+                dom: 'Bfrtip',
+                paginate: false,
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'print'
+                ]
+            });
+            // Declare variables
+            $(" <div class=\"row\">" +
+                "<div class=\"col-md-6\">" +
+                "<div class=\"form-group\">" +
+                "<select placeholder=\"الصلاحيات\" onchange=\"myFunction()\" id=\"roleFilter\" class=\"form-control\" name=\"role_filter\" onchange='change()'> " +
+                "<option value=\"\">------</option>" +
+                "<option value=\"\">كل الصلاحيات</option>" +
+                "@foreach(\App\Helper\UsersTypes::ArrayOfPermission as $key=>$value)" +
+                "<option value=\"{{$value}}\">{{$value}}</option>" +
+                "@endforeach" +
+                "</select>" +
+                "</div>" +
+                "</div>" +
+                "</div>"
+            ).insertAfter(".dataTables_filter");
+            var dataTable = $('#key-act-button3').dataTable();
+            tr = dataTable.fnGetNodes();
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[2];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+
+            if (input.value.length == 0) {
+
+                $('#key-act-button3').attr('id', 'key-act-button');
+                table = $('#key-act-button').DataTable();
+                table.destroy();
+                $('#key-act-button').DataTable({
+                    dom: 'Bfrtip',
+                    paginate: true,
+                    displayLength: 50,
+                    buttons: [
+                        'copyHtml5',
+                        'excelHtml5',
+                        'print'
+                    ]
+                });
+                $(" <div class=\"row\">" +
+                    "<div class=\"col-md-6\">" +
+                    "<div class=\"form-group\">" +
+                    "<select placeholder=\"الصلاحيات\" onchange=\"myFunction()\" id=\"roleFilter\" class=\"form-control\" name=\"role_filter\" onchange='change()'> " +
+                    "<option value=\"\">------</option>" +
+                    "<option value=\"\">كل الصلاحيات</option>" +
+                    "@foreach(\App\Helper\UsersTypes::ArrayOfPermission as $key=>$value)" +
+                    "<option value=\"{{$value}}\">{{$value}}</option>" +
+                    "@endforeach" +
+                    "</select>" +
+                    "</div>" +
+                    "</div>" +
+                    "</div>"
+                ).insertAfter(".dataTables_filter");
+            }
+
+        }
+    </script>
 @section('css')
     <link rel="stylesheet" href="{{url('public/plugins/data-tables/css/datatables.min.css')}}">
 
 @endsection
 @section('js')
-    <script src="{{ asset('public/js/jquery.min.js')}}"></script>
     <script src="{{ asset('public/plugins/data-tables/js/datatables.min.js')}}"></script>
     <script src="{{ asset('public/js/pages/tbl-datatable-custom.js')}}"></script>
 

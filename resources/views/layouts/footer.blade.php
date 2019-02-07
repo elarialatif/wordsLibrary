@@ -4,8 +4,29 @@
 </div>
 </div>
 </div>
+
+<div id="exampleModalLive" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="max-width: 1200px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title h4" id="myLargeModalLabel"> معنى الكلمة </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="asd">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- /#wrapper -->
 <!-- Bootstrap core JavaScript -->
+
+
 <script src="{{asset('public/vendor/jquery/jquery.min.js')}}"></script>
 <script src="{{asset('public/js/vendor-all.min.js')}}"></script>
 <script src="{{asset('public/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
@@ -14,7 +35,6 @@
 <script src="{{asset('public/js/menu-setting.min.js')}}"></script>
 <script src="{{asset('public/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('public/plugins/sweetalert/js/sweetalert.min.js')}}"></script>
-
 @yield('js')
 <!-- Menu Toggle Script -->
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=5g5faf78gvk6yfq9bd3bbfjo858kjx1q8o0nbiwtygo2e4er"></script>
@@ -48,6 +68,7 @@
         $("#wrapper").toggleClass("toggled");
     });
     editor();
+
     function editor() {
         tinymce.init({
             mode: "specific_textareas",
@@ -85,6 +106,7 @@
 
         });
     }
+
     (function () {
         if ($('#layout-sidenav').hasClass('sidenav-horizontal') || window.layoutHelpers.isSmallScreen()) {
             return;
@@ -123,8 +145,73 @@
             MenuTrigger: 'hover',
             SubMenuTrigger: 'hover',
         });
+
+
     });
 </script>
+<script>
 
+    $('body').bind("contextmenu", function (e) {
+        e.preventDefault();
+        var top = e.pageY - 120;
+        $("#cntnr").css("left", e.pageX);
+        $("#cntnr").css("top", top);
+        // $("#cntnr").hide(100);
+        $("#cntnr").fadeIn(200, startFocusOut());
+
+
+    });
+
+    function startFocusOut() {
+        $(document).on("click", function () {
+            $("#cntnr").hide();
+            $(document).off("click");
+        });
+        $(window).scroll(function () {
+            $('#cntnr').fadeOut();
+        })
+    }
+
+
+    $("#items > li").click(function () {
+        $("#op").text("You have selected " + $(this).text());
+    });
+
+</script>
+
+<script>
+    if (!window.x) {
+        x = {};
+    }
+    x.Selector = {};
+    x.Selector.getSelected = function () {
+        var t = '';
+        if (window.getSelection) {
+            t = window.getSelection();
+        } else if (document.getSelection) {
+            t = document.getSelection();
+        } else if (document.selection) {
+            t = document.selection.createRange().text;
+        }
+        return t;
+    }
+
+    function a() {
+
+        var mytext = x.Selector.getSelected();
+        $.ajax({
+            type: "GET",
+            url: "http://www.analyzer.ga:8082/WebApplication1/faces/Api.xhtml?pram=" + encodeURIComponent(mytext),
+            crossDomain: true,
+            async: true,
+            success: function (data) {
+
+                $("#asd").html(data);
+                $("#exampleModalLive").modal();
+            }
+        });
+    }
+
+</script>
 </body>
 </html>

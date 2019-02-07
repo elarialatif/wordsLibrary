@@ -57,16 +57,10 @@
                                                                     <input type="text" class="form-control" name="word[0]" />
                                                                 </div>
                                                                 <button  id="btn" type="button" class="btn btn-icon btn-outline-primary"><i class="feather icon-plus-square"></i></button>
-
                                                             </div>
-
                                                         </div>
-
                                                         <div id="ST0">
                                                         </div>
-
-
-
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button class="btn btn-primary" type="submit"><span class="fa fa-plus"></span> إضافة
@@ -204,7 +198,6 @@
 
 @endsection
 @section('js')
-    <script src="{{ asset('public/js/jquery.min.js')}}"></script>
     <script src="{{ asset('public/plugins/data-tables/js/datatables.min.js')}}"></script>
     <script src="{{ asset('public/js/pages/tbl-datatable-custom.js')}}"></script>
 

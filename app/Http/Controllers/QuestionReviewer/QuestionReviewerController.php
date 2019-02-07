@@ -81,6 +81,10 @@ class QuestionReviewerController extends Controller
     {
         $questions = QuestionsRepository::findWhere('artical_id', $artical_id);
         $artical = Article::where('id', $artical_id)->first();
+        $list = ContentList::find($artical->list_id);
+        if ($list == null) {
+            return redirect()->back()->with('error', 'المقال غير موجود');
+        }
         if (auth()->user()->role != UsersTypes::SUPERADMIN && auth()->user()->role != UsersTypes::ADMIN) {
             $task = AssignTask::where(['list_id' => $artical->list_id, 'step' => Steps::Review_Question])->first();
             if ($task) {
@@ -91,7 +95,7 @@ class QuestionReviewerController extends Controller
                 TaskRepository::save($artical->list_id, Steps::Review_Question);
             }
         }
-        $list = ContentList::find($artical->list_id);
+
         if ($list->step != Steps::Review_Question && $list->step != Steps::ResendToQuestionReviewer) {
             return redirect('questionReviewer/myList')->withErrors('غير مسموح لك الدخول الى هنا');
         }

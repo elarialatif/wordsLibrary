@@ -56,6 +56,9 @@ class EditorController extends Controller
 
         $orginalFile = $data['orginalFile'];
         $list = $data['list'];
+        if ($list == null) {
+            return redirect()->back()->with('error', ' الموضوع غير موجود');
+        }
         $categories_all = Categery::all();
         if ($list->step != Steps::INSERTING_ARTICLE && $list->step != Steps::reSendToEditorFormReviewer) {
             return redirect('editor/mylists')->withErrors('غير مسموح لك الدخول الى هنا');
@@ -68,12 +71,8 @@ class EditorController extends Controller
 
         $request->validate([
             'article' => 'required',
-
-
         ],
-            ['articlearticle.required' => 'المقال مطلوب ',
-
-            ]);
+            ['articlearticle.required' => 'المقال مطلوب ',]);
 
         DB::transaction(function () {
             $articleCheck = Article::where(['list_id' => \request('list_id'), 'level' => \request('level')])->first();

@@ -29,8 +29,6 @@
                                         <button id="btn" class=" btn btn-primary"> اضافه حقول للكلمات</button>
                                     </div>
                                 </div>
-
-
                                 <div class="card-block">
                                     <div class="card-header">
                                         <div class="form-group">
@@ -40,8 +38,6 @@
                                                 <br>
                                                 <br>
                                                 <div class="row">
-
-
                                                     <div class="col-md-4">
                                                         الصف:<br>
                                                         <div class="form-group">
@@ -141,10 +137,8 @@
     </script>
 @section('css')
     <link rel="stylesheet" href="{{url('public/plugins/data-tables/css/datatables.min.css')}}">
-
 @endsection
 @section('js')
-    <script src="{{ asset('public/js/jquery.min.js')}}"></script>
     <script src="{{ asset('public/plugins/data-tables/js/datatables.min.js')}}"></script>
     <script src="{{ asset('public/js/pages/tbl-datatable-custom.js')}}"></script>
 

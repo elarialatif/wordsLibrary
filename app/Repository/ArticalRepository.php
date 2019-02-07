@@ -4,10 +4,13 @@ namespace App\Repository;
 
 use App\ArticleCategory;
 use App\Helper\ArticleLevels;
+use App\Helper\Steps;
 use App\Models\Article;
 use App\Models\ArticleFiles;
+use App\Models\Link;
 use App\Models\ListCategory;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Notification;
 
 class ArticalRepository
 {
@@ -85,17 +88,39 @@ class ArticalRepository
 
     static function save($request)
     {
-
         DB::transaction(function () use ($request) {
+            if (count($request->link) > 0) {
+                Link::where('list_id', $request->list_id)->delete();
+//                dd($request);
+                $linkData['link'] = $request->link;
+                $linkData['name'] = $request->name;
+                $linkData['list_id'] = $request->list_id;
+                LinksRepository::save($linkData);
+            }
             $filename2 = $request->file('filename');
 
             $filename2->move(storage_path() . '/' . 'files', $filename2->getClientOriginalName());
             $article = ArticleFiles::where('list_id', $request->list_id)->first();
+            if ($request->image && $request->image != null) {
+                $filename = $request->image->getClientOriginalName();
+                $request->image->move(public_path() . '/' . 'listsImage', $filename);
+            }
             $NewArticle = new ArticleFiles();
             if ($article) {
                 $NewArticle = $article;
+                ContentListsRepository::updateStep($request->list_id, Steps::ANALYZING_FILE);
+                //Notification/////
+                NotificationRepository::notify($request->list_id, Steps::ANALYZING_FILE);
+                ///end Notification////
             }
 
+            $listData['image'] = 'listsImage/' . $filename;
+            $list = ContentListsRepository::find($request->list_id);
+            if ($list->image != null) {
+                unlink(public_path($list->image));
+            }
+
+            ContentListsRepository::update($request->list_id, $listData);
             $NewArticle->articleName = $request->articleName;
             $NewArticle->list_id = $request->list_id;
             $NewArticle->publish_details = $request->publish_details;

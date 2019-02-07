@@ -112,7 +112,7 @@ class QuestionController extends Controller
             $rules_array ["ans2.$arrIndex"] = ["required", Rule::notIn([$request->ans1[$arrIndex], $request->ans3[$arrIndex], $request->ans4[$arrIndex]]), "max:191"];
             $rules_array ["ans3.$arrIndex"] = ["required", Rule::notIn([$request->ans1[$arrIndex], $request->ans2[$arrIndex], $request->ans4[$arrIndex]]), "max:191"];
             $rules_array ["ans4.$arrIndex"] = ["required", Rule::notIn([$request->ans1[$arrIndex], $request->ans2[$arrIndex], $request->ans3[$arrIndex]]), "max:191"];
-            $rules_array["question.$arrIndex"] = ["required", "max:191"];
+            $rules_array["question.$arrIndex"] = ["required"];
         }
         request()->validate($rules_array, $messages_array);
         $question = $request->except('_token');
@@ -130,6 +130,10 @@ class QuestionController extends Controller
     {
         $questions = QuestionsRepository::findWhere('artical_id', $artical_id);
         $artical = Article::where('id', $artical_id)->first();
+        $list = ContentList::find($artical->list_id);
+        if ($list == null) {
+            return redirect()->back()->with('error', 'المقال غير موجود');
+        }
         return view('questionCreator.question.show', compact('questions', 'page', 'artical'));
     }
 
@@ -175,7 +179,7 @@ class QuestionController extends Controller
         $rules_array ["ans2"] = ["required", Rule::notIn([$request->ans1, $request->ans3, $request->ans4]), "max:191"];
         $rules_array ["ans3"] = ["required", Rule::notIn([$request->ans1, $request->ans2, $request->ans4]), "max:191"];
         $rules_array ["ans4"] = ["required", Rule::notIn([$request->ans1, $request->ans2, $request->ans3]), "max:191"];
-        $rules_array["question"] = ["required", "max:191"];
+        $rules_array["question"] = ["required"];
 
         request()->validate($rules_array, $messages_array);
         $question = $request->except('_token');

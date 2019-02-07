@@ -8,7 +8,7 @@
     <title>مكتبة الكلمات</title>
 
 
-<!-- Bootstrap core CSS -->
+    <!-- Bootstrap core CSS -->
 
     <script src="http://demo.expertphp.in/js/jquery.js"></script>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -36,10 +36,60 @@
         .unread {
             background-color: #cfdae3
         }
+
         .noti-body {
-           
+
             overflow-y: scroll;
             overflow-x: hidden;
+        }
+
+        #items {
+            list-style: none;
+            margin: 0px;
+            margin-top: 4px;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-bottom: 3px;
+            font-size: 17px;
+            color: #333333;
+
+        }
+
+        hr {
+            width: 85%;
+            background-color: #E4E4E4;
+            border-color: #E4E4E4;
+            color: #E4E4E4;
+        }
+
+        #cntnr {
+            display: none;
+            position: absolute;
+            border: 1px solid #B2B2B2;
+            width: 117px;
+            background: #F9F9F9;
+            box-shadow: 3px 3px 2px #E9E9E9;
+            border-radius: 4px;
+        }
+
+
+        /*li {*/
+
+            /*padding: 3px;*/
+            /*padding-left: 10px;*/
+        /*}*/
+
+        #items :hover {
+            color: white;
+            background: #284570;
+            border-radius: 2px;
+
+        }
+        #asd{
+            font-size: 20px !important;
+        }
+        #asd p{
+            font-size: 20px !important;
         }
 
     </style>

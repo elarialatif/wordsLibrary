@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\superAdmin;
 
+use App\Helper\UsersTypes;
 use App\Models\School;
 use App\Repository\SchoolRepository;
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ class SchoolController extends Controller
 {
     public function index()
     {
-        $schools = School::all();
+        $schools = School::where('type', UsersTypes::School)->get();
         return view('superadmin.school.index', compact('schools'));
     }
 
@@ -60,7 +61,9 @@ class SchoolController extends Controller
 
         $user = $data['user'];
         $school = $data['school'];
-
+        if (empty($school)) {
+            return redirect()->back()->with('error', 'المدرسة غير موجودة ');
+        }
         return view('superadmin.school.edit', compact('user', 'school'));
 
     }
@@ -94,7 +97,7 @@ class SchoolController extends Controller
             'email.email' => 'الايميل غير صحيح ',
             'email.unique' => 'الاميل موجود بالفعل',
         ]);
-        SchoolRepository::save($request,$school_id);
+        SchoolRepository::save($request, $school_id);
         return redirect()->back()->with('success', 'تمت التعديل المدرسة بنجاح ');
     }
 }

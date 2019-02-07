@@ -140,11 +140,16 @@ Route::group(['middleware' => 'superadmin'], function () {
         Route::get('logfiltertime', ['as' => 'logfiltertime', 'uses' => 'LogTimeController@logfiltertime']);
         // show is reserved to another routes written bello
 
+
         Route::resource('country', 'CountryController');
         Route::get('country/delete/{id}', 'CountryController@destroy');
     });
+    Route::get('archive', 'ContentListController@archive');
+    Route::get('restoreList/{id}', 'ContentListController@restoreList');
+    Route::get('forceDeleteList/{id}', 'ContentListController@forceDeleteList');
     // Registration Routes...
     Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+
     Route::post('register', 'Auth\RegisterController@register');
 });
 

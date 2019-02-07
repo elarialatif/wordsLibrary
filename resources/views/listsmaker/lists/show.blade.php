@@ -16,7 +16,14 @@
                                     صفحة الموضوعات
                                 </h5>
                                 @if(auth()->user()->role!=\App\Helper\UsersTypes::EDITOR)
-                                <a href="#" class="btn btn-primary" data-toggle="modal"
+                                    @php $article=\App\Models\ArticleFiles::whereIn('list_id',$lists->pluck('id')->toArray())->get(); @endphp
+                                    <br>
+                                <h4>
+                                    {{$lists->count()}} موضوع
+                                    <br>
+                                          تم رفع ملف الى{{$article->count()}} موضوع
+                                </h4>
+                                    <a href="#" class="btn btn-primary" data-toggle="modal"
                                    data-target="#exampleModal0"
                                    style="color: white;float: left;font-weight: bold"> اضافه موضوع جديد <i
                                             class="fa fa-plus"></i></a>
@@ -32,7 +39,7 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <form action="{{url('createList')}}" method="post">
+                                            <form action="{{url('createList')}}" method="post" enctype="multipart/form-data">
                                                 {{csrf_field()}}
                                                 <div class="modal-body">
 
@@ -55,7 +62,7 @@
                                                                 <input type="hidden" name="user_id"
                                                                        value="{{auth()->id()}}">
                                                                 <label> اسم الموضوع :</label>
-                                                                <input style="margin-bottom: 50px" type="text"
+                                                                <input  type="text"
                                                                        class="form-control" name="list[0]"
                                                                        placeholder="اسم الموضوع">
                                                             </div>
@@ -187,7 +194,6 @@
 
 @endsection
 @section('js')
-<script src="{{ asset('public/js/jquery.min.js')}}"></script>
 <script src="{{ asset('public/plugins/data-tables/js/datatables.min.js')}}"></script>
 <script src="{{ asset('public/js/pages/tbl-datatable-custom.js')}}"></script>
 

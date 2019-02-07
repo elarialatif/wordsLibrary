@@ -20,6 +20,9 @@ class SuperAdminController extends Controller
     {
         $article = ArticalRepository::getArticleById($article_id);
         $list = ContentListsRepository::find($article->list_id);
+        if ($list == null) {
+            return redirect()->back()->with('error', 'الموضوع  غير موجود');
+        }
         $sound = SoundsRepository::findWhere('article_id', $article_id);
         $questions = QuestionsRepository::findWhere('artical_id', $article_id);
 

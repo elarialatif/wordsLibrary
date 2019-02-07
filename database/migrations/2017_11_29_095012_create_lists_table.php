@@ -17,10 +17,12 @@ class CreateListsTable extends Migration
             $table->increments('id');
             $table->string('list');
             $table->integer('step');
+            $table->string('image');
             $table->integer('grade_id')->unsigned();
             $table->foreign('grade_id')->references('id')->on('grades')->onDelete('RESTRICT')->onUpdate('cascade');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
