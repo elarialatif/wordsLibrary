@@ -50,11 +50,11 @@ class SoundController extends Controller
     public function save($article_id)
     {
         \request()->validate([
-            'sound' => 'required|mimes:mpga,wav| max:5000',
+            'sound' => 'required|mimes:mpga,wav| max:10000',
         ], [
             'sound.required' => 'من فضلك اختر ملف صوت ',
             'sound.mimes' => 'من فضلك اختر ملف صوت من نوع   wav او mp3  ',
-            'sound.max' => ' الملف  يجب ان لايزيد عن 5 ميجا   ',
+            'sound.max' => ' الملف  يجب ان لايزيد عن 10 ميجا   ',
         ]);
         $file = \request()->file('sound');
         SoundsRepository::save($file, $article_id);

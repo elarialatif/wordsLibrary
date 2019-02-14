@@ -76,33 +76,34 @@ $easySound=\App\Repository\IssuesRepository::getAllIssuesForArticle($soundEasy->
                                                         @endphp
                                                         {{--@endif--}}
                                                         {{--for QuestionReviewer--}}
+                                                        {{--@dd($normalReviewer)--}}
 
                                                         @if(empty($easyStatus))
                                                             <a href="{{url('quality/review/'.$articalEasy->id)}}"
-                                                               class="btn {{($easyReviewer->count()==0 && ($soundEasy)?$easySound->count()==0:'')?'btn-info':'btn-danger'}}  ">السهل<i
-                                                                        class="fa {{($easyReviewer->count()==0 && ($soundEasy)?$easySound->count()==0:'')?'':'fa-eye'}}"></i></a>
+                                                               class="btn @if($soundEasy){{($easyReviewer->count()==0 && $easySound->count()==0)?'btn-info':'btn-danger'}} @else{{($easyReviewer->count()==0)?'btn-info':'btn-danger'}} @endif ">السهل<i
+                                                                        class="fa @if($soundEasy){{($easyReviewer->count()==0 && $easySound->count()==0)?'':'fa-eye'}} @else{{($easyReviewer->count()==0)?'':'fa-eye'}} @endif "></i></a>
                                                         @else
                                                             <a href="{{url('quality/review/'.$articalEasy->id)}}"
-                                                               class="btn {{($easyReviewer->count()==0 && ($soundEasy)?$easySound->count()==0:'')?'btn-success':'btn-danger'}} ">السهل<i
-                                                                        class="fa {{($easyReviewer->count()==0 && ($soundEasy)?$easySound->count()==0:'')?'fa-check-circle':'fa-check-circle'}}"></i></a>
+                                                               class="btn  @if($soundEasy){{($easyReviewer->count()==0 && $easySound->count()==0)?'btn-success':'btn-danger'}}"@else{{($easyReviewer->count()==0)?'btn-success':'btn-danger'}}@endif">السهل<i
+                                                                        class="fa @if($soundEasy){{($easyReviewer->count()==0 && $easySound->count()==0)?'fa-check-circle':'fa-check-circle'}}@else{{($easyReviewer->count()==0)?'fa-check-circle':'fa-check-circle'}}@endif"></i></a>
                                                         @endif
                                                         @if(empty($normalStatus))
                                                             <a href="{{url('quality/review/'.$articalNormal->id)}}"
-                                                               class="btn {{($normalReviewer->count()==0 && ($soundNormal)?$normalSound->count()==0:'')?'btn-info':'btn-danger'}} ">المتوسط<i
-                                                                        class="fa {{($normalReviewer->count()==0 && ($soundNormal)?$normalSound->count()==0:'')?'':'fa-eye'}}"></i></a>
+                                                               class="btn @if($soundNormal){{($normalReviewer->count()==0 && $normalSound->count()==0)?'btn-info':'btn-danger'}}@else{{($normalReviewer->count()==0)?'btn-info':'btn-danger'}}@endif">المتوسط<i
+                                                                        class="fa @if($soundNormal){{($normalReviewer->count()==0 && $normalSound->count()==0)?'':'fa-eye'}}@else{{($normalReviewer->count()==0)?'':'fa-eye'}}@endif" ></i></a>
                                                         @else
                                                             <a href="{{url('quality/review/'.$articalNormal->id)}}"
-                                                               class="btn {{($normalReviewer->count()==0 &&($soundNormal)?$normalSound->count()==0:'')?'btn-success':'btn-danger'}} ">المتوسط<i
-                                                                        class="fa {{($normalReviewer->count()==0 &&($soundNormal)?$normalSound->count()==0:'')?'fa-check-circle':'fa-check-circle'}}"></i></a>
+                                                               class="btn @if($soundNormal){{($normalReviewer->count()==0 && $normalSound->count()==0)?'btn-success':'btn-danger'}}@else{{($normalReviewer->count()==0)?'btn-success':'btn-danger'}}@endif">المتوسط<i
+                                                                        class="fa @if($soundNormal){{($normalReviewer->count()==0 && $normalSound->count()==0)?'fa-check-circle':'fa-check-circle'}}@else{{($normalReviewer->count()==0)?'fa-check-circle':'fa-check-circle'}}@endif"></i></a>
                                                         @endif
                                                         @if(empty($hardStatus))
                                                             <a href="{{url('quality/review/'.$articalHard->id)}}"
-                                                               class="btn {{($hardReviewer->count()==0 && ($soundHard)?$hardSound->count()==0:'')?'btn-info':'btn-danger'}} ">الصعب<i
-                                                                        class="fa {{($hardReviewer->count()==0 && ($soundHard)?$hardSound->count()==0:'')?'':'fa-eye'}}"></i></a>
+                                                               class="btn @if($soundHard){{($hardReviewer->count()==0 && $hardSound->count()==0)?'btn-info':'btn-danger'}}@else{{($hardReviewer->count()==0)?'btn-info':'btn-danger'}}@endif">الصعب<i
+                                                                        class="fa @if($soundHard){{($hardReviewer->count()==0 && $hardSound->count()==0)?'':'fa-eye'}}@else{{($hardReviewer->count()==0)?'':'fa-eye'}}@endif"></i></a>
                                                         @else
                                                             <a href="{{url('quality/review/'.$articalHard->id)}}"
-                                                               class="btn {{($hardReviewer->count()==0 && ($soundHard)?$hardSound->count()==0:'')?'btn-success':'btn-danger'}} ">الصعب<i
-                                                                        class="fa {{($hardReviewer->count()==0 && ($soundHard)?$hardSound->count()==0:'')?'fa-check-circle':'fa-check-circle'}}"></i></a>
+                                                               class="btn @if($soundHard){{($hardReviewer->count()==0 && $hardSound->count()==0)?'btn-success':'btn-danger'}}@else{{($hardReviewer->count()==0)?'btn-success':'btn-danger'}}@endif">الصعب<i
+                                                                        class="fa @if($soundHard){{($hardReviewer->count()==0 && $hardSound->count()==0)?'fa-check-circle':'fa-check-circle'}}@else{{($hardReviewer->count()==0)?'fa-check-circle':'fa-check-circle'}}@endif"></i></a>
                                                         @endif
                                                     </td>
                                                     <td>

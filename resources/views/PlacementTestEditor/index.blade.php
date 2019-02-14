@@ -118,7 +118,7 @@
                                                     $placement_test_questions = \App\Models\PlacementTestQuestion::where('exam_id', $test->id)->get()->count();
                                                 @endphp
                                                 <tr>
-                                                    <td>{{$test->exam_name}}</td>
+                                                    <td>{!! $test->exam_name !!}</td>
                                                     <td>{{$test->grade->name}}</td>
                                                     <td>{{($test->status==0)? 'غير مفعل':'مفعل'}}</td>
                                                     <td>{{$placement_test_questions}}</td>
@@ -205,7 +205,11 @@
 @section('js')
     <script src="{{ asset('public/plugins/data-tables/js/datatables.min.js')}}"></script>
     <script src="{{ asset('public/js/pages/tbl-datatable-custom.js')}}"></script>
-
+<script>
+    window.onload = function(e){
+      alert('hi');
+    }
+</script>
 @endsection
 
 @endsection

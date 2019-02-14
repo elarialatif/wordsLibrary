@@ -57,13 +57,16 @@
                                                     @php
                                                         $var=$articalEasy->id;
                                                             $easyReviewer=App\Models\Issues::where('step','!=',\App\Helper\IssuesSteps::CloseByCreator)->whereIn('field_id',$easyQuestions)->where(['table'=>'question'])->orwhere(function ($query) use ($var){$query->Where('field_id',$var);$query->Where('table','article');$query->Where('step','!=',\App\Helper\IssuesSteps::CloseByCreator);})->get();
-$easySound=\App\Repository\IssuesRepository::getAllIssuesForArticle($soundEasy->id,'sound',\App\Helper\IssuesSteps::Open,\App\Helper\IssuesSteps::DoneByEditor);
+                                                            if($soundEasy){
+$easySound=\App\Repository\IssuesRepository::getAllIssuesForArticle($soundEasy->id,'sound',\App\Helper\IssuesSteps::Open,\App\Helper\IssuesSteps::DoneByEditor);}
                                $var2=$articalNormal->id;
                                                             $normalReviewer=App\Models\Issues::where('step','!=',\App\Helper\IssuesSteps::CloseByCreator)->whereIn('field_id',$normalQuestions)->where(['table'=>'question'])->orwhere(function ($query) use ($var2){$query->Where('field_id',$var2);$query->Where('table','article');$query->Where('step','!=',\App\Helper\IssuesSteps::CloseByCreator);})->get();
-                               $normalSound=\App\Repository\IssuesRepository::getAllIssuesForArticle($soundNormal->id,'sound',\App\Helper\IssuesSteps::Open,\App\Helper\IssuesSteps::DoneByEditor);
+                                                            if($soundNormal){
+                               $normalSound=\App\Repository\IssuesRepository::getAllIssuesForArticle($soundNormal->id,'sound',\App\Helper\IssuesSteps::Open,\App\Helper\IssuesSteps::DoneByEditor);}
                                $var3=$articalHard->id;
                                                             $hardReviewer=App\Models\Issues::where('step','!=',\App\Helper\IssuesSteps::CloseByCreator)->whereIn('field_id',$hardQuestions)->where(['table'=>'question'])->orwhere(function ($query) use ($var3){$query->Where('field_id',$var3);$query->Where('table','article');$query->Where('step','!=',\App\Helper\IssuesSteps::CloseByCreator);})->get();
-      $hardSound=\App\Repository\IssuesRepository::getAllIssuesForArticle($soundHard->id,'sound',\App\Helper\IssuesSteps::Open,\App\Helper\IssuesSteps::DoneByEditor);
+                                                            if($soundHard){
+      $hardSound=\App\Repository\IssuesRepository::getAllIssuesForArticle($soundHard->id,'sound',\App\Helper\IssuesSteps::Open,\App\Helper\IssuesSteps::DoneByEditor);}
                                                     @endphp
                                                     @php
                                                         $easyStatus=App\Models\Article::where(['id'=>$articalEasy->id,'status'=>1])->first();

@@ -88,7 +88,7 @@
                                             </div>
                                         </div>
                                         {{--end modal--}}
-                                        {{--model edit--}}
+                                        {{--model issues--}}
                                         <div class="modal fade bd-example-modal-lg" id="issueartical{{$article->id}}"
                                              tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                              aria-hidden="true">
@@ -101,7 +101,7 @@
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    @if($article->status!=\App\Helper\ArticleLevels::Review)
+
                                                         <form action="{{url('issues/create')}}" method="post">
                                                             <div class="modal-body">
 
@@ -127,7 +127,7 @@
 
                                                             </div>
                                                         </form>
-                                                    @endif
+
                                                 </div>
                                             </div>
                                         </div>

@@ -1,9 +1,11 @@
 @extends('layouts.app')
 @section('content')
-<style>
-    .mce-menu {position:fixed !important}
+    <style>
+        .mce-menu {
+            position: fixed !important
+        }
 
-</style>
+    </style>
     <div class="container">
         <div class="container">
 
@@ -67,11 +69,11 @@
 
                                                     </td>
                                                 </tr>
-                                                {{-- question edit--}}
+                                                {{-- question view--}}
                                                 <div class="modal fade " id="viewModal{{$testQuestion->id}}"
                                                      tabindex="-1"
                                                      role="dialog"
-                                                      aria-hidden="true">
+                                                     aria-hidden="true">
                                                     <div class="modal-dialog" style="max-width: 70% !important;"
                                                          role="document">
                                                         <div class="modal-content">
@@ -171,8 +173,9 @@
                                                 {{-- question edit--}}
                                                 <div class="modal fade" id="editModal{{$testQuestion->id}}"
                                                      role="dialog"
-                                                     aria-labelledby="exampleModalLabel" aria-hidden="true" >
-                                                    <div class="modal-dialog"  style="max-width: 70% !important;" role="document">
+                                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" style="max-width: 70% !important;"
+                                                         role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="exampleModalLabel">تعديل
@@ -192,7 +195,7 @@
                                                                             السؤال:<br>
                                                                             <div class="form-group">
                                                                                 <textarea type="text" class="mceEditor"
-                                                                                          name="question"> </textarea>
+                                                                                          name="question"> {!! $testQuestion->question!!}</textarea>
                                                                             </div>
                                                                         </div>
                                                                     </div>

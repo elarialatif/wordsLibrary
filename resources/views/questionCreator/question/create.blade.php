@@ -12,7 +12,8 @@
         }
 
     </style>
-    <div class="container">
+    <div class="container" style="height: 800px;overflow-x: hidden;
+    overflow-y: hidden;">
         <div class="container">
 
             <div class="main-body">
