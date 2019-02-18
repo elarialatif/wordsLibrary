@@ -187,6 +187,13 @@
                                                                            placeholder="الصوره">
 
                                                                 </div>
+                                                                <div class="form-group">
+                                                                    <label>صوره الدرس:</label>
+                                                                    <input type="file"
+                                                                           class="form-control" name="featureImage"
+                                                                           placeholder="صوره الدرس">
+
+                                                                </div>
 
                                                                 <div class="form-group">
                                                                     <label>اسم اللينك:</label>

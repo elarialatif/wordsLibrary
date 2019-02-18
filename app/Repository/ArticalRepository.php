@@ -105,6 +105,10 @@ class ArticalRepository
                 $filename = $request->image->getClientOriginalName();
                 $request->image->move(public_path() . '/' . 'listsImage', $filename);
             }
+            if ($request->featureImage && $request->featureImage != null) {
+                $img = $request->featureImage->getClientOriginalName();
+                $request->featureImage->move(public_path() . '/' . 'FeatureImage', $img);
+            }
             $NewArticle = new ArticleFiles();
             if ($article) {
                 $NewArticle = $article;
@@ -115,6 +119,7 @@ class ArticalRepository
             }
 
             $listData['image'] = 'listsImage/' . $filename;
+            $listData['featureImage'] = 'FeatureImage/' . $img;
             $list = ContentListsRepository::find($request->list_id);
             if ($list->image != null) {
                 unlink(public_path($list->image));
