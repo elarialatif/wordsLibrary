@@ -124,7 +124,9 @@ class ArticalRepository
             if ($list->image != null) {
                 unlink(public_path($list->image));
             }
-
+            if ($list->featureImage != null) {
+                unlink(public_path($list->featureImage));
+            }
             ContentListsRepository::update($request->list_id, $listData);
             $NewArticle->articleName = $request->articleName;
             $NewArticle->list_id = $request->list_id;

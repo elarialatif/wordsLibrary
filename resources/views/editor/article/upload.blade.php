@@ -184,14 +184,14 @@
                                                                     <label>الصوره:</label>
                                                                     <input type="file"
                                                                            class="form-control" name="image"
-                                                                           placeholder="الصوره">
+                                                                           placeholder="الصوره" required>
 
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label>صوره الدرس:</label>
                                                                     <input type="file"
                                                                            class="form-control" name="featureImage"
-                                                                           placeholder="صوره الدرس">
+                                                                           placeholder="صوره الدرس" required>
 
                                                                 </div>
 
