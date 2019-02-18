@@ -650,14 +650,14 @@
                                                                         {{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::DoneByEditor)}}
                                                                     @endif
                                                                 </td>
-                                                                @if($artical->status!=\App\Helper\ArticleLevels::Review)
+
                                                                     <td>
                                                                         <a data-toggle="modal"
                                                                            data-target="#editIssue{{$issue->id}}"><i
                                                                                     class="fa fa-edit"></i></a>
                                                                         <a href="{{url('issues/delete/'.$issue->id)}}"><i
                                                                                     class="fa fa-trash"></i></a>
-                                                                    </td>@endif
+                                                                    </td>
                                                             </tr>
 
                                                             {{--model for edit Issuses--}}

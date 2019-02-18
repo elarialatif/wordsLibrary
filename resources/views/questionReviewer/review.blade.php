@@ -43,12 +43,11 @@
                                                         <thead>
                                                         <tr>
                                                             <th><span>{{$m}}-</span>  {!! $question->question !!}
-                                                                @if($artical->status!=\App\Helper\ArticleLevels::Review)
                                                                     <a style="float:left" data-toggle="modal" data-target="#editModal{{$question->id}}"
                                                                        class="btn btn-info">تعديل</a>
                                                                     <a style="float:left" data-toggle="modal" data-target="#addIssue{{$question->id}}"
                                                                        class="btn btn-info">ملاحظه</a>
-                                                                @endif
+
                                                                 {{--model for edit question--}}
                                                                 <div class="modal fade" id="editModal{{$question->id}}" tabindex="-1" role="dialog"
                                                                      aria-labelledby="exampleModalLabel" aria-hidden="true">

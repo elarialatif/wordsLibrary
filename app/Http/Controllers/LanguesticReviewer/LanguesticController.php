@@ -120,7 +120,7 @@ class LanguesticController extends Controller
 
     public function send($list_id)
     {
-
+        $qualityUser = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Quality);
         $artical = Article::where('list_id', $list_id)->get()->pluck('id')->toArray();
         $sound = SoundsRepository::findWhereIn('article_id', $artical)->pluck('id')->toArray();
         $questions = QuestionsRepository::findIds('list_id', $list_id);
@@ -162,13 +162,20 @@ class LanguesticController extends Controller
 //            ContentListsRepository::updateStep($list_id, Steps::ResendToSound);
 //            return redirect()->back()->with('success', 'تم اعاده الارسال الي مدخل الصوت بنجاح ');
 //        }
-        else {
+        if ($qualityUser != null) {
+
+            //Notification/////
+            NotificationRepository::notify($list_id, Steps::Quality);
+            ///end Notification////
+            ContentListsRepository::updateStep($list_id, Steps::ResendToQuality);
+            return redirect()->back()->with('success', 'تم اعادة الارسال الي الجودة بنجاح ');
+        } else {
             $data['user_id'] = auth()->id();
             $data['list_id'] = $list_id;
             $data['active'] = 1;
             UserRateRepository::save($data);
             ContentListsRepository::updateStep($list_id, Steps::Quality);
-            return redirect()->back()->with('success', 'تم الارسال الي مدخل الصوت بنجاح ');
+            return redirect()->back()->with('success', 'تم الارسال الي الجودة بنجاح ');
         }
     }
 
