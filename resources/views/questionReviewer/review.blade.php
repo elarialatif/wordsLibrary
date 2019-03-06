@@ -311,7 +311,7 @@
 
                                         <div class="row">
                                             <div class="col-md-6" style="border-left: solid 2px black;font-size:18px;line-height: 1.5">
-                                                <span id="articaasdasdl2" >(stretchArtical)</span>
+                                                <span id="articaasdasdl2" >{!!$artical->stretchArticle !!}</span>
                                             </div>
                                             <div class="col-md-6" id="target" style="overflow: scroll; width: 200px; height: 500px;">
                                                 <?php $m=1;?>

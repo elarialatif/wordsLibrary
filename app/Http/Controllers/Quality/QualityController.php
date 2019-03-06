@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Quality;
 
+use App\Models\Sound;
+use App\Models\Vocab;
 use App\Repository\NotificationRepository;
 use App\Repository\SoundsRepository;
 use App\Repository\UserRateRepository;
@@ -89,11 +91,13 @@ class QualityController extends Controller
      */
     public function review($artical_id, $page = 'myList')
     {
-        $sound = SoundsRepository::findWhere('article_id', $artical_id);
         $questionType=new Article();
+        $sound =Sound::where(['article_id'=>$artical_id,'type'=>$questionType->getNormalArticleValue()])->first();
+        $soundStretch =Sound::where(['article_id'=>$artical_id,'type'=>$questionType->getStretchArticleValue()])->first();
         $questions=\App\Models\Question::where(['artical_id'=>$artical_id,'type'=>$questionType->getNormalArticleValue()])->get();
         $questionStretch=\App\Models\Question::where(['artical_id'=>$artical_id,'type'=>$questionType->getStretchArticleValue()])->get();
         $artical = Article::where('id', $artical_id)->first();
+        $vocab=Vocab::where(['list_id'=>$artical->list_id,'level'=>$artical->level])->get();
         $list = ContentList::find($artical->list_id);
         if ($list == null) {
             return redirect()->back()->with('error', 'المقال غير موجود');
@@ -112,7 +116,7 @@ class QualityController extends Controller
         if ($list->step != Steps::Quality && $list->step != Steps::ResendToQuality) {
             return redirect('quality/myList')->withErrors('غير مسموح لك الدخول الى هنا');
         }
-        return view('quality.review', compact('artical', 'questionStretch','questions', 'page', 'sound'));
+        return view('quality.review', compact('artical','vocab','soundStretch', 'questionStretch','questions', 'page', 'sound'));
     }
 
     /**

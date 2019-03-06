@@ -95,7 +95,7 @@
                                             <div id="Issues">
                                                 <div class="table-responsive">
                                                     @php
-                                                        $issue=\App\Models\Issues::where(['field_id'=>$artical->id,'table'=>'article','user_id'=>auth()->id()                                           ])->get();@endphp
+                                                        $issue=\App\Models\Issues::where(['field_id'=>$artical->id,'type'=>'Normal','table'=>'article','user_id'=>auth()->id()])->get();@endphp
                                                     @if($issue->count()>0)
                                                         <table
                                                                 class="display table nowrap table-striped table-hover"
@@ -642,7 +642,7 @@
                                                         <div id="Issues">
                                                             <div class="table-responsive">
                                                                 @php
-                                                                    $issue=\App\Models\Issues::where(['field_id'=>$sound->id,'table'=>'sound','user_id'=>auth()->id()                                           ])->get();@endphp
+                                                                    $issue=\App\Models\Issues::where(['field_id'=>$sound->id,'type'=>'Normal','table'=>'sound','user_id'=>auth()->id()])->get();@endphp
                                                                 @if($issue->count()>0)
                                                                     <table
                                                                             class="display table nowrap table-striped table-hover"
@@ -782,7 +782,7 @@
                                                                 <div class="form-group">
                                                                     <label for="article" class="col-form-label">المقال الاضافي:</label>
                                                                     <textarea class="mceEditor form-control"
-                                                                              required name="article">(stretchArtical)</textarea>
+                                                                              required name="article">{!!$artical->stretchArticle !!}</textarea>
                                                                     <input type="hidden" name="list_id"
                                                                            value="{{$artical->list_id}}">
                                                                     <input type="hidden" name="level"
@@ -804,11 +804,11 @@
                                             </div>
                                             {{--end modal--}}
                                             <div id="tinymcFont"><span
-                                                        id="articaasdasdl2">(stretchArtical)</span></div>
+                                                        id="articaasdasdl2">{!!$artical->stretchArticle !!}</span></div>
                                             <div id="Issues">
                                                 <div class="table-responsive">
                                                     @php
-                                                        $issue=\App\Models\Issues::where(['field_id'=>$artical->id,'table'=>'article','user_id'=>auth()->id()                                           ])->get();@endphp
+                                                        $issue=\App\Models\Issues::where(['field_id'=>$artical->id,'table'=>'article','type'=>'Stretch','user_id'=>auth()->id()])->get();@endphp
                                                     @if($issue->count()>0)
                                                         <table
                                                                 class="display table nowrap table-striped table-hover"
@@ -912,7 +912,6 @@
                                             <div class="card-header" id="Issues">
                                                 <v style="right: 0;background-color: #1b4b72;position: absolute;
                                         left: -25px;top: 3;width: 4px;height: 20px;">
-<<<<<<< HEAD
                                                 </v>
                                                 <h6 style="font-size: 20px">الاسئلة الاضافية
                                                 </h6>
@@ -939,143 +938,9 @@
                                                             <tr>
                                                                 <td>
                                                                     الاجابة الاولي
-=======
-                                    </v>
-                                    <h6 style="font-size: 20px">الاسئله
-                                    </h6>
-                                    @foreach($questions as $question)
-                                        <div class="table-responsive" style="display: inline-block">
-                                            <table
-                                                    class="display table nowrap table-striped table-hover"
-                                                    style="width:50%;float: right">
-                                                <thead>
-                                                <tr>
-                                                    <th width="50%">/</th>
-                                                    <th width="50%">القيمة</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <td>
-                                                        السؤال
-                                                    </td>
-                                                    <td>
-                                                        {!! $question->question !!}
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        الاجابة الاولي
-                                                    </td>
-                                                    <td>{{$question->ans1}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        الاجابة الثانيه
-                                                    </td>
-                                                    <td>{{$question->ans2}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        الاجابة الثالثه
-                                                    </td>
-                                                    <td>{{$question->ans3}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        الاجابة الرابعه
-                                                    </td>
-                                                    <td>{{$question->ans4}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        الاجابة الصحيحة:
-                                                        @php $true=$question->true_answer; @endphp
-                                                        {{$question->$true}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2" style="text-align: center">
-
-                                                            <a href="" data-toggle="modal"
-                                                               data-target="#editModal{{$question->id}}"
-                                                               class="btn btn-icon btn-outline-warning radbor"><i
-                                                                        class="fas fa-exclamation-triangle"></i></a>
-                                                            <a href="" data-toggle="modal"
-                                                               data-target="#editquestion{{$question->id}}"
-                                                               class="btn btn-icon btn-outline-info radbor"><i
-                                                                        class="fas fa-edit"></i></a>
-
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            @php
-                                                $issue=\App\Models\Issues::where(['field_id'=>$question->id,'table'=>'question','user_id'=>auth()->id()])->get();    @endphp
-                                            @if($issue->count()>0)
-                                                <table
-                                                        class="display table nowrap table-striped table-hover"
-                                                        style="width:50%;float: left">
-                                                    <thead>
-                                                    <tr>
-                                                        <th width="50%">/</th>
-                                                        <th width="50%">القيمة</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    @foreach($issue as $issue)
-                                                        <tr>
-                                                            <td>
-                                                                الكود
-                                                            </td>
-                                                            <td>
-                                                                {{$issue->id}}
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                العنوان
-                                                            </td>
-                                                            <td>
-                                                                {{$issue->title}}
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                الملاحظه
-                                                            </td>
-                                                            <td>
-                                                                {{$issue->name}}
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                الحاله
-                                                            </td>
-                                                            <td>
-                                                                @if($issue->step==\App\Helper\IssuesSteps::CloseByCreator)
-                                                                    {{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::CloseByCreator)}}
-                                                                @elseif($issue->step==\App\Helper\IssuesSteps::Open)
-                                                                    {{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::Open)}}
-                                                                @else
-                                                                    {{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::DoneByEditor)}}
-                                                                @endif
-                                                            </td>
-                                                        </tr>
-
-                                                            <tr style="text-align: center">
-                                                                <td colspan="2">
-                                                                    <a href="" data-toggle="modal"
-                                                                       data-target="#editIssue{{$issue->id}}"
-                                                                       class="btn btn-icon btn-outline-info radbor"><i
-                                                                                class="fas fa-edit"></i></a>
-                                                                    <a href="{{url('issues/delete/'.$issue->id)}}"
-                                                                       class="btn btn-icon btn-outline-danger radbor"><i
-                                                                                class="fa fa-trash"></i></a>
->>>>>>> 8fe230a3f3a0cab987830441d168096c265d8619
                                                                 </td>
                                                                 <td>{{$question->ans1}}</td>
                                                             </tr>
-<<<<<<< HEAD
                                                             <tr>
                                                                 <td>
                                                                     الاجابة الثانيه
@@ -1426,7 +1291,7 @@
                                                 @endforeach
 
                                             </div>
-                                            @if($sound)
+                                            @if($soundStretch)
                                                 <div class="card-header">
                                                     <v style="right: 0;background-color: #1aa62a;position: absolute;
                                     left: -25px;top: 3;width: 4px;height: 20px;">
@@ -1436,22 +1301,15 @@
                                                     @if($artical->status!=\App\Helper\ArticleLevels::Review)
 
                                                         <a href="" style="float:left" data-toggle="modal"
-                                                           data-target="#soundModal{{$sound->id}}"
+                                                           data-target="#soundModal{{$soundStretch->id}}"
                                                            class="btn btn-icon btn-outline-warning radbor"><i
                                                                     class="fas fa-exclamation-triangle"></i></a>
                                                         {{--<a href="" style="float:left" data-toggle="modal"--}}
                                                         {{--data-target="#editartical{{$artical->id}}"--}}
                                                         {{--class="btn btn-icon btn-outline-info radbor"><i class="fas fa-edit"></i></a>--}}
                                                         {{--model for add Issuses for Sound--}}
-                                                        <div class="modal fade" id="soundModal{{$sound->id}}" tabindex="-1"
-                                                             role="dialog"
-=======
-
-                                                        {{--model for edit Issuses--}}
-                                                        <div class="modal fade" id="editIssue{{$issue->id}}"
-                                                             tabindex="-1" role="dialog"
->>>>>>> 8fe230a3f3a0cab987830441d168096c265d8619
-                                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal fade" id="soundModal{{$soundStretch->id}}" tabindex="-1"
+                                                             role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
@@ -1470,7 +1328,7 @@
                                                                             <br>
                                                                             <label><h4>الملاحظه</h4></label>
                                                                             <textarea name="name" rows="6" cols="60"> </textarea>
-                                                                            <input type="hidden" name="field_id" value="{{$sound->id}}">
+                                                                            <input type="hidden" name="field_id" value="{{$soundStretch->id}}">
                                                                             <input type="hidden" name="table" value="sound">
                                                                             <br>
                                                                             <br>
@@ -1488,16 +1346,17 @@
                                                         </div>
                                                         {{--end modal--}}
                                                     @endif
-                                                    @if($sound)
-                                                        <div id="tinymcFont">(stretchArtical)</div>
+                                                    @if($soundStretch)
+                                                        <div id="tinymcFont">    {!! $artical->article !!} </div>
+
                                                         <audio controls>
-                                                            <source src="{{url('').'/'.$sound->path}}" type="audio/ogg">
+                                                            <source src="{{url('').'/'.$soundStretch->path}}" type="audio/ogg">
                                                             Your browser does not support the audio tag.
                                                         </audio>
                                                         <div id="Issues">
                                                             <div class="table-responsive">
                                                                 @php
-                                                                    $issue=\App\Models\Issues::where(['field_id'=>$sound->id,'table'=>'sound','user_id'=>auth()->id()                                           ])->get();@endphp
+                                                                    $issue=\App\Models\Issues::where(['field_id'=>$soundStretch->id,'type'=>'Stretch','table'=>'sound','user_id'=>auth()->id()])->get();@endphp
                                                                 @if($issue->count()>0)
                                                                     <table
                                                                             class="display table nowrap table-striped table-hover"
@@ -1526,6 +1385,7 @@
                                                                                         {{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::DoneByEditor)}}
                                                                                     @endif
                                                                                 </td>
+
                                                                                 <td>
                                                                                     <a data-toggle="modal"
                                                                                        data-target="#editIssue{{$issue->id}}"><i
@@ -1534,6 +1394,7 @@
                                                                                                 class="fa fa-trash"></i></a>
                                                                                 </td>
                                                                             </tr>
+
                                                                             {{--model for edit Issuses--}}
                                                                             <div class="modal fade" id="editIssue{{$issue->id}}"
                                                                                  tabindex="-1" role="dialog"
@@ -1599,12 +1460,241 @@
                                         </div>
                                         </div>
                                     {{--for vocab--}}
-                                    <div>
-                                        <h3>المرادفات</h3>
+                                    <div class="card-header" id="Issues">
+                                        <v style="right: 0;background-color: #1b4b72;position: absolute;
+                                        left: -25px;top: 3;width: 4px;height: 20px;">
+                                        </v>
+                                        <h6 style="font-size: 20px">المرادفات</h6>
+                                            <div class="table-responsive" style="display: inline-block">
+                                                <table
+                                                        class="display table nowrap table-striped table-hover"
+                                                        style="width:100%;float: left">
+                                                    <thead>
+                                                    <tr>
+                                                        <th width="50%">الكلمه</th>
+                                                        <th width="50%">المعني</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    @foreach($vocab as $word)
+                                                        <tr>
+                                                            <td>{{$word->word}}</td>
+                                                            <td>{{$word->mean}}</td>
+                                                            <td><a href="" data-toggle="modal"
+                                                               data-target="#editVocab{{$word->id}}"
+                                                               class="btn btn-icon btn-outline-info radbor"><i
+                                                                        class="fas fa-edit"></i></a></td>
+                                                            {{--model for edit vocab--}}
+                                                            <div class="modal fade" id="editVocab{{$word->id}}"
+                                                                 tabindex="-1" role="dialog"
+                                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="exampleModalLabel">تعديل المرادفات</h5>
+                                                                            <button type="button" class="close"
+                                                                                    data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <form method="post"
+                                                                                  action="{{url('editor/editVocabulary/'.$word->id)}}">
+                                                                                @csrf
+                                                                                <label> الكلمة </label>
+                                                                                <input type="text" name="word" value="{{$word->word}}">
+                                                                                <br>
+                                                                                <label>المعنى</label>
+                                                                                <input type="text" name="mean" value="{{$word->mean}}">
+                                                                                <br>
+                                                                                <button class="btn btn-success" id="addRow"> تعديل</button>
+                                                                            </form>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary"
+                                                                                    data-dismiss="modal">غلق
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            {{--end modal--}}
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="2" style="text-align: center">
+                                                                @if($artical->status!=\App\Helper\ArticleLevels::Review)
+                                                                    <a href="" data-toggle="modal"
+                                                                       data-target="#addVocabIssue{{$artical->id}}"
+                                                                       class="btn btn-icon btn-outline-warning radbor"><i
+                                                                                class="fas fa-exclamation-triangle"></i></a>
+                                                                    {{--model for add Issuses for Questions--}}
+                                                                    <div class="modal fade" id="#addVocabIssue{{$artical->id}}"
+                                                                         tabindex="-1" role="dialog"
+                                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                        <div class="modal-dialog" role="document">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title" id="exampleModalLabel">اضافه
+                                                                                        ملاحظه للمرادفات</h5>
+                                                                                    <button type="button" class="close"
+                                                                                            data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <form action="{{url('issues/create')}}"
+                                                                                          method="post">
+                                                                                        @csrf
+                                                                                        <label><h4>العنوان</h4></label>
+                                                                                        <input type="text" name="title"
+                                                                                               class="form-control">
+                                                                                        <br>
+                                                                                        <label><h4>الملاحظه</h4></label>
+                                                                                        <textarea name="name" rows="6"
+                                                                                                  cols="60"> </textarea>
+                                                                                        <input type="hidden" name="field_id"
+                                                                                               value="{{$question->id}}">
+                                                                                        <input type="hidden" name="table"
+                                                                                               value="question">
+                                                                                        <input type="hidden" name="type"
+                                                                                               value="Vocab">
+                                                                                        <br>
+                                                                                        <br>
+                                                                                        <button type="submit" class="btn btn-success">
+                                                                                            اضافه
+                                                                                        </button>
+                                                                                    </form>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-secondary"
+                                                                                            data-dismiss="modal">غلق
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    {{--end modal--}}
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                    </tbody>
+                                                </table>
+                                                @php
+                                                    $issue=\App\Models\Issues::where(['field_id'=>$question->id,'table'=>'question','user_id'=>auth()->id()])->get();    @endphp
+                                                @if($issue->count()>0)
+                                                    <table
+                                                            class="display table nowrap table-striped table-hover"
+                                                            style="width:100%;float: left">
+                                                        <thead>
+                                                        <tr>
+                                                            <th width="50%">/</th>
+                                                            <th width="50%">القيمة</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        @foreach($issue as $issue)
+                                                            <tr>
+                                                                <td>الكود</td>
+                                                                <td>{{$issue->id}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>العنوان</td>
+                                                                <td>{{$issue->title}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>الملاحظه</td>
+                                                                <td>{{$issue->name}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>الحاله</td>
+                                                                <td>
+                                                                    @if($issue->step==\App\Helper\IssuesSteps::CloseByCreator)
+                                                                        {{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::CloseByCreator)}}
+                                                                    @elseif($issue->step==\App\Helper\IssuesSteps::Open)
+                                                                        {{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::Open)}}
+                                                                    @else
+                                                                        {{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::DoneByEditor)}}
+                                                                    @endif
+                                                                </td>
+                                                            </tr>
+                                                            @if($artical->status!=\App\Helper\ArticleLevels::Review)
+                                                                <tr style="text-align: center">
+                                                                    <td colspan="2">
+                                                                        <a href="" data-toggle="modal"
+                                                                           data-target="#editIssue{{$issue->id}}"
+                                                                           class="btn btn-icon btn-outline-info radbor"><i
+                                                                                    class="fas fa-edit"></i></a>
+                                                                        <a href="{{url('issues/delete/'.$issue->id)}}"
+                                                                           class="btn btn-icon btn-outline-danger radbor"><i
+                                                                                    class="fa fa-trash"></i></a>
+                                                                    </td>
+                                                                </tr>
+                                                            @endif
+                                                            {{--model for edit Issuses--}}
+                                                            <div class="modal fade" id="editIssue{{$issue->id}}"
+                                                                 tabindex="-1" role="dialog"
+                                                                 aria-labelledby="exampleModalLabel"
+                                                                 aria-hidden="true">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title"
+                                                                                id="exampleModalLabel">
+                                                                                تعديل ملاحظه</h5>
+                                                                            <button type="button" class="close"
+                                                                                    data-dismiss="modal"
+                                                                                    aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <form action="{{url('issues/edit/'.$issue->id)}}"
+                                                                                  method="post">
+                                                                                @csrf
+                                                                                <label><h4>العنوان</h4></label>
+                                                                                <input type="text" name="title"
+                                                                                       class="form-control"
+                                                                                       value="{{$issue->title}}">
+                                                                                <br>
+                                                                                <label><h4>الملاحظه</h4></label>
+                                                                                <textarea name="name" rows="6"
+                                                                                          cols="60"> {!!$issue->name!!}</textarea>
+                                                                                {{--<input type="hidden" name="field_id" value="{{$question->id}}">--}}
+                                                                                {{--<input type="hidden" name="table" value="question">--}}
+                                                                                <select class="form-control"
+                                                                                        name="step"
+                                                                                        required>
+                                                                                    <option value="">الحاله
+                                                                                    </option>
+                                                                                    <option value="{{\App\Helper\IssuesSteps::Open}}">{{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::Open)}}</option>
+                                                                                    <option value="{{\App\Helper\IssuesSteps::CloseByCreator}}">{{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::CloseByCreator)}}</option>
+                                                                                </select>
+                                                                                <br>
+                                                                                <br>
+                                                                                <button type="submit"
+                                                                                        class="btn btn-success">
+                                                                                    تعديل
+                                                                                </button>
+                                                                            </form>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                    class="btn btn-secondary"
+                                                                                    data-dismiss="modal">غلق
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            {{--end modal--}}
+                                                        @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                @endif
+                                            </div>
                                     </div>
                                 </div>
-                                </div>
-                        </div>
                         <!-- [ HTML5 Export button ] end -->
                     </div>
                 </div>
