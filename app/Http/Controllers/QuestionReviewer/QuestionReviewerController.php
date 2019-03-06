@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Helper\UsersTypes;
 use App\Models\AssignTask;
 use App\Models\Issues;
+use App\Models\Question;
 use App\Repository\ArticalRepository;
 use App\Repository\IssuesRepository;
 use App\Repository\NotificationRepository;
@@ -79,7 +80,14 @@ class QuestionReviewerController extends Controller
      */
     public function review($artical_id, $page = 'myList')
     {
-        $questions = QuestionsRepository::findWhere('artical_id', $artical_id);
+        $questionType=new Article();
+//        $questions = QuestionsRepository::findWhere('artical_id', $artical_id,'type','0');
+        $questions=Question::where(['artical_id'=>$artical_id,'type'=>$questionType->getNormalArticleValue()])->get();
+        $questionStretch=Question::where(['artical_id'=>$artical_id,'type'=>$questionType->getStretchArticleValue()])->get();
+
+//        $questions->pluck('id')->toArray();
+//        dd($questions);
+//        $questionStretch = QuestionsRepository::findWhere('artical_id', $artical_id,'type','Stretch');
         $artical = Article::where('id', $artical_id)->first();
         $list = ContentList::find($artical->list_id);
         if ($list == null) {
@@ -99,7 +107,7 @@ class QuestionReviewerController extends Controller
         if ($list->step != Steps::Review_Question && $list->step != Steps::ResendToQuestionReviewer) {
             return redirect('questionReviewer/myList')->withErrors('غير مسموح لك الدخول الى هنا');
         }
-        return view('questionReviewer.review', compact('artical', 'questions', 'page'));
+        return view('questionReviewer.review', compact('artical', 'questions','questionStretch', 'page'));
     }
 
     /**

@@ -19,14 +19,15 @@
             font-size: 24px;
         }
         .page-wrapper .active-question{
-            background-color: #1aa62a;
+            background-color: #23b7e5;
         }
         .page-wrapper .finish-question{
-            background-color: #9c6f04;
+            background-color: #1de9b6;
         }
+
     </style>
     @php
-    $questionType=new \App\Models\Article();
+        $questionType=new \App\Models\Article();
     @endphp
     <div class="container" style="height: 800px;overflow-x: hidden;
     overflow-y: hidden;">
@@ -34,18 +35,18 @@
 
             <div class="main-body">
                 <div class="page-wrapper">
-                    <!-- [ Main Content ] start -->
                     <div style="text-align: center">
-                        <p class="question-type active-question">الاسئلة الاساسية</p>
-                        <p class="question-type">الاسئلة الاضافية</p>
+                        <p class="question-type finish-question">الاسئلة الاساسية</p>
+                        <p class="question-type active-question">الاسئلة الاضافية</p>
                     </div>
+                    <!-- [ Main Content ] start -->
                     <div class="row">
                         <!-- [ HTML5 Export button ] start -->
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-header">
                                     <h5>
-                                        صفحة اضافه الاسئله الاساسيه
+                                        صفحة اضافه الاسئله الاضافيه
                                     </h5>
                                 </div>
                                 <?php $m = 1;?>
@@ -56,7 +57,8 @@
                                                  style="border-left: solid 2px black;font-size:18px;line-height: 1.5;overflow: scroll; width: 200px; height:-webkit-fill-available;"
                                                  id="pinned">
                                                 {{-- <div id="tinymcFont" style="max-width: 200px">  --}} {{--</div>--}}
-                                                <span id="articaasdasdl">{!! $artical->article !!}</span>
+                                                {{--<span id="articaasdasdl">{!! $artical->article !!}</span>--}}
+                                                <span id="articaasdasdl">المقال الموسع</span>
                                             </div>
                                             {{--  --}}
                                             {{--  --}}
@@ -79,7 +81,7 @@
                                                         <input type="hidden" name="list_id"
                                                                value="{{$artical->list_id}}">
                                                         <input type="hidden" name="artical_id" value="{{$artical->id}}">
-                                                        <input type="hidden" name="type" value="{{$questionType->getNormalArticleValue()}}">
+                                                        <input type="hidden" name="type" value="{{$questionType->getStretchArticleValue()}}">
 
                                                     </div>
                                                     @if(old('question')>0)
@@ -235,6 +237,7 @@
                                                     {{--</div>--}}
                                                     <div id="empty">
                                                     </div>
+                                                    <input type="hidden" name="submitType" value="lastQuestion">
                                                     <button style="margin-bottom: 20px" class="btn btn-primary" type="submit"><span
                                                                 class="fa fa-plus"></span>إضافة
                                                     </button>

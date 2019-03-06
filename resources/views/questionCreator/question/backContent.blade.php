@@ -51,25 +51,25 @@
                                                                 $articalHard=App\Models\Article::where(['list_id'=>$list->id,'level'=>\App\Helper\ArticleLevels::Hard])->first();
                                                             @endphp
                                                             @php
-                                                                $easyQuestions=App\Models\Question::where('artical_id',$articalEasy->id)->first();
-                                                                $normalQuestions=App\Models\Question::where('artical_id',$articalNormal->id)->first();
-                                                                $hardQuestions=App\Models\Question::where('artical_id',$articalHard->id)->first();
+                                                                $easyQuestions=App\Models\Question::where('artical_id',$articalEasy->id)->get()->pluck('id')->toArray();
+                                                                $normalQuestions=App\Models\Question::where('artical_id',$articalNormal->id)->get()->pluck('id')->toArray();
+                                                                $hardQuestions=App\Models\Question::where('artical_id',$articalHard->id)->get()->pluck('id')->toArray();
                                                             @endphp
-                                                            @if($easyQuestions && $normalQuestions && $hardQuestions)
+                                                            @if(count($easyQuestions)>0 && count($normalQuestions)>0 && count($hardQuestions)>0)
                                                                 @php
-                                                                    $easyReviewer=App\Models\Issues::where(['field_id'=>$easyQuestions->id,'table'=>'question',['step','!=',\App\Helper\IssuesSteps::CloseByCreator]])->get();
-                                                                    $normalReviewer=App\Models\Issues::where(['field_id'=>$normalQuestions->id,'table'=>'question',['step','!=',\App\Helper\IssuesSteps::CloseByCreator]])->get();
-                                                                    $hardReviewer=App\Models\Issues::where(['field_id'=>$hardQuestions->id,'table'=>'question',['step','!=',\App\Helper\IssuesSteps::CloseByCreator]])->get();
+                                                                    $easyReviewer=App\Models\Issues::whereIn('field_id',$easyQuestions)->where(['table'=>'question',['step','!=',\App\Helper\IssuesSteps::CloseByCreator]])->get();
+                                                                    $normalReviewer=App\Models\Issues::whereIn('field_id',$normalQuestions)->where(['table'=>'question',['step','!=',\App\Helper\IssuesSteps::CloseByCreator]])->get();
+                                                                    $hardReviewer=App\Models\Issues::whereIn('field_id',$hardQuestions)->where(['table'=>'question',['step','!=',\App\Helper\IssuesSteps::CloseByCreator]])->get();
                                                                 @endphp
                                                                 @php
-                                                                    $easyIssues=App\Models\Issues::where(['field_id'=>$easyQuestions->id,'table'=>'question',['step','==',\App\Helper\IssuesSteps::Open]])->get();
-                                                                    $normalIssues=App\Models\Issues::where(['field_id'=>$normalQuestions->id,'table'=>'question',['step','==',\App\Helper\IssuesSteps::Open]])->get();
-                                                                    $hardIssues=App\Models\Issues::where(['field_id'=>$hardQuestions->id,'table'=>'question',['step','==',\App\Helper\IssuesSteps::Open]])->get();
+                                                                    $easyIssues=App\Models\Issues::whereIn('field_id',$easyQuestions)->where(['table'=>'question',['step','==',\App\Helper\IssuesSteps::Open]])->get();
+                                                                    $normalIssues=App\Models\Issues::whereIn('field_id',$normalQuestions)->where(['table'=>'question',['step','==',\App\Helper\IssuesSteps::Open]])->get();
+                                                                    $hardIssues=App\Models\Issues::whereIn('field_id',$hardQuestions)->where(['table'=>'question',['step','==',\App\Helper\IssuesSteps::Open]])->get();
                                                                 @endphp
                                                                 @php
-                                                                    $easyStatus=App\Models\Article::where(['id'=>$easyQuestions->artical_id,'status'=>\App\Helper\ArticleLevels::Review])->first();
-                                                                    $normalStatus=App\Models\Article::where(['id'=>$normalQuestions->artical_id,'status'=>\App\Helper\ArticleLevels::Review])->first();
-                                                                    $hardStatus=App\Models\Article::where(['id'=>$hardQuestions->artical_id,'status'=>\App\Helper\ArticleLevels::Review])->first();
+                                                                    $easyStatus=App\Models\Article::where(['id'=>$articalEasy->id,'status'=>\App\Helper\ArticleLevels::Review])->first();
+                                                                    $normalStatus=App\Models\Article::where(['id'=>$articalNormal->id,'status'=>\App\Helper\ArticleLevels::Review])->first();
+                                                                    $hardStatus=App\Models\Article::where(['id'=>$articalHard->id,'status'=>\App\Helper\ArticleLevels::Review])->first();
                                                                 @endphp
                                                             @endif
                                                             <td>
@@ -87,7 +87,7 @@
                                                                 @endif
                                                                 {{--//////for QuestionCreator//////////--}}
                                                                 @if(auth()->user()->role==\App\Helper\UsersTypes::QuestionCreator)
-                                                                    @if(empty($easyQuestions))
+                                                                    @if(count($easyQuestions)==0)
                                                                         <a href="{{url('question/create/'.$articalEasy->id)}}" class="btn btn-info">السهل<i
                                                                                     class="fa fa-plus"></i></a>
                                                                     @else
@@ -95,7 +95,7 @@
                                                                            class="btn {{($easyIssues->count()==0)?'btn-success':'btn-danger'}}">السهل<i
                                                                                     class="{{($easyIssues->count()==0)?'fa fa-check-circle':''}}"></i></a>
                                                                     @endif
-                                                                    @if(empty($normalQuestions))
+                                                                    @if(count($normalQuestions)==0)
                                                                         <a href="{{url('question/create/'.$articalNormal->id)}}" class="btn btn-info">المتوسط<i
                                                                                     class="fa fa-plus"></i></a>
                                                                     @else
@@ -103,7 +103,7 @@
                                                                            class="btn {{($normalIssues->count()==0)?'btn-success':'btn-danger'}}">المتوسط<i
                                                                                     class="{{($normalIssues->count()==0)?'fa fa-check-circle':''}}"></i></a>
                                                                     @endif
-                                                                    @if(empty($hardQuestions))
+                                                                    @if(count($hardQuestions)==0)
                                                                         <a href="{{url('question/create/'.$articalHard->id)}}" class="btn btn-info">الصعب<i
                                                                                     class="fa fa-plus"></i></a>
                                                                     @else
@@ -116,7 +116,7 @@
                                                             <td>
                                                                 {{--QuestionCreator--}}
                                                                 @if(auth()->user()->role==\App\Helper\UsersTypes::QuestionCreator)
-                                                                    @if($easyQuestions && $normalQuestions && $hardQuestions)
+                                                                    @if(count($easyQuestions)>0 && count($normalQuestions)>0 && count($hardQuestions)>0)
                                                                         <a href="{{url('question/sendToReviwer/'.$list->id)}}"
                                                                            class="btn btn-success">{{(!empty($task))?'اعاده ارسال الي المراجعه':'ارسال الي المراجعه'}}</a>
                                                                     @else

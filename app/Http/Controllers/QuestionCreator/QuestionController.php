@@ -117,7 +117,13 @@ class QuestionController extends Controller
         request()->validate($rules_array, $messages_array);
         $question = $request->except('_token');
         $question = QuestionsRepository::save($question);
-        return redirect(url('question/myList'))->with('success', 'تم الاضافه بنجاح ');
+        if($request->submitType && $request->submitType=='lastQuestion' ){
+            return redirect(url('question/myList'))->with('success', 'تم الاضافه بنجاح ');
+        }
+        else{
+            $artical = Article::where('id', $question[0]->artical_id)->first();
+            return view('questionCreator.question.createBefore', compact('artical'));
+        }
     }
 
     /**
@@ -128,13 +134,16 @@ class QuestionController extends Controller
      */
     public function show($artical_id, $page = 'myList')
     {
-        $questions = QuestionsRepository::findWhere('artical_id', $artical_id);
+        $questionType=new Article();
+
+        $questions=\App\Models\Question::where(['artical_id'=>$artical_id,'type'=>$questionType->getNormalArticleValue()])->get();
+        $questionStretch=\App\Models\Question::where(['artical_id'=>$artical_id,'type'=>$questionType->getStretchArticleValue()])->get();
         $artical = Article::where('id', $artical_id)->first();
         $list = ContentList::find($artical->list_id);
         if ($list == null) {
             return redirect()->back()->with('error', 'المقال غير موجود');
         }
-        return view('questionCreator.question.show', compact('questions', 'page', 'artical'));
+        return view('questionCreator.question.show', compact('questions','questionStretch', 'page', 'artical'));
     }
 
     /**

@@ -21,6 +21,7 @@ class CreateQuestionsTable extends Migration
             $table->string('ans3');
             $table->string('ans4');
             $table->string('true_answer');
+            $table->string('type');
             $table->integer('list_id')->unsigned();
             $table->foreign('list_id')->references('id')->on('content_lists')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('artical_id')->unsigned();

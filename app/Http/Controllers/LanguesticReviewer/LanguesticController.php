@@ -76,7 +76,9 @@ class LanguesticController extends Controller
      */
     public function review($artical_id, $page = 'myList')
     {
-        $questions = QuestionsRepository::findWhere('artical_id', $artical_id);
+        $questionType=new Article();
+        $questions=\App\Models\Question::where(['artical_id'=>$artical_id,'type'=>$questionType->getNormalArticleValue()])->get();
+        $questionStretch=\App\Models\Question::where(['artical_id'=>$artical_id,'type'=>$questionType->getStretchArticleValue()])->get();
         $artical = Article::where('id', $artical_id)->first();
         $list = ContentList::find($artical->list_id);
         if ($list == null) {
@@ -96,7 +98,7 @@ class LanguesticController extends Controller
         if ($list->step != Steps::Languestic && $list->step != Steps::ResendToLanguestic) {
             return redirect('languestic/mylists')->withErrors('غير مسموح لك الدخول الى هنا');
         }
-        return view('languestic.review', compact('artical', 'questions', 'page'));
+        return view('languestic.review', compact('artical', 'questionStretch','questions', 'page'));
     }
 
     /**

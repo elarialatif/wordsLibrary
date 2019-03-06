@@ -47,9 +47,9 @@ class QuestionsRepository
 
     static function save($data)
     {
+        $type = $data['type'];
         $list_id = $data['list_id'];
         $artical_id = $data['artical_id'];
-        $array = [];
         $question = [];
         foreach ($data['question'] as $key => $value) {
             $new = new Question();
@@ -60,12 +60,13 @@ class QuestionsRepository
             $new->ans4 = $data['ans4'][$key];
             $new->true_answer = $data['true_answer'][$key];
             $new->list_id = $list_id;
+            $new->type = $type;
             $new->artical_id = $artical_id;
             $new->user_id = auth()->id();
             $new->created_at = Carbon::now();
             $new->updated_at = Carbon::now();
             $new->save();
-            $question = array_push($array, $new);
+            array_push($question, $new);
         }
 
         return $question;

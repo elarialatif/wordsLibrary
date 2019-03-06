@@ -90,7 +90,9 @@ class QualityController extends Controller
     public function review($artical_id, $page = 'myList')
     {
         $sound = SoundsRepository::findWhere('article_id', $artical_id);
-        $questions = QuestionsRepository::findWhere('artical_id', $artical_id);
+        $questionType=new Article();
+        $questions=\App\Models\Question::where(['artical_id'=>$artical_id,'type'=>$questionType->getNormalArticleValue()])->get();
+        $questionStretch=\App\Models\Question::where(['artical_id'=>$artical_id,'type'=>$questionType->getStretchArticleValue()])->get();
         $artical = Article::where('id', $artical_id)->first();
         $list = ContentList::find($artical->list_id);
         if ($list == null) {
@@ -110,7 +112,7 @@ class QualityController extends Controller
         if ($list->step != Steps::Quality && $list->step != Steps::ResendToQuality) {
             return redirect('quality/myList')->withErrors('غير مسموح لك الدخول الى هنا');
         }
-        return view('quality.review', compact('artical', 'questions', 'page', 'sound'));
+        return view('quality.review', compact('artical', 'questionStretch','questions', 'page', 'sound'));
     }
 
     /**

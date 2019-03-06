@@ -36,6 +36,7 @@ class UserRateRepository
     static function update($user_id, $list_id, $data)
     {
         $rate = UserRate::where(['user_id' => $user_id, 'list_id' => $list_id])->first();
+//        dd($rate);
         if (!$rate) {
             $data2['user_id'] = $user_id;
             $data2['list_id'] = $list_id;

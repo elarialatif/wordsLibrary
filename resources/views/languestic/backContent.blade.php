@@ -45,21 +45,21 @@
                                                         $articalHard=App\Models\Article::where(['list_id'=>$list->id,'level'=>\App\Helper\ArticleLevels::Hard])->first();
                                                     @endphp
                                                     @php
-                                                        $easyQuestions=App\Models\Question::where('artical_id',$articalEasy->id)->first();
-                                                        $normalQuestions=App\Models\Question::where('artical_id',$articalNormal->id)->first();
-                                                        $hardQuestions=App\Models\Question::where('artical_id',$articalHard->id)->first();
+                                                        $easyQuestions=App\Models\Question::where('artical_id',$articalEasy->id)->get()->pluck('id')->toArray();
+                                                        $normalQuestions=App\Models\Question::where('artical_id',$articalNormal->id)->get()->pluck('id')->toArray();
+                                                        $hardQuestions=App\Models\Question::where('artical_id',$articalHard->id)->get()->pluck('id')->toArray();
                                                     @endphp
                                                     {{--@if($easyQuestions && $normalQuestions && $hardQuestions)--}}
                                                     @php
                                                         $var=$articalEasy->id;
-                                                            $easyReviewer=App\Models\Issues::where('step','!=',\App\Helper\IssuesSteps::CloseByCreator)->where(['field_id'=>$easyQuestions->id,'table'=>'question'])->orwhere(function ($query) use ($var){
+                                                            $easyReviewer=App\Models\Issues::where('step','!=',\App\Helper\IssuesSteps::CloseByCreator)->whereIn('field_id',$easyQuestions)->where(['table'=>'question'])->orwhere(function ($query) use ($var){
                                $query->Where('field_id',$var);$query->Where('table','article');$query->Where('step','!=',\App\Helper\IssuesSteps::CloseByCreator);})->get();
                                //dd($easyReviewer);
                                $var2=$articalNormal->id;
-                                                            $normalReviewer=App\Models\Issues::where('step','!=',\App\Helper\IssuesSteps::CloseByCreator)->where(['field_id'=>$normalQuestions->id,'table'=>'question'])->orwhere(function ($query) use ($var2){
+                                                            $normalReviewer=App\Models\Issues::where('step','!=',\App\Helper\IssuesSteps::CloseByCreator)->whereIn('field_id',$normalQuestions)->where(['table'=>'question'])->orwhere(function ($query) use ($var2){
                                $query->Where('field_id',$var2);$query->Where('table','article');$query->Where('step','!=',\App\Helper\IssuesSteps::CloseByCreator);})->get();
                                $var3=$articalHard->id;
-                                                            $hardReviewer=App\Models\Issues::where('step','!=',\App\Helper\IssuesSteps::CloseByCreator)->where(['field_id'=>$hardQuestions->id,'table'=>'question'])->orwhere(function ($query) use ($var3){
+                                                            $hardReviewer=App\Models\Issues::where('step','!=',\App\Helper\IssuesSteps::CloseByCreator)->whereIn('field_id',$hardQuestions)->where(['table'=>'question'])->orwhere(function ($query) use ($var3){
                                $query->Where('field_id',$var3);$query->Where('table','article');$query->Where('step','!=',\App\Helper\IssuesSteps::CloseByCreator);})->get();
                                                     @endphp
                                                     {{--@php--}}
@@ -68,9 +68,9 @@
                                                     {{--$hardIssues=App\Models\Issues::where(['field_id'=>$hardQuestions->id,'table'=>'question',['step','==',\App\Helper\IssuesSteps::Open]])->get();--}}
                                                     {{--@endphp--}}
                                                     @php
-                                                        $easyStatus=App\Models\Article::where(['id'=>$easyQuestions->artical_id,'status'=>\App\Helper\ArticleLevels::Review])->first();
-                                                        $normalStatus=App\Models\Article::where(['id'=>$normalQuestions->artical_id,'status'=>\App\Helper\ArticleLevels::Review])->first();
-                                                        $hardStatus=App\Models\Article::where(['id'=>$hardQuestions->artical_id,'status'=>\App\Helper\ArticleLevels::Review])->first();
+                                                        $easyStatus=App\Models\Article::where(['id'=>$articalEasy->id,'status'=>\App\Helper\ArticleLevels::Review])->first();
+                                                        $normalStatus=App\Models\Article::where(['id'=>$articalNormal->id,'status'=>\App\Helper\ArticleLevels::Review])->first();
+                                                        $hardStatus=App\Models\Article::where(['id'=>$articalHard->id,'status'=>\App\Helper\ArticleLevels::Review])->first();
                                                     @endphp
                                                     {{--@endif--}}
                                                     <td>
