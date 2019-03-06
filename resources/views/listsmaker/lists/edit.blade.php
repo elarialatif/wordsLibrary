@@ -29,19 +29,19 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4">
-                الصوره:<br>
-                <div class="form-group">
-                    <input type="file" class="form-control" value="{{$lists->list}}" name="image">
-                    @if($lists->image != null)
-                        <div>
-                            <img  style="height: 250px;width: 250px;" src="{{asset('public/listsImage/'.$lists->image)}}">
-                        </div>
-                        @endif
-                </div>
-            </div>
-        </div>
+        {{--<div class="row">--}}
+            {{--<div class="col-md-4">--}}
+                {{--الصوره:<br>--}}
+                {{--<div class="form-group">--}}
+                    {{--<input type="file" class="form-control" value="{{$lists->list}}" name="image">--}}
+                    {{--@if($lists->image != null)--}}
+                        {{--<div>--}}
+                            {{--<img  style="height: 250px;width: 250px;" src="{{asset('public/listsImage/'.$lists->image)}}">--}}
+                        {{--</div>--}}
+                        {{--@endif--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
         <button class="btn btn-primary" type="submit"><span class="fa fa-plus"></span>تعديل</button>
         </form>
     </div>

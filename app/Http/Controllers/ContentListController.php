@@ -59,16 +59,16 @@ class ContentListController extends Controller
         $lists = $request->except('_token', 'level_id','image');
 
         $checkName = ContentListsRepository::find($id);
-        if($request->image && $request->image!=null){
-            unlink(public_path('listsImage/'.$checkName->image));
-            $filename = ($request->image)->getClientOriginalName();
-            $lists['image']=$filename;
-            ($request->image)->move(public_path() . '/' . 'listsImage', $filename);
-        }
-        if ($checkName->list == $lists['list'] && $checkName->grade_id == $lists['grade_id'] &&$checkName->image==$lists['image']) {
+//        if($request->image && $request->image!=null){
+//            unlink(public_path('listsImage/'.$checkName->image));
+//            $filename = ($request->image)->getClientOriginalName();
+//            $lists['image']=$filename;
+//            ($request->image)->move(public_path() . '/' . 'listsImage', $filename);
+//        }
+        if ($checkName->list == $lists['list'] && $checkName->grade_id == $lists['grade_id'] /*&&$checkName->image==$lists['image']*/) {
             return redirect(url('allLists'))->with('info', 'لا يوجد تغغير ');
         }
-        $list = ContentList::where(['list' => $lists['list'], 'grade_id' => $lists['grade_id'],'image'=>$lists['image']])->first();
+        $list = ContentList::where(['list' => $lists['list'], 'grade_id' => $lists['grade_id']/*,'image'=>$lists['image']*/])->first();
         if ($list) {
             return redirect()->to('allLists')->withErrors('الاسم موجود بالفعل ');
         }
