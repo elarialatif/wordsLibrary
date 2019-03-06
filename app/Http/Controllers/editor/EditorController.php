@@ -47,8 +47,10 @@ class EditorController extends Controller
         return view('editor.mylists', compact('lists', 'categories_all'));
     }
 
-    public function createArticle($file_id, $level, $page = 'refused/lists')
+    public function createArticle($file_id, $level, $page = 'refused/lists', $flag = 0)
     {
+        $articleObject = new Article();
+        $type = $articleObject->getNormalArticleValue();
         $data = $this->articalRepo->analyze($file_id);
         if ($data == false) {
             return redirect()->back()->withErrors(['الملف فارغ او مكتوب بالانجليزية']);
@@ -63,16 +65,23 @@ class EditorController extends Controller
         if ($list->step != Steps::INSERTING_ARTICLE && $list->step != Steps::reSendToEditorFormReviewer) {
             return redirect('editor/mylists')->withErrors('غير مسموح لك الدخول الى هنا');
         }
-        return view('editor.article.create', compact('orginalFile', "list", "file_id", "categories_all", "level", 'page'));
+        $articleCheck = Article::where(['list_id' => $list->id, 'level' => $level])->first();
+        if ($flag != 0 && $articleCheck != null) {
+            $type = $articleObject->getStretchArticleValue();
+        }
+        if ($flag == 1 && $articleCheck == null) {
+            return redirect()->back()->withErrors(['ادخل المقال المختصر اولا ']);
+        }
+        return view('editor.article.create', compact('orginalFile', "list", "file_id", "categories_all", "level", 'page', 'type'));
     }
 
     public function saveArticle(Request $request)
     {
 
         $request->validate([
-            'article' => 'required',
+            'article' . \request('type') => 'required',
         ],
-            ['articlearticle.required' => 'المقال مطلوب ',]);
+            ['article.required' => 'المقال مطلوب ',]);
 
         DB::transaction(function () {
             $articleCheck = Article::where(['list_id' => \request('list_id'), 'level' => \request('level')])->first();
@@ -85,8 +94,14 @@ class EditorController extends Controller
 
             $article->list_id = \request('list_id');
             $article->level = \request('level');
+
             $article->user_id = auth()->id();
-            $article->article = \request('article');
+            if (\request('articleStretch')) {
+                $article->stretchArticle = \request('articleStretch');
+            } else {
+                $article->article = \request('articleNormal');
+            }
+
             //  $article->step = Steps::INSERTING_ARTICLE;
             $article->save();
 

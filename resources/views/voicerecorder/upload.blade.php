@@ -1,10 +1,13 @@
 @extends('layouts.app')
 @section('content')
     @php
-        $sound = \App\Models\Sound::where('article_id', $article->id)->first();
+        $articleObject=new \App\Models\Article();
+           $soundNormal = \App\Models\Sound::where(['article_id'=> $article->id,'type'=>$articleObject->getNormalArticleValue()])->first();
+           $soundStretch = \App\Models\Sound::where(['article_id'=> $article->id,'type'=>$articleObject->getStretchArticleValue()])->first();
+
     @endphp
     <style>
-        #font p{
+        #font p {
             font-family: "Open Sans", sans-serif !important;
             font-size: 18px;
 
@@ -22,7 +25,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h5>
-                                        رفع الملف الصوتي
+                                        رفع الملف الصوتي للمقال
                                     </h5>
                                     <a style="float: left" class="btn btn-success"
                                        href="{{url('VoiceRecorder/'.$page)}}"><span class="fa fa-arrow-circle-left"> رجوع </span></a>
@@ -51,12 +54,15 @@
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
                                                         @csrf
-                                                        <label for="uploadfile" class="btn btn-success">
+                                                        <label for="uploadfile2" class="btn btn-success">
                                                             <div id="empty">
                                                                 اختر الملف
                                                             </div>
                                                         </label>
-                                                        <input id="uploadfile" type="file" name="sound" accept=".mp3" style="display: none">
+                                                        <input type="hidden" name="type"
+                                                               value="{{$articleObject->getNormalArticleValue()}}">
+                                                        <input id="uploadfile2" type="file" name="sound" accept=".mp3"
+                                                               style="display: none">
                                                     </div>
 
                                                     <!-- Modal footer -->
@@ -82,9 +88,9 @@
                                                 onclick="changefont('plus')"><i class="fa fa-plus-square"></i></button>
                                         <button class="btn btn-primary" style="float: left;"
                                                 onclick="changefont('minus')"><i class="fa fa-minus"></i></button>
-                                        @if($sound)
+                                        @if($soundNormal)
                                             <audio controls style="float: right">
-                                                <source src="{{url('/').'/'.$sound->path}}" type="audio/ogg">
+                                                <source src="{{url('/').'/'.$soundNormal->path}}" type="audio/ogg">
                                                 Your browser does not support the audio element.
                                             </audio>
                                         @endif
@@ -96,12 +102,94 @@
                                     <br>
                                     <h3>المقال</h3>
                                     <div id="font">
-                                            {!! $article->article !!}
+                                        {!! $article->article !!}
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <div class="card-header">
+                                        <h5>
+                                            رفع الملف الصوتي للمقال الموسع
+                                        </h5>
+                                        <a style="float: left" class="btn btn-success"
+                                           href="{{url('VoiceRecorder/'.$page)}}"><span class="fa fa-arrow-circle-left"> رجوع </span></a>
+                                        <a data-toggle="modal"
+                                           data-target="#uploadModalStretch"
+                                           class="btn btn-primary"
+                                           style="color: white;float: left;font-weight: bold">
+                                            رفع الملف</a>
+                                        <div class="modal fade" id="uploadModalStretch"
+                                             tabindex="-1" role="dialog"
+                                             aria-labelledby="exampleModalLabel"
+                                             aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">رفع الملف الصوتي</h4>
+                                                        <button type="button" class="close"
+                                                                data-dismiss="modal">&times;
+                                                        </button>
+                                                    </div>
+                                                    <form method="post"
+                                                          action="{{url('VoiceRecorder/sound/save/'.$article->id)}}"
+                                                          enctype="multipart/form-data">
+
+                                                        <!-- Modal body -->
+                                                        <div class="modal-body">
+                                                            @csrf
+                                                            <label for="uploadfile" class="btn btn-success">
+                                                                <div id="emptyStretch">
+                                                                    اختر الملف
+                                                                </div>
+                                                            </label>
+                                                            <input type="hidden" name="type"
+                                                                   value="{{$articleObject->getStretchArticleValue()}}">
+                                                            <input id="uploadfile" type="file" name="sound"
+                                                                   accept=".mp3" style="display: none">
+                                                        </div>
+
+                                                        <!-- Modal footer -->
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-danger"
+                                                                    data-dismiss="modal">خروج
+                                                            </button>
+                                                            <button type="submit" class="btn btn-info">
+                                                                <i style="margin-right: 1px;"
+                                                                   class="fa  fas fa-upload"></i>
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
 
-                                    @if($sound)
+
+                                    <div class="card-header">
+                                        <v style="right: 0;background-color: #1aa62a;position: absolute;
+                                    left: -25px;top: 3;width: 4px;height: 20px;">
+                                        </v>
+                                        @if($soundStretch)
+                                            <audio controls style="float: right">
+                                                <source src="{{url('/').'/'.$soundStretch->path}}" type="audio/ogg">
+                                                Your browser does not support the audio element.
+                                            </audio>
+                                        @endif
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <h3>المقال الموسع</h3>
+                                        <div id="font">
+                                            {!! $article->stretchArticle !!}
+                                        </div>
+                                    </div>
+                                    @if($soundNormal && $soundStretch)
                                         @php
-                                            $issues=\App\Repository\IssuesRepository::getAllIssuesForArticle($sound->id,'sound',\App\Helper\IssuesSteps::Open,\App\Helper\IssuesSteps::DoneByEditor);
+                                            $issues=\App\Models\Issues::where(['table'=>'sound'])->whereIn('field_id',[$soundNormal->id,$soundStretch->id])->whereIn('step',[App\Helper\IssuesSteps::DoneByEditor,\App\Helper\IssuesSteps::Open])->get();
+
+                                          //   $issues=\App\Repository\IssuesRepository::getAllIssuesForArticle($sound->id,'sound',\App\Helper\IssuesSteps::Open,\App\Helper\IssuesSteps::DoneByEditor);
                                         @endphp
 
                                         @if($issues->count()>0)
@@ -206,9 +294,17 @@
             <script>
                 $('input[type="file"]').change(function (e) {
                     var fileName = e.target.files[0].name;
-                    $('#empty').empty();
-                    $('#empty').html("اسم الملف  :" + '<span style=\"display: inherit;\">'+ fileName +'</span>');
-                    $('#empty').css("color", "#fff");
+                    if (e.target.id == "uploadfile2") {
+                        $('#empty').empty();
+                        $('#empty').html("اسم الملف  :" + '<span style=\"display: inherit;\">' + fileName + '</span>');
+                        $('#empty').css("color", "#fff");
+                    }
+                    else {
+                        $('#emptyStretch').empty();
+                        $('#emptyStretch').html("اسم الملف  :" + '<span style=\"display: inherit;\">' + fileName + '</span>');
+                        $('#emptyStretch').css("color", "#fff");
+                    }
+
 
                 });
             </script>

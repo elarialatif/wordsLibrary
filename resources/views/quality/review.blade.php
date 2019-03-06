@@ -595,8 +595,7 @@
                                                         {{--class="btn btn-icon btn-outline-info radbor"><i class="fas fa-edit"></i></a>--}}
                                                         {{--model for add Issuses for Sound--}}
                                                         <div class="modal fade" id="soundModal{{$sound->id}}" tabindex="-1"
-                                                             role="dialog"
-                                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                             role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
@@ -913,6 +912,7 @@
                                             <div class="card-header" id="Issues">
                                                 <v style="right: 0;background-color: #1b4b72;position: absolute;
                                         left: -25px;top: 3;width: 4px;height: 20px;">
+<<<<<<< HEAD
                                                 </v>
                                                 <h6 style="font-size: 20px">الاسئلة الاضافية
                                                 </h6>
@@ -939,9 +939,143 @@
                                                             <tr>
                                                                 <td>
                                                                     الاجابة الاولي
+=======
+                                    </v>
+                                    <h6 style="font-size: 20px">الاسئله
+                                    </h6>
+                                    @foreach($questions as $question)
+                                        <div class="table-responsive" style="display: inline-block">
+                                            <table
+                                                    class="display table nowrap table-striped table-hover"
+                                                    style="width:50%;float: right">
+                                                <thead>
+                                                <tr>
+                                                    <th width="50%">/</th>
+                                                    <th width="50%">القيمة</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>
+                                                        السؤال
+                                                    </td>
+                                                    <td>
+                                                        {!! $question->question !!}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        الاجابة الاولي
+                                                    </td>
+                                                    <td>{{$question->ans1}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        الاجابة الثانيه
+                                                    </td>
+                                                    <td>{{$question->ans2}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        الاجابة الثالثه
+                                                    </td>
+                                                    <td>{{$question->ans3}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        الاجابة الرابعه
+                                                    </td>
+                                                    <td>{{$question->ans4}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        الاجابة الصحيحة:
+                                                        @php $true=$question->true_answer; @endphp
+                                                        {{$question->$true}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" style="text-align: center">
+
+                                                            <a href="" data-toggle="modal"
+                                                               data-target="#editModal{{$question->id}}"
+                                                               class="btn btn-icon btn-outline-warning radbor"><i
+                                                                        class="fas fa-exclamation-triangle"></i></a>
+                                                            <a href="" data-toggle="modal"
+                                                               data-target="#editquestion{{$question->id}}"
+                                                               class="btn btn-icon btn-outline-info radbor"><i
+                                                                        class="fas fa-edit"></i></a>
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            @php
+                                                $issue=\App\Models\Issues::where(['field_id'=>$question->id,'table'=>'question','user_id'=>auth()->id()])->get();    @endphp
+                                            @if($issue->count()>0)
+                                                <table
+                                                        class="display table nowrap table-striped table-hover"
+                                                        style="width:50%;float: left">
+                                                    <thead>
+                                                    <tr>
+                                                        <th width="50%">/</th>
+                                                        <th width="50%">القيمة</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    @foreach($issue as $issue)
+                                                        <tr>
+                                                            <td>
+                                                                الكود
+                                                            </td>
+                                                            <td>
+                                                                {{$issue->id}}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                العنوان
+                                                            </td>
+                                                            <td>
+                                                                {{$issue->title}}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                الملاحظه
+                                                            </td>
+                                                            <td>
+                                                                {{$issue->name}}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                الحاله
+                                                            </td>
+                                                            <td>
+                                                                @if($issue->step==\App\Helper\IssuesSteps::CloseByCreator)
+                                                                    {{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::CloseByCreator)}}
+                                                                @elseif($issue->step==\App\Helper\IssuesSteps::Open)
+                                                                    {{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::Open)}}
+                                                                @else
+                                                                    {{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::DoneByEditor)}}
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+
+                                                            <tr style="text-align: center">
+                                                                <td colspan="2">
+                                                                    <a href="" data-toggle="modal"
+                                                                       data-target="#editIssue{{$issue->id}}"
+                                                                       class="btn btn-icon btn-outline-info radbor"><i
+                                                                                class="fas fa-edit"></i></a>
+                                                                    <a href="{{url('issues/delete/'.$issue->id)}}"
+                                                                       class="btn btn-icon btn-outline-danger radbor"><i
+                                                                                class="fa fa-trash"></i></a>
+>>>>>>> 8fe230a3f3a0cab987830441d168096c265d8619
                                                                 </td>
                                                                 <td>{{$question->ans1}}</td>
                                                             </tr>
+<<<<<<< HEAD
                                                             <tr>
                                                                 <td>
                                                                     الاجابة الثانيه
@@ -1311,6 +1445,12 @@
                                                         {{--model for add Issuses for Sound--}}
                                                         <div class="modal fade" id="soundModal{{$sound->id}}" tabindex="-1"
                                                              role="dialog"
+=======
+
+                                                        {{--model for edit Issuses--}}
+                                                        <div class="modal fade" id="editIssue{{$issue->id}}"
+                                                             tabindex="-1" role="dialog"
+>>>>>>> 8fe230a3f3a0cab987830441d168096c265d8619
                                                              aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog" role="document">
                                                                 <div class="modal-content">

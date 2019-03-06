@@ -8,6 +8,7 @@ use App\Helper\UsersTypes;
 use App\Models\Article;
 use App\Models\AssignTask;
 use App\Models\ContentList;
+use App\Models\Vocab;
 use App\Notifications\ResendList;
 use App\Repository\ArticalRepository;
 use App\Repository\ContentListsRepository;
@@ -33,7 +34,7 @@ class ReviewerController extends Controller
         return view('reviewer.index', compact('lists'));
     }
 
-    public function viewArticle($list_id, $level, $page = null)
+    public function viewArticle($list_id, $level, $page = null, $flag = 0)
     {
         $list = ContentList::find($list_id);
         if ($list == null) {
@@ -54,7 +55,8 @@ class ReviewerController extends Controller
         if ($list->step != Steps::REVIEW_ARTICLE && $list->step != Steps::reSendToReviewerFormEditor) {
             return redirect('reviewer/mylists')->withErrors('غير مسموح لك الدخول الى هنا');
         }
-        return view('reviewer.viewArticle', compact('article', 'page'));
+        $articleObject = new Article();
+        return view('reviewer.viewArticle', compact('article', 'page', 'flag', 'articleObject'));
     }
 
     public function myLists($page = null)
@@ -112,5 +114,12 @@ class ReviewerController extends Controller
         ContentListsRepository::updateStep($list_id, Steps::reSendToEditorFormReviewer);
         NotificationRepository::notify($list_id, Steps::UPLOADING_FILE);
         return redirect()->back()->with('success', 'تم اعادة الارسال الى المحرر ');
+    }
+
+    public function viewVocabsForArticle($list_id, $level)
+    {
+        $article = Article::where(['list_id' => $list_id, 'level' => $level])->first();
+        $allVocabularyForTheListAndLevel = Vocab::where(['list_id' => $list_id, 'level' => $level])->get();
+        return view('reviewer.viewVocabsForArticle')->with(compact('article'))->with(compact('allVocabularyForTheListAndLevel'));
     }
 }

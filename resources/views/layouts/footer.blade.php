@@ -153,6 +153,7 @@
 
     $('body').bind("contextmenu", function (e) {
         e.preventDefault();
+
         var top = e.pageY - 120;
         $("#cntnr").css("left", e.pageX);
         $("#cntnr").css("top", top);

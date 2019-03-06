@@ -43,6 +43,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('issues/chang/step/{artical_id}/{step}', 'IssuesController@ChangeStep');
     Route::post('editor/save/article', 'editor\EditorController@saveArticle');
     Route::post('question/edit/{id}', 'QuestionCreator\QuestionController@update');
+    Route::get('editor/deleteVocabulary/{id}', 'editor\VocabController@deleteVocab');
+    Route::post('editor/editVocabulary/{id}', 'editor\VocabController@updateVocab');
 
 });
 
@@ -60,7 +62,10 @@ Route::group(['middleware' => 'editor'], function () {
     Route::group(['namespace' => 'editor', 'prefix' => 'editor'], function () {
         Route::get('index', 'EditorController@index');
         Route::get('mylists', 'EditorController@myLists');
-        Route::get('add/article/{file_id}/{level_id}/{page?}', 'EditorController@createArticle');
+        Route::get('add/article/{file_id}/{level_id}/{page?}/{flag?}', 'EditorController@createArticle');
+        Route::get('addVocabulary/{file_id}/{level}', 'VocabController@createVocab');
+        Route::post('addVocabulary/{file_id}/{level}', 'VocabController@saveVocab');
+
         //   Route::post('save/article', 'EditorController@saveArticle');
         Route::get('sendArticleOfListToReviewer/{list_id}', 'EditorController@sendArticleOfListToReviewer');
         Route::get('refused/lists', 'EditorController@refusedLists');
@@ -108,7 +113,8 @@ Route::group(['middleware' => 'listanalyzer'], function () {
 });
 Route::group(['middleware' => 'reviewer', 'namespace' => 'reviewer', 'prefix' => 'reviewer'], function () {
     Route::get('index', 'ReviewerController@index');
-    Route::get('view/article/{list_id}/{level}/{page?}', 'ReviewerController@viewArticle');
+    Route::get('view/article/{list_id}/{level}/{page?}/{flag?}', 'ReviewerController@viewArticle');
+    Route::get('viewVocabsForArticle/{list_id}/{level}', 'ReviewerController@viewVocabsForArticle');
     Route::get('mylists/{page?}', 'ReviewerController@myLists');
     Route::get('sendto/create/question/{list_id}', 'ReviewerController@SendToCreateQuestion');
     Route::get('reSendTo/editor/{list_id}', 'ReviewerController@reSendToEditor');

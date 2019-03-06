@@ -84,7 +84,7 @@ $easySound=\App\Repository\IssuesRepository::getAllIssuesForArticle($soundEasy->
                                                                         class="fa @if($soundEasy){{($easyReviewer->count()==0 && $easySound->count()==0)?'':'fa-eye'}} @else{{($easyReviewer->count()==0)?'':'fa-eye'}} @endif "></i></a>
                                                         @else
                                                             <a href="{{url('quality/review/'.$articalEasy->id)}}"
-                                                               class="btn  @if($soundEasy){{($easyReviewer->count()==0 && $easySound->count()==0)?'btn-success':'btn-danger'}}"@else{{($easyReviewer->count()==0)?'btn-success':'btn-danger'}}@endif">السهل<i
+                                                               class="btn  @if($soundEasy){{($easyReviewer->count()==0 && $easySound->count()==0)?'btn-success':'btn-danger'}}@else{{($easyReviewer->count()==0)?'btn-success':'btn-danger'}}@endif">السهل<i
                                                                         class="fa @if($soundEasy){{($easyReviewer->count()==0 && $easySound->count()==0)?'fa-check-circle':'fa-check-circle'}}@else{{($easyReviewer->count()==0)?'fa-check-circle':'fa-check-circle'}}@endif"></i></a>
                                                         @endif
                                                         @if(empty($normalStatus))

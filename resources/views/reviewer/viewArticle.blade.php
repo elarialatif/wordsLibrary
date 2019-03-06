@@ -3,7 +3,7 @@
 
     <div class="container">
         <div class="container">
-
+            @include('layouts.FollowingTabsForReviewArticle')
             <div class="main-body">
                 <div class="page-wrapper">
                     <!-- [ Main Content ] start -->
@@ -19,8 +19,7 @@
                                        href="{{url('reviewer/mylists/'.$page)}}"><span
                                                 class="fa fa-arrow-circle-left"> رجوع </span></a>
                                     @if($article->status!=\App\Helper\ArticleLevels::Review)
-                                        <a style="float: left" href="{{url('update/article/status/'.$article->id)}}"
-                                           class="btn btn-danger">تمت المراجعة</a>
+
 
                                     @else
                                         <a href="" style="float: left;font-weight: bold;color: #0d71bb"
@@ -64,7 +63,7 @@
                                                                 <label for="article"
                                                                        class="col-form-label">المقال:</label>
                                                                 <textarea class="mceEditor form-control" required
-                                                                          name="article">{!! $article->article !!}</textarea>
+                                                                          name="article{{($flag==0)?$articleObject->getNormalArticleValue():$articleObject->getStretchArticleValue()}}">@if($flag==0) {!! $article->article !!} @else {!! $article->stretchArticle !!} @endif </textarea>
                                                                 <input type="hidden" name="list_id"
                                                                        value="{{$article->list_id}}">
                                                                 <input type="hidden" name="level"
@@ -102,31 +101,34 @@
                                                         </button>
                                                     </div>
 
-                                                        <form action="{{url('issues/create')}}" method="post">
-                                                            <div class="modal-body">
+                                                    <form action="{{url('issues/create')}}" method="post">
+                                                        <div class="modal-body">
 
-                                                                @csrf
-                                                                <label><h4>العنوان</h4></label>
-                                                                <input type="text" name="title" class="form-control">
-                                                                <br>
-                                                                <label><h4>ملاحظة</h4></label>
-                                                                <textarea class="mceEditor" name="name"> </textarea>
-                                                                <input type="hidden" name="field_id"
-                                                                       value="{{$article->id}}">
-                                                                <input type="hidden" name="table" value="article">
-                                                                <br>
-                                                                <br>
+                                                            @csrf
+                                                            <label><h4>العنوان</h4></label>
+                                                            <input type="text" name="title" class="form-control">
+                                                            <input type="hidden" name="type" class="form-control">
+                                                            <br>
+                                                            <label><h4>ملاحظة</h4></label>
+                                                            <textarea class="mceEditor" name="name"> </textarea>
+                                                            <input type="hidden" name="field_id"
+                                                                   value="{{$article->id}}">
+                                                            <input type="hidden" name="table" value="article">
+                                                            <input type="hidden" name="type"
+                                                                   value="{{($flag==0)?$articleObject->getNormalArticleValue():$articleObject->getStretchArticleValue()}}">
+                                                            <br>
+                                                            <br>
 
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                        data-dismiss="modal">غلق
-                                                                </button>
-                                                                <button type="submit" class="btn btn-success"> حفظ
-                                                                </button>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">غلق
+                                                            </button>
+                                                            <button type="submit" class="btn btn-success"> حفظ
+                                                            </button>
 
-                                                            </div>
-                                                        </form>
+                                                        </div>
+                                                    </form>
 
                                                 </div>
                                             </div>
@@ -134,10 +136,15 @@
                                         {{--end modal--}}
                                     </h5>
                                     <h6 style="font-size: 20px"></h6>
-                                    <div id="tinymcFont">    {!! $article->article !!} </div>
+                                    <div id="tinymcFont">    @if($flag==0) {!! $article->article !!} @else {!! $article->stretchArticle !!} @endif </div>
 
                                     @php
-                                        $issues=\App\Repository\IssuesRepository::getAllIssuesForArticle($article->id,'article');
+                                        $type=$articleObject->getNormalArticleValue();
+                                           if($flag!=0){
+                                           $type=$articleObject->getStretchArticleValue();
+                                           }
+                                             $issues=\App\Models\Issues::where(['field_id'=>$article->id,'table'=>'article','type'=>$type])->whereIn('step',[App\Helper\IssuesSteps::DoneByEditor,\App\Helper\IssuesSteps::Open])->get();
+
                                     @endphp
 
                                     @if($issues->count()>0)
@@ -236,5 +243,14 @@
     <script src="{{ asset('public/js/pages/tbl-datatable-custom.js')}}"></script>
 
 @endsection
+<script>
+    if ("{{$flag}}" == "0") {
 
+        $('#1').css('background', '#539af6');
+    }
+    else {
+
+        $('#2').css('background', '#539af6');
+    }
+</script>
 @endsection

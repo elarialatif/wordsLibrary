@@ -38,7 +38,6 @@
                                             </v>
                                             <h6 style="font-size: 20px">المقال الاساسي
                                             </h6>
-
                                             <a href="" data-toggle="modal"
                                                data-target="#normalArticalModal{{$artical->id}}"
                                                class="btn btn-icon btn-outline-warning radbor"><i
