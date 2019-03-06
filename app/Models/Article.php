@@ -30,7 +30,7 @@ class Article extends Model
     {
         return $this->Vocabulary;
     }
-    
+
     public function lists()
     {
         return $this->belongsTo('App\Models\ContentList', 'list_id', 'id');

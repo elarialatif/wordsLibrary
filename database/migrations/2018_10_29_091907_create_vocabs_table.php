@@ -14,9 +14,10 @@ class CreateVocabsTable extends Migration {
 		Schema::create('vocabs', function (Blueprint $table) {
 			$table->increments('id');
 			$table->string('word');
-			$table->integer('count');
-			$table->integer('artical_id')->unsigned();
-			$table->foreign('artical_id')->references('id')->on('article_files')->onUpdate('cascade')->onDelete('cascade');
+			$table->string('mean');
+            $table->integer('level');
+            $table->integer('list_id')->unsigned();
+            $table->foreign('list_id')->references('id')->on('content_lists')->onDelete('cascade')->onUpdate('cascade');
 			$table->timestamps();
 		});
 	}

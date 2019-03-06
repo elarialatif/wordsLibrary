@@ -17,6 +17,7 @@ class CreateSoundsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('path');
+            $table->string('type');
             $table->string('extension');
             $table->integer('article_id')->unsigned();
             $table->foreign('article_id')->references('id')->on('article')->onDelete('cascade')->onUpdate('cascade');
