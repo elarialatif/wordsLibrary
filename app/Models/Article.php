@@ -10,6 +10,25 @@ class Article extends Model
 {
     protected $table = 'article';
 
+    private $normalArticle = "Normal";
+    private $stretchArticle = "Stretch";
+    private $Vocabulary = "Vocab";
+
+    public function getNormalArticleValue()
+    {
+        return $this->normalArticle;
+    }
+
+    public function getStretchArticleValue()
+    {
+        return $this->stretchArticle;
+    }
+
+    public function getVocabularyValue()
+    {
+        return $this->Vocabulary;
+    }
+
     public function lists()
     {
         return $this->belongsTo('App\Models\ContentList', 'list_id', 'id');

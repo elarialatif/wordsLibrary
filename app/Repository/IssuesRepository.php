@@ -46,24 +46,27 @@ class IssuesRepository
         $issue->name = $request->name;
         $issue->title = $request->title;
         $issue->table = $request->table;
+        if (isset($request->type)) {
+            $issue->type = $request->type;
+        }
         $issue->step = IssuesSteps::Open;
         $issue->save();
     }
 
-    static function getAllIssuesForArticle($field_id, $table, $step = -1, $step2 = -1,$user_id=null)
+    static function getAllIssuesForArticle($field_id, $table, $step = -1, $step2 = -1, $user_id = null)
     {
         $query = Issues::where(['table' => $table, 'field_id' => $field_id]);
 
-        if ($step!=-1 &&$step2==-1) {
+        if ($step != -1 && $step2 == -1) {
 
             $query->where('step', $step);
         }
-        if ($step2!=-1 && $step2!=-1) {
+        if ($step2 != -1 && $step2 != -1) {
 
             $query->whereIn('step', [$step2, $step]);
         }
-        if($user_id && $user_id != null){
-            $query->where('user_id',$user_id);
+        if ($user_id && $user_id != null) {
+            $query->where('user_id', $user_id);
         }
 
         $issues = $query->get();
@@ -72,23 +75,23 @@ class IssuesRepository
     }
 
 
-    static function getAllIssuesForQuestion($field_id, $table, $step,$user_id=null)
+    static function getAllIssuesForQuestion($field_id, $table, $step, $user_id = null)
     {
         $issues = Issues::where(['table' => $table])->where('step', '!=', $step)->whereIn('field_id', $field_id);
-        if($user_id && $user_id != null){
-            $issues->where('user_id',$user_id);
+        if ($user_id && $user_id != null) {
+            $issues->where('user_id', $user_id);
         }
-        $issues=$issues->get();
+        $issues = $issues->get();
         return $issues;
     }
 
-    static function getIssuesForQuestion($field_id, $table, $step,$user_id=null)
+    static function getIssuesForQuestion($field_id, $table, $step, $user_id = null)
     {
         $issues = Issues::where(['table' => $table, 'step' => $step])->whereIn('field_id', $field_id);
-        if($user_id && $user_id != null){
-            $issues->where('user_id',$user_id);
+        if ($user_id && $user_id != null) {
+            $issues->where('user_id', $user_id);
         }
-        $issues=$issues->get();
+        $issues = $issues->get();
         return $issues;
     }
 

@@ -17,6 +17,7 @@ class Article extends Migration
             $table->increments('id');
             $table->longText('article');
             $table->integer('level');
+            $table->string('type');
             $table->integer('status')->default(0);
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

@@ -17,55 +17,61 @@
                                     </h5>
                                 </div>
 
-                            <div class="card-block">
-                                <div class="card-header">
-                                    <div class="form-group">
-                                        <div class="table-responsive">
-                                            <table id="key-act-button"
-                                                   class="display table nowrap table-striped table-hover"
-                                                   style="width:100%">
-                                                <thead>
-                                                <tr>
-                                                    <th>الكود</th>
-
-                                                    <th>الموضوع</th>
-
-                                                    <th>الصف</th>
-                                                    <th>عرض</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                @foreach($files as $file)
-                                                    @php  $list=\App\Models\ContentList::with('level','grade')->where('id',$file->list_id)->first();
-            $grade=\App\Models\Grade::with('level')->where('id',$list->grade->id)->first(); @endphp
+                                <div class="card-block">
+                                    <div class="card-header">
+                                        <div class="form-group">
+                                            <div class="table-responsive">
+                                                <table id="key-act-button"
+                                                       class="display table nowrap table-striped table-hover"
+                                                       style="width:100%">
+                                                    <thead>
                                                     <tr>
+                                                        <th>الكود</th>
 
-                                                        <td>{{$file->id}}</td>
+                                                        <th>الموضوع</th>
 
-                                                        <td>{{$file->lists->list}}</td>
-
-                                                        <td>{{$list->grade->name}}</td>
-                                                        <td><a href="{{url('analysisUploadFiles/'.$file->id)}}"> <span class=" fa fa-eye"></span></a></td>
+                                                        <th>الصف</th>
+                                                        <th>عرض</th>
                                                     </tr>
-                                                @endforeach
-                                                </tbody>
-                                            </table>
+                                                    </thead>
+                                                    <tbody>
+                                                    @foreach($files as $file)
 
+                                                        @php  $list=\App\Models\ContentList::with('grade')->where('id',$file->list_id)->first();
+                                         if($list==null){
+                                         continue;
+                                         }
+                                                 //   ()
+           // $grade=\App\Models\Grade::where('id',$list->grade->id)->first(); @endphp
+                                                        <tr>
+
+                                                            <td>{{$file->id}}</td>
+
+                                                            <td>{{$file->lists->list}}</td>
+
+                                                            <td>{{$list->grade->name}}</td>
+                                                            <td><a href="{{url('analysisUploadFiles/'.$file->id)}}">
+                                                                    <span class=" fa fa-eye"></span></a></td>
+                                                        </tr>
+                                                    @endforeach
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
                                         </div>
                                     </div>
+
                                 </div>
 
-                            </div>
 
+                            </div>
+                        </div>
+                        <!-- [ HTML5 Export button ] end -->
 
                     </div>
                 </div>
-                <!-- [ HTML5 Export button ] end -->
-
             </div>
         </div>
-    </div>
-    </div>
     </div>
 
 

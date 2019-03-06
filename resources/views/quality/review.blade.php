@@ -36,7 +36,7 @@
                                     </v>
                                     <h6 style="font-size: 20px">المقال
                                     </h6>
-                                    @if($artical->status!=\App\Helper\ArticleLevels::Review)
+
                                         <a href="" style="float:left" data-toggle="modal"
                                            data-target="#articalModal{{$artical->id}}"
                                            class="btn btn-icon btn-outline-warning radbor"><i
@@ -44,7 +44,6 @@
                                         <a href="" style="float:left" data-toggle="modal"
                                            data-target="#editartical{{$artical->id}}"
                                            class="btn btn-icon btn-outline-info radbor"><i class="fas fa-edit"></i></a>
-                                    @endif
                                     <div id="tinymcFont">    {!! $artical->article !!} </div>
                                     <div id="Issues">
                                         <div class="table-responsive">
@@ -60,8 +59,8 @@
                                                         <th>العنوان</th>
                                                         <th>الملاحظه</th>
                                                         <th>الحاله</th>
-                                                        @if($artical->status!=\App\Helper\ArticleLevels::Review)
-                                                            <th>الاجراء</th>@endif
+
+                                                            <th>الاجراء</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -78,14 +77,14 @@
                                                                     {{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::DoneByEditor)}}
                                                                 @endif
                                                             </td>
-                                                            @if($artical->status!=\App\Helper\ArticleLevels::Review)
+
                                                                 <td>
                                                                     <a data-toggle="modal"
                                                                        data-target="#editIssue{{$issue->id}}"><i
                                                                                 class="fa fa-edit"></i></a>
                                                                     <a href="{{url('issues/delete/'.$issue->id)}}"><i
                                                                                 class="fa fa-trash"></i></a>
-                                                                </td>@endif
+                                                                </td>
                                                         </tr>
                                                         {{--model for edit Issuses--}}
                                                         <div class="modal fade" id="editIssue{{$issue->id}}"
@@ -202,7 +201,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td colspan="2" style="text-align: center">
-                                                        @if($artical->status!=\App\Helper\ArticleLevels::Review)
+
                                                             <a href="" data-toggle="modal"
                                                                data-target="#editModal{{$question->id}}"
                                                                class="btn btn-icon btn-outline-warning radbor"><i
@@ -211,7 +210,7 @@
                                                                data-target="#editquestion{{$question->id}}"
                                                                class="btn btn-icon btn-outline-info radbor"><i
                                                                         class="fas fa-edit"></i></a>
-                                                        @endif
+
                                                     </td>
                                                 </tr>
                                                 </tbody>
@@ -268,7 +267,7 @@
                                                                 @endif
                                                             </td>
                                                         </tr>
-                                                        @if($artical->status!=\App\Helper\ArticleLevels::Review)
+
                                                             <tr style="text-align: center">
                                                                 <td colspan="2">
                                                                     <a href="" data-toggle="modal"
@@ -280,7 +279,7 @@
                                                                                 class="fa fa-trash"></i></a>
                                                                 </td>
                                                             </tr>
-                                                        @endif
+
                                                         {{--model for edit Issuses--}}
                                                         <div class="modal fade" id="editIssue{{$issue->id}}"
                                                              tabindex="-1" role="dialog"
@@ -562,7 +561,7 @@
                                     </v>
                                     <h6 style="font-size: 20px">الصوت
                                     </h6>
-                                    @if($artical->status!=\App\Helper\ArticleLevels::Review)
+
 
                                         <a href="" style="float:left" data-toggle="modal"
                                            data-target="#soundModal{{$sound->id}}"
@@ -610,7 +609,7 @@
                                             </div>
                                         </div>
                                         {{--end modal--}}
-                                    @endif
+
                                     @if($sound)
                                         <div id="tinymcFont">    {!! $artical->article !!} </div>
 
@@ -632,8 +631,8 @@
                                                             <th>العنوان</th>
                                                             <th>الملاحظه</th>
                                                             <th>الحاله</th>
-                                                            @if($artical->status!=\App\Helper\ArticleLevels::Review)
-                                                                <th>الاجراء</th>@endif
+
+                                                                <th>الاجراء</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>

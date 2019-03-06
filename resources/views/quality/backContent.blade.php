@@ -77,13 +77,13 @@ $easySound=\App\Repository\IssuesRepository::getAllIssuesForArticle($soundEasy->
                                                     <td>
                                                         {{--for QuestionReviewer--}}
                                                         <a href="{{url('quality/review/'.$articalEasy->id.'/'.'resend')}}"
-                                                           class="btn {{($easyReviewer->count()==0 ||$easySound->count()==0)?'btn-success':'btn-danger'}} ">السهل<i
+                                                           class="btn @if($soundEasy){{($easyReviewer->count()==0 && $easySound->count()==0)?'btn-success':'btn-danger'}}@else{{($easyReviewer->count()==0)?'btn-success':'btn-danger'}}@endif">السهل<i
                                                                     class="fa {{(empty($easyStatus))?'':'fa-check-circle'}}"></i></a>
                                                         <a href="{{url('quality/review/'.$articalNormal->id.'/'.'resend')}}"
-                                                           class="btn {{($normalReviewer->count()==0 ||$normalSound->count()==0)?'btn-success':'btn-danger'}} ">المتوسط<i
+                                                           class="btn @if($soundNormal){{($normalReviewer->count()==0 && $normalSound->count()==0)?'btn-success':'btn-danger'}}@else{{($normalReviewer->count()==0)?'btn-success':'btn-danger'}}@endif">المتوسط<i
                                                                     class="fa {{(empty($normalStatus))?'':'fa-check-circle'}}"></i></a>
                                                         <a href="{{url('quality/review/'.$articalHard->id.'/'.'resend')}}"
-                                                           class="btn {{($hardReviewer->count()==0 ||$hardSound->count()==0)?'btn-success':'btn-danger'}} ">الصعب<i
+                                                           class="btn @if($soundHard){{($hardReviewer->count()==0 && $hardSound->count()==0)?'btn-success':'btn-danger'}}@else{{($hardReviewer->count()==0)?'btn-success':'btn-danger'}}@endif">الصعب<i
                                                                     class="fa {{(empty($hardStatus))?'':'fa-check-circle'}}"></i></a>
 
                                                     </td>

@@ -1,9 +1,11 @@
 @extends('layouts.app')
 @section('content')
+
     @php
         $article= App\Models\Article::where(['list_id'=>$list->id,'level'=>$level])->first();
         $data= App\Models\ArticleFiles::where(['list_id'=>$list->id])->first();
         $catg= App\Models\ListCategory::with('catg')->where(['list_id'=>$list->id])->get();
+         $articleObject = new App\Models\Article();
 
         $AllArticles= App\Models\Article::where(['list_id'=>$list->id])->get();
         if($article){
@@ -12,7 +14,7 @@
     @endphp
     <div class="container">
         <div class="container">
-
+            @include('editor.FollowingTabsForCreateArticle')
             <div class="main-body">
                 <div class="page-wrapper">
                     <!-- [ Main Content ] start -->
@@ -86,12 +88,13 @@
 
                                                 @csrf
                                                 <textarea class="mceEditor"
-                                                          name="article">@if($article){!! $article->article !!} @endif </textarea>
+                                                          name="article{{$type}}">@if($article) @if($type==$articleObject->getNormalArticleValue()){!! $article->article !!} @else {!! $article->stretchArticle !!}@endif @endif </textarea>
                                                 <input name="image" type="file" id="upload" hidden onchange="">
                                                 <br>
                                                 <br>
                                                 <input type="hidden" name="list_id" value="{{$list->id}}">
                                                 <input type="hidden" name="level" value="{{$level}}">
+                                                <input type="hidden" name="type" value="{{$type}}">
                                                 <button type="submit" class="btn btn-success btn-lg">حفظ</button>
                                                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
                                                         data-target="#myModal"> عرض المقال
@@ -164,7 +167,8 @@
                                         @if($article)
                                             @php
                                                 //   $issues=  \App\Models\Issues::where(['table' => 'article', 'field_id' => $article->id,'step'=>\App\Helper\IssuesSteps::Open])->get();
-                                                               $issues=\App\Repository\IssuesRepository::getAllIssuesForArticle($article->id,'article',App\Helper\IssuesSteps::DoneByEditor,\App\Helper\IssuesSteps::Open);
+                                                            //   $issues=\App\Repository\IssuesRepository::getAllIssuesForArticle($article->id,'article',App\Helper\IssuesSteps::DoneByEditor,\App\Helper\IssuesSteps::Open);
+                                            $issues=\App\Models\Issues::where(['field_id'=>$article->id,'table'=>'article','type'=>$type])->whereIn('step',[App\Helper\IssuesSteps::DoneByEditor,\App\Helper\IssuesSteps::Open])->get();
                                             @endphp
 
                                             @if($issues->count()>0)
@@ -257,5 +261,15 @@
     <script src="{{ asset('public/js/pages/tbl-datatable-custom.js')}}"></script>
 
 @endsection
+<script>
+    if ("{{$type}}" == "{{$articleObject->getNormalArticleValue()}}") {
 
+        $('#1').css('background', '#539af6');
+    }
+    else {
+        $('#1').css('background', 'green');
+        $('#2').css('background', '#539af6');
+    }
+
+</script>
 @endsection
