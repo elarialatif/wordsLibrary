@@ -15,17 +15,17 @@ use Illuminate\Support\Facades\DB;
 
 class SoundsRepository
 {
-    static function save($file, $article_id)
+    static function save($file, $article_id,$type)
     {
 
-        DB::transaction(function () use ($file, $article_id) {
+        DB::transaction(function () use ($file, $article_id,$type) {
             $extension = $file->getClientOriginalExtension();
             $sha1 = sha1($file->getClientOriginalName());
             $filename = time() . "_" . $sha1 . "." . $extension;
             $destinationPath = 'public/sounds/';
             $file->move($destinationPath, $filename);
 
-            $sound = Sound::where('article_id', $article_id)->first();
+            $sound = Sound::where(['article_id'=> $article_id,'type'=>$type])->first();
             if (!$sound) {
                 $sound = new Sound();
             }
@@ -34,6 +34,7 @@ class SoundsRepository
             $sound->extension = $file->getClientOriginalExtension();
             $sound->path = $destinationPath . $filename;
             $sound->user_id = auth()->id();
+            $sound->type = $type;
             $sound->save();
 
         });

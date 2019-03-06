@@ -56,8 +56,9 @@ class SoundController extends Controller
             'sound.mimes' => 'من فضلك اختر ملف صوت من نوع   wav او mp3  ',
             'sound.max' => ' الملف  يجب ان لايزيد عن 10 ميجا   ',
         ]);
+
         $file = \request()->file('sound');
-        SoundsRepository::save($file, $article_id);
+        SoundsRepository::save($file, $article_id,\request('type'));
         return redirect()->back()->with('success', 'تم الرفع بنجاح');
     }
 
