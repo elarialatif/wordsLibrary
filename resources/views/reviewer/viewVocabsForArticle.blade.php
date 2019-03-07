@@ -145,15 +145,12 @@
 
                                     <th>الاسم</th>
 
-
-
-
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($issues as $issue)
 
-                                    <tr @if($issue->step==\App\Helper\IssuesSteps::DoneByEditor) style="background: #3ed93e" @endif>
+                                    <tr @if($issue->step==\App\Helper\IssuesSteps::CloseByCreator) style="background: #3ed93e" @endif>
 
                                         <td>{{$issue->id}}</td>
 
@@ -194,9 +191,8 @@
                                                         <button type="button" class="btn btn-danger"
                                                                 data-dismiss="modal">خروج
                                                         </button>
-                                                        <a href="{{url('issues/chang/step/'.$issue->id.'/'.\App\Helper\IssuesSteps::DoneByEditor)}}"
-                                                           type="button" class="btn btn-success">تم
-                                                            النتهاء</a>
+                                                        <a href="{{url('issues/chang/step/'.$issue->id.'/'.\App\Helper\IssuesSteps::CloseByCreator)}}"
+                                                           type="button" class="btn btn-success">غلق</a>
                                                     </div>
 
                                                 </div>

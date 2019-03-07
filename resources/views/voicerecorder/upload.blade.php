@@ -104,6 +104,96 @@
                                     <div id="font">
                                         {!! $article->article !!}
                                     </div>
+                                    @if($soundNormal)
+                                        @php
+                                            $issues=\App\Models\Issues::where(['table'=>'sound','field_id'=>$soundNormal->id])->whereIn('step',[App\Helper\IssuesSteps::DoneByEditor,\App\Helper\IssuesSteps::Open])->get();
+
+                                          //   $issues=\App\Repository\IssuesRepository::getAllIssuesForArticle($sound->id,'sound',\App\Helper\IssuesSteps::Open,\App\Helper\IssuesSteps::DoneByEditor);
+                                        @endphp
+
+                                        @if($issues->count()>0)
+                                            <div class="card-header" id="Issues">
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <br/>
+                                                <v style="right: 0;background-color: #1b4b72;position: absolute;
+                                        left: -25px;top: 3;width: 4px;height: 20px;">
+                                                </v>
+                                                <h6 style="font-size: 20px">المشاكل الصوتية
+                                                </h6>
+
+                                                <div class="table-responsive" style="display: inline-block">
+                                                    <table
+                                                            class="display table nowrap table-striped table-hover"
+                                                            style="width:100%;float: right">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>الكود</th>
+                                                            <th>الاسم</th>
+                                                            <th>عرض</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        @foreach($issues as $issue)
+                                                            <tr @if($issue->step==\App\Helper\IssuesSteps::DoneByEditor) style="background: #3ed93e" @endif>
+                                                                <td>{{$issue->id}}</td>
+                                                                <td>{{$issue->title}}</td>
+                                                                <td>
+                                                                    <a data-toggle="modal"
+                                                                       data-target="#exampleModal{{$issue->id}}"
+                                                                       class="btn btn-primary"
+                                                                       style="color: white;float: left;font-weight: bold">
+                                                                        عرض<i
+                                                                                class="fa fa-eye"></i></a>
+                                                                </td>
+                                                                {{--model for add new user--}}
+                                                                <div class="modal fade" id="exampleModal{{$issue->id}}"
+                                                                     tabindex="-1" role="dialog"
+                                                                     aria-labelledby="exampleModalLabel"
+                                                                     aria-hidden="true">
+                                                                    <div class="modal-dialog" role="document">
+                                                                        <div class="modal-content">
+                                                                            <!-- Modal Header -->
+                                                                            <div class="modal-header">
+                                                                                <h4 class="modal-title">Modal
+                                                                                    Heading</h4>
+                                                                                <button type="button" class="close"
+                                                                                        data-dismiss="modal">&times;
+                                                                                </button>
+                                                                            </div>
+
+                                                                            <!-- Modal body -->
+                                                                            <div class="modal-body">
+                                                                                {!! $issue->name  !!}
+                                                                            </div>
+                                                                            <center style="color: green">
+                                                                                <h3>{{\App\Helper\IssuesSteps::IssuesStep($issue->step)}}</h3>
+                                                                            </center>
+                                                                            <!-- Modal footer -->
+                                                                            <div class="modal-footer">
+                                                                                <button type="button"
+                                                                                        class="btn btn-danger"
+                                                                                        data-dismiss="modal">خروج
+                                                                                </button>&nbsp;
+                                                                                <a href="{{url('issues/chang/step/'.$issue->id.'/'.\App\Helper\IssuesSteps::DoneByEditor)}}"
+                                                                                   type="button"
+                                                                                   class="btn btn-success">غلق</a>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </tr>
+                                                        @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endif
+
                                     <br>
                                     <br>
                                     <br>
@@ -185,9 +275,9 @@
                                             {!! $article->stretchArticle !!}
                                         </div>
                                     </div>
-                                    @if($soundNormal && $soundStretch)
+                                    @if($soundStretch)
                                         @php
-                                            $issues=\App\Models\Issues::where(['table'=>'sound'])->whereIn('field_id',[$soundNormal->id,$soundStretch->id])->whereIn('step',[App\Helper\IssuesSteps::DoneByEditor,\App\Helper\IssuesSteps::Open])->get();
+                                            $issues=\App\Models\Issues::where(['table'=>'sound','field_id'=>$soundStretch->id])->whereIn('step',[App\Helper\IssuesSteps::DoneByEditor,\App\Helper\IssuesSteps::Open])->get();
 
                                           //   $issues=\App\Repository\IssuesRepository::getAllIssuesForArticle($sound->id,'sound',\App\Helper\IssuesSteps::Open,\App\Helper\IssuesSteps::DoneByEditor);
                                         @endphp

@@ -94,7 +94,7 @@
                                             <div id="Issues">
                                                 <div class="table-responsive">
                                                     @php
-                                                        $issue=\App\Models\Issues::where(['field_id'=>$artical->id,'table'=>'article','user_id'=>auth()->id()                                           ])->get();@endphp
+                                                        $issue=\App\Models\Issues::where(['field_id'=>$artical->id,'table'=>'article','type'=>'Normal','user_id'=>auth()->id()                                           ])->get();@endphp
                                                     @if($issue->count()>0)
                                                         <table
                                                                 class="display table nowrap table-striped table-hover"
@@ -640,7 +640,7 @@
                                             <div id="Issues">
                                                 <div class="table-responsive">
                                                     @php
-                                                        $issue=\App\Models\Issues::where(['field_id'=>$artical->id,'table'=>'article','user_id'=>auth()->id()                                           ])->get();@endphp
+                                                        $issue=\App\Models\Issues::where(['field_id'=>$artical->id,'table'=>'article','type'=>'Stretch','user_id'=>auth()->id()                                           ])->get();@endphp
                                                     @if($issue->count()>0)
                                                         <table
                                                                 class="display table nowrap table-striped table-hover"
@@ -1146,6 +1146,61 @@
                                                     <tr>
                                                         <td>{{$word->word}}</td>
                                                         <td>{{$word->mean}}</td>
+                                                        <td colspan="2" style="text-align: center">
+                                                            @if($artical->status!=\App\Helper\ArticleLevels::Review)
+                                                                <a href="" data-toggle="modal"
+                                                                   data-target="#addVocabIssue{{$artical->id}}"
+                                                                   class="btn btn-icon btn-outline-warning radbor"><i
+                                                                            class="fas fa-exclamation-triangle"></i></a>
+                                                                {{--model for add Issuses for vocab--}}
+                                                                <div class="modal fade" id="addVocabIssue{{$artical->id}}"
+                                                                     tabindex="-1" role="dialog"
+                                                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title" id="exampleModalLabel">اضافه
+                                                                                    ملاحظه للمرادفات</h5>
+                                                                                <button type="button" class="close"
+                                                                                        data-dismiss="modal" aria-label="Close">
+                                                                                    <span aria-hidden="true">&times;</span>
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <form action="{{url('issues/create')}}"
+                                                                                      method="post">
+                                                                                    @csrf
+                                                                                    <label><h4>العنوان</h4></label>
+                                                                                    <input type="text" name="title"
+                                                                                           class="form-control">
+                                                                                    <br>
+                                                                                    <label><h4>الملاحظه</h4></label>
+                                                                                    <textarea name="name" rows="6"
+                                                                                              cols="60"> </textarea>
+                                                                                    <input type="hidden" name="field_id"
+                                                                                           value="{{$artical->id}}">
+                                                                                    <input type="hidden" name="table"
+                                                                                           value="article">
+                                                                                    <input type="hidden" name="type"
+                                                                                           value="Vocab">
+                                                                                    <br>
+                                                                                    <br>
+                                                                                    <button type="submit" class="btn btn-success">
+                                                                                        اضافه
+                                                                                    </button>
+                                                                                </form>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-secondary"
+                                                                                        data-dismiss="modal">غلق
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                {{--end modal--}}
+                                                            @endif
+                                                        </td>
                                                         <td><a href="" data-toggle="modal"
                                                                data-target="#editVocab{{$word->id}}"
                                                                class="btn btn-icon btn-outline-info radbor"><i
@@ -1186,68 +1241,11 @@
                                                         </div>
                                                         {{--end modal--}}
                                                     </tr>
-                                                    <tr>
-                                                        <td colspan="2" style="text-align: center">
-                                                            @if($artical->status!=\App\Helper\ArticleLevels::Review)
-                                                                <a href="" data-toggle="modal"
-                                                                   data-target="#addVocabIssue{{$artical->id}}"
-                                                                   class="btn btn-icon btn-outline-warning radbor"><i
-                                                                            class="fas fa-exclamation-triangle"></i></a>
-                                                                {{--model for add Issuses for Questions--}}
-                                                                <div class="modal fade" id="#addVocabIssue{{$artical->id}}"
-                                                                     tabindex="-1" role="dialog"
-                                                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                    <div class="modal-dialog" role="document">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title" id="exampleModalLabel">اضافه
-                                                                                    ملاحظه للمرادفات</h5>
-                                                                                <button type="button" class="close"
-                                                                                        data-dismiss="modal" aria-label="Close">
-                                                                                    <span aria-hidden="true">&times;</span>
-                                                                                </button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                <form action="{{url('issues/create')}}"
-                                                                                      method="post">
-                                                                                    @csrf
-                                                                                    <label><h4>العنوان</h4></label>
-                                                                                    <input type="text" name="title"
-                                                                                           class="form-control">
-                                                                                    <br>
-                                                                                    <label><h4>الملاحظه</h4></label>
-                                                                                    <textarea name="name" rows="6"
-                                                                                              cols="60"> </textarea>
-                                                                                    <input type="hidden" name="field_id"
-                                                                                           value="{{$question->id}}">
-                                                                                    <input type="hidden" name="table"
-                                                                                           value="question">
-                                                                                    <input type="hidden" name="type"
-                                                                                           value="Vocab">
-                                                                                    <br>
-                                                                                    <br>
-                                                                                    <button type="submit" class="btn btn-success">
-                                                                                        اضافه
-                                                                                    </button>
-                                                                                </form>
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-secondary"
-                                                                                        data-dismiss="modal">غلق
-                                                                                </button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                {{--end modal--}}
-                                                            @endif
-                                                        </td>
-                                                    </tr>
                                                 @endforeach
                                                 </tbody>
                                             </table>
                                             @php
-                                                $issue=\App\Models\Issues::where(['field_id'=>$question->id,'table'=>'question','user_id'=>auth()->id()])->get();    @endphp
+                                                $issue=\App\Models\Issues::where(['field_id'=>$artical->id,'type'=>'Vocab','table'=>'article','user_id'=>auth()->id()])->get();    @endphp
                                             @if($issue->count()>0)
                                                 <table
                                                         class="display table nowrap table-striped table-hover"
