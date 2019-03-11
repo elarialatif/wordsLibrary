@@ -9,6 +9,8 @@ use App\Models\AssignTask;
 use App\Repository\IssuesRepository;
 use App\Repository\NotificationRepository;
 use App\Repository\UserRateRepository;
+use App\Repository\UsersRepository;
+use Carbon\Carbon;
 use Illuminate\Notifications\Notification;
 use StreamLab\StreamLabProvider\Facades\StreamLabFacades;
 use Validator;
@@ -211,6 +213,10 @@ class QuestionController extends Controller
             //Notification/////
             NotificationRepository::notify($list_id, Steps::Review_Question);
             ///end Notification////
+            $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Review_Question);
+            $user = UsersRepository::find($user_id);
+            $name = Carbon::now() . "بتاريخ" . $user->name . "تم اعادة الارسال الى مراجع الاسئلة ";
+            Steps::SaveLogRow($name, 'اعادة ارسال', 'content_lists', $list_id);
             $data['active'] = 1;
             UserRateRepository::update(auth()->id(), $list_id, $data);
             return redirect()->back()->with('success', 'تم اعاده الارسال الي مراجع الاسئله بنجاح ');
@@ -220,6 +226,8 @@ class QuestionController extends Controller
         $data['active'] = 1;
         UserRateRepository::save($data);
         ContentListsRepository::updateStep($list_id, Steps::Review_Question);
+        $name = Carbon::now() . " تم اعادة الارسال الى مراجع الاسئلة بتاريخ ";
+        Steps::SaveLogRow($name, ' ارسال', 'content_lists', $list_id);
         return redirect()->back()->with('success', 'تم الارسال الي مراجع الاسئله بنجاح ');
     }
 

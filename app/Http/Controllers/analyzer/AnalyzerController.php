@@ -9,6 +9,8 @@ use App\Repository\ListRepository;
 use App\Repository\NotificationRepository;
 use App\Repository\TaskRepository;
 use App\Repository\UserRateRepository;
+use App\Repository\UsersRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\ArticleFiles;
@@ -47,6 +49,10 @@ class AnalyzerController extends Controller
         }
 
         NotificationRepository::notify($list_id, Steps::UPLOADING_FILE);
+        $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::UPLOADING_FILE);
+        $user = UsersRepository::find($user_id);
+        $name = Carbon::now() . "بتاريخ" . $user->name . "تم اعادة الارسال الى المحرر ";
+        Steps::SaveLogRow($name, 'اعادة ارسال', 'content_lists', $list_id);
         ///end Notification////
         session()->flash('message', 'تم ارسال الموضوع الى محرر المقالات بنجاح ');
         return redirect()->back();

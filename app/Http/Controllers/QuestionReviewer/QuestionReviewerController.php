@@ -13,6 +13,8 @@ use App\Repository\ArticalRepository;
 use App\Repository\IssuesRepository;
 use App\Repository\NotificationRepository;
 use App\Repository\UserRateRepository;
+use App\Repository\UsersRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers;
 use App\Helper\Steps;
@@ -144,6 +146,10 @@ class QuestionReviewerController extends Controller
             $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Create_Question);
             $data['active'] = 0;
             UserRateRepository::update($user_id, $list_id, $data);
+            $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Create_Question);
+            $user = UsersRepository::find($user_id);
+            $name = Carbon::now() . "بتاريخ" . $user->name . "تم اعادة الارسال الى مدخل الاسئلة ";
+            Steps::SaveLogRow($name, 'اعادة ارسال', 'content_lists', $list_id);
             return redirect()->back()->with('success', 'تم الارسال الي مدخل الاسئله بنجاح ');
         } else {
             if (!empty($lang)) {
@@ -151,6 +157,10 @@ class QuestionReviewerController extends Controller
                 //Notification/////
                 NotificationRepository::notify($list_id, Steps::Languestic);
                 ///end Notification////
+                $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Languestic);
+                $user = UsersRepository::find($user_id);
+                $name = Carbon::now() . "بتاريخ" . $user->name . "تم اعادة الارسال الى المراجع اللغوى ";
+                Steps::SaveLogRow($name, 'اعادة ارسال', 'content_lists', $list_id);
                 return redirect()->back()->with('success', 'تم اعاده الارسال الي المراجع اللغوي بنجاح ');
             }
             $data['user_id'] = auth()->id();
@@ -158,6 +168,9 @@ class QuestionReviewerController extends Controller
             $data['active'] = 1;
             UserRateRepository::save($data);
             ContentListsRepository::updateStep($list_id, Steps::Languestic);
+
+            $name = Carbon::now() . " تم  الارسال الى المراجع اللغوي بتاريخ ";
+            Steps::SaveLogRow($name, ' ارسال', 'content_lists', $list_id);
             return redirect()->back()->with('success', 'تم الارسال الي المراجع اللغوي بنجاح ');
         }
     }
