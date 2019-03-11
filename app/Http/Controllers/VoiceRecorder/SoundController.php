@@ -11,6 +11,8 @@ use App\Repository\NotificationRepository;
 use App\Repository\SoundsRepository;
 use App\Repository\TaskRepository;
 use App\Repository\UserRateRepository;
+use App\Repository\UsersRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -88,11 +90,18 @@ class SoundController extends Controller
             //Notification/////
             NotificationRepository::notify($list_id, Steps::Quality);
             ///end Notification////
+            $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Quality);
+            $user = UsersRepository::find($user_id);
+            $name = Carbon::now() . "بتاريخ" . $user->name . "تم اعادة الارسال الى الجودة ";
+            Steps::SaveLogRow($name, 'اعادة ارسال', 'content_lists', $list_id);
         }
         $data['user_id'] = auth()->id();
         $data['list_id'] = $list_id;
         $data['active'] = 1;
         UserRateRepository::save($data);
+
+        $name = Carbon::now() . "  تم  الارسال الى الجودة بتاريخ ";
+        Steps::SaveLogRow($name, ' ارسال', 'content_lists', $list_id);
         return redirect()->back()->with('success', 'تم الارسال بنجاح الى الجودة ');
     }
 }

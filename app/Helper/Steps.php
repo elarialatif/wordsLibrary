@@ -9,6 +9,8 @@
 namespace App\Helper;
 
 
+use App\Models\LogTime;
+
 class Steps
 {
     const UPLOADING_FILE = 0;
@@ -28,7 +30,7 @@ class Steps
     const Quality = 14;
     const ResendToQuality = 15;
     const Publish = 16;
-   const numberOFSteps = 16;
+    const numberOFSteps = 16;
     const ArrayOfSteps = array(
         '0' => 'رفع ملف ',
         '1' => 'تحليل ملف',
@@ -91,4 +93,16 @@ class Steps
             return 'تم النشر ';
         }
     }
+
+    static function SaveLogRow($name, $type, $table_name, $row_id)
+    {
+        $newRow = new LogTime();
+        $newRow->name = $name;
+        $newRow->type = $type;
+        $newRow->row_id = $row_id;
+        $newRow->table_name = $table_name;
+        $newRow->user_id = auth()->id();
+        $newRow->save();
+    }
+
 }

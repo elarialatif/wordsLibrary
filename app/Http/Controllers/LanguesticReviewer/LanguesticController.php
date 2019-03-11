@@ -6,6 +6,8 @@ use App\Models\Vocab;
 use App\Repository\NotificationRepository;
 use App\Repository\SoundsRepository;
 use App\Repository\UserRateRepository;
+use App\Repository\UsersRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Helper\ArticleLevels;
@@ -77,11 +79,11 @@ class LanguesticController extends Controller
      */
     public function review($artical_id, $page = 'myList')
     {
-        $questionType=new Article();
-        $questions=\App\Models\Question::where(['artical_id'=>$artical_id,'type'=>$questionType->getNormalArticleValue()])->get();
-        $questionStretch=\App\Models\Question::where(['artical_id'=>$artical_id,'type'=>$questionType->getStretchArticleValue()])->get();
+        $questionType = new Article();
+        $questions = \App\Models\Question::where(['artical_id' => $artical_id, 'type' => $questionType->getNormalArticleValue()])->get();
+        $questionStretch = \App\Models\Question::where(['artical_id' => $artical_id, 'type' => $questionType->getStretchArticleValue()])->get();
         $artical = Article::where('id', $artical_id)->first();
-        $vocab=Vocab::where(['list_id'=>$artical->list_id,'level'=>$artical->level])->get();
+        $vocab = Vocab::where(['list_id' => $artical->list_id, 'level' => $artical->level])->get();
         $list = ContentList::find($artical->list_id);
         if ($list == null) {
             return redirect()->back()->with('error', 'المقال غير موجود');
@@ -100,7 +102,7 @@ class LanguesticController extends Controller
         if ($list->step != Steps::Languestic && $list->step != Steps::ResendToLanguestic) {
             return redirect('languestic/mylists')->withErrors('غير مسموح لك الدخول الى هنا');
         }
-        return view('languestic.review', compact('vocab','artical', 'questionStretch','questions', 'page'));
+        return view('languestic.review', compact('vocab', 'artical', 'questionStretch', 'questions', 'page'));
     }
 
     /**
@@ -149,6 +151,10 @@ class LanguesticController extends Controller
             }
             //Notification/////
             NotificationRepository::notify($list_id, Steps::UPLOADING_FILE);
+            $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::UPLOADING_FILE);
+            $user = UsersRepository::find($user_id);
+            $name = Carbon::now() . "بتاريخ" . $user->name . "تم اعادة الارسال الى المحرر ";
+            Steps::SaveLogRow($name, 'اعادة ارسال', 'content_lists', $list_id);
             ///end Notification////
             return redirect()->back()->with('success', 'تم الارسال الي مدخل المقالات بنجاح ');
         }
@@ -160,6 +166,10 @@ class LanguesticController extends Controller
             //Notification/////
             NotificationRepository::notify($list_id, Steps::Create_Question);
             ///end Notification////
+            $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Create_Question);
+            $user = UsersRepository::find($user_id);
+            $name = Carbon::now() . "بتاريخ" . $user->name . "تم اعادة الارسال الى محرر الاسئلة ";
+            Steps::SaveLogRow($name, 'اعادة ارسال', 'content_lists', $list_id);
             return redirect()->back()->with('success', 'تم الارسال الي مدخل الاسئله بنجاح ');
         }
 //        if ($issuesSound->count() > 0) {
@@ -172,6 +182,10 @@ class LanguesticController extends Controller
             NotificationRepository::notify($list_id, Steps::Quality);
             ///end Notification////
             ContentListsRepository::updateStep($list_id, Steps::ResendToQuality);
+            $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Quality);
+            $user = UsersRepository::find($user_id);
+            $name = Carbon::now() . "بتاريخ" . $user->name . "تم اعادة الارسال الى الجودة ";
+            Steps::SaveLogRow($name, 'اعادة ارسال', 'content_lists', $list_id);
             return redirect()->back()->with('success', 'تم اعادة الارسال الي الجودة بنجاح ');
         } else {
             $data['user_id'] = auth()->id();
@@ -179,6 +193,9 @@ class LanguesticController extends Controller
             $data['active'] = 1;
             UserRateRepository::save($data);
             ContentListsRepository::updateStep($list_id, Steps::Quality);
+
+            $name = Carbon::now() . "  تم  الارسال الى الجودة بتاريخ ";
+            Steps::SaveLogRow($name, ' ارسال', 'content_lists', $list_id);
             return redirect()->back()->with('success', 'تم الارسال الي الجودة بنجاح ');
         }
     }

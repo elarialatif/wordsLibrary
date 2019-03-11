@@ -7,6 +7,8 @@ use App\Models\Vocab;
 use App\Repository\NotificationRepository;
 use App\Repository\SoundsRepository;
 use App\Repository\UserRateRepository;
+use App\Repository\UsersRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Helper\ArticleLevels;
@@ -158,7 +160,10 @@ class QualityController extends Controller
             //Notification/////
             NotificationRepository::notify($list_id, Steps::UPLOADING_FILE);
             ///end Notification////
-
+            $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::UPLOADING_FILE);
+            $user = UsersRepository::find($user_id);
+            $name = Carbon::now() . "بتاريخ" . $user->name . "تم اعادة الارسال الى المحرر ";
+            Steps::SaveLogRow($name, 'اعادة ارسال', 'content_lists', $list_id);
             $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::UPLOADING_FILE);
             $data['active'] = 0;
             UserRateRepository::update($user_id, $list_id, $data);
@@ -175,12 +180,19 @@ class QualityController extends Controller
             NotificationRepository::notify($list_id, Steps::Create_Question);
             ///end Notification////
             $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Create_Question);
+            $user = UsersRepository::find($user_id);
+            $name = Carbon::now() . "بتاريخ" . $user->name . "تم اعادة الارسال الى محرر الاسئلة ";
+            Steps::SaveLogRow($name, 'اعادة ارسال', 'content_lists', $list_id);
+            $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Create_Question);
             $data['active'] = 0;
             UserRateRepository::update($user_id, $list_id, $data);
             return redirect()->back()->with('success', 'تم الارسال الي مدخل الاسئله بنجاح ');
         }
         if (count($sound) == 0) {
             ContentListsRepository::updateStep($list_id, Steps::Sound);
+
+            $name = Carbon::now() . " تم  الارسال الى مدخل الصوت بتاريخ";
+            Steps::SaveLogRow($name, ' ارسال', 'content_lists', $list_id);
             return redirect()->back()->with('success', 'تم  الارسال الي مدخل الصوت بنجاح ');
         }
         if ($issuesSound->count() > 0 && count($sound) > 0) {
@@ -188,6 +200,10 @@ class QualityController extends Controller
             //Notification/////
             NotificationRepository::notify($list_id, Steps::Sound);
             ///end Notification////
+            $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Sound);
+            $user = UsersRepository::find($user_id);
+            $name = Carbon::now() . "بتاريخ" . $user->name . "تم اعادة الارسال الى مدخل الصوت ";
+            Steps::SaveLogRow($name, 'اعادة ارسال', 'content_lists', $list_id);
             $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Sound);
             $data['active'] = 0;
             UserRateRepository::update($user_id, $list_id, $data);
@@ -201,6 +217,10 @@ class QualityController extends Controller
             $data['list_id'] = $list_id;
             $data['active'] = 1;
             UserRateRepository::save($data);
+            $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Quality);
+            $user = UsersRepository::find($user_id);
+            $name = Carbon::now() . "نشر الموضوع بتاريخ" . $user->name ;
+            Steps::SaveLogRow($name, 'اعادة ارسال', 'content_lists', $list_id);
             return redirect()->back()->with('success', 'تم النشر بنجاح ');
         }
     }

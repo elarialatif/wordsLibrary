@@ -15,6 +15,8 @@ use App\Repository\ListRepository;
 use App\Repository\NotificationRepository;
 use App\Repository\TaskRepository;
 use App\Repository\UserRateRepository;
+use App\Repository\UsersRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Notifications\Notification;
@@ -118,7 +120,8 @@ class EditorController extends Controller
         UserRateRepository::save($data);
 
         ContentListsRepository::updateStep($List_id, Steps::REVIEW_ARTICLE);
-
+        $name = Carbon::now() . "  تم  الارسال الى المراجع بتاريخ ";
+        Steps::SaveLogRow($name, ' ارسال', 'content_lists', $List_id);
         return redirect('editor/index')->with('success', 'تم الارسال بنجاح');
     }
 
@@ -129,6 +132,10 @@ class EditorController extends Controller
         ContentListsRepository::updateStep($List_id, Steps::reSendToReviewerFormEditor);
 //Notification/////
         NotificationRepository::notify($List_id, Steps::REVIEW_ARTICLE);
+        $user_id = TaskRepository::findWhereAndStep('list_id', $List_id, Steps::REVIEW_ARTICLE);
+        $user = UsersRepository::find($user_id);
+        $name = Carbon::now() . "بتاريخ" . $user->name . "تم اعادة الارسال الى المراجع ";
+        Steps::SaveLogRow($name, 'اعادة ارسال', 'content_lists', $List_id);
         ///end Notification////
         return redirect()->back()->with('success', 'تم اعادة الارسال بنجاح');
     }

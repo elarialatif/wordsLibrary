@@ -19,6 +19,7 @@ use App\Repository\QuestionsRepository;
 use App\Repository\TaskRepository;
 use App\Repository\UserRateRepository;
 use App\Repository\UsersRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -90,11 +91,19 @@ class ReviewerController extends Controller
                 //Notification/////
                 NotificationRepository::notify($list_id, Steps::Create_Question);
                 ///end Notification//
-
+                $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Create_Question);
+                $user = UsersRepository::find($user_id);
+                $name = Carbon::now() . "بتاريخ" . $user->name . "تم اعادة الارسال الى مدخل الاسئلة ";
+                Steps::SaveLogRow($name, 'اعادة ارسال', 'content_lists', $list_id);
                 return redirect()->back()->with('success', 'تم ارسال الى مدخل الاسئلة ');
             } else {
                 ContentListsRepository::updateStep($list_id, Steps::ResendToLanguestic);
                 NotificationRepository::notify($list_id, Steps::Languestic);
+
+                $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Languestic);
+                $user = UsersRepository::find($user_id);
+                $name = Carbon::now() . "بتاريخ" . $user->name . "تم اعادة الارسال الى المراجع اللغوى ";
+                Steps::SaveLogRow($name, 'اعادة ارسال', 'content_lists', $list_id);
                 return redirect()->back()->with('success', 'تم ارسال الى المراجع اللغوى');
             }
         }
@@ -103,6 +112,10 @@ class ReviewerController extends Controller
         $data['active'] = 1;
         UserRateRepository::save($data);
         ContentListsRepository::updateStep($list_id, Steps::Create_Question);
+        $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Create_Question);
+        $user = UsersRepository::find($user_id);
+        $name = Carbon::now() . "بتاريخ" . $user->name . "تم  الارسال الى مدخل الاسئلة ";
+        Steps::SaveLogRow($name, ' ارسال', 'content_lists', $list_id);
         return redirect()->back()->with('success', ' تم ارسال الى مدخل الاسئلة ');
     }
 
@@ -113,6 +126,10 @@ class ReviewerController extends Controller
         UserRateRepository::update($user_id, $list_id, $data);
         ContentListsRepository::updateStep($list_id, Steps::reSendToEditorFormReviewer);
         NotificationRepository::notify($list_id, Steps::UPLOADING_FILE);
+        $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::UPLOADING_FILE);
+        $user = UsersRepository::find($user_id);
+        $name = Carbon::now() . "بتاريخ" . $user->name . "تم اعادة الارسال الى المحرر ";
+        Steps::SaveLogRow($name, 'اعادة ارسال', 'content_lists', $list_id);
         return redirect()->back()->with('success', 'تم اعادة الارسال الى المحرر ');
     }
 
