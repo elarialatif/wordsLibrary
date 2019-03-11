@@ -324,6 +324,18 @@
                                             <v style="margin-top: 2rem;right: 0;background-color: #1b4b72;position: absolute;
                                         left: -25px;top: 3;width: 4px;height: 20px;">
                                             </v>
+                                            <h3 style="font-size: 20px;margin-top: 2rem;">الروابط الاثرائية</h3>
+                                            <div class="table-responsive" style="display: inline-block">
+                                                <table class="display table nowrap table-striped table-hover"
+                                                       style="width:100%;float: left">
+                                                    @foreach($links as $word)
+                                                        <a href="{{$word->link}}">{{$word->name}}</a>
+                                                    @endforeach
+                                                </table>
+                                            </div>
+                                            <v style="margin-top: 2rem;right: 0;background-color: #1b4b72;position: absolute;
+                                        left: -25px;top: 3;width: 4px;height: 20px;">
+                                            </v>
                                             <h3 style="font-size: 20px;margin-top: 2rem;">المراحل</h3>
                                             <div class="table-responsive" style="display: inline-block">
                                                 <table
@@ -446,18 +458,6 @@
                                                 </div>
                                             </div>
                                             {{-- end of modal--}}
-                                            <v style="margin-top: 2rem;right: 0;background-color: #1b4b72;position: absolute;
-                                        left: -25px;top: 3;width: 4px;height: 20px;">
-                                            </v>
-                                            <h3 style="font-size: 20px;margin-top: 2rem;">الروابط الاثرائية</h3>
-                                            <div class="table-responsive" style="display: inline-block">
-                                                <table class="display table nowrap table-striped table-hover"
-                                                       style="width:100%;float: left">
-                                                    @foreach($links as $word)
-                                                        <a href="{{$word->link}}">{{$word->name}}</a>
-                                                    @endforeach
-                                                </table>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
