@@ -275,6 +275,59 @@
                                             <v style="margin-top: 2rem;right: 0;background-color: #1b4b72;position: absolute;
                                         left: -25px;top: 3;width: 4px;height: 20px;">
                                             </v>
+                                            <h3 style="font-size: 20px;margin-top: 2rem;">المراحل</h3>
+                                            <div class="table-responsive" style="display: inline-block">
+                                                <table
+                                                        class="display table nowrap table-striped table-hover"
+                                                        style="width:100%;float: left">
+
+                                                    <tbody>
+
+                                                    <tr>
+                                                        <td>
+                                                            <a href="{{url('adminChangeStepOfList/'.\App\Helper\Steps::ANALYZING_FILE.'/'.$list->id)}}">
+                                                                الى محلل المقالات </a></td>
+                                                        <td>
+                                                            <a href="{{url('adminChangeStepOfList/'.\App\Helper\Steps::INSERTING_ARTICLE.'/'.$list->id)}}">
+                                                                الى المحرر </a></td>
+                                                        <td>
+                                                            <a href="{{url('adminChangeStepOfList/'.\App\Helper\Steps::REVIEW_ARTICLE.'/'.$list->id)}}">
+                                                                الى مراجع المقالات</a></td>
+
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <a href="{{url('adminChangeStepOfList/'.\App\Helper\Steps::Create_Question.'/'.$list->id)}}">
+                                                                الى مدخل الاسئلة</a></td>
+                                                        <td>
+                                                            <a href="{{url('adminChangeStepOfList/'.\App\Helper\Steps::Review_Question.'/'.$list->id)}}">الى
+                                                                مراجع الاسئلة</a></td>
+                                                        <td>
+                                                            <a href="{{url('adminChangeStepOfList/'.\App\Helper\Steps::Languestic.'/'.$list->id)}}">الى
+                                                                المراجع اللغوى </a></td>
+
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <a href="{{url('adminChangeStepOfList/'.\App\Helper\Steps::Sound.'/'.$list->id)}}">
+                                                                الى الصوت</a></td>
+                                                        <td>
+                                                            <a href="{{url('adminChangeStepOfList/'.\App\Helper\Steps::Quality.'/'.$list->id)}}">
+                                                                الى الجودة</a></td>
+                                                        <td>
+                                                            <a href="{{url('adminChangeStepOfList/'.\App\Helper\Steps::Publish.'/'.$list->id)}}">
+                                                                نشر</a></td>
+
+                                                    </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <v style="margin-top: 2rem;right: 0;background-color: #1b4b72;position: absolute;
+                                        left: -25px;top: 3;width: 4px;height: 20px;">
+                                            </v>
                                             <h3 style="font-size: 20px;margin-top: 2rem;">الروابط الاثرائية</h3>
                                             <div class="table-responsive" style="display: inline-block">
                                                 <table class="display table nowrap table-striped table-hover"

@@ -131,6 +131,7 @@ Route::group(['middleware' => 'superadmin'], function () {
         Route::resource('users', 'UserController');
         Route::get('users/delete/{user_id}', 'UserController@destroy');
         Route::get('viewArticle/{article_id}', 'SuperAdminController@viewArticle');
+        Route::get('adminChangeStepOfList/{step}/{list_id}', 'SuperAdminController@adminChangeStepOfList');
         Route::post('add/school', 'SchoolController@save');
         Route::get('add/school', 'SchoolController@create');
         Route::get('view/schools', 'SchoolController@index');
