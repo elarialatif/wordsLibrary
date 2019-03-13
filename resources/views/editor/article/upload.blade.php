@@ -36,7 +36,7 @@
                                                                 من فضلك قم برفع الملف</h6><br>
                                                             <form method="post" action="#" id="#">
                                                                 <div class="form-group files">
-                                                                    <label for="kkk"
+                                                                    <label for="addFileNameToEmptyDiv"
                                                                            style="border-style: dotted;height: 400px;width:100%; background-color: white">
                                                                         <div style="text-align: center;margin-top: 50px;font-size: 200px;color: #6c757d">
                                                                             <i class="feather icon-upload"></i>
@@ -45,7 +45,7 @@
                                                                             <span style="font-weight: bold">لرفع الملف اضغط هنا</span>
                                                                         </div>
                                                                     </label>
-                                                                    <input type="file" id="kkk" class="form-control"
+                                                                    <input type="file" id="addFileNameToEmptyDiv" class="form-control"
                                                                            multiple="" style="display: none;"
                                                                            name="filename" accept=".doc,.docx,.txt"> <h4
                                                                             id="empty"></h4>
@@ -250,13 +250,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css">
     <script>
-        $('input[type="file"]').change(function (e) {
-            var fileName = e.target.files[0].name;
+       // function  addFileNameToEmptyDiv() {
+            $('#addFileNameToEmptyDiv').change(function (e) {
+                var fileName = e.target.files[0].name;
 
-            $('#empty').empty();
-            $('#empty').html("تم اختيار " + fileName);
-            $('#empty').css("color", "red");
-        });
+                $('#empty').empty();
+                $('#empty').html("تم اختيار " + fileName);
+                $('#empty').css("color", "red");
+            });
+    //    }
+
     </script>
     <script>
         $('.ui.fluid.dropdown').dropdown();

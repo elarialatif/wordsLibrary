@@ -66,6 +66,7 @@
 <div class="glyphprogress">
     <div class="connecting-line"></div>
     <ul>
+
         <a href="{{url('editor/add/article/'.$file_id.'/'.$level.'/'.'0'.'/'.'0')}}">
             <li>
             <span class="glyphstep" id="1">
@@ -81,10 +82,11 @@
             </li>
         </a>
         <a href="{{url('editor/addVocabulary/'.$file_id.'/'.$level)}}">
-        <li>
+            <li>
             <span class="glyphstep" id="3">
                 معاني الكلمات
             </span>
-        </li></a>
+            </li>
+        </a>
     </ul>
 </div>

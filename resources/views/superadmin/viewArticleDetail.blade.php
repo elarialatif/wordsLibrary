@@ -16,7 +16,9 @@
         }
 
         .modalDetails .modal-title {
-            font-size: 18px !important;
+            font-size: 20px !important;
+            padding: 0 1rem;
+            font-weight: bold;
         }
 
         .modalDetails.modal {
@@ -29,6 +31,13 @@
             margin: auto;
             text-align: center;
             padding: 1rem;
+            min-height: 100px;
+
+        }
+        .modalDetails .modal-body h5 {
+            font-size: 18px;
+            margin-bottom: 0;
+            line-height: 4rem;
         }
 
         .modalDetails .modal-body .details {
@@ -75,448 +84,967 @@
         ul.nav-pills li.current a {
             color: #fff;
         }
+        .table td, .table th {
+            border-top: 1px solid #eaeaea;
+            white-space: nowrap;
+            padding: 0.5rem;
+            vertical-align: middle;
+        }
+        .card {
+            background: #f4f7fa;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            margin-bottom: 0;
+        }
+        .card .card-header {
+            background-color: #fff;
+        }
+        .col-xl-8 {
+            padding-right: 0;
+        }
+        .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+            color: #04a9f5;
+        }
+        audio {
+            display: block;
+            width: 100%;
+            margin: 1rem 0;
+        }
+        #tinymcFont p {
+            display: block;
+            width: 830px;
+            max-width: 830px;
+        }
+        .card .row.content .col-md-7,
+        .card .row.content .col-md-5 {
+            margin-bottom: 0rem;
+        }
+        .card .row.content {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            border-top: 2px solid transparent;
+        }
+        .card .row.content div:first-child {
+            padding-right: 0;
+        }
+        .card .card-header {
+            display: block;
+            width: 100%;
+        }
+        .card .row.content .col-xl-7 div.img {
+            /* border: 12px solid #eaeaea; */
+            height: 290px;
+            max-height: 290px;
+            padding-left: 0;
+            margin-bottom: 1rem;
+            -webkit-box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.05);
+            box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.05);
+        }
+        .card .row.content .col-xl-7 div.img img{
+            width: 100%;
+            height: 100%;
+        }
+        .left .row{
+            margin-right: 1rem;
+            background: #fff;
+            margin-bottom: 1rem;
+            -webkit-box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.05);
+            box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.05);
+        }
+        .left h3 {
+            border-right: 4px solid #04a9f5;
+            margin-top: 1rem;
+            font-size: 20px;
+            font-weight: bold;
+            color: #000;
+            padding-right: 1rem;
+        }
+        .right h3 {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .right a.active h3 {
+            color: #04a9f5;
+        }
+        .right a h3:hover {
+            color: #04a9f5;
+        }
+        .left div.links {
+            display: block;
+            width: 100%;
+            padding: 0rem 0.75rem;
+        }
+        .left div.links a {
+            display: block;
+            width: 100%;
+            border-bottom: 1px solid #eaeaea;
+            margin-bottom: 1rem;
+            color: #000;
+            padding-bottom: 1rem;
+        }
+        .left div.links a:first-child{
+            padding-top: 1rem;
+            border-top: 1px solid #eaeaea;
+            margin-bottom: 0;
+        }
+        .left div.links a:last-child {
+            border-bottom: none;
+        }
+        .left div.links a:hover {
+            color: #04a9f5;
+            text-decoration: underline;
+        }
+        .levels div,
+        .team div {
+            padding-top: 1rem;
+            border-top: 1px solid #eaeaea;
+            display: block;
+            width: 100%;
+            margin: auto;
+            text-align: center;
+            margin-bottom: 1rem;
+            padding-right: 0.75rem;
+        }
+        .levels div a,
+        .team div a {
+            display: inline-block;
+            width: 30%;
+            color: #fff;
+            font-size: 17px;
+            font-weight: bold;
+            text-align: center;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .levels div a.link1{
+            background: #04a9f5;
+        }
+        .levels div a.link2,
+        .team div a {
+            background: #428bca;
+        }
+        .levels div a.link3{
+            background: #59b0f2;
+        }
+        .levels div a.link1:hover{
+            color: #04a9f5;
+            background: #fff;
+            -webkit-box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.5);
+            box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.5);
+        }
+        .levels div a.link2:hover,
+        .team div a:hover {
+            color: #428bca !important;
+            background: #fff;
+            -webkit-box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.5);
+            box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.5);
+        }
+        .levels div a.link3:hover{
+            color: #59b0f2;
+            background: #fff;
+            -webkit-box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.5);
+            box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.5);
+        }
+        .table-striped {
+            border: 1px solid #eaeaea;
+            background: #fff;
+            -webkit-box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.05);
+            box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.05);
+        }
+        .table-striped tbody tr:nth-of-type(2n+1) {
+            background-color: rgba(4, 169, 245, 0.05);
+        }
+        .table-striped tr td:first-child,
+        .table-striped thead th:first-child {
+            border-left: 1px solid #eaeaea;
+        }
+        .table-striped thead th h3{
+            margin-top: 1rem;
+            font-size: 22px;
+            font-weight: bold;
+            color: #04a9f5;
+            padding-right: 1rem;
+        }
+        .table-striped td {
+            font-size: 18px;
+        }
+        table.display.table-striped {
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            border: 0;
+        }
+        table.display.table-striped  td{
+            font-size: 15px;
+        }
+        .table-striped td span {
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            background: #428bca;
+            border-radius: 0;
+        }
+        .table-striped thead tr{
+            border-top: 2px solid transparent;
+        }
+        table.display.table-striped thead tr {
+            border-top: none;
+        }
+        table.display.table-striped tr td:first-child {
+            border-left: 0;
+        }
+        table.display.table-striped tbody tr td:first-child {
+            width: 30%;
+            font-size: 17px;
+            font-weight: bold;
+        }
+        table.display.table-striped tbody tr td {
+            padding: 12px;
+        }
+        .card-header h4 img {
+            text-align: center;
+            width: 190px;
+            max-width: 190px;
+            height: 150px;
+            max-height: 150px;
+            margin-left: 0.5rem;
+        }
+        .card-header div:last-child {}
+        .media-body h6 img {
+            display: block;
+            width: 100%;
+            margin-top: 1rem;
+            height: 300px;
+        }
     </style>
-
+    <!-- ####################################################### -->
     <div class="container">
-        <div class="container">
-
-            <div class="main-body">
-                <div class="page-wrapper">
-                    <!-- [ Main Content ] start -->
+        <!-- Row 1 -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
                     <div class="row">
-                        <!-- [ HTML5 Export button ] start -->
-                        <div class="col-sm-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5>
-                                        <span style="font-size: 22px;font-weight: bold"> {{$list->list}}</span>
-                                        <span style="color: blue;font-size: 20px"> {{$list->grade->name}}</span>
-                                        <span style="color: darkblue;font-size: 16px;font-weight: bold"> {{\App\Helper\ArticleLevels::getLevel($article->level)}}</span>
-
-                                    </h5>
-                                    <a class="btn btn-success" href="{{url('allFiles')}}"
-                                       style="float: left "><span class="fa fa-arrow-circle-left"> رجوع </span></a>
-                                </div>
-                                <div class="container"></div>
-
-                                <div id="exTab1" class="container">
-                                    <ul class="nav nav-pills">
-                                        <li class="active current">
-                                            <a href="#1a" data-toggle="tab">المقال</a>
-                                        </li>
-                                        <li><a href="#2a" data-toggle="tab">الانشطة</a>
-                                        </li>
-                                        <li><a href="#3a" data-toggle="tab">المقال الموسع</a>
-                                        </li>
-                                        <li><a href="#4a" data-toggle="tab">الانشطة الموسعة</a>
-                                        </li>
-                                    </ul>
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <div class="tab-content clearfix">
-                                                {{--NormalArtical--}}
-                                                <div class="tab-pane active " id="1a">
-                                                    <v style="right: 0;background-color: #1aa62a;position: absolute;
-                                    left: -25px;top: 3;width: 4px;height: 20px;">
-                                                    </v>
-                                                    <h6 style="font-size: 20px">المقال
-                                                        @if($sound)
-                                                            <audio controls style="float: left;">
-                                                                <source src="{{url('/').'/'.$sound->path}}"
-                                                                        type="audio/ogg">
-                                                                Your browser does not support the audio element.
-                                                            </audio>
-                                                        @endif
-                                                    </h6>
-                                                    <br/>
-                                                    <br/>
-                                                    <br/>
-                                                    <span>
-                                         <div id="tinymcFont"> {!! $article->article !!} </div>
-                                    </span>
-                                                </div>
-                                                {{--NormalQuestion--}}
-                                                <div class="tab-pane" id="2a">
-                                                    @if($questions->count()>0)
-                                                        <v style="right: 0;background-color: #1b4b72;position: absolute;
-                                        left: -25px;top: 3;width: 4px;height: 20px;">
-                                                        </v>
-                                                        <h6 style="font-size: 20px">الاسئلة الاساسية</h6>
-                                                        @foreach($questions as $question)
-                                                            <div class="card-header" id="Issues">
-                                                                <h6 style="font-size: 20px">السؤال رقم {{$question->id}}
-                                                                </h6>
-                                                                <div class="table-responsive"
-                                                                     style="display: inline-block">
-                                                                    <table
-                                                                            class="display table nowrap table-striped table-hover"
-                                                                            style="width:100%;float: right">
-                                                                        <thead>
-                                                                        <tr>
-                                                                            <th width="50%">/</th>
-                                                                            <th width="50%">القيمة</th>
-                                                                        </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                        <tr>
-                                                                            <td>
-                                                                                السؤال
-                                                                            </td>
-                                                                            <td>
-                                                                                {!! $question->question !!}
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>
-                                                                                الاجابة الاولي
-                                                                            </td>
-                                                                            <td>{{$question->ans1}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>
-                                                                                الاجابة الثانيه
-                                                                            </td>
-                                                                            <td>{{$question->ans2}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>
-                                                                                الاجابة الثالثه
-                                                                            </td>
-                                                                            <td>{{$question->ans3}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>
-                                                                                الاجابة الرابعه
-                                                                            </td>
-                                                                            <td>{{$question->ans4}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>
-                                                                                الاجابة الصحيحة
-                                                                                @php $true=$question->true_answer; @endphp
-                                                                            </td>
-                                                                            <td>{{$question->$true}}</td>
-                                                                        </tr>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-                                                            </div>
-                                                        @endforeach
-                                                    @endif
-                                                </div>
-                                                {{--StretchArtical--}}
-                                                <div class="tab-pane" id="3a">
-                                                    <v style="right: 0;background-color: #1aa62a;position: absolute;
-                                    left: -25px;top: 3;width: 4px;height: 20px;">
-                                                    </v>
-                                                    <h6 style="font-size: 20px">المقال الموسع
-                                                        @if($soundStretch)
-                                                            <audio controls style="float: left;">
-                                                                <source src="{{url('/').'/'.$soundStretch->path}}"
-                                                                        type="audio/ogg">
-                                                                Your browser does not support the audio element.
-                                                            </audio>
-                                                        @endif
-                                                    </h6>
-                                                    <br/>
-                                                    <br/>
-                                                    <br/>
-                                                    <span>
-                                         <div id="tinymcFont"> {!! $article->stretchArticle !!} </div>
-                                    </span>
-                                                </div>
-                                                {{--StretchQuestion--}}
-                                                <div class="tab-pane" id="4a">
-                                                    @if($questionStretch->count()>0)
-                                                        <v style="right: 0;background-color: #1b4b72;position: absolute;
-                                        left: -25px;top: 3;width: 4px;height: 20px;">
-                                                        </v>
-                                                        <h6 style="font-size: 20px">الاسئلة الاضافية</h6>
-                                                        @foreach($questionStretch as $question)
-                                                            <div class="card-header" id="Issues">
-                                                                <h6 style="font-size: 20px">السؤال رقم {{$question->id}}
-                                                                </h6>
-                                                                <div class="table-responsive"
-                                                                     style="display: inline-block">
-                                                                    <table
-                                                                            class="display table nowrap table-striped table-hover"
-                                                                            style="width:100%;float: right">
-                                                                        <thead>
-                                                                        <tr>
-                                                                            <th width="50%">/</th>
-                                                                            <th width="50%">القيمة</th>
-                                                                        </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                        <tr>
-                                                                            <td>
-                                                                                السؤال
-                                                                            </td>
-                                                                            <td>
-                                                                                {!! $question->question !!}
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>
-                                                                                الاجابة الاولي
-                                                                            </td>
-                                                                            <td>{{$question->ans1}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>
-                                                                                الاجابة الثانيه
-                                                                            </td>
-                                                                            <td>{{$question->ans2}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>
-                                                                                الاجابة الثالثه
-                                                                            </td>
-                                                                            <td>{{$question->ans3}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>
-                                                                                الاجابة الرابعه
-                                                                            </td>
-                                                                            <td>{{$question->ans4}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>
-                                                                                الاجابة الصحيحة
-                                                                                @php $true=$question->true_answer; @endphp
-                                                                            </td>
-                                                                            <td>{{$question->$true}}</td>
-                                                                        </tr>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-                                                            </div>
-                                                        @endforeach
-                                                    @endif
-                                                </div>
-                                            </div>
+                        <div class="card-header">
+                            <h4>
+                                <img src="{{url('public/'.$list->image)}}" alt="">
+                                <span style="font-size: 22px;font-weight: bold"> {{$list->list}}</span>
+                                <span style="color: #04a9f5;font-size: 20px; padding: 0 0.2rem;"> {{$list->grade->name}}</span>
+                                <span style="color: darkblue;font-size: 16px;font-weight: bold"> {{\App\Helper\ArticleLevels::getLevel($article->level)}}</span>
+                                <a class="btn btn-primary" href="{{url('allFiles')}}"
+                                   style="float: left "><span class="fa fa-arrow-circle-left">
+                                    رجوع
+                                </span>
+                                </a>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="container"></div>
+                    <div class="row content">
+                        <!-- Tabs -->
+                        <div class="col-xl-7 col-md-7 m-b-30 right">
+                            <!-- Image Lesson -->
+                            <div class="col-sm-12 img">
+                                <img src="{{url('public/'.$list->featureImage)}}" alt="">
+                            </div>
+                            <!-- #Image Lesson -->
+                            <ul class="nav nav-tabs" id="myTab1" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link  active show" id="user-tab" data-toggle="tab" href="#5a" role="tab" aria-selected="false">
+                                        <h3>السؤال القبلي</h3>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="user-tab" data-toggle="tab" href="#1a" role="tab" aria-selected="false">
+                                        <h3>المقال</h3>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="designer-tab" data-toggle="tab" href="#2a" role="tab" aria-selected="false">
+                                        <h3>الانشطة</h3>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="user-tab" data-toggle="tab" href="#6a" role="tab" aria-selected="false">
+                                        <h3>السؤال البعدى</h3>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="Developer-tab" data-toggle="tab" href="#3a" role="tab" aria-selected="true">
+                                        <h3>المقال الموسع</h3>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="Developer-tab" data-toggle="tab" href="#4a" role="tab" aria-selected="true">
+                                        <h3>الانشطة الموسعة</h3>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content User-Lists" id="myTabContent1">
+                                <div class="tab-pane fade active show" id="5a" role="tabpanel">
+                                    <div class="media friendlist-box align-items-center justify-content-center m-b-20">
+                                        <div class="media-body">
+                                            <h6 style="font-size: 20px">المقال
+                                                @if($sound)
+                                                    <audio controls>
+                                                        <source src="{{url('/').'/'.$sound->path}}"
+                                                                type="audio/ogg">
+                                                        Your browser does not support the audio element.
+                                                    </audio>
+                                                @endif
+                                            </h6>
+                                            <div id="tinymcFont">  {!! $article->article !!} </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <v style="margin-top: 2rem;right: 0;background-color: #1b4b72;position: absolute;
-                                        left: -25px;top: 3;width: 4px;height: 20px;">
-                                            </v>
-                                            <h3 style="font-size: 20px;margin-top: 2rem;">المرادفات</h3>
-                                            <div class="table-responsive" style="display: inline-block">
-                                                <table
-                                                        class="display table nowrap table-striped table-hover"
-                                                        style="width:100%;float: left">
-                                                    <thead>
-                                                    <tr>
-                                                        <th width="50%">الكلمه</th>
-                                                        <th width="50%">المعني</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    @foreach($vocab as $word)
-                                                        <tr>
-                                                            <td>{{$word->word}}</td>
-                                                            <td>{{$word->mean}}</td>
-                                                        </tr>
-                                                    @endforeach
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <v style="margin-top: 2rem;right: 0;background-color: #1b4b72;position: absolute;
-                                        left: -25px;top: 3;width: 4px;height: 20px;">
-                                            </v>
-                                            <h3 style="font-size: 20px;margin-top: 2rem;">الروابط الاثرائية</h3>
-                                            <div class="table-responsive" style="display: inline-block">
-                                                <table class="display table nowrap table-striped table-hover"
-                                                       style="width:100%;float: left">
-                                                    @foreach($links as $word)
-                                                        <a href="{{$word->link}}">{{$word->name}}</a>
-                                                    @endforeach
-                                                </table>
-                                            </div>
-                                            <v style="margin-top: 2rem;right: 0;background-color: #1b4b72;position: absolute;
-                                        left: -25px;top: 3;width: 4px;height: 20px;">
-                                            </v>
-                                            <h3 style="font-size: 20px;margin-top: 2rem;">المراحل</h3>
-                                            <div class="table-responsive" style="display: inline-block">
-                                                <table
-                                                        class="display table nowrap table-striped table-hover"
-                                                        style="width:100%;float: left">
-
-                                                    <tbody>
-
-                                                    <tr>
-                                                        <td>
-                                                            <a href="{{url('adminChangeStepOfList/'.\App\Helper\Steps::ANALYZING_FILE.'/'.$list->id)}}">
-                                                                الى محلل المقالات </a></td>
-                                                        <td>
-                                                            <a href="{{url('adminChangeStepOfList/'.\App\Helper\Steps::INSERTING_ARTICLE.'/'.$list->id)}}">
-                                                                الى المحرر </a></td>
-                                                        <td>
-                                                            <a href="{{url('adminChangeStepOfList/'.\App\Helper\Steps::REVIEW_ARTICLE.'/'.$list->id)}}">
-                                                                الى مراجع المقالات</a></td>
-
-
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <a href="{{url('adminChangeStepOfList/'.\App\Helper\Steps::Create_Question.'/'.$list->id)}}">
-                                                                الى مدخل الاسئلة</a></td>
-                                                        <td>
-                                                            <a href="{{url('adminChangeStepOfList/'.\App\Helper\Steps::Review_Question.'/'.$list->id)}}">الى
-                                                                مراجع الاسئلة</a></td>
-                                                        <td>
-                                                            <a href="{{url('adminChangeStepOfList/'.\App\Helper\Steps::Languestic.'/'.$list->id)}}">الى
-                                                                المراجع اللغوى </a></td>
-
-
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <a href="{{url('adminChangeStepOfList/'.\App\Helper\Steps::Sound.'/'.$list->id)}}">
-                                                                الى الصوت</a></td>
-                                                        <td>
-                                                            <a href="{{url('adminChangeStepOfList/'.\App\Helper\Steps::Quality.'/'.$list->id)}}">
-                                                                الى الجودة</a></td>
-                                                        <td>
-                                                            <a href="{{url('adminChangeStepOfList/'.\App\Helper\Steps::Publish.'/'.$list->id)}}">
-                                                                نشر</a></td>
-
-                                                    </tr>
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            {{--ListUsers--}}
-                                            <v style="margin-top: 2rem;right: 0;background-color: #1b4b72;position: absolute;
-                                        left: -25px;top: 3;width: 4px;height: 20px;">
-                                            </v>
-                                            <h3 style="font-size: 20px;margin-top: 2rem;">المعدين</h3>
-                                            <a class="btn btn-info" data-toggle="modal" data-target="#myModal">المعدين</a>
-                                            <!-- Modal -->
-                                            <div id="myModal"
-                                                 class="modalDetails modal fade"
-                                                 role="dialog">
-                                                <div class="modal-dialog">
-
-                                                    <!-- Modal content-->
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title">قائمة
-                                                                المعدين
-                                                            </h4>
-                                                            <button type="button" class="close"
-                                                                    data-dismiss="modal">&times;
-                                                            </button>
-
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="details">
-                                                                <span>معد مواضيع:</span>
-                                                                <span>{{$list->user->name}}</span>
-                                                            </div>
-                                                            <div class="details">
-                                                                <span>محرر:</span>
-                                                                <span>{{($users->where('role',\App\Helper\UsersTypes::EDITOR)->first())?$users->where('role',\App\Helper\UsersTypes::EDITOR)->first()->name:"لا يوجد"}}</span>
-                                                            </div>
-                                                            <div class="details">
-                                                                <span>محلل مواضيع:</span>
-                                                                <span>{{($users->where('role',\App\Helper\UsersTypes::LISTANALYZER)->first())?$users->where('role',\App\Helper\UsersTypes::LISTANALYZER)->first()->name:"لا يوجد"}}</span>
-                                                            </div>
-                                                            <div class="details">
-                                                                <span>مراجع:</span>
-                                                                <span> {{($users->where('role',\App\Helper\UsersTypes::REVIEWER)->first())?$users->where('role',\App\Helper\UsersTypes::REVIEWER)->first()->name:"لا يوجد"}}</span>
-                                                            </div>
-                                                            <div class="details">
-                                                                <span> مدخل اسئلة:</span>
-                                                                <span>{{($users->where('role',\App\Helper\UsersTypes::QuestionCreator)->first())?$users->where('role',\App\Helper\UsersTypes::QuestionCreator)->first()->name:"لا يوجد"}}</span>
-                                                            </div>
-                                                            <div class="details">
-                                                                <span>مراجع اسئلة:</span>
-                                                                <span>{{($users->where('role',\App\Helper\UsersTypes::QuestionReviewer)->first())?$users->where('role',\App\Helper\UsersTypes::QuestionReviewer)->first()->name:"لا يوجد"}}</hspan6>
-                                                            </div>
-                                                            <div class="details">
-                                                                <span>مراجع لغوى:</span>
-                                                                <span>{{($users->where('role',\App\Helper\UsersTypes::Languestic)->first())?$users->where('role',\App\Helper\UsersTypes::Languestic)->first()->name:"لا يوجد"}}</span>
-                                                            </div>
-                                                            <div class="details">
-                                                                <span>مدخل صوت:</span>
-                                                                <span>{{($users->where('role',\App\Helper\UsersTypes::Sound)->first())?$users->where('role',\App\Helper\UsersTypes::Sound)->first()->name:"لا يوجد"}}</span>
-                                                            </div>
-                                                            <div class="details">
-                                                                <span>جودة:</span>
-                                                                <span>{{($users->where('role',\App\Helper\UsersTypes::quality)->first())?$users->where('role',\App\Helper\UsersTypes::quality)->first()->name:"لا يوجد"}}</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button"
-                                                                    class="btn btn-default"
-                                                                    data-dismiss="modal">غلق
-                                                            </button>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="1a" role="tabpanel">
+                                    <div class="media friendlist-box align-items-center justify-content-center m-b-20">
+                                        <div class="media-body">
+                                            <h6 style="font-size: 20px">المقال
+                                                @if($sound)
+                                                    <audio controls>
+                                                        <source src="{{url('/').'/'.$sound->path}}"
+                                                                type="audio/ogg">
+                                                        Your browser does not support the audio element.
+                                                    </audio>
+                                                @endif
+                                            </h6>
+                                            <div id="tinymcFont">  {!! $article->article !!} </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="2a" role="tabpanel">
+                                    @if($questions->count()>0)
+                                        <div class="media friendlist-box align-items-center justify-content-center m-b-20">
+                                            <div class="media-body">
+                                                <h6 class="m-0 d-inline" style="font-size: 18px">
+                                                    الاسئلة الاساسية
+                                                </h6>
+                                                @foreach($questions as $question)
+                                                    <div class="card-header" id="Issues">
+                                                        <h6 style="font-size: 20px">السؤال رقم {{$question->id}}
+                                                        </h6>
+                                                        <div class="table-responsive"
+                                                             style="display: inline-block">
+                                                            <table
+                                                                    class="display table nowrap table-striped table-hover"
+                                                                    style="width:100%;float: right">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th width="50%">/</th>
+                                                                    <th width="50%">القيمة</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        السؤال
+                                                                    </td>
+                                                                    <td>
+                                                                        {!! $question->question !!}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        الاجابة الاولي
+                                                                    </td>
+                                                                    <td>{{$question->ans1}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        الاجابة الثانيه
+                                                                    </td>
+                                                                    <td>{{$question->ans2}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        الاجابة الثالثه
+                                                                    </td>
+                                                                    <td>{{$question->ans3}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        الاجابة الرابعه
+                                                                    </td>
+                                                                    <td>{{$question->ans4}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        الاجابة الصحيحة
+                                                                        @php $true=$question->true_answer; @endphp
+                                                                    </td>
+                                                                    <td>{{$question->$true}}</td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
                                                         </div>
                                                     </div>
-
-                                                </div>
+                                                @endforeach
                                             </div>
-                                            {{-- end of modal--}}
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="tab-pane fade" id="6a" role="tabpanel">
+                                    @if($questions->count()>0)
+                                        <div class="media friendlist-box align-items-center justify-content-center m-b-20">
+                                            <div class="media-body">
+                                                <h6 class="m-0 d-inline" style="font-size: 18px">
+                                                    الاسئلة الاساسية
+                                                </h6>
+                                                @foreach($questions as $question)
+                                                    <div class="card-header" id="Issues">
+                                                        <h6 style="font-size: 20px">السؤال رقم {{$question->id}}
+                                                        </h6>
+                                                        <div class="table-responsive"
+                                                             style="display: inline-block">
+                                                            <table
+                                                                    class="display table nowrap table-striped table-hover"
+                                                                    style="width:100%;float: right">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th width="50%">/</th>
+                                                                    <th width="50%">القيمة</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        السؤال
+                                                                    </td>
+                                                                    <td>
+                                                                        {!! $question->question !!}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        الاجابة الاولي
+                                                                    </td>
+                                                                    <td>{{$question->ans1}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        الاجابة الثانيه
+                                                                    </td>
+                                                                    <td>{{$question->ans2}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        الاجابة الثالثه
+                                                                    </td>
+                                                                    <td>{{$question->ans3}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        الاجابة الرابعه
+                                                                    </td>
+                                                                    <td>{{$question->ans4}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        الاجابة الصحيحة
+                                                                        @php $true=$question->true_answer; @endphp
+                                                                    </td>
+                                                                    <td>{{$question->$true}}</td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="tab-pane fade" id="3a" role="tabpanel">
+                                    <div class="media friendlist-box align-items-center justify-content-center m-b-20">
+                                        <div class="media-body">
+                                            <h6  style="font-size: 20px">المقال الموسع
+                                                @if($soundStretch)
+                                                    <audio controls >
+                                                        <source src="{{url('/').'/'.$soundStretch->path}}"
+                                                                type="audio/ogg">
+                                                        Your browser does not support the audio element.
+                                                    </audio>
+                                                @endif
+                                            </h6>
+                                            <div id="tinymcFont"> {!! $article->stretchArticle !!} </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="4a" role="tabpanel">
+                                    @if($questionStretch->count()>0)
+                                        <div class="media friendlist-box align-items-center justify-content-center m-b-20">
+                                            <div class="media-body">
+                                                <h6 class="m-0 d-inline" style="font-size: 18px">
+                                                    الاسئلة الاضافية
+                                                </h6>
+                                                @foreach($questionStretch as $question)
+                                                    <div class="card-header" id="Issues">
+                                                        <h6 style="font-size: 20px">السؤال رقم {{$question->id}}
+                                                        </h6>
+                                                        <div class="table-responsive"
+                                                             style="display: inline-block">
+                                                            <table
+                                                                    class="display table nowrap table-striped table-hover"
+                                                                    style="width:100%;float: right">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th width="50%">/</th>
+                                                                    <th width="50%">القيمة</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        السؤال
+                                                                    </td>
+                                                                    <td>
+                                                                        {!! $question->question !!}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        الاجابة الاولي
+                                                                    </td>
+                                                                    <td>{{$question->ans1}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        الاجابة الثانيه
+                                                                    </td>
+                                                                    <td>{{$question->ans2}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        الاجابة الثالثه
+                                                                    </td>
+                                                                    <td>{{$question->ans3}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        الاجابة الرابعه
+                                                                    </td>
+                                                                    <td>{{$question->ans4}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        الاجابة الصحيحة
+                                                                        @php $true=$question->true_answer; @endphp
+                                                                    </td>
+                                                                    <td>{{$question->$true}}</td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <!-- #Tabs -->
+                        <!-- /////////////////////////////////// -->
+                        <!-- #Left Tabs -->
+                        <div class="col-xl-5 col-md-5 m-b-30 left">
+                            <div class="row">
+                                <h3>المرادفات</h3>
+                                <div class="table-responsive" style="display: inline-block">
+                                    <table class="display table nowrap table-striped table-hover"
+                                           style="width:100%;float: left">
+
+                                        <tbody>
+                                        @foreach($vocab as $word)
+                                            <tr>
+                                                <td>{{$word->word}}</td>
+                                                <td>{{$word->mean}}</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <h3>الروابط الاثرائية</h3>
+                                <div class="links">
+                                    @foreach($links as $word)
+                                        <a href="{{$word->link}}">{{$word->name}}</a>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="row levels">
+                                <h3>المراحل</h3>
+                                <div>
+                                    <a class="link1" data-toggle="modal" data-target="#levelsModal1" href="">
+                                        الى محلل المقالات
+                                    </a>
+                                    <a class="link2" data-toggle="modal" data-target="#levelsModal2" href="">
+                                        الى المحرر
+                                    </a>
+                                    <a class="link3" data-toggle="modal" data-target="#levelsModal3" href="">
+                                        الى مراجع المقالات
+                                    </a>
+                                    <a class="link3" data-toggle="modal" data-target="#levelsModal4" href="">
+                                        الى مدخل الاسئلة
+                                    </a>
+                                    <a class="link1" data-toggle="modal" data-target="#levelsModal5" href="">الى
+                                        مراجع الاسئلة
+                                    </a>
+                                    <a class="link2" data-toggle="modal" data-target="#levelsModal6" href="">الى
+                                        المراجع اللغوى
+                                    </a>
+                                    <a class="link2" data-toggle="modal" data-target="#levelsModal7" href="">
+                                        الى الصوت
+                                    </a>
+                                    <a class="link3" data-toggle="modal" data-target="#levelsModal8" href="">
+                                        الى الجودة
+                                    </a>
+                                    <a class="link1" data-toggle="modal" data-target="#levelsModal9" href="">
+                                        نشر
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Levels Modal -->
+                            <div id="levelsModal1" class="modalDetails modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" >
+                                                تأكيد الذهاب
+                                            </h4>
+                                            <button type="button" class="close" data-dismiss="modal">
+                                                &times;
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h5>هل تريد الذهاب الي محلل المقالات؟</h5>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" onclick="location.href='{{url('adminChangeStepOfList/'.\App\Helper\Steps::ANALYZING_FILE.'/'.$list->id)}}'" type="button">
+                                                موافق
+                                            </button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                غلق
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <table class="table table-striped table-dark table-bordered  table-hover" id="Table">
-                                <thead>
+                            <div id="levelsModal2" class="modalDetails modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">
+                                                تأكيد الذهاب
+                                            </h4>
+                                            <button type="button" class="close" data-dismiss="modal">
+                                                &times;
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h5>هل تريد الذهاب الي المحرر؟</h5>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" onclick="location.href='{{url('adminChangeStepOfList/'.\App\Helper\Steps::INSERTING_ARTICLE.'/'.$list->id)}}'" type="button">
+                                                موافق
+                                            </button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                غلق
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="levelsModal3" class="modalDetails modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">
+                                                تأكيد الذهاب
+                                            </h4>
+                                            <button type="button" class="close" data-dismiss="modal">
+                                                &times;
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h5>هل تريد الذهاب الي مراجع المقالات؟</h5>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" onclick="location.href='{{url('adminChangeStepOfList/'.\App\Helper\Steps::REVIEW_ARTICLE.'/'.$list->id)}}'" type="button">
+                                                موافق
+                                            </button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                غلق
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="levelsModal4" class="modalDetails modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">
+                                                تأكيد الذهاب
+                                            </h4>
+                                            <button type="button" class="close" data-dismiss="modal">
+                                                &times;
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h5>هل تريد الذهاب الي مدخل الأسئلة؟</h5>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" onclick="location.href='{{url('adminChangeStepOfList/'.\App\Helper\Steps::Create_Question.'/'.$list->id)}}'" type="button">
+                                                موافق
+                                            </button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                غلق
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="levelsModal5" class="modalDetails modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">
+                                                تأكيد الذهاب
+                                            </h4>
+                                            <button type="button" class="close" data-dismiss="modal">
+                                                &times;
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h5>هل تريد الذهاب الي مراجع الأسئلة؟</h5>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" onclick="location.href='{{url('adminChangeStepOfList/'.\App\Helper\Steps::Review_Question.'/'.$list->id)}}'" type="button">
+                                                موافق
+                                            </button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                غلق
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="levelsModal6" class="modalDetails modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">
+                                                تأكيد الذهاب
+                                            </h4>
+                                            <button type="button" class="close" data-dismiss="modal">
+                                                &times;
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h5>هل تريد الذهاب الي المراجع اللغوي؟</h5>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" onclick="location.href='{{url('adminChangeStepOfList/'.\App\Helper\Steps::Languestic.'/'.$list->id)}}'" type="button">
+                                                موافق
+                                            </button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                غلق
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="levelsModal7" class="modalDetails modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">
+                                                تأكيد الذهاب
+                                            </h4>
+                                            <button type="button" class="close" data-dismiss="modal">
+                                                &times;
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h5>هل تريد الذهاب الي الصوت؟</h5>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" onclick="location.href='{{url('adminChangeStepOfList/'.\App\Helper\Steps::Sound.'/'.$list->id)}}'" type="button">
+                                                موافق
+                                            </button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                غلق
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="levelsModal8" class="modalDetails modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">
+                                                تأكيد الذهاب
+                                            </h4>
+                                            <button type="button" class="close" data-dismiss="modal">
+                                                &times;
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h5>هل تريد الذهاب الي الجودة؟</h5>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" onclick="location.href='{{url('adminChangeStepOfList/'.\App\Helper\Steps::Quality.'/'.$list->id)}}'" type="button">
+                                                موافق
+                                            </button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                غلق
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="levelsModal9" class="modalDetails modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">
+                                                تأكيد الذهاب
+                                            </h4>
+                                            <button type="button" class="close" data-dismiss="modal">
+                                                &times;
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h5>هل تريد النشر؟</h5>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" onclick="location.href='{{url('adminChangeStepOfList/'.\App\Helper\Steps::Publish.'/'.$list->id)}}'" type="button">
+                                                موافق
+                                            </button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                غلق
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- #Levels Modal -->
 
-                                <th style="text-align: center"> الحدث</th>
-                                <th style="text-align: center;width: 15%"> التاريخ</th>
-
-                                </thead>
-                                <tbody id="myTable">
-                                @php $logtimes=\App\Http\Controllers\superAdmin\LogTimeController::getDetailsOfLogtimesRows(null,null,'content_lists',$article->list_id); @endphp
-                                @for($i=0;  $i<count($logtimes);$i++)
-                                    <tr>
-
-                                        <td>
-
-                                            {{$logtimes[$i]['user_name']}} &nbsp; {{$logtimes[$i]['type']}}&nbsp;
-                                            {{ $logtimes[$i]['table']}}&nbsp;
-                                            {{$logtimes[$i]['name']}}
-                                        </td>
-                                        <td>
-                    <span class="badge badge-warning pull-left"
-                          style="background-color: #59b0f2">  {{$logtimes[$i]['created_at']}} </span>
-                                        </td>
-
-                                    </tr>
-                                @endfor
-
-                                </tbody>
-                            </table>
-
-                            <!-- [ HTML5 Export button ] end -->
+                            <div class="row team">
+                                <h3>فريق العمل</h3>
+                                <div>
+                                    <a class="btn btn-primary m-t-5" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true" aria-controls="collapseExample">المعدين</a>
+                                </div>
+                                <!-- Collapse -->
+                                <div class="collapse" id="collapseExample" style="border: 0;">
+                                    <div class="card-body" style="border: 0; padding:0;">
+                                        <div class="table-responsive" style="display: inline-block; border:0;">
+                                            <table class="display table nowrap table-striped table-hover"
+                                                   style="width:100%;float: left">
+                                                <tbody>
+                                                <tr>
+                                                    <td>معد مواضيع:</td>
+                                                    <td>{{$list->user->name}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>محرر:</td>
+                                                    <td>{{($users->where('role',\App\Helper\UsersTypes::EDITOR)->first())?$users->where('role',\App\Helper\UsersTypes::EDITOR)->first()->name:"لا يوجد"}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>محلل مواضيع:</td>
+                                                    <td>{{($users->where('role',\App\Helper\UsersTypes::LISTANALYZER)->first())?$users->where('role',\App\Helper\UsersTypes::LISTANALYZER)->first()->name:"لا يوجد"}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>مراجع:</td>
+                                                    <td> {{($users->where('role',\App\Helper\UsersTypes::REVIEWER)->first())?$users->where('role',\App\Helper\UsersTypes::REVIEWER)->first()->name:"لا يوجد"}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> مدخل اسئلة:</td>
+                                                    <td>{{($users->where('role',\App\Helper\UsersTypes::QuestionCreator)->first())?$users->where('role',\App\Helper\UsersTypes::QuestionCreator)->first()->name:"لا يوجد"}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>مراجع اسئلة:</td>
+                                                    <td>{{($users->where('role',\App\Helper\UsersTypes::QuestionReviewer)->first())?$users->where('role',\App\Helper\UsersTypes::QuestionReviewer)->first()->name:"لا يوجد"}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>مراجع لغوى:</td>
+                                                    <td>{{($users->where('role',\App\Helper\UsersTypes::Languestic)->first())?$users->where('role',\App\Helper\UsersTypes::Languestic)->first()->name:"لا يوجد"}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>مدخل صوت:</td>
+                                                    <td>{{($users->where('role',\App\Helper\UsersTypes::Sound)->first())?$users->where('role',\App\Helper\UsersTypes::Sound)->first()->name:"لا يوجد"}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>جودة:</td>
+                                                    <td>{{($users->where('role',\App\Helper\UsersTypes::quality)->first())?$users->where('role',\App\Helper\UsersTypes::quality)->first()->name:"لا يوجد"}}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- #Collapse--}}
+                            </div>
                         </div>
+                        <!-- #Left Tabs -->
+                        <!-- /////////////////////////////////// -->
                     </div>
                 </div>
             </div>
         </div>
-        <script>
-            // ===== Tabs ====
-            $(' ul.nav-pills li').click(function () {
-                var tab_id = $(this).attr('data-tab');
+        <!-- #Row 1 -->
+        <!-- ####################################################### -->
+        <!-- Row 2 -->
+        <div class="row">
+            <table class="table table-striped" id="Table">
+                <thead>
+                <th>
+                    <h3 style="text-align: center;">الحدث</h3>
+                </th>
+                <th style="width: 15%">
+                    <h3>
+                        التاريخ
+                    </h3>
+                </th>
+                </thead>
+                <tbody id="myTable">
+                @php $logtimes=\App\Http\Controllers\superAdmin\LogTimeController::getDetailsOfLogtimesRows(null,null,'content_lists',$article->list_id); @endphp
+                @for($i=0;  $i<count($logtimes);$i++)
+                    <tr>
+                        <td>
+                            {{$logtimes[$i]['user_name']}} &nbsp; {{$logtimes[$i]['type']}}&nbsp;
+                            {{ $logtimes[$i]['table']}}&nbsp;
+                            {{$logtimes[$i]['name']}}
+                        </td>
+                        <td>
+                            <span class="badge badge-warning pull-left">  {{$logtimes[$i]['created_at']}} </span>
+                        </td>
+                    </tr>
+                @endfor
+                </tbody>
+            </table>
+        </div>
+        <!-- #Row 2 -->
+    </div>
+    <!-- ####################################################### -->
 
-                $(' ul.nav-pills li').removeClass('current');
-                $(' ul.nav-pills .tab-content').removeClass('current');
+@section('css')
+    <link rel="stylesheet" href="{{url('public/plugins/data-tables/css/datatables.min.css')}}">
 
-                $(this).addClass('current');
-                $("#" + tab_id).addClass('current');
-            });
-            // ===== #Tabs ====
-        </script>
-        @section('css')
-            <link rel="stylesheet" href="{{url('public/plugins/data-tables/css/datatables.min.css')}}">
-
-        @endsection
-        @section('js')
-            <script src="{{ asset('public/plugins/data-tables/js/datatables.min.js')}}"></script>
-            <script src="{{ asset('public/js/pages/tbl-datatable-custom.js')}}"></script>
+@endsection
+@section('js')
+    <script src="{{ asset('public/plugins/data-tables/js/datatables.min.js')}}"></script>
+    <script src="{{ asset('public/js/pages/tbl-datatable-custom.js')}}"></script>
 
 @endsection
 @endsection

@@ -77,13 +77,21 @@ class EditorController extends Controller
         return view('editor.article.create', compact('orginalFile', "list", "file_id", "categories_all", "level", 'page', 'type'));
     }
 
+
     public function saveArticle(Request $request)
     {
+        if (\request('articleStretch')) {
+            $request->validate([
+                'articleStretch' => 'required',
+            ],
+                ['articleStretch.required' => 'المقال مطلوب ',]);
+        } else {
+            $request->validate([
+                'articleNormal' => 'required',
+            ],
+                ['articleNormal.required' => 'المقال مطلوب ',]);
+        }
 
-        $request->validate([
-            'article' . \request('type') => 'required',
-        ],
-            ['article.required' => 'المقال مطلوب ',]);
 
         DB::transaction(function () {
             $articleCheck = Article::where(['list_id' => \request('list_id'), 'level' => \request('level')])->first();
@@ -92,7 +100,15 @@ class EditorController extends Controller
 
             } else {
                 $article = new Article();
+
+
+
             }
+            if(\request('hint')){
+                $article->pollHint = \request('hint');
+                $article->poll = \request('poll');
+            }
+
 
             $article->list_id = \request('list_id');
             $article->level = \request('level');
@@ -102,6 +118,7 @@ class EditorController extends Controller
                 $article->stretchArticle = \request('articleStretch');
             } else {
                 $article->article = \request('articleNormal');
+
             }
 
             //  $article->step = Steps::INSERTING_ARTICLE;

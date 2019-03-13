@@ -65,7 +65,7 @@
                                                                   action="{{url('editor/save/article')}}">
                                                                 @csrf
                                                                 <div class="form-group">
-                                                                    <label for="article" class="col-form-label">المقال:</label>
+                                                                    <label for="articleNormal" class="col-form-label">المقال:</label>
                                                                     <textarea class="mceEditor form-control"
                                                                               required
                                                                               name="article">{!! $artical->article !!}</textarea>
@@ -614,7 +614,7 @@
                                                                 <div class="form-group">
                                                                     <label for="article" class="col-form-label">المقال الاضافي:</label>
                                                                     <textarea class="mceEditor form-control"
-                                                                             required name="article">{!!$artical->stretchArticle !!}</textarea>
+                                                                             required name="articleStretch">{!!$artical->stretchArticle !!}</textarea>
                                                                     <input type="hidden" name="list_id"
                                                                            value="{{$artical->list_id}}">
                                                                     <input type="hidden" name="level"

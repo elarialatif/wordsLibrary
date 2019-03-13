@@ -85,6 +85,13 @@
                                             </div>
 
                                             <div class="col-md-6">
+                                                @if($type==$articleObject->getNormalArticleValue())
+                                                    <label> مقدمة السؤال القبلى </label>
+                                                    <textarea type="text" class="form-control" name="hint">@if($article) {{$article->pollHint}} @endif  </textarea>
+                                                    <label> السؤال القبلى والبعدى </label>
+                                                    <textarea type="text" class="form-control" name="poll">@if($article) {{$article->poll}} @endif  </textarea>
+<br>
+                                                @endif
 
                                                 @csrf
                                                 <textarea class="mceEditor"
@@ -263,10 +270,12 @@
 @endsection
 <script>
     if ("{{$type}}" == "{{$articleObject->getNormalArticleValue()}}") {
-
+        $('#0').css('background', '#green');
         $('#1').css('background', '#539af6');
+
     }
     else {
+        $('#0').css('background', '#green');
         $('#1').css('background', 'green');
         $('#2').css('background', '#539af6');
     }

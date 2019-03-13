@@ -16,6 +16,8 @@ class Article extends Migration
         Schema::create('article', function (Blueprint $table) {
             $table->increments('id');
             $table->longText('article');
+            $table->string('pollHint');
+            $table->string('poll');
             $table->integer('level');
             $table->longText('stretchArticle')->nullable();
             $table->integer('status')->default(0);
