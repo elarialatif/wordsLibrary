@@ -110,10 +110,18 @@
             width: 100%;
             margin: 1rem 0;
         }
+        .media-body {
+            display: block;
+            width: 100%;
+        }
+        .nav-link {
+            display: block;
+            padding: 10px 20px;
+        }
         #tinymcFont p {
             display: block;
-            width: 830px;
-            max-width: 830px;
+            width: 600px;
+            max-width: 600px;
         }
         .card .row.content .col-md-7,
         .card .row.content .col-md-5 {
@@ -160,7 +168,7 @@
             padding-right: 1rem;
         }
         .right h3 {
-            font-size: 20px;
+            font-size: 15px;
             font-weight: bold;
         }
         .right a.active h3 {
@@ -210,7 +218,7 @@
             display: inline-block;
             width: 30%;
             color: #fff;
-            font-size: 17px;
+            font-size: 15px;
             font-weight: bold;
             text-align: center;
             padding: 1rem;
