@@ -117,111 +117,132 @@ class HomeController extends Controller
     {
         return view('layouts.notify');
     }
-    public function editorWork(){
-        $arr=[];
-        $easy_article_ids=Article::where('level',ArticleLevels::Easy)->get()->pluck('id')->toArray();
-        $normal_article_ids=Article::where('level',ArticleLevels::Normal)->get()->pluck('id')->toArray();
-        $hard_article_ids=Article::where('level',ArticleLevels::Hard)->get()->pluck('id')->toArray();
-        if(auth()->user()->role==UsersTypes::EDITOR){
-            $arr['num_files']=ArticleFiles::where('user_id',auth()->id())->count();
-            $arr['num_easy']=Article::where(['user_id'=>auth()->id(),'level'=>ArticleLevels::Easy])->count();
-            $arr['num_normal']=Article::where(['user_id'=>auth()->id(),'level'=>ArticleLevels::Normal])->count();
-            $arr['num_hard']=Article::where(['user_id'=>auth()->id(),'level'=>ArticleLevels::Hard])->count();
+
+    public function editorWork()
+    {
+        $arr = [];
+        $easy_article_ids = Article::where('level', ArticleLevels::Easy)->get()->pluck('id')->toArray();
+        $normal_article_ids = Article::where('level', ArticleLevels::Normal)->get()->pluck('id')->toArray();
+        $hard_article_ids = Article::where('level', ArticleLevels::Hard)->get()->pluck('id')->toArray();
+        if (auth()->user()->role == UsersTypes::EDITOR) {
+            $arr['num_files'] = ArticleFiles::where('user_id', auth()->id())->count();
+            $arr['num_easy'] = Article::where(['user_id' => auth()->id(), 'level' => ArticleLevels::Easy])->count();
+            $arr['num_normal'] = Article::where(['user_id' => auth()->id(), 'level' => ArticleLevels::Normal])->count();
+            $arr['num_hard'] = Article::where(['user_id' => auth()->id(), 'level' => ArticleLevels::Hard])->count();
         }
-        if(auth()->user()->role==UsersTypes::Sound){
-            $arr['num_easy']=Sound::where(['user_id'=>auth()->id()])->whereIn('article_id',$easy_article_ids)->count();
-            $arr['num_normal']=Sound::where(['user_id'=>auth()->id()])->whereIn('article_id',$normal_article_ids)->count();
-            $arr['num_hard']=Sound::where(['user_id'=>auth()->id()])->whereIn('article_id',$hard_article_ids)->count();
+        if (auth()->user()->role == UsersTypes::Sound) {
+            $arr['num_easy'] = Sound::where(['user_id' => auth()->id()])->whereIn('article_id', $easy_article_ids)->count();
+            $arr['num_normal'] = Sound::where(['user_id' => auth()->id()])->whereIn('article_id', $normal_article_ids)->count();
+            $arr['num_hard'] = Sound::where(['user_id' => auth()->id()])->whereIn('article_id', $hard_article_ids)->count();
         }
-        if(auth()->user()->role==UsersTypes::QuestionCreator){
-            $arr['num_easy']=Question::where(['user_id'=>auth()->id()])->whereIn('artical_id',$easy_article_ids)->count();
-            $arr['num_normal']=Question::where(['user_id'=>auth()->id()])->whereIn('artical_id',$normal_article_ids)->count();
-            $arr['num_hard']=Question::where(['user_id'=>auth()->id()])->whereIn('artical_id',$hard_article_ids)->count();
+        if (auth()->user()->role == UsersTypes::QuestionCreator) {
+            $arr['num_easy'] = Question::where(['user_id' => auth()->id()])->whereIn('artical_id', $easy_article_ids)->count();
+            $arr['num_normal'] = Question::where(['user_id' => auth()->id()])->whereIn('artical_id', $normal_article_ids)->count();
+            $arr['num_hard'] = Question::where(['user_id' => auth()->id()])->whereIn('artical_id', $hard_article_ids)->count();
         }
         return $arr;
     }
 
-    public function usersDashboard(){
-        if(auth()->user()->role==UsersTypes::LISTMAKER){
-            $all_lists=ContentList::where('user_id',auth()->id())->count();
-            $arr=[
-              'all_lists'=>$all_lists
-            ];
-            return $arr;
-        }
-        elseif(auth()->user()->role ==UsersTypes::PlacementTestEditor){
-            $all_lists=PlacementTest::where('user_id',auth()->id())->count();
-            $arr=[
-                'all_lists'=>$all_lists
-            ];
-            return $arr;
-        }else{
-        $all_lists=TaskRepository::findAllWhere('user_id',auth()->id());
-        if($all_lists->count()>0) {
-            $step = $all_lists[0]->step;
-            $user_all_steps = self::getUserSteps($step,0);
-            $content_lists_ids = $all_lists->pluck('list_id')->toArray();
-            $allList_count = $all_lists->count();
-            $underWorking_lists = ContentList::whereIn('step', $user_all_steps)->whereIn('id', $content_lists_ids)->count();
-            $finished_lists = $allList_count - $underWorking_lists;
-            $step_for_task=self::getUserSteps($step);
-            $tasks = TaskRepository::userTasks($step);
-            $last_tasks = ContentList::whereIn('step',$step_for_task)->whereIn('id', $tasks)->latest()->limit(5)->get();
-            $arr = [
-                'all_lists' => $allList_count,
-                'underWork' => $underWorking_lists,
-                'finished' => $finished_lists,
-                'tasks' => $last_tasks,
-            ];
-            return $arr;
-        }else{
-            $arr=['all_lists' =>0,
-                'underWork' => 0,
-                'finished' => 0];
+    public function usersDashboard()
+    {
 
+        if (auth()->user()->role == UsersTypes::LISTMAKER) {
+            $all_lists = ContentList::where('user_id', auth()->id())->count();
+            $arr = [
+                'all_lists' => $all_lists
+            ];
             return $arr;
-        }
+        } elseif (auth()->user()->role == UsersTypes::PlacementTestEditor) {
+            $all_lists = PlacementTest::where('user_id', auth()->id())->count();
+            $arr = [
+                'all_lists' => $all_lists
+            ];
+            return $arr;
+        } else {
+
+            $all_lists = TaskRepository::findAllWhere('user_id', auth()->id());
+
+            if ($all_lists->count() > 0) {
+                $step = $all_lists[0]->step;
+
+                $user_all_steps = self::getUserSteps($step, 0);
+
+                $content_lists_ids = $all_lists->pluck('list_id')->toArray();
+                $allList_count = $all_lists->count();
+
+                $underWorking_lists = ContentList::whereIn('step', $user_all_steps)->whereIn('id', $content_lists_ids)->count();
+                $finished_lists = $allList_count - $underWorking_lists;
+                $step_for_task = self::getUserSteps($step);
+                $tasks = TaskRepository::userTasks($step);
+
+                //$last_tasks = ContentList::whereIn('step', $step_for_task)->whereIn('id', $tasks)->latest()->get();
+                $last_tasks_ids = Article::with('lists')->whereIn('list_id', $tasks)->orderBy('updated_at', 'desc')->get()->pluck('list_id')->toArray();
+                if (auth()->user()->role == UsersTypes::QuestionCreator) {
+                    $last_tasks_ids = Question::whereIn('list_id', $tasks)->orderBy('updated_at', 'desc')->get()->pluck('list_id')->toArray();
+
+                } elseif (auth()->user()->role == UsersTypes::Sound) {
+                    $allArticlesIdsWorkedBySoundUser=Article::whereIn('list_id', $tasks)->get()->pluck('id')->toArray();
+                    $last_article_ids_workedBySoundUser = Sound::whereIn('article_id', $allArticlesIdsWorkedBySoundUser)->orderBy('updated_at', 'desc')->get()->pluck('article_id')->toArray();
+                    $last_tasks_ids=Article::whereIn('id', $last_article_ids_workedBySoundUser)->get()->pluck('list_id')->toArray();
+                }
+
+                $allListIdsWorkedByUser = array_unique($last_tasks_ids);
+                $lastFiveListsIdsWorkedByUser = array_slice($allListIdsWorkedByUser, 0, 5, true);
+
+                $last_tasks = ContentList::whereIn('step', $step_for_task)->whereIn('id', $lastFiveListsIdsWorkedByUser)->get();
+
+                $arr = [
+                    'all_lists' => $allList_count,
+                    'underWork' => $underWorking_lists,
+                    'finished' => $finished_lists,
+                    'tasks' => $last_tasks,
+                ];
+                return $arr;
+            } else {
+                $arr = ['all_lists' => 0,
+                    'underWork' => 0,
+                    'finished' => 0];
+
+                return $arr;
+            }
         }
     }
 
-    public function getUserSteps($step,$flag=null){
+    public function getUserSteps($step, $flag = null)
+    {
         switch ($step) {
             case Steps::ANALYZING_FILE:
-                $arr=[$step];
-                return$arr;
+                $arr = [$step];
+                return $arr;
                 break;
             case Steps::UPLOADING_FILE:
-                $arr=[Steps::reSendToEditorFormReviewer,Steps::INSERTING_ARTICLE,$step];
-                return$arr;
+
+                $arr = [Steps::reSendToEditorFormReviewer, Steps::INSERTING_ARTICLE, $step];
+                return $arr;
                 break;
             case Steps::REVIEW_ARTICLE:
-                $arr=[Steps::reSendToReviewerFormEditor,$step];
-                return$arr;
+                $arr = [Steps::reSendToReviewerFormEditor, $step];
+                return $arr;
                 break;
             case Steps::Create_Question:
-                $arr=[Steps::ResendToQuestionCreator,$step];
-                return$arr;
+                $arr = [Steps::ResendToQuestionCreator, $step];
+                return $arr;
                 break;
             case Steps::Review_Question:
-                $arr=[Steps::ResendToQuestionReviewer,$step];
-                return$arr;
+                $arr = [Steps::ResendToQuestionReviewer, $step];
+                return $arr;
                 break;
             case Steps::Languestic:
-                $arr=[Steps::ResendToLanguestic,$step];
-                return$arr;
+                $arr = [Steps::ResendToLanguestic, $step];
+                return $arr;
                 break;
             case Steps::Sound:
-                $arr=[Steps::ResendToSound,$step];
-                return$arr;
+                $arr = [Steps::ResendToSound, $step];
+                return $arr;
                 break;
             case Steps::Quality:
-                if($flag==0){
-                    $arr=[Steps::ResendToQuality,Steps::Publish,$step];
-                    return$arr;
-                }else{
-                    $arr=[Steps::ResendToQuality,$step];
-                    return$arr;
-                }
+                $arr = [Steps::ResendToQuality, $step];
+                return $arr;
                 break;
         }
     }

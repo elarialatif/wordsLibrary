@@ -127,7 +127,7 @@
             <div class="col-md-12 col-xl-12">
                <div class="card statistial-visit work-show">
                   <div class="card-header">
-                     <h5> الموضوعات الحاليه</h5>
+                     <h5>اخر ما تم العمل عليه</h5>
                   </div>
                   <div class="card-block">
                      <div class="form-group">

@@ -1,10 +1,8 @@
 @extends('layouts.app')
 @section('content')
     @php
-
-        $newInstance= new App\Http\Controllers\HomeController();
-
-   $sharedArrayBetweenUsers= $newInstance->usersDashboard();
+        $instanceFromHomeController= new App\Http\Controllers\HomeController();
+   $sharedArrayBetweenUsers= $instanceFromHomeController->usersDashboard();
     @endphp
     @php
 
@@ -31,9 +29,7 @@
     @if(in_array(auth()->user()->role,$editorsUser))
 
         @php
-            $newInstance2= new App\Http\Controllers\HomeController();
-
-               $editorTasks= $newInstance2->editorWork();
+            $editorTasks= $instanceFromHomeController->editorWork();
         @endphp
 
         @include('dashboards.editorsDashboard')
@@ -44,6 +40,6 @@
 
     @elseif(in_array(auth()->user()->role,$listAndPlacementTestUsers))
 
-        @include('dashboards.placemrntTestAndListsMakerDashboard')
+        @include('dashboards.placementTestAndListsMakerDashboard')
     @endif
 @endsection
