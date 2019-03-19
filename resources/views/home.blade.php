@@ -1,6 +1,13 @@
 @extends('layouts.app')
 @section('content')
     @php
+
+        $newInstance= new App\Http\Controllers\HomeController();
+
+   $sharedArrayBetweenUsers= $newInstance->usersDashboard();
+    @endphp
+    @php
+
         $editorsUser=array(
         \App\Helper\UsersTypes::EDITOR
         ,\App\Helper\UsersTypes::QuestionCreator,
@@ -23,15 +30,20 @@
 
     @if(in_array(auth()->user()->role,$editorsUser))
 
+        @php
+            $newInstance2= new App\Http\Controllers\HomeController();
+
+               $editorTasks= $newInstance2->editorWork();
+        @endphp
+
         @include('dashboards.editorsDashboard')
 
     @elseif(in_array(auth()->user()->role,$reviewersUsers))
 
         @include('dashboards.reviewersDashboard')
 
-    @elseif(in_array(auth()->user()->role,$listUsers))
+    @elseif(in_array(auth()->user()->role,$listAndPlacementTestUsers))
 
-        @include('dashboards.analazerAndListsMakerDashboard')
+        @include('dashboards.placemrntTestAndListsMakerDashboard')
     @endif
-
 @endsection
