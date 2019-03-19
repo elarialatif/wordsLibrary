@@ -205,11 +205,7 @@
 @section('js')
     <script src="{{ asset('public/plugins/data-tables/js/datatables.min.js')}}"></script>
     <script src="{{ asset('public/js/pages/tbl-datatable-custom.js')}}"></script>
-<script>
-    window.onload = function(e){
-      alert('hi');
-    }
-</script>
+
 @endsection
 
 @endsection

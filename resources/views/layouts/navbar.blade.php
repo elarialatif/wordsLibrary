@@ -1,6 +1,7 @@
 @if(auth()->check())
     @if(auth()->user()->role==\App\Helper\UsersTypes::EDITOR)
         @include('layouts.side_bars.side_bar_editor')
+
     @elseif(auth()->user()->role==\App\Helper\UsersTypes::LISTMAKER)
         @include('layouts.side_bars.side_bar_listmaker')
     @elseif(auth()->user()->role==\App\Helper\UsersTypes::LISTANALYZER)

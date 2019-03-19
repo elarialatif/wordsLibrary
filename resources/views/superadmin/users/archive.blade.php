@@ -22,36 +22,39 @@
     </div>
     <!--table ============================================================================ -->
     <!-- [ sample-page ] start -->
-        <div class="card" style="position: inherit;">
-            <div class="card-header">
-                <h5>كل المواضيع</h5>
-            </div>
-            <div class="card-block">
-                <div class="table-responsive">
+    <div class="card" style="position: inherit;">
+        <div class="card-header">
+            <h5>كل المواضيع</h5>
+        </div>
+        <div class="card-block">
+            <div class="table-responsive">
 
-                    <table id="key-act-button" class="display table nowrap table-striped table-hover">
-                        <thead>
+                <table id="key-act-button" class="display table nowrap table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th>الكود</th>
+                        <th>الموضوع</th>
+                        <th>الصف</th>
+                        <th>التاريخ</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($tasks as $list)
+                      @if($list->lists==null)
+                          @continue
+                          @endif
                         <tr>
-                            <th>الكود</th>
-                            <th>الموضوع</th>
-                            <th>الصف</th>
-                            <th>التاريخ</th>
+                            <td>{{$list->lists->id}}</td>
+                            <td>{{$list->lists->list}}</td>
+                            <td>{{$list->lists->grade->name}}</td>
+                            <td>{{$list->created_at->toDateString() }}</td>
                         </tr>
-                        </thead>
-                        <tbody>
-                        @foreach ($tasks as $list)
-                            <tr>
-                                <td>{{$list->lists->id}}</td>
-                                <td>{{$list->lists->list}}</td>
-                                <td>{{$list->lists->grade->name}}</td>
-                                <td>{{$list->created_at->toDateString() }}</td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                    @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
+    </div>
 </div>
 <script>
     $('#level').change(function () {

@@ -84,7 +84,7 @@ class LogTimeController extends Controller
             $Sounds = Sound::whereIn('article_id', $articles)->get()->pluck('id')->toArray();
         //    $FinalArray = array_merge($articles, $questions, $article_files, $Sounds);
 
-            $res = LogTime::orderBy('created_at', 'desc')->where(['row_id' => $filed_id, 'table_name' => 'content_lists'])
+            $res = LogTime::with('user')->orderBy('created_at', 'desc')->where(['row_id' => $filed_id, 'table_name' => 'content_lists'])
                 ->orWhere(function ($query) use ($questions) {
                     $query->WhereIn('row_id', $questions)->where('table_name', 'questions');
                 })

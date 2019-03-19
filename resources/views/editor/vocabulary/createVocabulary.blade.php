@@ -1,5 +1,55 @@
 @extends('layouts.app')
 @section('content')
+
+    <style>
+        form {
+            display: block;
+            width: 100%;
+            background-color: #fff;
+            background-clip: border-box;
+            padding-top: 1rem;
+            text-align: center;
+        }
+        table.list {
+            background-color: #fff !important;
+            border: 1px solid #eaeaea;
+            margin-top: 1rem;
+        }
+        .submit{
+            color: #fff;
+            background-color: #04a9f5;
+            padding: 10px 20px;
+            border-radius: 0.25rem;
+            font-size: 18px;
+            margin: 1rem auto;
+            border: 0;
+            display: block;
+            width: 10%;
+        }
+        input {
+            width: 20%;
+            height: 30px;
+        }
+        label {
+            text-align: center;
+            width: 5%;
+            font-size: 17px;
+        }
+        #addRow,
+        #deleteRow {
+            color: #fff;
+            background-color: #04a9f5;
+            border-radius: 0.25rem;
+            font-size: 17px;
+            border: 0;
+            width: 5%;
+            height: 30px;
+            margin-bottom: 0;
+        }
+        #empty div {
+            margin-top: 0.5rem;
+        }
+    </style>
     <div class="container">
         <div class="container">
             @include('editor.FollowingTabsForCreateArticle')
@@ -17,9 +67,9 @@
 
                             <button id="addRow"> اضافة</button>
                             <div id="empty"></div>
-                            <input type="submit" name="حفظ">
+                            <button class="submit">حفظ</button>
                         </form>
-                        <table class="table table-striped">
+                        <table class="table table-striped list">
                             <thead>
                             <tr>
                                 <th>الكلمة</th>
@@ -168,7 +218,7 @@
             $("#empty").append('<div id=' + divId + '> <label>الكلمة</label>\n' +
                 '                            <input type="text" name="word[' + i + '][word]" >\n' +
                 '                            <label>المعنى</label>\n' +
-                '                            <input type="text" name="word[' + i + '][mean]"> <button  onclick="remove(' + i + ',event)">مسح </button>' +
+                '                            <input type="text" name="word[' + i + '][mean]"> <button id="deleteRow"  onclick="remove(' + i + ',event)">مسح </button>' +
                 '</div>');
             i++;
 
