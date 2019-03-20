@@ -5,6 +5,7 @@ namespace App\Http\Controllers\superAdmin;
 use App\Helper\Steps;
 use App\Helper\UsersTypes;
 use App\Models\Article;
+use App\Models\AssignTask;
 use App\Models\Link;
 use App\Models\Sound;
 use App\Models\UserRate;
@@ -25,23 +26,28 @@ class SuperAdminController extends Controller
 {
     public function viewArticle($article_id)
     {
-        $article = ArticalRepository::getArticleById($article_id);
-        $list = ContentListsRepository::find($article->list_id);
-        if ($list == null) {
-            return redirect()->back()->with('error', 'الموضوع  غير موجود');
+        $list_id=Article::where('id',$article_id)->pluck('list_id')->toArray();
+        $usersForList=AssignTask::where('list_id',$list_id)->get()->pluck('user_id')->toArray();
+        if(auth()->user()->role==UsersTypes::ADMIN || auth()->user()->role==UsersTypes::SUPERADMIN || in_array(auth()->id(),$usersForList)) {
+            $article = ArticalRepository::getArticleById($article_id);
+            $list = ContentListsRepository::find($article->list_id);
+            if ($list == null) {
+                return redirect()->back()->with('error', 'الموضوع  غير موجود');
+            }
+            $AssignTasks = \App\Models\AssignTask::where('list_id', $list->id)->get()->pluck('user_id')->toArray();
+            $users = \App\User::whereIn('id', $AssignTasks)->get();
+
+            $questionType = new Article();
+            $sound = Sound::where(['article_id' => $article_id, 'type' => $questionType->getNormalArticleValue()])->first();
+            $soundStretch = Sound::where(['article_id' => $article_id, 'type' => $questionType->getStretchArticleValue()])->first();
+            $questions = \App\Models\Question::where(['artical_id' => $article_id, 'type' => $questionType->getNormalArticleValue()])->get();
+            $questionStretch = \App\Models\Question::where(['artical_id' => $article_id, 'type' => $questionType->getStretchArticleValue()])->get();
+            $vocab = Vocab::where(['list_id' => $article->list_id, 'level' => $article->level])->get();
+            $links = Link::where('list_id', $list->id)->get();
+            return view('superadmin.viewArticleDetail', compact('links', 'vocab', 'questionStretch', 'soundStretch', 'article', 'sound', 'questions', 'list', 'users'));
+        }else{
+            return redirect()->back()->with('error','غير مسموح بالدخول ');
         }
-        $AssignTasks=\App\Models\AssignTask::where('list_id',$list->id)->get()->pluck('user_id')->toArray();
-        $users=\App\User::whereIn('id',$AssignTasks)->get();
-
-        $questionType = new Article();
-        $sound = Sound::where(['article_id' => $article_id, 'type' => $questionType->getNormalArticleValue()])->first();
-        $soundStretch = Sound::where(['article_id' => $article_id, 'type' => $questionType->getStretchArticleValue()])->first();
-        $questions = \App\Models\Question::where(['artical_id' => $article_id, 'type' => $questionType->getNormalArticleValue()])->get();
-        $questionStretch = \App\Models\Question::where(['artical_id' => $article_id, 'type' => $questionType->getStretchArticleValue()])->get();
-        $vocab = Vocab::where(['list_id' => $article->list_id, 'level' => $article->level])->get();
-        $links = Link::where('list_id', $list->id)->get();
-        return view('superadmin.viewArticleDetail', compact('links', 'vocab', 'questionStretch', 'soundStretch', 'article', 'sound', 'questions', 'list','users'));
-
     }
 
     public function adminChangeStepOfList($step, $list_id)

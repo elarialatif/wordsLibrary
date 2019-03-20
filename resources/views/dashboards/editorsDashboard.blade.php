@@ -84,7 +84,7 @@
                      <div class="row align-items-center justify-content-center">
                         <div class="col">
                            <i class="mdi mdi-book-open-page-variant f-30 text-c-purple"></i>
-                           <h5 class="m-0">عدد الملفات الكلية المرفوعه</h5>
+                           <h5 class="m-0">عدد المقالات الاصليه المرفوعه</h5>
                         </div>
                         <div class="col-auto">
                            <label class="label theme-bg text-white f-14 f-w-400 float-right normal-num-show">{{$editorTasks['num_files']}}</label>
@@ -94,7 +94,7 @@
                      <div class="row align-items-center justify-content-center">
                         <div class="col">
                            <i class="mdi mdi-file-upload f-30 text-c-blue"></i>
-                           <h5 class="m-0">عدد العناصر للمقالات السهله</h5>
+                           <h5 class="m-0">عدد الادخالات للمقالات السهله</h5>
                         </div>
                         <div class="col-auto">
                            <label class="label theme-bg text-white f-14 f-w-400 float-right normal-num-show">{{$editorTasks['num_easy']}}</label>
@@ -103,7 +103,7 @@
                      <div class="row align-items-center justify-content-center">
                         <div class="col">
                            <i class="mdi mdi-file-upload f-30 text-c-blue"></i>
-                           <h5 class="m-0">عدد العناصر للمقالات المتوسطه</h5>
+                           <h5 class="m-0">عدد الادخالات للمقالات المتوسطه</h5>
                         </div>
                         <div class="col-auto">
                            <label class="label theme-bg text-white f-14 f-w-400 float-right normal-num-show">{{$editorTasks['num_normal']}}</label>
@@ -112,7 +112,7 @@
                         <div class="row align-items-center justify-content-center">
                            <div class="col">
                               <i class="mdi mdi-file-upload f-30 text-c-blue"></i>
-                              <h5 class="m-0">عدد العناصر للمقالات الصعبه</h5>
+                              <h5 class="m-0">عدد الادخالات للمقالات الصعبه</h5>
                            </div>
                            <div class="col-auto">
                               <label class="label theme-bg text-white f-14 f-w-400 float-right normal-num-show">{{$editorTasks['num_hard']}}</label>
@@ -124,7 +124,8 @@
          </div>
          <div class="row topics">
             <!-- [ All Topics section ] start -->
-            <div class="col-md-12 col-xl-12">
+
+            <div class="{{(auth()->user()->role==\App\Helper\UsersTypes::EDITOR)?'col-md-6 col-xl-6':'col-md-12 col-xl-12'}}">
                <div class="card statistial-visit work-show">
                   <div class="card-header">
                      <h5>اخر ما تم العمل عليه</h5>
@@ -156,7 +157,43 @@
                   </div>
                   </div>
                </div>
-            </div>
+
+               @if (auth()->user()->role==\App\Helper\UsersTypes::EDITOR)
+                  <div class="col-md-6 col-xl-6">
+                           <div class="card statistial-visit work-show">
+                              <div class="card-header">
+                                 <h5>اخر موضوعات مرفوع لها ملفات</h5>
+                              </div>
+                              <div class="card-block">
+                                 <div class="form-group">
+                                    <div class="table-responsive">
+                                       <table id="key-act-button"
+                                              class="display table nowrap table-striped table-hover"
+                                              style="width:100%">
+                                          <thead>
+                                          <tr>
+                                             <th style="width:50%">#</th>
+                                             <th style="width:50%">الموضوع</th>
+                                          </tr>
+                                          </thead>
+                                          <tbody>
+                                          @foreach($sharedArrayBetweenUsers['uploadedFile'] as $list)
+                                             <tr>
+                                                <td>{{$list->id}}</td>
+                                                <td>{{$list->list}}</td>
+                                             </tr>
+                                          @endforeach
+                                          </tbody>
+                                       </table>
+                                       {{--<a style="text-align: center" class="btn btn-primary" href="">المزيد</a>--}}
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+               @endif
+         </div>
+                  </div>
       </div>
    </div>
 </div>

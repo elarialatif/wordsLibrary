@@ -26,6 +26,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('profile', 'superAdmin\UserController@profile');
     Route::post('profile/{id}', 'superAdmin\UserController@updateProfile');
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/userArchive', 'HomeController@userArchive');
+    Route::get('viewArticle/{article_id}', 'superAdmin\SuperAdminController@viewArticle');
     Route::get('/tashkel', 'WordController@teshkelGet');
     Route::get('/MarkAllSeen', function () {
         auth()->user()->notifications->markAsRead();
@@ -124,13 +126,13 @@ Route::get('allLists', 'ContentListController@index')->middleware('listmaker:rol
 Route::get('getGradeList/{level_id}', 'ContentListController@getGradeList')->middleware('listmaker:role');
 Route::post('listsFilter', 'ContentListController@listsFilter')->middleware('listmaker:role');
 Route::group(['middleware' => 'superadmin'], function () {
-    Route::get('allFiles', 'ArticalController@allFiles');
+    Route::get('', 'ArticalController@allFiles');
     Route::get('filterFiles/{grade_id}', 'ArticalController@filterFiles');
     Route::get('Rates/{userRole}/{time}', 'HomeController@Rates');
     Route::group(['namespace' => 'superAdmin', 'middleware' => 'superadmin'], function () {
         Route::resource('users', 'UserController');
         Route::get('users/delete/{user_id}', 'UserController@destroy');
-        Route::get('viewArticle/{article_id}', 'SuperAdminController@viewArticle');
+
         Route::get('adminChangeStepOfList/{step}/{list_id}', 'SuperAdminController@adminChangeStepOfList');
         Route::post('add/school', 'SchoolController@save');
         Route::get('add/school', 'SchoolController@create');

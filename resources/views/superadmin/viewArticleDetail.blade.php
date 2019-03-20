@@ -337,7 +337,7 @@
                                 <span style="font-size: 22px;font-weight: bold"> {{$list->list}}</span>
                                 <span style="color: #04a9f5;font-size: 20px; padding: 0 0.2rem;"> {{$list->grade->name}}</span>
                                 <span style="color: darkblue;font-size: 16px;font-weight: bold"> {{\App\Helper\ArticleLevels::getLevel($article->level)}}</span>
-                                <a class="btn btn-primary" href="{{url('allFiles')}}"
+                                <a class="btn btn-primary" @if(auth()->user()->role==\App\Helper\UsersTypes::SUPERADMIN || auth()->user()->role==\App\Helper\UsersTypes::ADMIN) href="{{url('allFiles')}}" @else href="{{url('userArchive')}}" @endif
                                    style="float: left "><span class="fa fa-arrow-circle-left">
                                     رجوع
                                 </span>
@@ -679,6 +679,7 @@
                                     @endforeach
                                 </div>
                             </div>
+                            @if(auth()->user()->role==\App\Helper\UsersTypes::SUPERADMIN || auth()->user()->role==\App\Helper\UsersTypes::ADMIN)
                             <div class="row levels">
                                 <h3>المراحل</h3>
                                 <div>
@@ -1003,6 +1004,7 @@
                                 </div>
                                 {{-- #Collapse--}}
                             </div>
+                                @endif
                         </div>
                         <!-- #Left Tabs -->
                         <!-- /////////////////////////////////// -->
@@ -1013,6 +1015,7 @@
         <!-- #Row 1 -->
         <!-- ####################################################### -->
         <!-- Row 2 -->
+        @if(auth()->user()->role==\App\Helper\UsersTypes::SUPERADMIN || auth()->user()->role==\App\Helper\UsersTypes::ADMIN)
         <div class="row">
             <table class="table table-striped" id="Table">
                 <thead>
@@ -1042,6 +1045,7 @@
                 </tbody>
             </table>
         </div>
+        @endif
         <!-- #Row 2 -->
     </div>
     <!-- ####################################################### -->

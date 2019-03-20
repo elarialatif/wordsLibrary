@@ -7,6 +7,7 @@ use App\Helper\Steps;
 use App\Helper\UsersTypes;
 use App\Models\Article;
 use App\Models\ArticleFiles;
+use App\Models\AssignTask;
 use App\Models\Categery;
 use App\Models\ContentList;
 use App\Models\Grade;
@@ -15,6 +16,7 @@ use App\Models\Question;
 use App\Models\Sound;
 use App\Models\UserRate;
 use App\Repository\ContentListsRepository;
+use App\Repository\GradesRepository;
 use App\Repository\TaskRepository;
 use App\Repository\UserRateRepository;
 use App\Repository\UsersRepository;
@@ -145,7 +147,6 @@ class HomeController extends Controller
 
     public function usersDashboard()
     {
-
         if (auth()->user()->role == UsersTypes::LISTMAKER) {
             $all_lists = ContentList::where('user_id', auth()->id())->count();
             $arr = [
@@ -159,50 +160,46 @@ class HomeController extends Controller
             ];
             return $arr;
         } else {
-
             $all_lists = TaskRepository::findAllWhere('user_id', auth()->id());
-
             if ($all_lists->count() > 0) {
                 $step = $all_lists[0]->step;
-
                 $user_all_steps = self::getUserSteps($step, 0);
-
                 $content_lists_ids = $all_lists->pluck('list_id')->toArray();
                 $allList_count = $all_lists->count();
-
                 $underWorking_lists = ContentList::whereIn('step', $user_all_steps)->whereIn('id', $content_lists_ids)->count();
                 $finished_lists = $allList_count - $underWorking_lists;
                 $step_for_task = self::getUserSteps($step);
                 $tasks = TaskRepository::userTasks($step);
-
                 //$last_tasks = ContentList::whereIn('step', $step_for_task)->whereIn('id', $tasks)->latest()->get();
                 $last_tasks_ids = Article::with('lists')->whereIn('list_id', $tasks)->orderBy('updated_at', 'desc')->get()->pluck('list_id')->toArray();
                 if (auth()->user()->role == UsersTypes::QuestionCreator) {
                     $last_tasks_ids = Question::whereIn('list_id', $tasks)->orderBy('updated_at', 'desc')->get()->pluck('list_id')->toArray();
-
                 } elseif (auth()->user()->role == UsersTypes::Sound) {
                     $allArticlesIdsWorkedBySoundUser=Article::whereIn('list_id', $tasks)->get()->pluck('id')->toArray();
                     $last_article_ids_workedBySoundUser = Sound::whereIn('article_id', $allArticlesIdsWorkedBySoundUser)->orderBy('updated_at', 'desc')->get()->pluck('article_id')->toArray();
                     $last_tasks_ids=Article::whereIn('id', $last_article_ids_workedBySoundUser)->get()->pluck('list_id')->toArray();
                 }
-
+                $articleFileForEditor_listID=ArticleFiles::where('user_id',auth()->id())->orderBy('created_at','desc')->get()->pluck('list_id')->toArray();
                 $allListIdsWorkedByUser = array_unique($last_tasks_ids);
                 $lastFiveListsIdsWorkedByUser = array_slice($allListIdsWorkedByUser, 0, 5, true);
-
+                $lastUploadedTask=ContentList::whereIn('step', $step_for_task)->whereIn('id',$articleFileForEditor_listID)->limit(5)->get();
                 $last_tasks = ContentList::whereIn('step', $step_for_task)->whereIn('id', $lastFiveListsIdsWorkedByUser)->get();
-
                 $arr = [
                     'all_lists' => $allList_count,
+                    'uploadedFile' => $lastUploadedTask,
                     'underWork' => $underWorking_lists,
                     'finished' => $finished_lists,
                     'tasks' => $last_tasks,
                 ];
                 return $arr;
             } else {
-                $arr = ['all_lists' => 0,
+                $arr = [
+                    'all_lists' => 0,
+                    'uploadedFile' => 0,
                     'underWork' => 0,
-                    'finished' => 0];
-
+                    'tasks' => 0,
+                    'finished' => 0
+                ];
                 return $arr;
             }
         }
@@ -216,7 +213,6 @@ class HomeController extends Controller
                 return $arr;
                 break;
             case Steps::UPLOADING_FILE:
-
                 $arr = [Steps::reSendToEditorFormReviewer, Steps::INSERTING_ARTICLE, $step];
                 return $arr;
                 break;
@@ -246,5 +242,11 @@ class HomeController extends Controller
                 break;
         }
     }
-
+    public function userArchive(){
+        $userLists=AssignTask::where('user_id',auth()->id())->get()->pluck('list_id')->toArray();
+        $userLists=array_unique($userLists);
+        $list=ContentList::whereIn('id',$userLists)->get();
+        $grades = GradesRepository::all();
+        return view('userArchive',compact('list','grades'));
+    }
 }
