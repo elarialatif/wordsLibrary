@@ -31,6 +31,11 @@
                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                         <span class="pcoded-mtext">مواضيع معادة</span></a>
                 </li>
+                <li class="nav-item {{request()->is("userArchive")?"active":""}}">
+                    <a href="{{url('userArchive')}}" class="nav-link">
+                        <span class="pcoded-micon"><i class="mdi mdi-chart-donut-variant"></i></span>
+                        <span class="pcoded-mtext">الارشيف</span></a>
+                </li>
                 <li class="nav-item {{request()->is("/tashkel")?"active":""}}">
                     <a href="{{url('/tashkel')}}" class="nav-link">
                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
