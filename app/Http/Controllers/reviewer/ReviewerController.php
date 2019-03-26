@@ -114,7 +114,11 @@ class ReviewerController extends Controller
         ContentListsRepository::updateStep($list_id, Steps::Create_Question);
         $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Create_Question);
         $user = UsersRepository::find($user_id);
-        $name = Carbon::now() . "بتاريخ" . $user->name . "تم  الارسال الى مدخل الاسئلة ";
+        $name = Carbon::now() . "  تم  الارسال الى مدخل الاسئلة بتاريخ ";
+        if($user!=null){
+            $name = Carbon::now() . "بتاريخ" . $user->name . "تم  الارسال الى مدخل الاسئلة ";
+        }
+
         Steps::SaveLogRow($name, ' ارسال', 'content_lists', $list_id);
         return redirect()->back()->with('success', ' تم ارسال الى مدخل الاسئلة ');
     }

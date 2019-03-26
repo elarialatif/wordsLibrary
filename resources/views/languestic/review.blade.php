@@ -68,7 +68,7 @@
                                                                     <label for="articleNormal" class="col-form-label">المقال:</label>
                                                                     <textarea class="mceEditor form-control"
                                                                               required
-                                                                              name="article">{!! $artical->article !!}</textarea>
+                                                                              name="articleNormal">{!! $artical->article !!}</textarea>
                                                                     <input type="hidden" name="list_id"
                                                                            value="{{$artical->list_id}}">
                                                                     <input type="hidden" name="level"

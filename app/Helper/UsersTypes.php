@@ -11,6 +11,7 @@ namespace App\Helper;
 
 class UsersTypes
 {
+
     const SUPERADMIN = 0;
     const ADMIN = 1;
     const EDITOR = 2;
