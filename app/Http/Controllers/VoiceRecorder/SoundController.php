@@ -35,7 +35,7 @@ class SoundController extends Controller
         $task = AssignTask::where(['list_id' => $list_id, 'step' => Steps::Sound])->first();
         if ($task) {
             if ($task->user_id != auth()->id()) {
-                return redirect()->back()->withErrors('هذا الوضوع تابع لمستخدم اخر ');
+                return redirect()->back()->withErrors('هذا الوضوع تابع لمستخدم آخر ');
             }
         }
         if (!$task) {
@@ -44,7 +44,7 @@ class SoundController extends Controller
 
 
         if ($list->step != Steps::Sound && $list->step != Steps::ResendToSound) {
-            return redirect('VoiceRecorder/mySounds')->withErrors('غير مسموح لك الدخول الى هنا');
+            return redirect('VoiceRecorder/mySounds')->withErrors('غير مسموح لك الدخول إلى هنا');
         }
         return view('voicerecorder.upload', compact('article', 'page'));
     }
@@ -92,17 +92,17 @@ class SoundController extends Controller
             ///end Notification////
             $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Quality);
             $user = UsersRepository::find($user_id);
-            $name = Carbon::now() . "بتاريخ" . $user->name . "تم اعادة الارسال الى الجودة ";
-            Steps::SaveLogRow($name, 'اعادة ارسال', 'content_lists', $list_id);
+            $name = Carbon::now() . "بتاريخ" . $user->name . "تمت إعادة الإرسال إلى الجودة ";
+            Steps::SaveLogRow($name, 'إعادة إرسال', 'content_lists', $list_id);
         }
         $data['user_id'] = auth()->id();
         $data['list_id'] = $list_id;
         $data['active'] = 1;
         UserRateRepository::save($data);
 
-        $name = Carbon::now() . "  تم  الارسال الى الجودة بتاريخ ";
-        Steps::SaveLogRow($name, ' ارسال', 'content_lists', $list_id);
-        return redirect()->back()->with('success', 'تم الارسال بنجاح الى الجودة ');
+        $name = Carbon::now() . "  تم  الإرسال إلى الجودة بتاريخ ";
+        Steps::SaveLogRow($name, ' إرسال', 'content_lists', $list_id);
+        return redirect()->back()->with('success', 'تم الإرسال بنجاح إلى الجودة ');
     }
 }
 

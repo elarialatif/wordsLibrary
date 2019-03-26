@@ -5,8 +5,8 @@
         <br>
         <br>
         <div class="container">
-            <a href="{{url('grades/create')}}" class="btn btn-primary"> اضافه صف جديد  <i class="fa fa-plus"></i></a>
-            <a href="{{url('levels/create')}}" class="btn btn-success"> اضافه مرحله جديد  <i class="fa fa-plus"></i></a>
+            <a href="{{url('grades/create')}}" class="btn btn-primary"> إضافة صف جديد  <i class="fa fa-plus"></i></a>
+            <a href="{{url('levels/create')}}" class="btn btn-success"> إضافة مرحله جديد  <i class="fa fa-plus"></i></a>
             <br>
             <br>
             <div class="row">
@@ -15,8 +15,8 @@
                         <thead>
                         <tr>
                             <th>الصف</th>
-                            <th>المرحله</th>
-                            <th>الاجراءات</th>
+                            <th>المرحلة</th>
+                            <th>الإجراءات</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -103,7 +103,7 @@
                                 "search": "  بحث :  ",
                                 "paginate": {
                                     "previous": "السابق",
-                                    "next": "التالى"
+                                    "next": "التإلى"
                                 },
                                 "info": "عرض _START_ الي _END_ من _TOTAL_ من الصفوف",
                                 "lengthMenu": "عرض _MENU_ من الصفوف",

@@ -11,7 +11,7 @@ class IssuesController extends Controller
     public function save(Request $request)
     {
         if (auth()->user()->role == UsersTypes::EDITOR || auth()->user()->role == UsersTypes::QuestionCreator) {
-            return redirect()->back()->withErrors('غير مسموح لك الدخول الى هنا ');
+            return redirect()->back()->withErrors('غير مسموح لك الدخول إلى هنا ');
         }
         $request->validate([
             'name' => 'required',
@@ -40,7 +40,7 @@ class IssuesController extends Controller
     public function destroy($id)
     {
         if (auth()->user()->role == UsersTypes::EDITOR || auth()->user()->role == UsersTypes::QuestionCreator) {
-            return redirect()->back()->withErrors('غير مسموح لك الدخول الى هنا ');
+            return redirect()->back()->withErrors('غير مسموح لك الدخول إلى هنا ');
         }
         IssuesRepository::delete($id);
         return redirect()->back()->with('success', 'تم المسح بنجاح ');

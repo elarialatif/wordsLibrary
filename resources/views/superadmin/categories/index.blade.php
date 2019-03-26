@@ -16,7 +16,7 @@
                                         صفحة التصنيفات
                                     </h5>
                                     <a data-toggle="modal" data-target="#exampleModal" class="btn btn-primary"
-                                       style="color: white;float: left;font-weight: bold">اضافه تصنيف
+                                       style="color: white;float: left;font-weight: bold">إضافة تصنيف
                                         جديد<i
                                                 class="fa fa-plus"></i></a>
                                     {{--model for add new user--}}
@@ -26,7 +26,7 @@
                                             {{ Form::open(array('url' => 'categories')) }}
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">اضافه تصنيف
+                                                    <h5 class="modal-title" id="exampleModalLabel">إضافة تصنيف
                                                         جديد</h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">

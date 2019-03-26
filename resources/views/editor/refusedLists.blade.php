@@ -13,7 +13,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h5>
-                                        كل المقالات المرفوضة
+                                        المقالات المرفوضة
                                     </h5>
                                 </div>
                                 <div class="card-block">
@@ -33,7 +33,7 @@
                                                         <th> تعديل المقال سهل</th>
                                                         <th>تعديل المقال متوسط</th>
                                                         <th>تعديل المقال صعب</th>
-                                                        <th>ارسال الى المراجعه</th>
+                                                        <th>إرسال إلى المراجعة</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -91,7 +91,7 @@
                                                             @if ($issueshard->count()==0&&$issueseasy->count()==0&&$issuesnormal->count()==0)
                                                                 <td><a class="btn btn-success"
                                                                        href="{{url('editor/reSendListOfArticleToReviewer/'.$list->id)}}">
-                                                                        اعادة ارسال</a>
+                                                                        إعادة إرسال</a>
                                                                 </td>
                                                             @else
                                                                 <td>

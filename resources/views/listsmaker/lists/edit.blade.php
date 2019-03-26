@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label> اسم القائمه :</label>
+                    <label> اسم القائمة :</label>
                     <input type="text" class="form-control" value="{{$lists->list}}" name="list">
                 </div>
             </div>

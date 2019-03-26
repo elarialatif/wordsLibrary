@@ -13,17 +13,17 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h5>
-                                        صفحة اختبارات المستوى
+                                        صفحة اختبارات تحديد المستوى
                                     </h5>
                                     <a data-toggle="modal" data-target="#exampleModal" class="btn btn-primary"
-                                       style="color: white;float: left;font-weight: bold">اضافه اختبار جديد<i
+                                       style="color: white;float: left;font-weight: bold">إضافة اختبار جديد<i
                                                 class="fa fa-plus"></i></a>
                                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                                          aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" style="width: 70% !important;" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">اضافه اختبار
+                                                    <h5 class="modal-title" id="exampleModalLabel">إضافة اختبار
                                                         جديد</h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
@@ -68,7 +68,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="exampleSelect1">الحاله</label>
+                                                            <label for="exampleSelect1">الحالة</label>
                                                             <select class="form-control" id="exampleSelect1"
                                                                     name="status" required>
                                                                 <option value="">--------------</option>
@@ -106,10 +106,10 @@
                                                 <th>الاسم</th>
                                                 <th>الصف</th>
                                                 <th>الحالة</th>
-                                                <th>عدد الاسئلة</th>
-                                                <th>تاريخ الانشاء</th>
-                                                <th>اخر تحديث</th>
-                                                <th>الاجراءت</th>
+                                                <th>عدد الأسئلة</th>
+                                                <th>تاريخ الإنشاء</th>
+                                                <th>آخر تحديث</th>
+                                                <th>الإجراءات</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -169,7 +169,7 @@
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-group">
-                                                                            <label for="exampleSelect1">الحاله</label>
+                                                                            <label for="exampleSelect1">الحالة</label>
                                                                             <select class="form-control" id="exampleSelect1" name="status" required>
                                                                                 <option value="">--------------</option>
                                                                                 <option value="1"{{($test->status==1)?'selected':''}}>مفعل</option>

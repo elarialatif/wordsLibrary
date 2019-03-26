@@ -32,13 +32,13 @@
                                     صفحة تحليل الملف
                                 </h5>
                                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-                                        data-target="#myModal" style="float: left">عرض الملف الاصلى
+                                        data-target="#myModal" style="float: left">عرض الملف الأصلي
                                 </button>
 
                                 @if($list->step ==\App\Helper\Steps::ANALYZING_FILE)
                                     <a style="float: left" class="btn btn-success btn-lg"
                                        href="{{url('analyzer/SendListToEditor/'.$list->id.'/'.\App\Helper\Steps::INSERTING_ARTICLE)}}">
-                                        ارسال الى محرر
+                                        إرسال إلى محرر
                                         المقالات</a>
                                     <a style="float: left" class="btn btn-danger btn-lg"
                                        href="{{url('analyzer/SendListToEditor/'.$list->id.'/'.\App\Helper\Steps::UPLOADING_FILE)}}">
@@ -46,7 +46,7 @@
                                     </a>
                                 @else
                                     <h3 style="float: left" class="btn btn-info btn btn-glow-success btn-lg">تم
-                                        ارسال الموضوع الى محرر المقالات مسبقا </h3>
+                                        إرسال الموضوع إلى محرر المقالات مسبقا </h3>
 
                                 @endif
                                 <br>

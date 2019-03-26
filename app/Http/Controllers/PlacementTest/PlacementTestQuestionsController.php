@@ -30,20 +30,20 @@ class PlacementTestQuestionsController extends Controller
     {
         $messages_array = [
             'question.*.question.required' => 'من فضلك ادخل اسم السؤال',
-            'question.*.ans1.required' => 'من فضلك الاجابه الاولى',
-            'question.*.ans2.required' => 'من فضلك الاجابه الثانيه',
-            'question.*.ans3.required' => 'من فضلك الاجابه الثالثه',
-            'question.*.ans4.required' => 'من فضلك الاجابه الرابعه',
-            'question.*.ans1.max' => 'الاجابه الاولى يجب الا تزيد عن 191 حرف',
-            'question.*.ans2.max' => 'الاجابه الثانيه يجب الا تزيد عن 191 حرف',
-            'question.*.ans3.max' => 'الاجابه الثالثه يجب الا تزيد عن 191 حرف',
-            'question.*.ans4.max' => 'الاجابه الرابعه يجب الا تزيد عن 191 حرف',
+            'question.*.ans1.required' => 'من فضلك الإجابة الأولى',
+            'question.*.ans2.required' => 'من فضلك الإجابة الثانية',
+            'question.*.ans3.required' => 'من فضلك الإجابة الثالثة',
+            'question.*.ans4.required' => 'من فضلك الإجابة الرابعة',
+            'question.*.ans1.max' => 'الإجابة الأولى يجب الا تزيد عن 191 حرف',
+            'question.*.ans2.max' => 'الإجابة الثانية يجب الا تزيد عن 191 حرف',
+            'question.*.ans3.max' => 'الإجابة الثالثة يجب الا تزيد عن 191 حرف',
+            'question.*.ans4.max' => 'الإجابة الرابعة يجب الا تزيد عن 191 حرف',
         ];
         foreach ($request->question as $arrIndex => $arrValue) { //add unqiue constraint of answers to each question answers
-            $messages_array["ans1.$arrIndex.not_in"] = "لابد ان تكون الاجابه الاولي مختلفه";
-            $messages_array["ans2.$arrIndex.not_in"] = "لابد ان تكون الاجابه الثانيه مختلفه";
-            $messages_array["ans3.$arrIndex.not_in"] = "لابد ان تكون الاجابه الثالثه مختلفه";
-            $messages_array["ans4.$arrIndex.not_in"] = "لابد ان تكون الاجابه الرابعه مختلفه";
+            $messages_array["ans1.$arrIndex.not_in"] = "لابد ان تكون الإجابة الأولي مختلفه";
+            $messages_array["ans2.$arrIndex.not_in"] = "لابد ان تكون الإجابة الثانية مختلفه";
+            $messages_array["ans3.$arrIndex.not_in"] = "لابد ان تكون الإجابة الثالثة مختلفه";
+            $messages_array["ans4.$arrIndex.not_in"] = "لابد ان تكون الإجابة الرابعة مختلفه";
             $rules_array ["ans1.$arrIndex"] = ["required", Rule::notIn([$request->ans2[$arrIndex], $request->ans3[$arrIndex], $request->ans4[$arrIndex]])];
             $rules_array ["ans2.$arrIndex"] = ["required", Rule::notIn([$request->ans1[$arrIndex], $request->ans3[$arrIndex], $request->ans4[$arrIndex]])];
             $rules_array ["ans3.$arrIndex"] = ["required", Rule::notIn([$request->ans1[$arrIndex], $request->ans2[$arrIndex], $request->ans4[$arrIndex]])];
@@ -55,27 +55,27 @@ class PlacementTestQuestionsController extends Controller
         $data['user_id'] = auth()->id();
 
         QuestionsPlacementRepository::save($data);
-        return redirect()->back()->with('success', 'تمت اضافة الاسئلة بنجاح');
+        return redirect()->back()->with('success', 'تمت اضافة الأسئلة بنجاح');
     }
 
     public function update(Request $request, $id)
     {
         $messages_array = [
             'question.question.required' => 'من فضلك ادخل اسم السؤال',
-            'question.ans1.required' => 'من فضلك الاجابه الاولى',
-            'question.ans2.required' => 'من فضلك الاجابه الثانيه',
-            'question.ans3.required' => 'من فضلك الاجابه الثالثه',
-            'question.ans4.required' => 'من فضلك الاجابه الرابعه',
-            'question.ans1.max' => 'الاجابه الاولى يجب الا تزيد عن 191 حرف',
-            'question.ans2.max' => 'الاجابه الثانيه يجب الا تزيد عن 191 حرف',
-            'question.ans3.max' => 'الاجابه الثالثه يجب الا تزيد عن 191 حرف',
-            'question.ans4.max' => 'الاجابه الرابعه يجب الا تزيد عن 191 حرف',
+            'question.ans1.required' => 'من فضلك الإجابة الأولى',
+            'question.ans2.required' => 'من فضلك الإجابة الثانية',
+            'question.ans3.required' => 'من فضلك الإجابة الثالثة',
+            'question.ans4.required' => 'من فضلك الإجابة الرابعة',
+            'question.ans1.max' => 'الإجابة الأولى يجب الا تزيد عن 191 حرف',
+            'question.ans2.max' => 'الإجابة الثانية يجب الا تزيد عن 191 حرف',
+            'question.ans3.max' => 'الإجابة الثالثة يجب الا تزيد عن 191 حرف',
+            'question.ans4.max' => 'الإجابة الرابعة يجب الا تزيد عن 191 حرف',
         ];
 
-        $messages_array["ans1.not_in"] = "لابد ان تكون الاجابه الاولي مختلفه";
-        $messages_array["ans2.not_in"] = "لابد ان تكون الاجابه الثانيه مختلفه";
-        $messages_array["ans3.not_in"] = "لابد ان تكون الاجابه الثالثه مختلفه";
-        $messages_array["ans4.not_in"] = "لابد ان تكون الاجابه الرابعه مختلفه";
+        $messages_array["ans1.not_in"] = "لابد ان تكون الإجابة الأولي مختلفه";
+        $messages_array["ans2.not_in"] = "لابد ان تكون الإجابة الثانية مختلفه";
+        $messages_array["ans3.not_in"] = "لابد ان تكون الإجابة الثالثة مختلفه";
+        $messages_array["ans4.not_in"] = "لابد ان تكون الإجابة الرابعة مختلفه";
         $rules_array ["ans1"] = ["required", Rule::notIn([$request->ans2, $request->ans3, $request->ans4])];
         $rules_array ["ans2"] = ["required", Rule::notIn([$request->ans1, $request->ans3, $request->ans4])];
         $rules_array ["ans3"] = ["required", Rule::notIn([$request->ans1, $request->ans2, $request->ans4])];
@@ -86,7 +86,7 @@ class PlacementTestQuestionsController extends Controller
         $data = $request->except('_token');
         $placement = QuestionsPlacementRepository::update($id, $data);
 
-        return redirect()->back()->with('success', 'تم تعديل الاسئلة بنجاح');
+        return redirect()->back()->with('success', 'تم تعديل الأسئلة بنجاح');
     }
 
     public function destroy($id)

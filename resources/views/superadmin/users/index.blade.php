@@ -16,7 +16,7 @@
                                         صفحة المستخدمين
                                     </h5>
                                     <a data-toggle="modal" data-target="#exampleModal" class="btn btn-primary"
-                                       style="color: white;float: left;font-weight: bold">اضافه مستخدم
+                                       style="color: white;float: left;font-weight: bold">إضافة مستخدم
                                         جديد<i class="fa fa-plus"></i></a>
                                     <a href="{{url('view/schools')}}" class="btn btn-success"
                                        style="color: white;float: left;font-weight: bold"> المدارس<i
@@ -28,7 +28,7 @@
                                             <form method="POST" action="{{ route('register') }}">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">اضافه مستخدم
+                                                        <h5 class="modal-title" id="exampleModalLabel">إضافة مستخدم
                                                             جديد</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
@@ -54,7 +54,7 @@
                                                         </div>
                                                         <div class="form-group row">
                                                             <label for="email"
-                                                                   class="col-md-4 col-form-label text-md-right">{{ __('البريد الالكترونى') }}</label>
+                                                                   class="col-md-4 col-form-label text-md-right">{{ __('البريد الإلكتروني') }}</label>
                                                             <div class="col-md-6">
                                                                 <input id="email" type="email"
                                                                        class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
@@ -98,7 +98,7 @@
                                                         </div>
                                                         <div class="form-group row">
                                                             <label for="password-confirm"
-                                                                   class="col-md-4 col-form-label text-md-right">{{ __('تاكيد كلمة السر ') }}</label>
+                                                                   class="col-md-4 col-form-label text-md-right">{{ __('تأكيد كلمة السر ') }}</label>
                                                             <div class="col-md-6">
                                                                 <input id="password-confirm" type="password"
                                                                        class="form-control"
@@ -131,9 +131,9 @@
                                         <thead>
                                         <tr>
                                             <th>الاسم</th>
-                                            <th>الايميل</th>
-                                            <th>الصلاحيه</th>
-                                            <th>الاجراءات</th>
+                                            <th>الإيميل</th>
+                                            <th>الصلاحية</th>
+                                            <th>الإجراءات</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -193,7 +193,7 @@
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="email"
-                                                                           class="col-md-4 col-form-label text-md-right">{{ __('البريد الالكترونى') }}</label>
+                                                                           class="col-md-4 col-form-label text-md-right">{{ __('البريد الإلكتروني') }}</label>
                                                                     <div class="col-md-6">
                                                                         <input id="email" type="email"
                                                                                value="{{$user->email}}"
@@ -242,7 +242,7 @@
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="password-confirm"
-                                                                           class="col-md-4 col-form-label text-md-right">{{ __('تاكيد كلمة السر ') }}</label>
+                                                                           class="col-md-4 col-form-label text-md-right">{{ __('تأكيد كلمة السر ') }}</label>
 
                                                                     <div class="col-md-6">
                                                                         <input id="password-confirm" type="password"

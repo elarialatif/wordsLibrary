@@ -16,7 +16,7 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label> اسم المرحله :</label>
+                    <label> اسم المرحلة :</label>
                     <select class="form-control" name="level_id">
                         @foreach($levels as $level)
                             <option value="{{$level->id}}">{{$level->name}}</option>

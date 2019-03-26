@@ -67,7 +67,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h5>
-                                        كل المواضيع
+                                        كل الموضوعات
                                     </h5>
 
                                 </div>
@@ -133,7 +133,7 @@
                                                                         </div>
                                                                         <div class="modal-body">
                                                                             <div class="details">
-                                                                                <span>معد مواضيع:</span>
+                                                                                <span>معد موضوعات:</span>
                                                                                 <span>{{$list->user->name}}</span>
                                                                             </div>
                                                                             <div class="details">
@@ -141,7 +141,7 @@
                                                                                 <span>{{($users->where('role',\App\Helper\UsersTypes::EDITOR)->first())?$users->where('role',\App\Helper\UsersTypes::EDITOR)->first()->name:"لا يوجد"}}</span>
                                                                             </div>
                                                                             <div class="details">
-                                                                                <span>محلل مواضيع:</span>
+                                                                                <span>محلل موضوعات:</span>
                                                                                 <span>{{($users->where('role',\App\Helper\UsersTypes::LISTANALYZER)->first())?$users->where('role',\App\Helper\UsersTypes::LISTANALYZER)->first()->name:"لا يوجد"}}</span>
                                                                             </div>
                                                                             <div class="details">
@@ -149,11 +149,11 @@
                                                                                 <span> {{($users->where('role',\App\Helper\UsersTypes::REVIEWER)->first())?$users->where('role',\App\Helper\UsersTypes::REVIEWER)->first()->name:"لا يوجد"}}</span>
                                                                             </div>
                                                                             <div class="details">
-                                                                                <span> مدخل اسئلة:</span>
+                                                                                <span> مدخل أسئلة:</span>
                                                                                 <span>{{($users->where('role',\App\Helper\UsersTypes::QuestionCreator)->first())?$users->where('role',\App\Helper\UsersTypes::QuestionCreator)->first()->name:"لا يوجد"}}</span>
                                                                             </div>
                                                                             <div class="details">
-                                                                                <span>مراجع اسئلة:</span>
+                                                                                <span>مراجع أسئلة:</span>
                                                                                 <span>{{($users->where('role',\App\Helper\UsersTypes::QuestionReviewer)->first())?$users->where('role',\App\Helper\UsersTypes::QuestionReviewer)->first()->name:"لا يوجد"}}</hspan6>
                                                                             </div>
                                                                             <div class="details">
@@ -271,7 +271,7 @@
                     "</div>" +
                     "<div class=\"col-md-6\">" +
                     "<div class=\"form-group\">" +
-                    "<select placeholder=\"المرحله\" onchange=\"myFunction()\" id=\"stepFilter\" class=\"form-control\" name=\"step_filter\" onchange='change()'> " +
+                    "<select placeholder=\"المرحلة\" onchange=\"myFunction()\" id=\"stepFilter\" class=\"form-control\" name=\"step_filter\" onchange='change()'> " +
                     "<option value=\"\">------</option>" +
                     "<option value=\"\">كل المراحل</option>" +
                     "@foreach(\App\Helper\Steps::ArrayOfSteps as $key=>$value)" +
@@ -305,6 +305,7 @@
                 buttons: [
                     'copyHtml5',
                     'excelHtml5',
+                    'pdfHtml5',
                     'print'
                 ]
             });
@@ -323,7 +324,7 @@
                 "</div>" +
                 "<div class=\"col-md-6\">" +
                 "<div class=\"form-group\">" +
-                "<select placeholder=\"المرحله\" onchange=\"myFunction()\" id=\"stepFilter\" class=\"form-control\" name=\"step_filter\" onchange='change()'> " +
+                "<select placeholder=\"المرحلة\" onchange=\"myFunction()\" id=\"stepFilter\" class=\"form-control\" name=\"step_filter\" onchange='change()'> " +
                 "<option value=\"\">-------</option>" +
                 "<option value=\"\">كل المراحل</option>" +
                 "@foreach(\App\Helper\Steps::ArrayOfSteps as $key=>$value)" +
@@ -361,6 +362,7 @@
                     buttons: [
                         'copyHtml5',
                         'excelHtml5',
+                        'pdfHtml5',
                         'print'
                     ]
                 });
@@ -378,7 +380,7 @@
                     "</div>" +
                     "<div class=\"col-md-6\">" +
                     "<div class=\"form-group\">" +
-                    "<select placeholder=\"المرحله\" onchange=\"myFunction()\" id=\"stepFilter\" class=\"form-control\" name=\"step_filter\" onchange='change()'> " +
+                    "<select placeholder=\"المرحلة\" onchange=\"myFunction()\" id=\"stepFilter\" class=\"form-control\" name=\"step_filter\" onchange='change()'> " +
                     "<option value=\"\">---------</option>" +
                     "<option value=\"\">كل المراحل</option>" +
                     "@foreach(\App\Helper\Steps::ArrayOfSteps as $key=>$value)" +

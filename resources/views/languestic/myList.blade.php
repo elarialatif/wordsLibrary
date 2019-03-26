@@ -13,7 +13,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h5>
-                                        صفحة مواضيعى
+                                        صفحة موضوعاتى
 
                                     </h5>
                                 </div>
@@ -27,8 +27,8 @@
                                                 <th>الكود</th>
                                                 <th>الموضوع</th>
                                                 <th>الصف</th>
-                                                <th>ادخال الاسئله</th>
-                                                <th>ارسال</th>
+                                                <th>مراجعة المقالات</th>
+                                                <th>إرسال</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -103,9 +103,9 @@
                                                     </td>
                                                     <td>
                                                         @if($easyStatus && $normalStatus && $hardStatus)
-                                                            <a href="{{url('languestic/send/'.$list->id)}}" class="btn btn-success">ارسال</a>
+                                                            <a href="{{url('languestic/send/'.$list->id)}}" class="btn btn-success">إرسال</a>
                                                         @else
-                                                            <p>راجع كل المقالات للارسال</p>
+                                                            <p>راجع المقالات للإرسال</p>
                                                         @endif
 
                                                     </td>

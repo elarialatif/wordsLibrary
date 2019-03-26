@@ -44,7 +44,7 @@ class ReviewerController extends Controller
         $task = AssignTask::where(['list_id' => $list_id, 'step' => Steps::REVIEW_ARTICLE])->first();
         if ($task) {
             if ($task->user_id != auth()->id()) {
-                return redirect()->back()->withErrors('هذا الوضوع تابع لمستخدم اخر ');
+                return redirect()->back()->withErrors('هذا الوضوع تابع لمستخدم آخر ');
             }
         }
         if (!$task) {
@@ -54,7 +54,7 @@ class ReviewerController extends Controller
 
 
         if ($list->step != Steps::REVIEW_ARTICLE && $list->step != Steps::reSendToReviewerFormEditor) {
-            return redirect('reviewer/mylists')->withErrors('غير مسموح لك الدخول الى هنا');
+            return redirect('reviewer/mylists')->withErrors('غير مسموح لك الدخول إلى هنا');
         }
         $articleObject = new Article();
         return view('reviewer.viewArticle', compact('article', 'page', 'flag', 'articleObject'));
@@ -93,18 +93,18 @@ class ReviewerController extends Controller
                 ///end Notification//
                 $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Create_Question);
                 $user = UsersRepository::find($user_id);
-                $name = Carbon::now() . "بتاريخ" . $user->name . "تم اعادة الارسال الى مدخل الاسئلة ";
-                Steps::SaveLogRow($name, 'اعادة ارسال', 'content_lists', $list_id);
-                return redirect()->back()->with('success', 'تم ارسال الى مدخل الاسئلة ');
+                $name = Carbon::now() . "بتاريخ" . $user->name . "تمت إعادة الإرسال إلى مدخل الأسئلة ";
+                Steps::SaveLogRow($name, 'إعادة إرسال', 'content_lists', $list_id);
+                return redirect()->back()->with('success', 'تم الإرسال ألى مدخل الأسئلة ');
             } else {
                 ContentListsRepository::updateStep($list_id, Steps::ResendToLanguestic);
                 NotificationRepository::notify($list_id, Steps::Languestic);
 
                 $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Languestic);
                 $user = UsersRepository::find($user_id);
-                $name = Carbon::now() . "بتاريخ" . $user->name . "تم اعادة الارسال الى المراجع اللغوى ";
-                Steps::SaveLogRow($name, 'اعادة ارسال', 'content_lists', $list_id);
-                return redirect()->back()->with('success', 'تم ارسال الى المراجع اللغوى');
+                $name = Carbon::now() . "بتاريخ" . $user->name . "تمت إعادة الإرسال إلى المراجع اللغوى ";
+                Steps::SaveLogRow($name, 'إعادة إرسال', 'content_lists', $list_id);
+                return redirect()->back()->with('success', 'تم الإرسال ألى المراجع اللغوى');
             }
         }
         $data['user_id'] = auth()->id();
@@ -114,13 +114,13 @@ class ReviewerController extends Controller
         ContentListsRepository::updateStep($list_id, Steps::Create_Question);
         $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Create_Question);
         $user = UsersRepository::find($user_id);
-        $name = Carbon::now() . "  تم  الارسال الى مدخل الاسئلة بتاريخ ";
+        $name = Carbon::now() . "  تم  الإرسال إلى مدخل الأسئلة بتاريخ ";
         if($user!=null){
-            $name = Carbon::now() . "بتاريخ" . $user->name . "تم  الارسال الى مدخل الاسئلة ";
+            $name = Carbon::now() . "بتاريخ" . $user->name . "تم  الإرسال إلى مدخل الأسئلة ";
         }
 
-        Steps::SaveLogRow($name, ' ارسال', 'content_lists', $list_id);
-        return redirect()->back()->with('success', ' تم ارسال الى مدخل الاسئلة ');
+        Steps::SaveLogRow($name, ' إرسال', 'content_lists', $list_id);
+        return redirect()->back()->with('success', ' تم الإرسال ألى مدخل الأسئلة ');
     }
 
     public function reSendToEditor($list_id)
@@ -132,9 +132,9 @@ class ReviewerController extends Controller
         NotificationRepository::notify($list_id, Steps::UPLOADING_FILE);
         $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::UPLOADING_FILE);
         $user = UsersRepository::find($user_id);
-        $name = Carbon::now() . "بتاريخ" . $user->name . "تم اعادة الارسال الى المحرر ";
-        Steps::SaveLogRow($name, 'اعادة ارسال', 'content_lists', $list_id);
-        return redirect()->back()->with('success', 'تم اعادة الارسال الى المحرر ');
+        $name = Carbon::now() . "بتاريخ" . $user->name . "تمت إعادة الإرسال إلى المحرر ";
+        Steps::SaveLogRow($name, 'إعادة إرسال', 'content_lists', $list_id);
+        return redirect()->back()->with('success', 'تمت إعادة الإرسال إلى المحرر ');
     }
 
     public function viewVocabsForArticle($list_id, $level)

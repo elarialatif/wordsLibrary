@@ -40,7 +40,7 @@
                                                 style="color: blue">{{$data->reference}} </span>)
                                         <span style="font-weight: bold"> بيانات النشر : </span> ( <span
                                                 style="color: blue">{{$data->publish_details}} </span>)
-                                        <span style="font-weight: bold"> تم الرفع بواسطه : </span> ( <span
+                                        <span style="font-weight: bold"> تم الرفع بواسطة : </span> ( <span
                                                 style="color: blue">{{$data->user->name}} </span>)
                                         <span style="font-weight: bold"> التصنيفات :  </span>
                                         ( <span style="color: blue">
@@ -89,9 +89,9 @@
 
                                             <div class="col-md-6">
                                                 @if($type==$articleObject->getNormalArticleValue())
-                                                    <label> مقدمة السؤال القبلى </label>
+                                                    <label> مقدمة السؤال القبلي </label>
                                                     <textarea type="text" class="form-control" name="hint">@if($article) {{$article->pollHint}} @endif  </textarea>
-                                                    <label> السؤال القبلى والبعدى </label>
+                                                    <label> السؤال القبلي والبعدي </label>
                                                     <textarea type="text" class="form-control" name="poll">@if($article) {{$article->poll}} @endif  </textarea>
 <br>
                                                 @endif
@@ -164,8 +164,8 @@
                                                         @if($AllArticles->count()==App\Helper\ArticleLevels::NumberOfLevels)
                                                             <a
                                                                     class="btn btn-success"
-                                                                    href="{{url('editor/sendArticleOfListToReviewer/'.$article->list_id)}}">ارسال
-                                                                الى المراجعه</a>  @endif
+                                                                    href="{{url('editor/sendArticleOfListToReviewer/'.$article->list_id)}}">إرسال
+                                                                إلى المراجعة</a>  @endif
                                                     </div>
                                                 </div>
 

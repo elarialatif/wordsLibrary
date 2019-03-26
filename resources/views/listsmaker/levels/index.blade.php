@@ -16,13 +16,13 @@
                                         صفحة المراحل
                                     </h5>
                                     <a data-toggle="modal" data-target="#exampleModal" class="btn btn-primary"
-                                       style="color: white;float: left;font-weight: bold">اضافه صف جديد<i class="fa fa-plus"></i></a>
+                                       style="color: white;float: left;font-weight: bold">إضافة صف جديد<i class="fa fa-plus"></i></a>
                                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                                          aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">اضافه صف جديد</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">إضافة صف جديد</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
@@ -60,7 +60,7 @@
                                         <thead>
                                         <tr>
                                             <th>الاسم</th>
-                                            <th>الاجراءات</th>
+                                            <th>الإجراءات</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -76,7 +76,7 @@
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">تعديل المرحله</h5>
+                                                                    <h5 class="modal-title" id="exampleModalLabel">تعديل المرحلة</h5>
                                                                     <button type="button" class="close" data-dismiss="modal"
                                                                             aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
@@ -89,7 +89,7 @@
                                                                         <div class="row">
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
-                                                                                    <label> اسم المرحله :</label>
+                                                                                    <label> اسم المرحلة :</label>
                                                                                     <input type="text" class="form-control"
                                                                                            value="{{$grade->name}}" name="name">
                                                                                 </div>

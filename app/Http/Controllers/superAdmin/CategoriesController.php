@@ -110,7 +110,7 @@ class CategoriesController extends Controller
 //        $arr['row_id'] = $categories->id;
 //        LogTimeController::saveLogesTimes($arr);
         // redirect
-        Session::flash('message', 'لقد تم ادخال التصنيف بنجاح');
+        Session::flash('message', 'لقد تم إدخال التصنيف بنجاح');
         return redirect('categories');
 
     }
@@ -214,7 +214,7 @@ class CategoriesController extends Controller
 
         if ($this->checkIfCatgHasContent($id)) {
             $isAllowedToBeDeleted = true;
-            $deleteErrMsg = "لايمكنك المسح .. التصنيف لديه مواضيع دراسيه";
+            $deleteErrMsg = "لايمكنك المسح .. التصنيف لديه موضوعات دراسيه";
         }
 
         if ($isAllowedToBeDeleted) {

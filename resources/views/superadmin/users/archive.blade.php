@@ -24,7 +24,7 @@
     <!-- [ sample-page ] start -->
     <div class="card" style="position: inherit;">
         <div class="card-header">
-            <h5>كل المواضيع</h5>
+            <h5>كل الموضوعات</h5>
         </div>
         <div class="card-block">
             <div class="table-responsive">

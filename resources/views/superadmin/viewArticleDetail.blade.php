@@ -367,12 +367,12 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="designer-tab" data-toggle="tab" href="#2a" role="tab" aria-selected="false">
-                                        <h3>الانشطة</h3>
+                                        <h3>الأنشطة</h3>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="user-tab" data-toggle="tab" href="#6a" role="tab" aria-selected="false">
-                                        <h3>السؤال البعدى</h3>
+                                        <h3>السؤال البعدي</h3>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -382,7 +382,7 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="Developer-tab" data-toggle="tab" href="#4a" role="tab" aria-selected="true">
-                                        <h3>الانشطة الموسعة</h3>
+                                        <h3>الأنشطة الموسعة</h3>
                                     </a>
                                 </li>
                             </ul>
@@ -424,7 +424,7 @@
                                         <div class="media friendlist-box align-items-center justify-content-center m-b-20">
                                             <div class="media-body">
                                                 <h6 class="m-0 d-inline" style="font-size: 18px">
-                                                    الاسئلة الاساسية
+                                                    الأسئلة الأساسية
                                                 </h6>
                                                 @foreach($questions as $question)
                                                     <div class="card-header" id="Issues">
@@ -452,25 +452,25 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        الاجابة الاولي
+                                                                        الاجابة الأولي
                                                                     </td>
                                                                     <td>{{$question->ans1}}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        الاجابة الثانيه
+                                                                        الاجابة الثانية
                                                                     </td>
                                                                     <td>{{$question->ans2}}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        الاجابة الثالثه
+                                                                        الاجابة الثالثة
                                                                     </td>
                                                                     <td>{{$question->ans3}}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        الاجابة الرابعه
+                                                                        الاجابة الرابعة
                                                                     </td>
                                                                     <td>{{$question->ans4}}</td>
                                                                 </tr>
@@ -495,7 +495,7 @@
                                         <div class="media friendlist-box align-items-center justify-content-center m-b-20">
                                             <div class="media-body">
                                                 <h6 class="m-0 d-inline" style="font-size: 18px">
-                                                    الاسئلة الاساسية
+                                                    الأسئلة الأساسية
                                                 </h6>
                                                 @foreach($questions as $question)
                                                     <div class="card-header" id="Issues">
@@ -523,25 +523,25 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        الاجابة الاولي
+                                                                        الاجابة الأولي
                                                                     </td>
                                                                     <td>{{$question->ans1}}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        الاجابة الثانيه
+                                                                        الاجابة الثانية
                                                                     </td>
                                                                     <td>{{$question->ans2}}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        الاجابة الثالثه
+                                                                        الاجابة الثالثة
                                                                     </td>
                                                                     <td>{{$question->ans3}}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        الاجابة الرابعه
+                                                                        الاجابة الرابعة
                                                                     </td>
                                                                     <td>{{$question->ans4}}</td>
                                                                 </tr>
@@ -582,7 +582,7 @@
                                         <div class="media friendlist-box align-items-center justify-content-center m-b-20">
                                             <div class="media-body">
                                                 <h6 class="m-0 d-inline" style="font-size: 18px">
-                                                    الاسئلة الاضافية
+                                                    الأسئلة الإضافية
                                                 </h6>
                                                 @foreach($questionStretch as $question)
                                                     <div class="card-header" id="Issues">
@@ -610,25 +610,25 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        الاجابة الاولي
+                                                                        الاجابة الأولي
                                                                     </td>
                                                                     <td>{{$question->ans1}}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        الاجابة الثانيه
+                                                                        الاجابة الثانية
                                                                     </td>
                                                                     <td>{{$question->ans2}}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        الاجابة الثالثه
+                                                                        الاجابة الثالثة
                                                                     </td>
                                                                     <td>{{$question->ans3}}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
-                                                                        الاجابة الرابعه
+                                                                        الاجابة الرابعة
                                                                     </td>
                                                                     <td>{{$question->ans4}}</td>
                                                                 </tr>
@@ -672,7 +672,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <h3>الروابط الاثرائية</h3>
+                                <h3>الروابط الإثرائية</h3>
                                 <div class="links">
                                     @foreach($links as $word)
                                         <a href="{{$word->link}}">{{$word->name}}</a>
@@ -684,28 +684,28 @@
                                 <h3>المراحل</h3>
                                 <div>
                                     <a class="link1" data-toggle="modal" data-target="#levelsModal1" href="">
-                                        الى محلل المقالات
+                                        إلى محلل المقالات
                                     </a>
                                     <a class="link2" data-toggle="modal" data-target="#levelsModal2" href="">
-                                        الى المحرر
+                                        إلى المحرر
                                     </a>
                                     <a class="link3" data-toggle="modal" data-target="#levelsModal3" href="">
-                                        الى مراجع المقالات
+                                        إلى مراجع المقالات
                                     </a>
                                     <a class="link3" data-toggle="modal" data-target="#levelsModal4" href="">
-                                        الى مدخل الاسئلة
+                                        إلى مدخل الأسئلة
                                     </a>
-                                    <a class="link1" data-toggle="modal" data-target="#levelsModal5" href="">الى
-                                        مراجع الاسئلة
+                                    <a class="link1" data-toggle="modal" data-target="#levelsModal5" href="">إلى
+                                        مراجع الأسئلة
                                     </a>
-                                    <a class="link2" data-toggle="modal" data-target="#levelsModal6" href="">الى
+                                    <a class="link2" data-toggle="modal" data-target="#levelsModal6" href="">إلى
                                         المراجع اللغوى
                                     </a>
                                     <a class="link2" data-toggle="modal" data-target="#levelsModal7" href="">
-                                        الى الصوت
+                                        إلى الصوت
                                     </a>
                                     <a class="link3" data-toggle="modal" data-target="#levelsModal8" href="">
-                                        الى الجودة
+                                        إلى الجودة
                                     </a>
                                     <a class="link1" data-toggle="modal" data-target="#levelsModal9" href="">
                                         نشر
@@ -962,7 +962,7 @@
                                                    style="width:100%;float: left">
                                                 <tbody>
                                                 <tr>
-                                                    <td>معد مواضيع:</td>
+                                                    <td>معد موضوعات:</td>
                                                     <td>{{$list->user->name}}</td>
                                                 </tr>
                                                 <tr>
@@ -970,7 +970,7 @@
                                                     <td>{{($users->where('role',\App\Helper\UsersTypes::EDITOR)->first())?$users->where('role',\App\Helper\UsersTypes::EDITOR)->first()->name:"لا يوجد"}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>محلل مواضيع:</td>
+                                                    <td>محلل موضوعات:</td>
                                                     <td>{{($users->where('role',\App\Helper\UsersTypes::LISTANALYZER)->first())?$users->where('role',\App\Helper\UsersTypes::LISTANALYZER)->first()->name:"لا يوجد"}}</td>
                                                 </tr>
                                                 <tr>
@@ -978,11 +978,11 @@
                                                     <td> {{($users->where('role',\App\Helper\UsersTypes::REVIEWER)->first())?$users->where('role',\App\Helper\UsersTypes::REVIEWER)->first()->name:"لا يوجد"}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td> مدخل اسئلة:</td>
+                                                    <td> مدخل أسئلة:</td>
                                                     <td>{{($users->where('role',\App\Helper\UsersTypes::QuestionCreator)->first())?$users->where('role',\App\Helper\UsersTypes::QuestionCreator)->first()->name:"لا يوجد"}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>مراجع اسئلة:</td>
+                                                    <td>مراجع أسئلة:</td>
                                                     <td>{{($users->where('role',\App\Helper\UsersTypes::QuestionReviewer)->first())?$users->where('role',\App\Helper\UsersTypes::QuestionReviewer)->first()->name:"لا يوجد"}}</td>
                                                 </tr>
                                                 <tr>

@@ -45,7 +45,7 @@
 
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">اضافه مدرسة
+                                    <h5 class="modal-title" id="exampleModalLabel">إضافة مدرسة
                                         جديد</h5>
 
                                 </div>
@@ -67,7 +67,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <label for="email"
-                                               class="col-md-2 col-form-label text-md-right">{{ __('البريد الالكترونى') }}</label>
+                                               class="col-md-2 col-form-label text-md-right">{{ __('البريد الإلكتروني') }}</label>
                                         <div class="col-md-6">
                                             <input id="email" type="email"
                                                    class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
@@ -87,7 +87,7 @@
                                     </div>
                                     <div class="form-group row">
                                         <label for="password-confirm"
-                                               class="col-md-2 col-form-label text-md-right">{{ __('تاكيد كلمة السر ') }}</label>
+                                               class="col-md-2 col-form-label text-md-right">{{ __('تأكيد كلمة السر ') }}</label>
 
                                         <div class="col-md-6">
                                             <input id="password-confirm" type="password"

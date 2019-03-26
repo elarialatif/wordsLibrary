@@ -21,14 +21,14 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-md-2">
-                    <button class="btn btn-primary" id="add">اضافه عدد معين</button>
+                    <button class="btn btn-primary" id="add">إضافة عدد معين</button>
                     <input class="form-control" type="number" name="number" style="display: none" id="inputNum2"
                            placeholder="ادخل الرقم">
                     <br>
                 </div>
             </div>
         </div>
-        <button id="btn" class=" btn btn-primary"> اضافه حقول للموضوعات</button>
+        <button id="btn" class=" btn btn-primary"> إضافة حقول للموضوعات</button>
         <form action="{{url('createList')}}" method="post">
             {{csrf_field()}}
             <div class="row">
@@ -43,10 +43,10 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    المرحله:<br>
+                    المرحلة:<br>
                     <div class="form-group">
                         <select class="form-control" name="level_id" id="level">
-                            <option>اختر المرحله</option>
+                            <option>اختر المرحلة</option>
                             @foreach($levels as $level)
                                 <option value="{{$level->id}}">{{$level->name}}</option>
                             @endforeach

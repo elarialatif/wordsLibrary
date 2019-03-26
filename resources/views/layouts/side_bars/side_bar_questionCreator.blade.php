@@ -19,22 +19,22 @@
                 <li class="nav-item {{request()->is("question")?"active":""}}">
                     <a href="{{url('question')}}" class="nav-link">
                         <span class="pcoded-micon"><i class="mdi mdi-file"></i></span>
-                        <span class="pcoded-mtext">مواضيع جديده</span></a>
+                        <span class="pcoded-mtext">موضوعات جديدة</span></a>
                 </li>
                 <li class="nav-item {{request()->is("question/myList")?"active":""}}">
                     <a href="{{url('question/myList')}}" class="nav-link">
                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
-                        <span class="pcoded-mtext">مواضيعى</span></a>
+                        <span class="pcoded-mtext">موضوعاتى</span></a>
                 </li>
                 <li class="nav-item {{request()->is("question/resend")?"active":""}}">
                     <a href="{{url('question/resend')}}" class="nav-link">
                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
-                        <span class="pcoded-mtext">مواضيع معاده</span></a>
+                        <span class="pcoded-mtext">موضوعات معادة</span></a>
                 </li>
                 <li class="nav-item {{request()->is("userArchive")?"active":""}}">
                     <a href="{{url('userArchive')}}" class="nav-link">
                         <span class="pcoded-micon"><i class="mdi mdi-chart-donut-variant"></i></span>
-                        <span class="pcoded-mtext">الارشيف</span></a>
+                        <span class="pcoded-mtext">الأرشيف</span></a>
                 </li>
                 <li class="nav-item {{request()->is("tashkel")?"active":""}}">
                     <a href="{{url('/tashkel')}}" class="nav-link">

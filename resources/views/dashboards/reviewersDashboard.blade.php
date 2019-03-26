@@ -45,11 +45,11 @@
                             <h5>الموضوعات</h5>
                         </div>
                         <div class="card-block">
-                            <span class="d-block"><i class="fas fa-sort-amount-up"></i>عدد الموضوعات الكليه </span>
+                            <span class="d-block"><i class="fas fa-sort-amount-up"></i>عدد الموضوعات الكلية </span>
                             <h3 class="f-w-300">{{$sharedArrayBetweenUsers['all_lists']}}</h3>
                             <div class="media mt-4 article_media">
                                 <div class="photo-table">
-                                    <h6>مواضوعات تم الانتهاء منها </h6>
+                                    <h6>موضوعات تم الانتهاء منها </h6>
                                     <div class="progress">
                                         <div class="progress-bar progress-c-theme" role="progressbar"
                                              style="width:{{round(($sharedArrayBetweenUsers['finished']/$sharedArrayBetweenUsers['all_lists'])*100)}}%;height:6px;"
@@ -63,7 +63,7 @@
                             </div>
                             <div class="media mt-4 article_media">
                                 <div class="photo-table">
-                                    <h6>مواضوعات لم يتم الانتهاء منها</h6>
+                                    <h6>موضوعات لم يتم الانتهاء منها</h6>
                                     <div class="progress">
                                         <div class="progress-bar progress-c-theme2" role="progressbar"
                                              style="width:{{round(($sharedArrayBetweenUsers['underWork']/$sharedArrayBetweenUsers['all_lists'])*100)}}%;height:6px;"
@@ -85,7 +85,7 @@
                 <div class="col-md-12 col-xl-12">
                     <div class="card statistial-visit work-show">
                         <div class="card-header">
-                            <h5> اخر ما تم العمل عليه</h5>
+                            <h5> آخر ما تم العمل عليه</h5>
                         </div>
                         <div class="card-block">
                             <div class="form-group">

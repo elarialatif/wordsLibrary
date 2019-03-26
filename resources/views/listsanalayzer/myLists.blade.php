@@ -13,7 +13,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h5>
-                                        مواضيعي
+                                        موضوعاتي
                                     </h5>
                                 </div>
 
@@ -21,7 +21,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group" style="text-align:center"
                                         ">
-                                        <h3 style="background: #357935;color: #f1f1f1">مواضيعى الحاليه</h3>
+                                        <h3 style="background: #357935;color: #f1f1f1">موضوعاتى الحالية</h3>
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +86,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group" style="text-align:center"
                                     ">
-                                    <h3 style="background: #357935;color: #f1f1f1"> مواضيعى السابقة</h3>
+                                    <h3 style="background: #357935;color: #f1f1f1"> موضوعاتى السابقة</h3>
                                 </div>
                             </div>
                         </div>

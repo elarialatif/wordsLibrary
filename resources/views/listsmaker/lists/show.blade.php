@@ -21,11 +21,11 @@
                                 <h4>
                                     {{$lists->count()}} موضوع
                                     <br>
-                                          تم رفع ملف الى{{$article->count()}} موضوع
+                                          تم رفع ملف إلى{{$article->count()}} موضوع
                                 </h4>
                                     <a href="#" class="btn btn-primary" data-toggle="modal"
                                    data-target="#exampleModal0"
-                                   style="color: white;float: left;font-weight: bold"> اضافه موضوع جديد <i
+                                   style="color: white;float: left;font-weight: bold"> إضافة موضوع جديد <i
                                             class="fa fa-plus"></i></a>
                                 {{--model--}}
                                 <div class="modal fade" id="exampleModal0"
@@ -98,7 +98,7 @@
                                         <tr>
                                             <th>الموضوع</th>
                                             <th>الصف</th>
-                                            <th>الاجراءات</th>
+                                            <th>الإجراءات</th>
                                         </tr>
                                         </thead>
                                         <tbody>

@@ -13,7 +13,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h5>
-                                        كل المقالات
+                                        المقالات
                                     </h5>
                                 </div>
                                 <div class="card-block">
@@ -28,10 +28,10 @@
                                                         <th>الكود</th>
                                                         <th>الموضوع</th>
                                                         <th>الصف</th>
-                                                        <th> ادخال المقال سهل</th>
-                                                        <th>ادخال المقال متوسط</th>
-                                                        <th>ادخال المقال صعب</th>
-                                                        <th>ارسال الى المراجعه</th>
+                                                        <th> إدخال مقال سهل</th>
+                                                        <th>إدخال مقال متوسط</th>
+                                                        <th>إدخال مقال صعب</th>
+                                                        <th>إرسال إلى المراجعة</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -72,7 +72,7 @@
                                                             @if ($article->count()==App\Helper\ArticleLevels::NumberOfLevels && $vocabsForEasyLevel && $vocabsForNormalLevel && $vocabsForHardLevel)
                                                                 <td><a class="btn btn-success"
                                                                        href="{{url('editor/sendArticleOfListToReviewer/'.$list->id)}}">
-                                                                        ارسال</a>
+                                                                        إرسال</a>
                                                                 </td>
                                                             @else
                                                                 <td>
@@ -80,9 +80,7 @@
                                                                     <button class="btn btn-default"> مغلق</button>
                                                                     <button type="button" class="btn btn-info btn-lg"
                                                                             data-toggle="modal"
-                                                                            data-target="#myModal{{$file->id}}">الغير
-                                                                        مكتمل
-                                                                    </button>
+                                                                            data-target="#myModal{{$file->id}}">غير المكتمل</button>
                                                                     <!-- Modal -->
                                                                     <div id="myModal{{$file->id}}" class="modal fade"
                                                                          role="dialog">
@@ -102,33 +100,33 @@
 
                                                                                     @endphp
                                                                                     @if (!$articleForEasyLevel)
-                                                                                    <p style="font-size: 18px;color: green">ادخل المقال المختصر والموسع
+                                                                                    <p style="font-size: 18px;color: green">ادخال المقال المختصر والموسع
                                                                                         للمستوى السهل</p>
                                                                                     @elseif( $articleForEasyLevel && $articleForEasyLevel->stretchArticle)
-                                                                                        <p style="font-size: 18px;color: green">ادخل المقال الموسع
+                                                                                        <p style="font-size: 18px;color: green">ادخال المقال الموسع
                                                                                             للمستوى السهل</p>
                                                                                     @endif
                                                                                     @if (!$articleForNormalLevel)
-                                                                                        <p style="font-size: 18px;color: green">ادخل المقال المختصر والموسع
+                                                                                        <p style="font-size: 18px;color: green">ادخال المقال المختصر والموسع
                                                                                             للمستوى المتوسط</p>
                                                                                     @elseif( $articleForNormalLevel && $articleForNormalLevel->stretchArticle)
-                                                                                        <p style="font-size: 18px;color: green">ادخل المقال الموسع
+                                                                                        <p style="font-size: 18px;color: green">ادخال المقال الموسع
                                                                                             للمستوى المتوسط</p>
                                                                                     @endif
 
                                                                                     @if (!$articleForHardLevel)
-                                                                                        <p style="font-size: 18px;color: green">ادخل المقال المختصر والموسع
+                                                                                        <p style="font-size: 18px;color: green">ادخال المقال المختصر والموسع
                                                                                             للمستوى الصعب</p>
                                                                                     @elseif( $articleForHardLevel && $articleForHardLevel->stretchArticle)
-                                                                                        <p style="font-size: 18px;color: green">ادخل المقال الموسع
+                                                                                        <p style="font-size: 18px;color: green">ادخال المقال الموسع
                                                                                             للمستوى الصعب</p>
 
                                                                                     @endif
-                                                                                    <p style="font-size: 18px;color: green">{{($vocabsForEasyLevel)?'':' ادخل معانى الكلمات للمقال السهل'}}</p>
+                                                                                    <p style="font-size: 18px;color: green">{{($vocabsForEasyLevel)?'':' ادخل معاني الكلمات للمقال السهل'}}</p>
 
-                                                                                    <p style="font-size: 18px;color: green">{{($vocabsForNormalLevel)?'':' ادخل معانى الكلمات للمقال المتوسط'}}</p>
+                                                                                    <p style="font-size: 18px;color: green">{{($vocabsForNormalLevel)?'':' ادخل معاني الكلمات للمقال المتوسط'}}</p>
 
-                                                                                    <p style="font-size: 18px;color: green">{{($vocabsForHardLevel)?'':' ادخل معانى الكلمات للمقال الصعب'}}</p>
+                                                                                    <p style="font-size: 18px;color: green">{{($vocabsForHardLevel)?'':' ادخل معاني الكلمات للمقال الصعب'}}</p>
                                                                                 </div>
                                                                                 <div class="modal-footer">
                                                                                     <button type="button"

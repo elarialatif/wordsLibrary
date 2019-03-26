@@ -65,14 +65,14 @@ class EditorController extends Controller
         }
         $categories_all = Categery::all();
         if ($list->step != Steps::INSERTING_ARTICLE && $list->step != Steps::reSendToEditorFormReviewer) {
-            return redirect('editor/mylists')->withErrors('غير مسموح لك الدخول الى هنا');
+            return redirect('editor/mylists')->withErrors('غير مسموح لك الدخول إلى هنا');
         }
         $articleCheck = Article::where(['list_id' => $list->id, 'level' => $level])->first();
         if ($flag != 0 && $articleCheck != null) {
             $type = $articleObject->getStretchArticleValue();
         }
         if ($flag == 1 && $articleCheck == null) {
-            return redirect()->back()->withErrors(['ادخل المقال المختصر اولا ']);
+            return redirect()->back()->withErrors(['ادخال المقال المختصر اولا ']);
         }
         return view('editor.article.create', compact('orginalFile', "list", "file_id", "categories_all", "level", 'page', 'type'));
     }
@@ -137,9 +137,9 @@ class EditorController extends Controller
         UserRateRepository::save($data);
 
         ContentListsRepository::updateStep($List_id, Steps::REVIEW_ARTICLE);
-        $name = Carbon::now() . "  تم  الارسال الى المراجع بتاريخ ";
-        Steps::SaveLogRow($name, ' ارسال', 'content_lists', $List_id);
-        return redirect('editor/index')->with('success', 'تم الارسال بنجاح');
+        $name = Carbon::now() . "  تم  الإرسال إلى المراجع بتاريخ ";
+        Steps::SaveLogRow($name, ' إرسال', 'content_lists', $List_id);
+        return redirect('editor/index')->with('success', 'تم الإرسال بنجاح');
     }
 
     public function reSendListOfArticleToReviewer($List_id)
@@ -151,10 +151,10 @@ class EditorController extends Controller
         NotificationRepository::notify($List_id, Steps::REVIEW_ARTICLE);
         $user_id = TaskRepository::findWhereAndStep('list_id', $List_id, Steps::REVIEW_ARTICLE);
         $user = UsersRepository::find($user_id);
-        $name = Carbon::now() . "بتاريخ" . $user->name . "تم اعادة الارسال الى المراجع ";
-        Steps::SaveLogRow($name, 'اعادة ارسال', 'content_lists', $List_id);
+        $name = Carbon::now() . "بتاريخ" . $user->name . "تمت إعادة الإرسال إلى المراجع ";
+        Steps::SaveLogRow($name, 'إعادة إرسال', 'content_lists', $List_id);
         ///end Notification////
-        return redirect()->back()->with('success', 'تم اعادة الارسال بنجاح');
+        return redirect()->back()->with('success', 'تمت إعادة الإرسال بنجاح');
     }
 
     public function refusedLists()

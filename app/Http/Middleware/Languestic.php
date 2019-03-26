@@ -15,7 +15,7 @@ class Languestic {
      */
     public function handle($request, Closure $next) {
         if (auth()->user()->role != UsersTypes::Languestic && auth()->user()->role != UsersTypes::SUPERADMIN) {
-            return redirect()->back()->withErrors('غير مسموح لك الدخول الى هنا ');
+            return redirect()->back()->withErrors('غير مسموح لك الدخول إلى هنا ');
         }
         return $next($request);
     }

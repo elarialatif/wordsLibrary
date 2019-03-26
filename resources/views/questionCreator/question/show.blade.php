@@ -3,13 +3,13 @@
     <br>
     <br>
     <div class="container">
-        <a href="{{url('question/create/'.$questions[0]->artical_id)}}" class="btn btn-primary"> اضافه اسئله جديده <i
+        <a href="{{url('question/create/'.$questions[0]->artical_id)}}" class="btn btn-primary"> إضافة اسئله جديدة <i
                     class="fa fa-plus"></i></a>
         <a style="float: left" href="{{url('question/'.$page)}}" class="btn btn-dark"> رجوع </a>
         <br>
         <br>
         <div>
-            <h3>الاسئلة الاساسية</h3>
+            <h3>الأسئلة الأساسية</h3>
         <div id="tinymcFont">    {!! $artical->article !!} </div>
         @foreach($questions as $question)
             <table class="table table-condensed">
@@ -48,8 +48,8 @@
                         <thead style="background-color: #0fa73e">
                         <tr>
                             <th>العنوان</th>
-                            <th>الملاحظه</th>
-                            <th>الحاله</th>
+                            <th>الملاحظة</th>
+                            <th>الحالة</th>
                             <th>عرض</th>
                         </tr>
                         </thead>
@@ -75,7 +75,7 @@
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">عرض ملاحظه</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">عرض ملاحظة</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
@@ -87,13 +87,13 @@
                                                 <input disabled type="text" name="title" class="form-control"
                                                        value="{{$issue->title}}">
                                                 <br>
-                                                <label><h4>الملاحظه</h4></label>
+                                                <label><h4>الملاحظة</h4></label>
                                                 <textarea disabled name="name" rows="6"
                                                           cols="60"> {!!$issue->name!!}</textarea>
                                                 <input type="hidden" name="field_id" value="{{$question->id}}">
                                                 <input type="hidden" name="table" value="question">
                                                 <select class="form-control" name="step" required>
-                                                    <option value="">الحاله</option>
+                                                    <option value="">الحالة</option>
                                                     <option value="{{\App\Helper\IssuesSteps::Open}}">{{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::Open)}}</option>
                                                     <option value="{{\App\Helper\IssuesSteps::DoneByEditor}}">{{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::DoneByEditor)}}</option>
                                                 </select>
@@ -141,7 +141,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        الاختيار الاول:<br>
+                                        الاختيار الأول:<br>
                                         <div class="form-group">
                                             <input required type="text" name="ans1" value="{{$question->ans1}}">
                                         </div>
@@ -169,12 +169,12 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        الاجابه الصحيحه:<br>
+                                        الإجابة الصحيحة:<br>
                                         <div class="form-group">
                                             <select class="form-control" name="true_answer" required>
-                                                <option value="">اختر الاجابه</option>
+                                                <option value="">اختر الإجابة</option>
                                                 <option value="ans1" {{($question->true_answer=='ans1')?'selected':''}}>
-                                                    الاختيار الاول
+                                                    الاختيار الأول
                                                 </option>
                                                 <option value="ans2" {{($question->true_answer=='ans2')?'selected':''}}>
                                                     الاختيار الثاني
@@ -204,7 +204,7 @@
         </div>
         <hr>
         <div>
-            <h3>الاسئلة الاضافية</h3>
+            <h3>الأسئلة الإضافية</h3>
             <div id="tinymcFont">    المقال الموسع </div>
             @foreach($questionStretch as $question)
                 <table class="table table-condensed">
@@ -243,8 +243,8 @@
                             <thead style="background-color: #0fa73e">
                             <tr>
                                 <th>العنوان</th>
-                                <th>الملاحظه</th>
-                                <th>الحاله</th>
+                                <th>الملاحظة</th>
+                                <th>الحالة</th>
                                 <th>عرض</th>
                             </tr>
                             </thead>
@@ -270,7 +270,7 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">عرض ملاحظه</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">عرض ملاحظة</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -282,13 +282,13 @@
                                                     <input disabled type="text" name="title" class="form-control"
                                                            value="{{$issue->title}}">
                                                     <br>
-                                                    <label><h4>الملاحظه</h4></label>
+                                                    <label><h4>الملاحظة</h4></label>
                                                     <textarea disabled name="name" rows="6"
                                                               cols="60"> {!!$issue->name!!}</textarea>
                                                     <input type="hidden" name="field_id" value="{{$question->id}}">
                                                     <input type="hidden" name="table" value="question">
                                                     <select class="form-control" name="step" required>
-                                                        <option value="">الحاله</option>
+                                                        <option value="">الحالة</option>
                                                         <option value="{{\App\Helper\IssuesSteps::Open}}">{{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::Open)}}</option>
                                                         <option value="{{\App\Helper\IssuesSteps::DoneByEditor}}">{{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::DoneByEditor)}}</option>
                                                     </select>
@@ -336,7 +336,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            الاختيار الاول:<br>
+                                            الاختيار الأول:<br>
                                             <div class="form-group">
                                                 <input required type="text" name="ans1" value="{{$question->ans1}}">
                                             </div>
@@ -364,12 +364,12 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            الاجابه الصحيحه:<br>
+                                            الإجابة الصحيحة:<br>
                                             <div class="form-group">
                                                 <select class="form-control" name="true_answer" required>
-                                                    <option value="">اختر الاجابه</option>
+                                                    <option value="">اختر الإجابة</option>
                                                     <option value="ans1" {{($question->true_answer=='ans1')?'selected':''}}>
-                                                        الاختيار الاول
+                                                        الاختيار الأول
                                                     </option>
                                                     <option value="ans2" {{($question->true_answer=='ans2')?'selected':''}}>
                                                         الاختيار الثاني

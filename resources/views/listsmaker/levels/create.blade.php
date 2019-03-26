@@ -10,7 +10,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     {{--<input type="hidden" name="user_id" value="{{auth()->id()}}">--}}
-                    <label> اسم المرحله :</label>
+                    <label> اسم المرحلة :</label>
                     <input type="text" class="form-control" name="name">
                 </div>
             </div>

@@ -37,7 +37,7 @@ class PlacementTestController extends Controller
     {
         $placementTest = QuestionsPlacementRepository::findWhere('exam_id', $id);
         if ($placementTest->count() > 0) {
-            return redirect()->back()->with('info', 'لا يمكنك المسح توجد اسئلة');
+            return redirect()->back()->with('info', 'لا يمكنك المسح توجد أسئلة');
         }
         $placement = PlacementTestRepository::delete($id);
         return redirect()->back()->with('success', 'تم تعديل الاختبار بنجاح');

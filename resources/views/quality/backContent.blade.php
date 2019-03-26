@@ -13,7 +13,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h5>
-                                        صفحة  مواضيع معاده
+                                        صفحة  موضوعات معادة
                                     </h5>
                                 </div>
                                 <div class="card-block">
@@ -26,8 +26,8 @@
                                                 <th>الكود</th>
                                                 <th>الموضوع</th>
                                                 <th>الصف</th>
-                                                <th>ادخال الاسئله</th>
-                                                <th>ارسال</th>
+                                                <th>إدخال الأسئلة</th>
+                                                <th>إرسال</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -89,9 +89,9 @@ $easySound=\App\Repository\IssuesRepository::getAllIssuesForArticle($soundEasy->
                                                     </td>
                                                     <td>
                                                         @if($easyStatus && $normalStatus && $hardStatus)
-                                                            <a href="{{url('quality/send/'.$list->id)}}" class="btn btn-success">اعاده ارسال</a>
+                                                            <a href="{{url('quality/send/'.$list->id)}}" class="btn btn-success">إعادة إرسال</a>
                                                         @else
-                                                            <p> راجع كل المقالات للارسال</p>
+                                                            <p> راجع المقالات للإرسال</p>
                                                         @endif
                                                     </td>
                                                 </tr>

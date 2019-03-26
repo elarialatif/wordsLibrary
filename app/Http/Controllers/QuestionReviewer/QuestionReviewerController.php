@@ -99,7 +99,7 @@ class QuestionReviewerController extends Controller
             $task = AssignTask::where(['list_id' => $artical->list_id, 'step' => Steps::Review_Question])->first();
             if ($task) {
                 if ($task->user_id != auth()->id()) {
-                    return redirect()->back()->withErrors('هذا الموضوع تابع لمستخدم اخر ');
+                    return redirect()->back()->withErrors('هذا الموضوع تابع لمستخدم آخر ');
                 }
             } elseif (!$task) {
                 TaskRepository::save($artical->list_id, Steps::Review_Question);
@@ -107,7 +107,7 @@ class QuestionReviewerController extends Controller
         }
 
         if ($list->step != Steps::Review_Question && $list->step != Steps::ResendToQuestionReviewer) {
-            return redirect('questionReviewer/myList')->withErrors('غير مسموح لك الدخول الى هنا');
+            return redirect('questionReviewer/myList')->withErrors('غير مسموح لك الدخول إلى هنا');
         }
         return view('questionReviewer.review', compact('artical', 'questions','questionStretch', 'page'));
     }
@@ -126,7 +126,7 @@ class QuestionReviewerController extends Controller
             return redirect()->back()->withError('يجب الانتهاء من كل الملاحظات');
         }
         Article::where('id', $artical_id)->update(['status' => 1]);
-        return redirect()->back()->with('success', 'تم المراجعه بنجاح ');
+        return redirect()->back()->with('success', 'تمتالمراجعة بنجاح ');
     }
 
     public function send($list_id)
@@ -135,7 +135,7 @@ class QuestionReviewerController extends Controller
         $questions = QuestionsRepository::findIds('list_id', $list_id);
         $status = Article::where(['list_id' => $list_id, 'status' => 0])->first();
         if (!empty($status)) {
-            return redirect()->back()->withErrors(' يجب امراجعه كافه الاسئله اولا');
+            return redirect()->back()->withErrors(' يجب امراجعه كافه الأسئلة اولا');
         }
         $issues = IssuesRepository::getAllIssuesForQuestion($questions, 'question', IssuesSteps::CloseByCreator);
         if ($issues->count() > 0) {
@@ -148,9 +148,9 @@ class QuestionReviewerController extends Controller
             UserRateRepository::update($user_id, $list_id, $data);
             $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Create_Question);
             $user = UsersRepository::find($user_id);
-            $name = Carbon::now() . "بتاريخ" . $user->name . "تم اعادة الارسال الى مدخل الاسئلة ";
-            Steps::SaveLogRow($name, 'اعادة ارسال', 'content_lists', $list_id);
-            return redirect()->back()->with('success', 'تم الارسال الي مدخل الاسئله بنجاح ');
+            $name = Carbon::now() . "بتاريخ" . $user->name . "تمت إعادة الإرسال إلى مدخل الأسئلة ";
+            Steps::SaveLogRow($name, 'إعادة إرسال', 'content_lists', $list_id);
+            return redirect()->back()->with('success', 'تم الإرسال الي مدخل الأسئلة بنجاح ');
         } else {
             if (!empty($lang)) {
                 ContentListsRepository::updateStep($list_id, Steps::ResendToLanguestic);
@@ -159,9 +159,9 @@ class QuestionReviewerController extends Controller
                 ///end Notification////
                 $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Languestic);
                 $user = UsersRepository::find($user_id);
-                $name = Carbon::now() . "بتاريخ" . $user->name . "تم اعادة الارسال الى المراجع اللغوى ";
-                Steps::SaveLogRow($name, 'اعادة ارسال', 'content_lists', $list_id);
-                return redirect()->back()->with('success', 'تم اعاده الارسال الي المراجع اللغوي بنجاح ');
+                $name = Carbon::now() . "بتاريخ" . $user->name . "تمت إعادة الإرسال إلى المراجع اللغوى ";
+                Steps::SaveLogRow($name, 'إعادة إرسال', 'content_lists', $list_id);
+                return redirect()->back()->with('success', 'تم إعادة الإرسال الي المراجع اللغوي بنجاح ');
             }
             $data['user_id'] = auth()->id();
             $data['list_id'] = $list_id;
@@ -169,9 +169,9 @@ class QuestionReviewerController extends Controller
             UserRateRepository::save($data);
             ContentListsRepository::updateStep($list_id, Steps::Languestic);
 
-            $name = Carbon::now() . " تم  الارسال الى المراجع اللغوي بتاريخ ";
-            Steps::SaveLogRow($name, ' ارسال', 'content_lists', $list_id);
-            return redirect()->back()->with('success', 'تم الارسال الي المراجع اللغوي بنجاح ');
+            $name = Carbon::now() . " تم  الإرسال إلى المراجع اللغوي بتاريخ ";
+            Steps::SaveLogRow($name, ' إرسال', 'content_lists', $list_id);
+            return redirect()->back()->with('success', 'تم الإرسال الي المراجع اللغوي بنجاح ');
         }
     }
 

@@ -18,11 +18,11 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h5>
-                                        {{$placementTest->exam_name}} >> {{$placementTest->grade->name}} >> صفحة الاسئلة
+                                        {{$placementTest->exam_name}} >> {{$placementTest->grade->name}} >> صفحة الأسئلة
                                     </h5>
                                     <a href="{{url('PlacementTests/questions/create/'.$placement_id)}}"
                                        class="btn btn-primary"
-                                       style="color: white;float: left;font-weight: bold">اضافه اسئلة جديد<i
+                                       style="color: white;float: left;font-weight: bold">إضافة أسئلة جديد<i
                                                 class="fa fa-plus"></i></a>
                                 </div>
                                 <div class="card-block">
@@ -34,9 +34,9 @@
                                             <tr>
                                                 <th>الكود</th>
                                                 <th>الاسم</th>
-                                                <th>تاريخ الانشاء</th>
-                                                <th>اخر تحديث</th>
-                                                <th>الاجراءت</th>
+                                                <th>تاريخ الإنشاء</th>
+                                                <th>آخر تحديث</th>
+                                                <th>الإجراءات</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -100,7 +100,7 @@
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-md-6">
-                                                                        الاختيار الاول:<br>
+                                                                        الاختيار الأول:<br>
                                                                         <div class="form-group">
                                                                             <input readonly required type="text"
                                                                                    name="ans1"
@@ -136,14 +136,14 @@
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-md-6">
-                                                                        الاجابه الصحيحه:<br>
+                                                                        الإجابة الصحيحة:<br>
                                                                         <div class="form-group">
                                                                             <select disabled class="form-control"
                                                                                     name="true_answer" required>
-                                                                                <option value="">اختر الاجابه
+                                                                                <option value="">اختر الإجابة
                                                                                 </option>
                                                                                 <option value="ans1" {{($testQuestion->true_answer=='ans1')?'selected':''}}>
-                                                                                    الاختيار الاول
+                                                                                    الاختيار الأول
                                                                                 </option>
                                                                                 <option value="ans2" {{($testQuestion->true_answer=='ans2')?'selected':''}}>
                                                                                     الاختيار الثاني
@@ -201,7 +201,7 @@
                                                                     </div>
                                                                     <div class="row">
                                                                         <div class="col-md-6">
-                                                                            الاختيار الاول:<br>
+                                                                            الاختيار الأول:<br>
                                                                             <div class="form-group">
                                                                                 <input required type="text"
                                                                                        name="ans1"
@@ -237,14 +237,14 @@
                                                                     </div>
                                                                     <div class="row">
                                                                         <div class="col-md-6">
-                                                                            الاجابه الصحيحه:<br>
+                                                                            الإجابة الصحيحة:<br>
                                                                             <div class="form-group">
                                                                                 <select class="form-control"
                                                                                         name="true_answer" required>
-                                                                                    <option value="">اختر الاجابه
+                                                                                    <option value="">اختر الإجابة
                                                                                     </option>
                                                                                     <option value="ans1" {{($testQuestion->true_answer=='ans1')?'selected':''}}>
-                                                                                        الاختيار الاول
+                                                                                        الاختيار الأول
                                                                                     </option>
                                                                                     <option value="ans2" {{($testQuestion->true_answer=='ans2')?'selected':''}}>
                                                                                         الاختيار الثاني

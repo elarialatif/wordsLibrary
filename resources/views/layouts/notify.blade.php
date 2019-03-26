@@ -10,7 +10,7 @@ $grouped = $notify->where('read_at',null);
             class="fa fa-angle-down"></i></a>
 <div id="hiddenDiv" style="display: none" class="dropdown-menu dropdown-menu-right notification" >
 <div class="noti-head">
-    <h6 class="d-inline-block m-b-0">الاشعارات</h6>
+    <h6 class="d-inline-block m-b-0">الإشعارات</h6>
     {{--<div class="float-right">--}}
     {{--<a href="javascript:" class="m-r-10">تم الاطلاع علي الكل</a>--}}
     {{--<a href="javascript:">حذف الكل</a>--}}

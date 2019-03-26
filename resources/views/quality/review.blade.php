@@ -13,16 +13,16 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h5>
-                                        صفحة المراجعه
+                                        صفحة المراجعة
                                     </h5>
                                     @if($artical->status!=\App\Helper\ArticleLevels::Review)
                                         <a style="float: left" href="{{url('quality/done/'.$artical->id)}}"
                                            class="btn btn-success">
-                                            تمت المراجعه <i class="fas fa-question-circle"></i>
+                                            تمت المراجعة <i class="fas fa-question-circle"></i>
                                         </a>
 
                                     @else
-                                        <p class="btn btn-info" style="float:left;font-weight: bold;">تمت المراجعه
+                                        <p class="btn btn-info" style="float:left;font-weight: bold;">تمت المراجعة
                                             <i class="fas fa-check-circle"></i></p>
                                     @endif
                                     <a href="{{url('quality/'.$page)}}" class="btn btn-dark"
@@ -36,7 +36,7 @@
                                             <v style="right: 0;background-color: #1aa62a;position: absolute;
                                     left: -25px;top: 3;width: 4px;height: 20px;">
                                             </v>
-                                            <h6 style="font-size: 20px">المقال الاساسي
+                                            <h6 style="font-size: 20px">المقال الأساسي
                                             </h6>
 
                                             <a href="" data-toggle="modal"
@@ -55,7 +55,7 @@
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">تعديل
-                                                                المقال الاساسي</h5>
+                                                                المقال الأساسي</h5>
                                                             <button type="button" class="close"
                                                                     data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
@@ -104,10 +104,10 @@
                                                             <tr>
                                                                 <th>الكود</th>
                                                                 <th>العنوان</th>
-                                                                <th>الملاحظه</th>
-                                                                <th>الحاله</th>
+                                                                <th>الملاحظة</th>
+                                                                <th>الحالة</th>
 
-                                                                    <th>الاجراء</th>
+                                                                    <th>الإجراء</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
@@ -143,7 +143,7 @@
                                                                             <div class="modal-header">
                                                                                 <h5 class="modal-title"
                                                                                     id="exampleModalLabel">
-                                                                                    تعديل ملاحظه</h5>
+                                                                                    تعديل ملاحظة</h5>
                                                                                 <button type="button" class="close"
                                                                                         data-dismiss="modal"
                                                                                         aria-label="Close">
@@ -159,7 +159,7 @@
                                                                                            class="form-control"
                                                                                            value="{{$issue->title}}">
                                                                                     <br>
-                                                                                    <label><h4>الملاحظه</h4></label>
+                                                                                    <label><h4>الملاحظة</h4></label>
                                                                                     <textarea name="name" rows="6"
                                                                                               cols="60"> {!!$issue->name!!}</textarea>
                                                                                     {{--<input type="hidden" name="field_id" value="{{$question->id}}">--}}
@@ -167,7 +167,7 @@
                                                                                     <select class="form-control"
                                                                                             name="step"
                                                                                             required>
-                                                                                        <option value="">الحاله</option>
+                                                                                        <option value="">الحالة</option>
                                                                                         <option value="{{\App\Helper\IssuesSteps::Open}}">{{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::Open)}}</option>
                                                                                         <option value="{{\App\Helper\IssuesSteps::CloseByCreator}}">{{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::CloseByCreator)}}</option>
                                                                                     </select>
@@ -200,7 +200,7 @@
                                                 <v style="right: 0;background-color: #1b4b72;position: absolute;
                                         left: -25px;top: 3;width: 4px;height: 20px;">
                                                 </v>
-                                                <h6 style="font-size: 20px">الاسئلة الاساسية
+                                                <h6 style="font-size: 20px">الأسئلة الأساسية
                                                 </h6>
                                                 @foreach($questions as $question)
                                                     <div class="table-responsive" style="display: inline-block">
@@ -224,25 +224,25 @@
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    الاجابة الاولي
+                                                                    الاجابة الأولي
                                                                 </td>
                                                                 <td>{{$question->ans1}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    الاجابة الثانيه
+                                                                    الاجابة الثانية
                                                                 </td>
                                                                 <td>{{$question->ans2}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    الاجابة الثالثه
+                                                                    الاجابة الثالثة
                                                                 </td>
                                                                 <td>{{$question->ans3}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    الاجابة الرابعه
+                                                                    الاجابة الرابعة
                                                                 </td>
                                                                 <td>{{$question->ans4}}</td>
                                                             </tr>
@@ -291,11 +291,11 @@
                                                                         <td>{{$issue->title}}</td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>الملاحظه</td>
+                                                                        <td>الملاحظة</td>
                                                                         <td>{{$issue->name}}</td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>الحاله</td>
+                                                                        <td>الحالة</td>
                                                                         <td>
                                                                             @if($issue->step==\App\Helper\IssuesSteps::CloseByCreator)
                                                                                 {{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::CloseByCreator)}}
@@ -329,7 +329,7 @@
                                                                                 <div class="modal-header">
                                                                                     <h5 class="modal-title"
                                                                                         id="exampleModalLabel">
-                                                                                        تعديل ملاحظه</h5>
+                                                                                        تعديل ملاحظة</h5>
                                                                                     <button type="button" class="close"
                                                                                             data-dismiss="modal"
                                                                                             aria-label="Close">
@@ -345,7 +345,7 @@
                                                                                                class="form-control"
                                                                                                value="{{$issue->title}}">
                                                                                         <br>
-                                                                                        <label><h4>الملاحظه</h4></label>
+                                                                                        <label><h4>الملاحظة</h4></label>
                                                                                         <textarea name="name" rows="6"
                                                                                                   cols="60"> {!!$issue->name!!}</textarea>
                                                                                         {{--<input type="hidden" name="field_id" value="{{$question->id}}">--}}
@@ -353,7 +353,7 @@
                                                                                         <select class="form-control"
                                                                                                 name="step"
                                                                                                 required>
-                                                                                            <option value="">الحاله
+                                                                                            <option value="">الحالة
                                                                                             </option>
                                                                                             <option value="{{\App\Helper\IssuesSteps::Open}}">{{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::Open)}}</option>
                                                                                             <option value="{{\App\Helper\IssuesSteps::CloseByCreator}}">{{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::CloseByCreator)}}</option>
@@ -388,8 +388,8 @@
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">اضافه
-                                                                        ملاحظه للاسئلة الاساسية</h5>
+                                                                    <h5 class="modal-title" id="exampleModalLabel">إضافة
+                                                                        ملاحظة للأسئلة الأساسية</h5>
                                                                     <button type="button" class="close"
                                                                             data-dismiss="modal" aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
@@ -403,7 +403,7 @@
                                                                         <input type="text" name="title"
                                                                                class="form-control">
                                                                         <br>
-                                                                        <label><h4>الملاحظه</h4></label>
+                                                                        <label><h4>الملاحظة</h4></label>
                                                                         <textarea name="name" rows="6"
                                                                                   cols="60"> </textarea>
                                                                         <input type="hidden" name="field_id"
@@ -413,7 +413,7 @@
                                                                         <br>
                                                                         <br>
                                                                         <button type="submit" class="btn btn-success">
-                                                                            اضافه
+                                                                            إضافة
                                                                         </button>
                                                                     </form>
                                                                 </div>
@@ -433,8 +433,8 @@
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">اضافه
-                                                                        ملاحظه للمقال الاساسي</h5>
+                                                                    <h5 class="modal-title" id="exampleModalLabel">إضافة
+                                                                        ملاحظة للمقال الأساسي</h5>
                                                                     <button type="button" class="close"
                                                                             data-dismiss="modal" aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
@@ -448,7 +448,7 @@
                                                                         <input type="text" name="title"
                                                                                class="form-control">
                                                                         <br>
-                                                                        <label><h4>الملاحظه</h4></label>
+                                                                        <label><h4>الملاحظة</h4></label>
                                                                         <textarea name="name" rows="6"
                                                                                   cols="60"> </textarea>
                                                                         <input type="hidden" name="field_id"
@@ -459,7 +459,7 @@
                                                                         <br>
                                                                         <br>
                                                                         <button type="submit" class="btn btn-success">
-                                                                            اضافه
+                                                                            إضافة
                                                                         </button>
                                                                     </form>
                                                                 </div>
@@ -503,7 +503,7 @@
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-md-6">
-                                                                                الاختيار الاول:<br>
+                                                                                الاختيار الأول:<br>
                                                                                 <div class="form-group">
                                                                                     <input required type="text"
                                                                                            name="ans1"
@@ -539,14 +539,14 @@
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-md-6">
-                                                                                الاجابه الصحيحه:<br>
+                                                                                الإجابة الصحيحة:<br>
                                                                                 <div class="form-group">
                                                                                     <select class="form-control"
                                                                                             name="true_answer" required>
-                                                                                        <option value="">اختر الاجابه
+                                                                                        <option value="">اختر الإجابة
                                                                                         </option>
                                                                                         <option value="ans1" {{($question->true_answer=='ans1')?'selected':''}}>
-                                                                                            الاختيار الاول
+                                                                                            الاختيار الأول
                                                                                         </option>
                                                                                         <option value="ans2" {{($question->true_answer=='ans2')?'selected':''}}>
                                                                                             الاختيار الثاني
@@ -599,7 +599,7 @@
                                                             <div class="modal-dialog" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title" id="exampleModalLabel">اضافه ملاحظه
+                                                                        <h5 class="modal-title" id="exampleModalLabel">إضافة ملاحظة
                                                                             للصوت</h5>
                                                                         <button type="button" class="close" data-dismiss="modal"
                                                                                 aria-label="Close">
@@ -612,13 +612,13 @@
                                                                             <label><h4>العنوان</h4></label>
                                                                             <input type="text" name="title" class="form-control">
                                                                             <br>
-                                                                            <label><h4>الملاحظه</h4></label>
+                                                                            <label><h4>الملاحظة</h4></label>
                                                                             <textarea name="name" rows="6" cols="60"> </textarea>
                                                                             <input type="hidden" name="field_id" value="{{$sound->id}}">
                                                                             <input type="hidden" name="table" value="sound">
                                                                             <br>
                                                                             <br>
-                                                                            <button type="submit" class="btn btn-success"> اضافه
+                                                                            <button type="submit" class="btn btn-success"> إضافة
                                                                             </button>
                                                                         </form>
                                                                     </div>
@@ -651,10 +651,10 @@
                                                                         <tr>
                                                                             <th>الكود</th>
                                                                             <th>العنوان</th>
-                                                                            <th>الملاحظه</th>
-                                                                            <th>الحاله</th>
+                                                                            <th>الملاحظة</th>
+                                                                            <th>الحالة</th>
 
-                                                                                <th>الاجراء</th>
+                                                                                <th>الإجراء</th>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -690,7 +690,7 @@
                                                                                         <div class="modal-header">
                                                                                             <h5 class="modal-title"
                                                                                                 id="exampleModalLabel">
-                                                                                                تعديل ملاحظه</h5>
+                                                                                                تعديل ملاحظة</h5>
                                                                                             <button type="button" class="close"
                                                                                                     data-dismiss="modal"
                                                                                                     aria-label="Close">
@@ -706,14 +706,14 @@
                                                                                                        class="form-control"
                                                                                                        value="{{$issue->title}}">
                                                                                                 <br>
-                                                                                                <label><h4>الملاحظه</h4></label>
+                                                                                                <label><h4>الملاحظة</h4></label>
                                                                                                 <textarea name="name" rows="6"
                                                                                                           cols="60"> {!!$issue->name!!}</textarea>
                                                                                                 {{--<input type="hidden" name="field_id" value="{{$question->id}}">--}}
                                                                                                 {{--<input type="hidden" name="table" value="question">--}}
                                                                                                 <select class="form-control" name="step"
                                                                                                         required>
-                                                                                                    <option value="">الحاله</option>
+                                                                                                    <option value="">الحالة</option>
                                                                                                     <option value="{{\App\Helper\IssuesSteps::Open}}">{{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::Open)}}</option>
                                                                                                     <option value="{{\App\Helper\IssuesSteps::CloseByCreator}}">{{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::CloseByCreator)}}</option>
                                                                                                 </select>
@@ -750,7 +750,7 @@
                                             <v style="right: 0;background-color: #1aa62a;position: absolute;
                                     left: -25px;top: 3;width: 4px;height: 20px;">
                                             </v>
-                                            <h6 style="font-size: 20px">المقال الاضافي
+                                            <h6 style="font-size: 20px">المقال الإضافي
                                             </h6>
 
                                             <a href="" data-toggle="modal"
@@ -769,7 +769,7 @@
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">تعديل
-                                                                المقال الاضافي</h5>
+                                                                المقال الإضافي</h5>
                                                             <button type="button" class="close"
                                                                     data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
@@ -780,7 +780,7 @@
                                                                   action="{{url('editor/save/article')}}">
                                                                 @csrf
                                                                 <div class="form-group">
-                                                                    <label for="article" class="col-form-label">المقال الاضافي:</label>
+                                                                    <label for="article" class="col-form-label">المقال الإضافي:</label>
                                                                     <textarea class="mceEditor form-control"
                                                                               required name="articleStretch">{!!$artical->stretchArticle !!}</textarea>
                                                                     <input type="hidden" name="list_id"
@@ -817,10 +817,10 @@
                                                             <tr>
                                                                 <th>الكود</th>
                                                                 <th>العنوان</th>
-                                                                <th>الملاحظه</th>
-                                                                <th>الحاله</th>
+                                                                <th>الملاحظة</th>
+                                                                <th>الحالة</th>
 
-                                                                    <th>الاجراء</th>
+                                                                    <th>الإجراء</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
@@ -856,7 +856,7 @@
                                                                             <div class="modal-header">
                                                                                 <h5 class="modal-title"
                                                                                     id="exampleModalLabel">
-                                                                                    تعديل ملاحظه</h5>
+                                                                                    تعديل ملاحظة</h5>
                                                                                 <button type="button" class="close"
                                                                                         data-dismiss="modal"
                                                                                         aria-label="Close">
@@ -872,7 +872,7 @@
                                                                                            class="form-control"
                                                                                            value="{{$issue->title}}">
                                                                                     <br>
-                                                                                    <label><h4>الملاحظه</h4></label>
+                                                                                    <label><h4>الملاحظة</h4></label>
                                                                                     <textarea name="name" rows="6"
                                                                                               cols="60"> {!!$issue->name!!}</textarea>
                                                                                     <input type="hidden" name="field_id" value="{{$question->id}}">
@@ -880,7 +880,7 @@
                                                                                     <select class="form-control"
                                                                                             name="step"
                                                                                             required>
-                                                                                        <option value="">الحاله</option>
+                                                                                        <option value="">الحالة</option>
                                                                                         <option value="{{\App\Helper\IssuesSteps::Open}}">{{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::Open)}}</option>
                                                                                         <option value="{{\App\Helper\IssuesSteps::CloseByCreator}}">{{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::CloseByCreator)}}</option>
                                                                                     </select>
@@ -913,7 +913,7 @@
                                                 <v style="right: 0;background-color: #1b4b72;position: absolute;
                                         left: -25px;top: 3;width: 4px;height: 20px;">
                                                 </v>
-                                                <h6 style="font-size: 20px">الاسئلة الاضافية
+                                                <h6 style="font-size: 20px">الأسئلة الإضافية
                                                 </h6>
                                                 @foreach($questionStretch as $question)
                                                     <div class="table-responsive" style="display: inline-block">
@@ -937,25 +937,25 @@
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    الاجابة الاولي
+                                                                    الاجابة الأولي
                                                                 </td>
                                                                 <td>{{$question->ans1}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    الاجابة الثانيه
+                                                                    الاجابة الثانية
                                                                 </td>
                                                                 <td>{{$question->ans2}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    الاجابة الثالثه
+                                                                    الاجابة الثالثة
                                                                 </td>
                                                                 <td>{{$question->ans3}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    الاجابة الرابعه
+                                                                    الاجابة الرابعة
                                                                 </td>
                                                                 <td>{{$question->ans4}}</td>
                                                             </tr>
@@ -1004,11 +1004,11 @@
                                                                         <td>{{$issue->title}}</td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>الملاحظه</td>
+                                                                        <td>الملاحظة</td>
                                                                         <td>{{$issue->name}}</td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>الحاله</td>
+                                                                        <td>الحالة</td>
                                                                         <td>
                                                                             @if($issue->step==\App\Helper\IssuesSteps::CloseByCreator)
                                                                                 {{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::CloseByCreator)}}
@@ -1042,7 +1042,7 @@
                                                                                 <div class="modal-header">
                                                                                     <h5 class="modal-title"
                                                                                         id="exampleModalLabel">
-                                                                                        تعديل ملاحظه</h5>
+                                                                                        تعديل ملاحظة</h5>
                                                                                     <button type="button" class="close"
                                                                                             data-dismiss="modal"
                                                                                             aria-label="Close">
@@ -1058,7 +1058,7 @@
                                                                                                class="form-control"
                                                                                                value="{{$issue->title}}">
                                                                                         <br>
-                                                                                        <label><h4>الملاحظه</h4></label>
+                                                                                        <label><h4>الملاحظة</h4></label>
                                                                                         <textarea name="name" rows="6"
                                                                                                   cols="60"> {!!$issue->name!!}</textarea>
                                                                                         {{--<input type="hidden" name="field_id" value="{{$question->id}}">--}}
@@ -1066,7 +1066,7 @@
                                                                                         <select class="form-control"
                                                                                                 name="step"
                                                                                                 required>
-                                                                                            <option value="">الحاله
+                                                                                            <option value="">الحالة
                                                                                             </option>
                                                                                             <option value="{{\App\Helper\IssuesSteps::Open}}">{{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::Open)}}</option>
                                                                                             <option value="{{\App\Helper\IssuesSteps::CloseByCreator}}">{{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::CloseByCreator)}}</option>
@@ -1101,8 +1101,8 @@
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">اضافه
-                                                                        ملاحظه للاسئلة الاضافية</h5>
+                                                                    <h5 class="modal-title" id="exampleModalLabel">إضافة
+                                                                        ملاحظة للأسئلة الإضافية</h5>
                                                                     <button type="button" class="close"
                                                                             data-dismiss="modal" aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
@@ -1116,7 +1116,7 @@
                                                                         <input type="text" name="title"
                                                                                class="form-control">
                                                                         <br>
-                                                                        <label><h4>الملاحظه</h4></label>
+                                                                        <label><h4>الملاحظة</h4></label>
                                                                         <textarea name="name" rows="6"
                                                                                   cols="60"> </textarea>
                                                                         <input type="hidden" name="field_id"
@@ -1126,7 +1126,7 @@
                                                                         <br>
                                                                         <br>
                                                                         <button type="submit" class="btn btn-success">
-                                                                            اضافه
+                                                                            إضافة
                                                                         </button>
                                                                     </form>
                                                                 </div>
@@ -1146,8 +1146,8 @@
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">اضافه
-                                                                        ملاحظه للمقال الاضافي</h5>
+                                                                    <h5 class="modal-title" id="exampleModalLabel">إضافة
+                                                                        ملاحظة للمقال الإضافي</h5>
                                                                     <button type="button" class="close"
                                                                             data-dismiss="modal" aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
@@ -1161,7 +1161,7 @@
                                                                         <input type="text" name="title"
                                                                                class="form-control">
                                                                         <br>
-                                                                        <label><h4>الملاحظه</h4></label>
+                                                                        <label><h4>الملاحظة</h4></label>
                                                                         <textarea name="name" rows="6"
                                                                                   cols="60"> </textarea>
                                                                         <input type="hidden" name="field_id"
@@ -1172,7 +1172,7 @@
                                                                         <br>
                                                                         <br>
                                                                         <button type="submit" class="btn btn-success">
-                                                                            اضافه
+                                                                            إضافة
                                                                         </button>
                                                                     </form>
                                                                 </div>
@@ -1216,7 +1216,7 @@
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-md-6">
-                                                                                الاختيار الاول:<br>
+                                                                                الاختيار الأول:<br>
                                                                                 <div class="form-group">
                                                                                     <input required type="text"
                                                                                            name="ans1"
@@ -1252,14 +1252,14 @@
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-md-6">
-                                                                                الاجابه الصحيحه:<br>
+                                                                                الإجابة الصحيحة:<br>
                                                                                 <div class="form-group">
                                                                                     <select class="form-control"
                                                                                             name="true_answer" required>
-                                                                                        <option value="">اختر الاجابه
+                                                                                        <option value="">اختر الإجابة
                                                                                         </option>
                                                                                         <option value="ans1" {{($question->true_answer=='ans1')?'selected':''}}>
-                                                                                            الاختيار الاول
+                                                                                            الاختيار الأول
                                                                                         </option>
                                                                                         <option value="ans2" {{($question->true_answer=='ans2')?'selected':''}}>
                                                                                             الاختيار الثاني
@@ -1313,7 +1313,7 @@
                                                             <div class="modal-dialog" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title" id="exampleModalLabel">اضافه ملاحظه
+                                                                        <h5 class="modal-title" id="exampleModalLabel">إضافة ملاحظة
                                                                             للصوت</h5>
                                                                         <button type="button" class="close" data-dismiss="modal"
                                                                                 aria-label="Close">
@@ -1326,13 +1326,13 @@
                                                                             <label><h4>العنوان</h4></label>
                                                                             <input type="text" name="title" class="form-control">
                                                                             <br>
-                                                                            <label><h4>الملاحظه</h4></label>
+                                                                            <label><h4>الملاحظة</h4></label>
                                                                             <textarea name="name" rows="6" cols="60"> </textarea>
                                                                             <input type="hidden" name="field_id" value="{{$soundStretch->id}}">
                                                                             <input type="hidden" name="table" value="sound">
                                                                             <br>
                                                                             <br>
-                                                                            <button type="submit" class="btn btn-success"> اضافه
+                                                                            <button type="submit" class="btn btn-success"> إضافة
                                                                             </button>
                                                                         </form>
                                                                     </div>
@@ -1365,10 +1365,10 @@
                                                                         <tr>
                                                                             <th>الكود</th>
                                                                             <th>العنوان</th>
-                                                                            <th>الملاحظه</th>
-                                                                            <th>الحاله</th>
+                                                                            <th>الملاحظة</th>
+                                                                            <th>الحالة</th>
 
-                                                                                <th>الاجراء</th
+                                                                                <th>الإجراء</th
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -1404,7 +1404,7 @@
                                                                                         <div class="modal-header">
                                                                                             <h5 class="modal-title"
                                                                                                 id="exampleModalLabel">
-                                                                                                تعديل ملاحظه</h5>
+                                                                                                تعديل ملاحظة</h5>
                                                                                             <button type="button" class="close"
                                                                                                     data-dismiss="modal"
                                                                                                     aria-label="Close">
@@ -1420,14 +1420,14 @@
                                                                                                        class="form-control"
                                                                                                        value="{{$issue->title}}">
                                                                                                 <br>
-                                                                                                <label><h4>الملاحظه</h4></label>
+                                                                                                <label><h4>الملاحظة</h4></label>
                                                                                                 <textarea name="name" rows="6"
                                                                                                           cols="60"> {!!$issue->name!!}</textarea>
                                                                                                 {{--<input type="hidden" name="field_id" value="{{$question->id}}">--}}
                                                                                                 {{--<input type="hidden" name="table" value="question">--}}
                                                                                                 <select class="form-control" name="step"
                                                                                                         required>
-                                                                                                    <option value="">الحاله</option>
+                                                                                                    <option value="">الحالة</option>
                                                                                                     <option value="{{\App\Helper\IssuesSteps::Open}}">{{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::Open)}}</option>
                                                                                                     <option value="{{\App\Helper\IssuesSteps::CloseByCreator}}">{{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::CloseByCreator)}}</option>
                                                                                                 </select>
@@ -1493,8 +1493,8 @@
                                                                         <div class="modal-dialog" role="document">
                                                                             <div class="modal-content">
                                                                                 <div class="modal-header">
-                                                                                    <h5 class="modal-title" id="exampleModalLabel">اضافه
-                                                                                        ملاحظه للمرادفات</h5>
+                                                                                    <h5 class="modal-title" id="exampleModalLabel">إضافة
+                                                                                        ملاحظة للمرادفات</h5>
                                                                                     <button type="button" class="close"
                                                                                             data-dismiss="modal" aria-label="Close">
                                                                                         <span aria-hidden="true">&times;</span>
@@ -1508,7 +1508,7 @@
                                                                                         <input type="text" name="title"
                                                                                                class="form-control">
                                                                                         <br>
-                                                                                        <label><h4>الملاحظه</h4></label>
+                                                                                        <label><h4>الملاحظة</h4></label>
                                                                                         <textarea name="name" rows="6"
                                                                                                   cols="60"> </textarea>
                                                                                         <input type="hidden" name="field_id"
@@ -1520,7 +1520,7 @@
                                                                                         <br>
                                                                                         <br>
                                                                                         <button type="submit" class="btn btn-success">
-                                                                                            اضافه
+                                                                                            إضافة
                                                                                         </button>
                                                                                     </form>
                                                                                 </div>
@@ -1601,11 +1601,11 @@
                                                                 <td>{{$issue->title}}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>الملاحظه</td>
+                                                                <td>الملاحظة</td>
                                                                 <td>{{$issue->name}}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>الحاله</td>
+                                                                <td>الحالة</td>
                                                                 <td>
                                                                     @if($issue->step==\App\Helper\IssuesSteps::CloseByCreator)
                                                                         {{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::CloseByCreator)}}
@@ -1639,7 +1639,7 @@
                                                                         <div class="modal-header">
                                                                             <h5 class="modal-title"
                                                                                 id="exampleModalLabel">
-                                                                                تعديل ملاحظه</h5>
+                                                                                تعديل ملاحظة</h5>
                                                                             <button type="button" class="close"
                                                                                     data-dismiss="modal"
                                                                                     aria-label="Close">
@@ -1655,7 +1655,7 @@
                                                                                        class="form-control"
                                                                                        value="{{$issue->title}}">
                                                                                 <br>
-                                                                                <label><h4>الملاحظه</h4></label>
+                                                                                <label><h4>الملاحظة</h4></label>
                                                                                 <textarea name="name" rows="6"
                                                                                           cols="60"> {!!$issue->name!!}</textarea>
                                                                                 {{--<input type="hidden" name="field_id" value="{{$question->id}}">--}}
@@ -1663,7 +1663,7 @@
                                                                                 <select class="form-control"
                                                                                         name="step"
                                                                                         required>
-                                                                                    <option value="">الحاله
+                                                                                    <option value="">الحالة
                                                                                     </option>
                                                                                     <option value="{{\App\Helper\IssuesSteps::Open}}">{{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::Open)}}</option>
                                                                                     <option value="{{\App\Helper\IssuesSteps::CloseByCreator}}">{{\App\Helper\IssuesSteps::IssuesStep(\App\Helper\IssuesSteps::CloseByCreator)}}</option>
