@@ -7,12 +7,12 @@
                 <div class="main-body">
                     <div class="page-wrapper">
                         @if($artical->status!=\App\Helper\ArticleLevels::Review)
-                            <a href="{{url('questionReviewer/done/'.$artical->id)}}" class="btn btn-success"> تمت المراجعه
+                            <a href="{{url('questionReviewer/done/'.$artical->id)}}" class="btn btn-success"  style="float:left"> تمت المراجعه
                                 <i class="fa fa-"></i></a>
                         @else
                             <p>تم مراجعه الاسئله</p>
                         @endif
-                        <a href="{{url('questionReviewer/'.$page)}}" class="btn btn-dark" style="float:left">رجوع</a>
+                        <a  href="{{url('questionReviewer/'.$page)}}" class="btn btn-dark" style="float:left">رجوع</a>
                         <br>
                         <br>
                         <!-- [ Main Content ] start -->

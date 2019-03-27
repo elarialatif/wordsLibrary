@@ -79,11 +79,11 @@
             language: "ar",
             directionality: "rtl",
             fontsize_formats: "8pt 10pt 12pt 14pt 18pt 24pt 36pt",
-            plugins: ['print  preview fullpage searchreplace autolink directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help', "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+            plugins: ['print  preview  searchreplace autolink directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount imagetools contextmenu colorpicker textpattern help', "advlist autolink lists link image charmap print preview hr anchor pagebreak",
                 "searchreplace wordcount visualblocks visualchars code fullscreen",
                 "insertdatetime media nonbreaking save table contextmenu directionality",
                 "emoticons template paste textcolor colorpicker textpattern table wordcount"],
-            toolbar1: 'ltr rtl | ContentSeperator | fullscreen | formatselect | bold italic strikethrough forecolor backcolor | image link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent | removeformat',
+            toolbar1: 'ltr rtl | ContentSeperator  | formatselect | bold italic strikethrough forecolor backcolor | image link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent | removeformat',
 
             // toolbar2: "sizeselect | bold italic | fontselect |  fontsizeselect ",
             paste_data_images: true,

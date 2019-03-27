@@ -126,9 +126,12 @@
         {{--}--}}
     {{--}--}}
 function showUser(){
+        $('#hiddenDiv').css('display','none');
         $('#hiddenDivUser').toggle();
     }
     function test() {
+        $('#hiddenDivUser').css('display','none');
+
         var li = $("#note li");
         $("#showall").html('إظهار الكل');
         li.slice(8, li.length).css("display", "none");

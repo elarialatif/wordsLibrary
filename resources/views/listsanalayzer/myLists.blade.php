@@ -49,7 +49,7 @@
                                                         $list=\App\Models\ContentList::with('level','grade','user')->where('id',$file->list_id)->first();
 
                                                     @endphp
-                                                    @if ($list==null){
+                                                    @if ($list==null)
 
                                                     @continue;
                                                     @endif
@@ -113,7 +113,7 @@
                                                     $list=\App\Models\ContentList::with('level','grade','user')->where('id',$file->list_id)->first();
 
                                                 @endphp
-                                                @if ($list==null){
+                                                @if ($list==null)
 
                                                 @continue;
                                                 @endif

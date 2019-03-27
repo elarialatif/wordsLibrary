@@ -1,6 +1,13 @@
 @extends('layouts.app')
 @section('content')
-
+    <style>
+        .mce-menu {
+            position: fixed !important
+        }
+        .mce-tooltip {
+            position: fixed !important
+        }
+    </style>
     <div class="container">
         <div class="container">
 
@@ -161,7 +168,7 @@
                                                                                     <br>
                                                                                     <label><h4>الملاحظه</h4></label>
                                                                                     <textarea name="name" rows="6"
-                                                                                              cols="60"> {!!$issue->name!!}</textarea>
+                                                                                              cols="55"> {!!$issue->name!!}</textarea>
                                                                                     {{--<input type="hidden" name="field_id" value="{{$question->id}}">--}}
                                                                                     {{--<input type="hidden" name="table" value="question">--}}
                                                                                     <select class="form-control"
@@ -347,7 +354,7 @@
                                                                                         <br>
                                                                                         <label><h4>الملاحظه</h4></label>
                                                                                         <textarea name="name" rows="6"
-                                                                                                  cols="60"> {!!$issue->name!!}</textarea>
+                                                                                                  cols="55"> {!!$issue->name!!}</textarea>
                                                                                         {{--<input type="hidden" name="field_id" value="{{$question->id}}">--}}
                                                                                         {{--<input type="hidden" name="table" value="question">--}}
                                                                                         <select class="form-control"
@@ -405,7 +412,7 @@
                                                                         <br>
                                                                         <label><h4>الملاحظه</h4></label>
                                                                         <textarea name="name" rows="6"
-                                                                                  cols="60"> </textarea>
+                                                                                  cols="55"> </textarea>
                                                                         <input type="hidden" name="field_id"
                                                                                value="{{$question->id}}">
                                                                         <input type="hidden" name="table"
@@ -450,7 +457,7 @@
                                                                         <br>
                                                                         <label><h4>الملاحظه</h4></label>
                                                                         <textarea name="name" rows="6"
-                                                                                  cols="60"> </textarea>
+                                                                                  cols="55"> </textarea>
                                                                         <input type="hidden" name="field_id"
                                                                                value="{{$artical->id}}">
                                                                         <input type="hidden" name="table"
@@ -613,7 +620,7 @@
                                                                             <input type="text" name="title" class="form-control">
                                                                             <br>
                                                                             <label><h4>الملاحظه</h4></label>
-                                                                            <textarea name="name" rows="6" cols="60"> </textarea>
+                                                                            <textarea name="name" rows="6" cols="55"> </textarea>
                                                                             <input type="hidden" name="field_id" value="{{$sound->id}}">
                                                                             <input type="hidden" name="table" value="sound">
                                                                             <br>
@@ -708,7 +715,7 @@
                                                                                                 <br>
                                                                                                 <label><h4>الملاحظه</h4></label>
                                                                                                 <textarea name="name" rows="6"
-                                                                                                          cols="60"> {!!$issue->name!!}</textarea>
+                                                                                                          cols="55"> {!!$issue->name!!}</textarea>
                                                                                                 {{--<input type="hidden" name="field_id" value="{{$question->id}}">--}}
                                                                                                 {{--<input type="hidden" name="table" value="question">--}}
                                                                                                 <select class="form-control" name="step"
@@ -874,7 +881,7 @@
                                                                                     <br>
                                                                                     <label><h4>الملاحظه</h4></label>
                                                                                     <textarea name="name" rows="6"
-                                                                                              cols="60"> {!!$issue->name!!}</textarea>
+                                                                                              cols="55"> {!!$issue->name!!}</textarea>
                                                                                     <input type="hidden" name="field_id" value="{{$question->id}}">
                                                                                     <input type="hidden" name="table" value="question">
                                                                                     <select class="form-control"
@@ -1060,7 +1067,7 @@
                                                                                         <br>
                                                                                         <label><h4>الملاحظه</h4></label>
                                                                                         <textarea name="name" rows="6"
-                                                                                                  cols="60"> {!!$issue->name!!}</textarea>
+                                                                                                  cols="55"> {!!$issue->name!!}</textarea>
                                                                                         {{--<input type="hidden" name="field_id" value="{{$question->id}}">--}}
                                                                                         {{--<input type="hidden" name="table" value="question">--}}
                                                                                         <select class="form-control"
@@ -1118,7 +1125,7 @@
                                                                         <br>
                                                                         <label><h4>الملاحظه</h4></label>
                                                                         <textarea name="name" rows="6"
-                                                                                  cols="60"> </textarea>
+                                                                                  cols="55"> </textarea>
                                                                         <input type="hidden" name="field_id"
                                                                                value="{{$question->id}}">
                                                                         <input type="hidden" name="table"
@@ -1163,7 +1170,7 @@
                                                                         <br>
                                                                         <label><h4>الملاحظه</h4></label>
                                                                         <textarea name="name" rows="6"
-                                                                                  cols="60"> </textarea>
+                                                                                  cols="55"> </textarea>
                                                                         <input type="hidden" name="field_id"
                                                                                value="{{$artical->id}}">
                                                                         <input type="hidden" name="table"
@@ -1327,7 +1334,7 @@
                                                                             <input type="text" name="title" class="form-control">
                                                                             <br>
                                                                             <label><h4>الملاحظه</h4></label>
-                                                                            <textarea name="name" rows="6" cols="60"> </textarea>
+                                                                            <textarea name="name" rows="6" cols="55"> </textarea>
                                                                             <input type="hidden" name="field_id" value="{{$soundStretch->id}}">
                                                                             <input type="hidden" name="table" value="sound">
                                                                             <br>
@@ -1422,7 +1429,7 @@
                                                                                                 <br>
                                                                                                 <label><h4>الملاحظه</h4></label>
                                                                                                 <textarea name="name" rows="6"
-                                                                                                          cols="60"> {!!$issue->name!!}</textarea>
+                                                                                                          cols="55"> {!!$issue->name!!}</textarea>
                                                                                                 {{--<input type="hidden" name="field_id" value="{{$question->id}}">--}}
                                                                                                 {{--<input type="hidden" name="table" value="question">--}}
                                                                                                 <select class="form-control" name="step"
@@ -1510,7 +1517,7 @@
                                                                                         <br>
                                                                                         <label><h4>الملاحظه</h4></label>
                                                                                         <textarea name="name" rows="6"
-                                                                                                  cols="60"> </textarea>
+                                                                                                  cols="55"> </textarea>
                                                                                         <input type="hidden" name="field_id"
                                                                                                value="{{$artical->id}}">
                                                                                         <input type="hidden" name="table"
@@ -1560,7 +1567,9 @@
                                                                                 <input type="text" name="word" value="{{$word->word}}">
                                                                                 <br>
                                                                                 <label>المعنى</label>
-                                                                                <input type="text" name="mean" value="{{$word->mean}}">
+                                                                                <textarea name="name" rows="6"
+                                                                                          cols="55"> {{$word->mean}}</textarea>
+
                                                                                 <br>
                                                                                 <button class="btn btn-success" id="addRow"> تعديل</button>
                                                                             </form>
@@ -1657,7 +1666,7 @@
                                                                                 <br>
                                                                                 <label><h4>الملاحظه</h4></label>
                                                                                 <textarea name="name" rows="6"
-                                                                                          cols="60"> {!!$issue->name!!}</textarea>
+                                                                                          cols="55"> {!!$issue->name!!}</textarea>
                                                                                 {{--<input type="hidden" name="field_id" value="{{$question->id}}">--}}
                                                                                 {{--<input type="hidden" name="table" value="question">--}}
                                                                                 <select class="form-control"

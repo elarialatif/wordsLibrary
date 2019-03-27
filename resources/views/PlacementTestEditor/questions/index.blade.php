@@ -4,7 +4,9 @@
         .mce-menu {
             position: fixed !important
         }
-
+        .mce-tooltip {
+            position: fixed !important
+        }
     </style>
     <div class="container">
         <div class="container">
@@ -78,7 +80,7 @@
                                                          role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">تعديل
+                                                                <h5 class="modal-title" id="exampleModalLabel">
                                                                     السؤال</h5>
                                                                 <button type="button" class="close" data-dismiss="modal"
                                                                         aria-label="Close">
@@ -196,6 +198,8 @@
                                                                             <div class="form-group">
                                                                                 <textarea type="text" class="mceEditor"
                                                                                           name="question"> {!! $testQuestion->question!!}</textarea>
+                                                                                <input name="image" type="file" id="upload" hidden
+                                                                                       onchange="">
                                                                             </div>
                                                                         </div>
                                                                     </div>

@@ -121,7 +121,7 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
 
-                                                        <center><h4 class="modal-title">Modal Header</h4></center>
+                                                        <center><h4 class="modal-title">المقال</h4></center>
 
                                                     </div>
                                                     <div class="modal-body">
@@ -219,7 +219,7 @@
 
                                                                         <!-- Modal Header -->
                                                                         <div class="modal-header">
-                                                                            <h4 class="modal-title">Modal Heading</h4>
+                                                                            <h4 class="modal-title">عرض الملاحظة</h4>
                                                                             <button type="button" class="close"
                                                                                     data-dismiss="modal">&times;
                                                                             </button>
@@ -235,12 +235,13 @@
 
                                                                         <!-- Modal footer -->
                                                                         <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-danger"
-                                                                                    data-dismiss="modal">خروج
-                                                                            </button>
+
                                                                             <a href="{{url('issues/chang/step/'.$issue->id.'/'.\App\Helper\IssuesSteps::DoneByEditor)}}"
                                                                                type="button" class="btn btn-success">تم
                                                                                 النتهاء</a>
+                                                                            <button type="button" class="btn btn-danger"
+                                                                                    data-dismiss="modal">خروج
+                                                                            </button>
                                                                         </div>
 
                                                                     </div>

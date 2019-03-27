@@ -40,6 +40,6 @@ class PlacementTestController extends Controller
             return redirect()->back()->with('info', 'لا يمكنك المسح توجد اسئلة');
         }
         $placement = PlacementTestRepository::delete($id);
-        return redirect()->back()->with('success', 'تم تعديل الاختبار بنجاح');
+        return redirect()->back()->with('success', 'تم حذف الاختبار بنجاح');
     }
 }

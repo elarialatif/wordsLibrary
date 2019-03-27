@@ -126,7 +126,7 @@ Route::get('allLists', 'ContentListController@index')->middleware('listmaker:rol
 Route::get('getGradeList/{level_id}', 'ContentListController@getGradeList')->middleware('listmaker:role');
 Route::post('listsFilter', 'ContentListController@listsFilter')->middleware('listmaker:role');
 Route::group(['middleware' => 'superadmin'], function () {
-    Route::get('', 'ArticalController@allFiles');
+    Route::get('allFiles', 'ArticalController@allFiles');
     Route::get('filterFiles/{grade_id}', 'ArticalController@filterFiles');
     Route::get('Rates/{userRole}/{time}', 'HomeController@Rates');
     Route::group(['namespace' => 'superAdmin', 'middleware' => 'superadmin'], function () {

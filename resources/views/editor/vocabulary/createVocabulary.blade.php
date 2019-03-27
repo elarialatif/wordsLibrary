@@ -99,18 +99,24 @@
                                                         <form method="post"
                                                               action="{{url('editor/editVocabulary/'.$word->id)}}">
                                                             @csrf
-                                                            <label> الكلمة </label>
-                                                            <input type="text" name="word" value="{{$word->word}}">
+                                                            <div class="row">
+                                                            <label for="word" class="col-md-2"> الكلمة </label>
+                                                            <input type="text" name="word" class="col-md-8 form-control"  value="{{$word->word}}">
+                                                            </div>
                                                             <br>
-                                                            <label>المعنى</label>
-                                                            <input type="text" name="mean" value="{{$word->mean}}">
+                                                            <div class="row">
+                                                            <label for="name" class="col-md-2">المعنى</label>
+
+                                                            <textarea name="name" class="col-md-8 form-control" rows="6"
+                                                                      cols="40"> {{$word->mean}}</textarea>
+                                                            </div>
                                                             <br>
-                                                            <button class="btn btn-success" id="addRow"> تعديل</button>
+                                                            <button class="btn btn-success"> تعديل</button>
                                                         </form>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-default"
-                                                                data-dismiss="modal">Close
+                                                                data-dismiss="modal">إغلاق
                                                         </button>
                                                     </div>
                                                 </div>
