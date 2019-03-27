@@ -10,7 +10,7 @@
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h5>صفحة مواضيعى</h5>
+                                    <h5>صفحة موضوعاتى</h5>
                                 </div>
                                 <div class="card-block">
                                     <div class="table-responsive">
@@ -24,6 +24,7 @@
                                                 <th>الصف</th>
                                                 <th>عرض</th>
                                                 <th>ارسال</th>
+
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -109,9 +110,9 @@ $easySound=\App\Repository\IssuesRepository::getAllIssuesForArticle($soundEasy->
                                                     <td>
                                                         @if($easyStatus && $normalStatus && $hardStatus)
                                                             <a href="{{url('quality/send/'.$list->id)}}"
-                                                               class="btn btn-success">ارسال</a>
+                                                               class="btn btn-success">إرسال</a>
                                                         @else
-                                                            <p>راجع كل المقالات</p>
+                                                            <p>راجع المقالات</p>
                                                         @endif
                                                     </td>
                                                 </tr>

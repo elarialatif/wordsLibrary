@@ -36,8 +36,8 @@
                 <div class="page-wrapper">
                     <!-- [ Main Content ] start -->
                     <div style="text-align: center">
-                        <p class="question-type active-question">الاسئلة الاساسية</p>
-                        <p class="question-type">الاسئلة الاضافية</p>
+                        <p class="question-type active-question">الأسئلة الأساسية</p>
+                        <p class="question-type">الأسئلة الإضافية</p>
                     </div>
                     <div class="row">
                         <!-- [ HTML5 Export button ] start -->
@@ -45,7 +45,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h5>
-                                        صفحة اضافه الاسئله الاساسيه
+                                        صفحة إضافة الأسئلة الأساسية
                                     </h5>
                                 </div>
                                 <?php $m = 1;?>
@@ -64,14 +64,14 @@
                                                  style="overflow: scroll; width: 200px; height:-webkit-fill-available;">
                                                 <div class="row">
                                                     <div class="col-md-3">
-                                                        <button class="btn btn-primary" id="add">اضافه عدد معين</button>
+                                                        <button class="btn btn-primary" id="add">إضافة عدد معين</button>
                                                         <input class="form-control" type="number" name="number"
                                                                style="display: none" id="inputNum2"
                                                                placeholder="ادخل الرقم">
                                                         <br>
                                                     </div>
                                                 </div>
-                                                <button id="btn" class=" btn btn-primary"> اضافه حقول للاسئله</button>
+                                                <button id="btn" class=" btn btn-primary"> إضافة حقول للأسئلة</button>
 
                                                 <form action="{{url('question/create/'.$artical->id)}}" method="post">
                                                     {{csrf_field()}}
@@ -104,7 +104,7 @@
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-6">
-                                                                    الاختيار الاول:<br>
+                                                                    الاختيار الأول:<br>
                                                                     <div class="form-group">
                                                                         <input required type="text" name="ans1[{{$i}}]"
                                                                                value="{{$ans1[$i]}}">
@@ -137,15 +137,15 @@
                                                             <div class="row">
 
                                                                 <div class="col-md-6">
-                                                                    الاجابه الصحيحه:<br>
+                                                                    الإجابة الصحيحة:<br>
                                                                     <div class="form-group">
                                                                         <select class="form-control"
                                                                                 name="true_answer[{{$i}}]" required>
-                                                                            <option value="">اختر الاجابه</option>
+                                                                            <option value="">اختر الإجابة</option>
                                                                             <option value="ans1"
                                                                                     @if($trueans[$i]=='ans1') selected @endif>
                                                                                 الاختيار
-                                                                                الاول
+                                                                                الأول
                                                                             </option>
                                                                             <option value="ans2"
                                                                                     @if($trueans[$i]=='ans2') selected @endif>
@@ -180,7 +180,7 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-md-6">
-                                                                الاختيار الاول:<br>
+                                                                الاختيار الأول:<br>
                                                                 <div class="form-group">
                                                                     <input required type="text" name="ans1[0]">
                                                                 </div>
@@ -209,12 +209,12 @@
                                                         <div class="row">
 
                                                             <div class="col-md-6">
-                                                                الاجابه الصحيحه:<br>
+                                                                الإجابة الصحيحة:<br>
                                                                 <div class="form-group">
                                                                     <select class="form-control" name="true_answer[0]"
                                                                             required>
-                                                                        <option value="">اختر الاجابه</option>
-                                                                        <option value="ans1">الاختيار الاول</option>
+                                                                        <option value="">اختر الإجابة</option>
+                                                                        <option value="ans1">الاختيار الأول</option>
                                                                         <option value="ans2">الاختيار الثاني</option>
                                                                         <option value="ans3">الاختيار الثالث</option>
                                                                         <option value="ans4">الاختيار الرابع</option>
@@ -269,7 +269,7 @@
                                                                     '            </div>\n' +
                                                                     '            <div class="row">\n' +
                                                                     '                <div class="col-md-6">\n' +
-                                                                    '                    الاختيار الاول:<br>\n' +
+                                                                    '                    الاختيار الأول:<br>\n' +
                                                                     '                    <div class="form-group">\n' +
                                                                     '                        <input required type="text" name="ans1[' + i + ']">\n' +
                                                                     '                    </div>\n' +
@@ -297,11 +297,11 @@
                                                                     '            </div>\n' +
                                                                     '            <div class="row">\n' +
                                                                     '                <div class="col-md-6">\n' +
-                                                                    '                    الاجابه الصحيحه:<br>\n' +
+                                                                    '                    الإجابة الصحيحة:<br>\n' +
                                                                     '                    <div class="form-group">\n' +
                                                                     '                        <select class="form-control" name="true_answer[' + i + ']" required>\n' +
-                                                                    '                            <option value="">اختر الاجابه</option>\n' +
-                                                                    '                            <option value="ans1">الاختيار الاول</option>\n' +
+                                                                    '                            <option value="">اختر الإجابة</option>\n' +
+                                                                    '                            <option value="ans1">الاختيار الأول</option>\n' +
                                                                     '                            <option value="ans2">الاختيار الثاني</option>\n' +
                                                                     '                            <option value="ans3">الاختيار الثالث</option>\n' +
                                                                     '                            <option value="ans4">الاختيار الرابع</option>\n' +
@@ -332,7 +332,7 @@
                                                                 '            </div>\n' +
                                                                 '            <div class="row">\n' +
                                                                 '                <div class="col-md-6">\n' +
-                                                                '                    الاختيار الاول:<br>\n' +
+                                                                '                    الاختيار الأول:<br>\n' +
                                                                 '                    <div class="form-group">\n' +
                                                                 '                        <input required type="text" name="ans1[' + i + ']">\n' +
                                                                 '                    </div>\n' +
@@ -360,11 +360,11 @@
                                                                 '            </div>\n' +
                                                                 '            <div class="row">\n' +
                                                                 '                <div class="col-md-6">\n' +
-                                                                '                    الاجابه الصحيحه:<br>\n' +
+                                                                '                    الإجابة الصحيحة:<br>\n' +
                                                                 '                    <div class="form-group">\n' +
                                                                 '                        <select class="form-control" name="true_answer[' + i + ']" required>\n' +
-                                                                '                            <option value="">اختر الاجابه</option>\n' +
-                                                                '                            <option value="ans1">الاختيار الاول</option>\n' +
+                                                                '                            <option value="">اختر الإجابة</option>\n' +
+                                                                '                            <option value="ans1">الاختيار الأول</option>\n' +
                                                                 '                            <option value="ans2">الاختيار الثاني</option>\n' +
                                                                 '                            <option value="ans3">الاختيار الثالث</option>\n' +
                                                                 '                            <option value="ans4">الاختيار الرابع</option>\n' +

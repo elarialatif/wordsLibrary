@@ -280,7 +280,7 @@
             }).done(function (res) {
                 if (res.length == 0) {
                     $("#list_id").empty();
-                    $("#list_id").append('<option selected > لا توجد مواضيع</option>');
+                    $("#list_id").append('<option selected > لا توجد موضوعات</option>');
                 }
                 $.each(res, function (key, value) {
                     $("#list_id").append('<option  value="' + value.id + '">' + value.list + '</option>');

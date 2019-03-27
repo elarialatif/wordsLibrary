@@ -13,7 +13,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h5>
-                                        مواضيع معادة
+                                        موضوعات معادة
                                     </h5>
                                 </div>
                                 <div class="card-block">
@@ -33,7 +33,7 @@
                                                         <th> سهل</th>
                                                         <th> متوسط</th>
                                                         <th> صعب</th>
-                                                        <th>الاجراء</th>
+                                                        <th>الإجراء</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -90,10 +90,10 @@
                                                             </td>
                                                             <td id="td{{$list->id}}" >
                                                                 @if($issueseasy->count()>0||$issuesnormal->count()>0||$issueshard->count()>0)
-                                                                    <a class="btn btn-danger" href="{{url('reviewer/reSendTo/editor/'.$list->id)}}">اعادة اراسال الى
+                                                                    <a class="btn btn-danger" href="{{url('reviewer/reSendTo/editor/'.$list->id)}}">إعادة اراسال إلى
                                                                         المحرر</a>
                                                                 @else
-                                                                    <a class="btn btn-success" href="{{url('reviewer/sendto/create/question/'.$list->id)}}">ارسال
+                                                                    <a class="btn btn-success" href="{{url('reviewer/sendto/create/question/'.$list->id)}}">إرسال
                                                                         </a>
                                                                 @endif
                                                             </td>
@@ -141,11 +141,11 @@
             console.log(arr);
 
             if (arr.length == 3) {
-                var td = "<a href='{{url('reviewer/sendto/create/question/')}}/" + list_id + "' class='btn btn-success' >  ارسال الى معد الاسئلة</a> ";
+                var td = "<a href='{{url('reviewer/sendto/create/question/')}}/" + list_id + "' class='btn btn-success' >  إرسال إلى معد الأسئلة</a> ";
             }
 
             else {
-                var td = "<a href='{{url('reviewer/sendto/create/question/')}}/" + list_id + "' class='btn btn-danger' >  اعادة ارسال الى المحرر</a> ";
+                var td = "<a href='{{url('reviewer/sendto/create/question/')}}/" + list_id + "' class='btn btn-danger' >  إعادة إرسال إلى المحرر</a> ";
             }
             $("#td" + list_id + "").empty();
             $("#td" + list_id + "").append(td);

@@ -41,7 +41,7 @@
                             <div class="row align-items-center justify-content-center">
                                 <div class="col">
                                     <i class="mdi mdi-file-upload f-30 text-c-blue"></i>
-                                    <h5 class="m-0">عدد العناصر المدخله</h5>
+                                    <h5 class="m-0">عدد العناصر المدخلة</h5>
                                 </div>
                                 <div class="col-auto">
                                     <label class="label theme-bg text-white f-14 f-w-400 float-right normal-num-show">{{$sharedArrayBetweenUsers['all_lists']}}</label>

@@ -20,7 +20,7 @@ class ListsMaker
             return $next($request);
         }
         if (auth()->user()->role != UsersTypes::LISTMAKER && auth()->user()->role != UsersTypes::SUPERADMIN) {
-            return redirect()->back()->withErrors('غير مسموح لك الدخول الى هنا ');
+            return redirect()->back()->withErrors('غير مسموح لك الدخول إلى هنا ');
         }
         return $next($request);
     }

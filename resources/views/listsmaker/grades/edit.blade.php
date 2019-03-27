@@ -12,13 +12,13 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label> اسم المرحله :</label>
+                    <label> اسم المرحلة :</label>
                     <input type="text" class="form-control" value="{{$grades->name}}" name="name">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label> اسم المرحله :</label>
+                    <label> اسم المرحلة :</label>
                     <select class="form-control" name="level_id">
                         @foreach($levels as $level)
                             <option value="{{$level->id}}" {{($grades->level_id==$level->id)?'selected':''}}>{{$level->name}}</option>

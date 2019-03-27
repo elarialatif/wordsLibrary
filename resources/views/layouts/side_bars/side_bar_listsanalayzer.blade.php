@@ -19,17 +19,17 @@
                 <li class="nav-item {{request()->is("analyzer/index")?"active":""}}">
                     <a href="{{url('analyzer/index')}}" class="nav-link">
                         <span class="pcoded-micon"><i class="mdi mdi-file"></i></span>
-                        <span class="pcoded-mtext">مواضيع جديده </span></a>
+                        <span class="pcoded-mtext">موضوعات جديدة </span></a>
                 </li>
                 <li class="nav-item {{request()->is("analyzer/myLists")?"active":""}}">
                     <a href="{{url('analyzer/myLists')}}" class="nav-link">
                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
-                        <span class="pcoded-mtext">مواضيعى</span></a>
+                        <span class="pcoded-mtext">موضوعاتى</span></a>
                 </li>
                 <li class="nav-item {{request()->is("userArchive")?"active":""}}">
                     <a href="{{url('userArchive')}}" class="nav-link">
                         <span class="pcoded-micon"><i class="mdi mdi-chart-donut-variant"></i></span>
-                        <span class="pcoded-mtext">الارشيف</span></a>
+                        <span class="pcoded-mtext">الأرشيف</span></a>
                 </li>
                 <li class="nav-item {{request()->is("/tashkel")?"active":""}}">
                     <a href="{{url('/tashkel')}}" class="nav-link">

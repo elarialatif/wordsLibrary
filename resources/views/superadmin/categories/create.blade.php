@@ -59,7 +59,7 @@
 
                 </div>
                 <div class="empty"></div>
-                {{ Form::button('التالى <i class="fas fa-caret-left"></i>', ['type' => 'submit', 'class' => 'btn btn-primary pull-left'] )  }}
+                {{ Form::button('التإلى <i class="fas fa-caret-left"></i>', ['type' => 'submit', 'class' => 'btn btn-primary pull-left'] )  }}
 {{ Form::close() }}
                 <div class="row main-container">
                     <div class="well well-lg">

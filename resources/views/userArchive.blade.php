@@ -67,7 +67,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h5>
-                                        كل المواضيع
+                                        كل الموضوعات
                                     </h5>
 
                                 </div>
@@ -183,7 +183,7 @@
                     "</div>" +
                     "<div class=\"col-md-6\">" +
                     "<div class=\"form-group\">" +
-                    "<select placeholder=\"المرحله\" onchange=\"myFunction()\" id=\"stepFilter\" class=\"form-control\" name=\"step_filter\" onchange='change()'> " +
+                    "<select placeholder=\"المرحلة\" onchange=\"myFunction()\" id=\"stepFilter\" class=\"form-control\" name=\"step_filter\" onchange='change()'> " +
                     "<option value=\"\">------</option>" +
                     "<option value=\"\">كل المراحل</option>" +
                     "@foreach(\App\Helper\Steps::ArrayOfSteps as $key=>$value)" +
@@ -235,7 +235,7 @@
                 "</div>" +
                 "<div class=\"col-md-6\">" +
                 "<div class=\"form-group\">" +
-                "<select placeholder=\"المرحله\" onchange=\"myFunction()\" id=\"stepFilter\" class=\"form-control\" name=\"step_filter\" onchange='change()'> " +
+                "<select placeholder=\"المرحلة\" onchange=\"myFunction()\" id=\"stepFilter\" class=\"form-control\" name=\"step_filter\" onchange='change()'> " +
                 "<option value=\"\">-------</option>" +
                 "<option value=\"\">كل المراحل</option>" +
                 "@foreach(\App\Helper\Steps::ArrayOfSteps as $key=>$value)" +
@@ -290,7 +290,7 @@
                     "</div>" +
                     "<div class=\"col-md-6\">" +
                     "<div class=\"form-group\">" +
-                    "<select placeholder=\"المرحله\" onchange=\"myFunction()\" id=\"stepFilter\" class=\"form-control\" name=\"step_filter\" onchange='change()'> " +
+                    "<select placeholder=\"المرحلة\" onchange=\"myFunction()\" id=\"stepFilter\" class=\"form-control\" name=\"step_filter\" onchange='change()'> " +
                     "<option value=\"\">---------</option>" +
                     "<option value=\"\">كل المراحل</option>" +
                     "@foreach(\App\Helper\Steps::ArrayOfSteps as $key=>$value)" +

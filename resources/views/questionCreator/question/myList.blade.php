@@ -14,7 +14,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h5>
-                                        مواضيعي
+                                        موضوعاتي
                                     </h5>
                                 </div>
 
@@ -31,8 +31,8 @@
                                                         <th>الموضوع</th>
 
                                                         <th>الصف</th>
-                                                        <th>ادخال الاسئله</th>
-                                                        <th>ارسال</th>
+                                                        <th>إدخال الأسئلة</th>
+                                                        <th>إرسال</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -134,17 +134,17 @@
                                                                 @if(auth()->user()->role==\App\Helper\UsersTypes::QuestionCreator)
                                                                     @if($easyQuestions && $normalQuestions && $hardQuestions)
                                                                         <a href="{{url('question/sendToReviwer/'.$list->id)}}"
-                                                                           class="btn btn-success">{{(!empty($task))?'اعاده ارسال الي المراجعه':'ارسال الي المراجعه'}}</a>
+                                                                           class="btn btn-success">{{(!empty($task))?'إعادة إرسال الي المراجعة':'إرسال الي المراجعة'}}</a>
                                                                     @else
-                                                                        <p>ادخل كل الاسئله للارسال</p>
+                                                                        <p>ادخل كل الأسئلة للإرسال</p>
                                                                     @endif
                                                                 @endif
                                                                 {{--QuestionReviewer--}}
                                                                 @if(auth()->user()->role==\App\Helper\UsersTypes::QuestionReviewer)
                                                                     @if($easyStatus && $normalStatus && $hardStatus)
-                                                                        <a href="{{url('questionReviewer/send/'.$list->id)}}" class="btn btn-success">ارسال</a>
+                                                                        <a href="{{url('questionReviewer/send/'.$list->id)}}" class="btn btn-success">إرسال</a>
                                                                     @else
-                                                                        <p>راجع كل الاسئله للارسال</p>
+                                                                        <p>راجع كل الأسئلة للإرسال</p>
                                                                     @endif
                                                                 @endif
                                                             </td>

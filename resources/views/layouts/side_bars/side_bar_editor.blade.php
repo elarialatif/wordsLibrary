@@ -19,22 +19,22 @@
                 <li class="nav-item {{request()->is("allLists")?"active":""}}">
                     <a href="{{url('allLists')}}" class="nav-link">
                         <span class="pcoded-micon"><i class="mdi mdi-file"></i></span>
-                        <span class="pcoded-mtext">كل المواضيع</span></a>
+                        <span class="pcoded-mtext">كل الموضوعات</span></a>
                 </li>
                 <li class="nav-item {{request()->is("editor/index")?"active":""}}">
                     <a href="{{url('editor/index')}}" class="nav-link">
                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
-                        <span class="pcoded-mtext">ادخال مقال</span></a>
+                        <span class="pcoded-mtext">إدخال مقال</span></a>
                 </li>
                 <li class="nav-item {{request()->is("editor/refused/lists")?"active":""}}">
                     <a href="{{url('editor/refused/lists')}}" class="nav-link">
                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
-                        <span class="pcoded-mtext">مواضيع تم رفضها</span></a>
+                        <span class="pcoded-mtext">موضوعات معادة</span></a>
                 </li>
                 <li class="nav-item {{request()->is("userArchive")?"active":""}}">
                     <a href="{{url('userArchive')}}" class="nav-link">
                         <span class="pcoded-micon"><i class="mdi mdi-chart-donut-variant"></i></span>
-                        <span class="pcoded-mtext">الارشيف</span></a>
+                        <span class="pcoded-mtext">الأرشيف</span></a>
                 </li>
                 <li class="nav-item {{request()->is("/tashkel")?"active":""}}">
                     <a href="{{url('/tashkel')}}" class="nav-link">

@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label> اسم المرحله :</label>
+                    <label> اسم المرحلة :</label>
                     <input type="text" class="form-control" value="{{$levels->name}}" name="name">
                 </div>
             </div>

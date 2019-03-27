@@ -210,8 +210,8 @@
                                                                         <a href="{{url('issues/chang/step/'.$issue->id.'/'.\App\Helper\IssuesSteps::CloseByCreator)}}"
                                                                            type="button" class="btn btn-success">غلق</a>
                                                                         <a href="{{url('issues/chang/step/'.$issue->id.'/'.\App\Helper\IssuesSteps::Open)}}"
-                                                                           type="button" class="btn btn-danger">اعادة
-                                                                            الى المحرر</a>
+                                                                           type="button" class="btn btn-danger">إعادة
+                                                                            إلى المحرر</a>
                                                                     </div>
 
                                                                 </div>

@@ -85,7 +85,7 @@ class ArticalController extends Controller
                 $task = AssignTask::where(['list_id' => $request->list_id, 'step' => Steps::UPLOADING_FILE])->first();
                 if ($task) {
                     if ($task->user_id != auth()->id()) {
-                        return redirect('allLists')->withErrors('هذا الوضوع تابع لمستخدم اخر ');
+                        return redirect('allLists')->withErrors('هذا الوضوع تابع لمستخدم آخر ');
                     }
                 }
                 if (!$task) {
@@ -132,7 +132,7 @@ class ArticalController extends Controller
             $task = AssignTask::where(['list_id' => $file->list_id, 'step' => Steps::ANALYZING_FILE])->first();
             if ($task) {
                 if ($task->user_id != auth()->id()) {
-                    return redirect()->back()->withErrors('هذا الوضوع تابع لمستخدم اخر ');
+                    return redirect()->back()->withErrors('هذا الوضوع تابع لمستخدم آخر ');
                 }
             } elseif (!$task) {
                 TaskRepository::save($file->list_id, Steps::ANALYZING_FILE);

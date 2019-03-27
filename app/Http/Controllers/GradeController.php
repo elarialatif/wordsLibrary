@@ -46,7 +46,7 @@ class GradeController extends Controller
         ]);
         $grades = $request->except('_token');
         GradesRepository::save($grades);
-        return redirect(url('levels'))->with('success', 'تم الاضافه بنجاح ');
+        return redirect(url('levels'))->with('success', 'تمت الإضافة بنجاح ');
     }
 
     /**
@@ -99,7 +99,7 @@ class GradeController extends Controller
         $delete = GradesRepository::delete($id);
 
         if ($delete == false) {
-            return redirect()->back()->withErrors('توجد مواضيع لهذا الصف ');
+            return redirect()->back()->withErrors('توجد موضوعات لهذا الصف ');
         }
         return redirect()->back()->with('success', 'تم الحذف بنجاح ');
     }

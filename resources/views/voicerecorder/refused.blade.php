@@ -13,7 +13,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h5>
-                                        مواضيع جديده
+                                        موضوعات جديدة
                                     </h5>
                                 </div>
                                 <div class="card-block">
@@ -31,7 +31,7 @@
                                                 <th> عرض المقال سهل</th>
                                                 <th>عرض المقال متوسط</th>
                                                 <th>عرض المقال صعب</th>
-                                                <th>ارسال</th>
+                                                <th>إرسال</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -83,7 +83,7 @@
                                                         @if($easyIssues->count()==0 && $normalIssues->count()==0 && $hardIssues->count()==0)
                                                             <a class="btn btn-success"
                                                                href="{{url('VoiceRecorder/sendTo/quality/'.$list->id.'/'.\App\Helper\Steps::ResendToQuality)}}">
-                                                                ارسال</a>
+                                                                إرسال</a>
                                                         @else
                                                             مغلق
                                                         @endif

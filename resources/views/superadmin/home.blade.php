@@ -128,7 +128,7 @@
                 <div class="col-md-6 col-xl-6 m-b-30 user">
                     {{-- title --}}
                     <div class="card-header">
-                        <h5>معدلات الأنتاج</h5>
+                        <h5>معدلات الإنتاج</h5>
                     </div>
                     {{-- title end --}}
                     <div class="tabbable boxed parentTabs">
@@ -136,11 +136,11 @@
                             <li class="nav-item">
                                 <a class="nav-link time active" data-toggle="tab" role="tab"
                                    onclick="Rates('yesterday')"
-                                   id="yesterday" href="#daysub1" data->الامس </a>
+                                   id="yesterday" href="#daysub1" data->الأمس </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link time" data-toggle="tab" role="tab" onclick="Rates('week')" id="week"
-                                   href="#daysub1">الاسبوع</a>
+                                   href="#daysub1">الأسبوع</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link time" data-toggle="tab" role="tab" onclick="Rates('all')" id="all"
@@ -172,13 +172,13 @@
                                             <a class="nav-link user" data-toggle="tab" role="tab" href="#daysub1"
                                                onclick="Rates({{\App\Helper\UsersTypes::QuestionCreator}})"
                                                id="{{\App\Helper\UsersTypes::QuestionCreator}}">مدخل
-                                                اسئلة</a>
+                                                أسئلة</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link user" data-toggle="tab" role="tab" href="#daysub1"
                                                onclick="Rates({{\App\Helper\UsersTypes::QuestionReviewer}})"
                                                id="{{\App\Helper\UsersTypes::QuestionReviewer}}">مراجع
-                                                اسئلة</a>
+                                                أسئلة</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link user" data-toggle="tab" role="tab" href="#daysub1"
@@ -210,11 +210,11 @@
                             <h5>الموضوعات</h5>
                         </div>
                         <div class="card-block">
-                            <span class="d-block"><i class="fas fa-sort-amount-up"></i>عدد الموضوعات الكليه </span>
+                            <span class="d-block"><i class="fas fa-sort-amount-up"></i>عدد الموضوعات الكلية </span>
                             <h3 class="f-w-300">{{$allLists}}</h3>
                             <div class="media mt-4 article_media">
                                 <div class="photo-table">
-                                    <h6>مواضوعات بدون ملفات</h6>
+                                    <h6>موضوعات بدون ملفات</h6>
                                     <div class="progress">
                                         <div class="progress-bar progress-c-theme" role="progressbar"
                                              style="width:{{round(($fileUnderUploading/$allLists)*100)}}%;height:6px;"
@@ -228,7 +228,7 @@
                             </div>
                             <div class="media mt-4 article_media">
                                 <div class="photo-table">
-                                    <h6>مواضوعات تحت التحليل</h6>
+                                    <h6>موضوعات تحت التحليل</h6>
                                     <div class="progress">
                                         <div class="progress-bar progress-c-theme2" role="progressbar"
                                              style="width:{{round(($fileUnderAnalizing/$allLists)*100)}}%;height:6px;"
@@ -242,7 +242,7 @@
                             </div>
                             <div class="media mt-4 article_media">
                                 <div class="photo-table">
-                                    <h6>مواضوعات تم تحليلها</h6>
+                                    <h6>موضوعات تم تحليلها</h6>
                                     <div class="progress">
                                         <div class="progress-bar progress-c-blue" role="progressbar"
                                              style="width:{{round(($analizingFile/$allLists)*100)}}%;height:6px;"

@@ -25,7 +25,7 @@
                 <li class="nav-item {{request()->is("allLists")?"active":""}}">
                     <a href="{{url('allLists')}}" class="nav-link">
                         <span class="pcoded-micon"><i class="fas fa-book-open"></i></span>
-                        <span class="pcoded-mtext"> قائمة الموضوعات</span>
+                        <span class="pcoded-mtext"> الموضوعات</span>
                     </a>
                 </li>
                 <li class="nav-item {{request()->is("levels")?"active":""}}">
@@ -44,7 +44,7 @@
                 <li class="nav-item {{request()->is("allFiles")?"active":""}}">
                     <a href="{{url('allFiles')}}" class="nav-link">
                         <span class="pcoded-micon"><i class="mdi mdi-file"></i></span>
-                        <span class="pcoded-mtext">ملفات المواضيع</span>
+                        <span class="pcoded-mtext">ملفات الموضوعات</span>
                     </a>
                 </li>
                 {{--<li class="nav-item {{request()->is("country")?"active":""}}">--}}
@@ -68,13 +68,13 @@
                 <li class="nav-item {{request()->is("log")?"active":""}}">
                     <a href="{{url('log')}}" class="nav-link">
                         <span class="pcoded-micon"><i class="mdi mdi-chart-donut-variant"></i></span>
-                        <span class="pcoded-mtext">الاحداث اليومية</span>
+                        <span class="pcoded-mtext">الأحداث اليومية</span>
                     </a>
                 </li>
                 <li class="nav-item {{request()->is("archive")?"active":""}}">
                     <a href="{{url('archive')}}" class="nav-link">
                         <span class="pcoded-micon"><i class="mdi mdi-chart-donut-variant"></i></span>
-                        <span class="pcoded-mtext">الارشيف</span>
+                        <span class="pcoded-mtext">الأرشيف</span>
                     </a>
                 </li>
                 <li class="nav-item {{request()->is("tashkel")?"active":""}}">

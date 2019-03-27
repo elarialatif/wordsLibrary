@@ -24,7 +24,7 @@
                                     <td>الرقم</td>
                                     <td>البلد</td>
                                     <td>القيمه</td>
-                                    <td>الاجراء</td>
+                                    <td>الإجراء</td>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -121,7 +121,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">اضافه بلد جديد</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">إضافة بلد جديد</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -158,7 +158,7 @@
                         </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">اضافه</button>
+                                <button type="submit" class="btn btn-primary">إضافة</button>
                             </div>
                         </div>
                     </form>
@@ -177,7 +177,7 @@
 
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">تاكيد المسح</h4>
+                    <h4 class="modal-title" id="myModalLabel">تأكيد المسح</h4>
                 </div>
 
                 <div class="modal-body">

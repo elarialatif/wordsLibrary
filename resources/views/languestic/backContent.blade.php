@@ -13,7 +13,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h5>
-                                        صفحة  مواضيع معاده
+                                        صفحة  موضوعات معادة
                                     </h5>
                                 </div>
                                 <div class="card-block">
@@ -26,8 +26,8 @@
                                                 <th>الكود</th>
                                                 <th>الموضوع</th>
                                                 <th>الصف</th>
-                                                <th>ادخال الاسئله</th>
-                                                <th>ارسال</th>
+                                                <th>مراجعة المقالات</th>
+                                                <th>إرسال</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -119,17 +119,17 @@
                                                         {{--@if(auth()->user()->role==\App\Helper\UsersTypes::QuestionCreator)--}}
                                                         {{--@if($easyQuestions && $normalQuestions && $hardQuestions)--}}
                                                         {{--<a href="{{url('question/sendToReviwer/'.$list->id)}}"--}}
-                                                        {{--class="btn btn-success">{{(!empty($task))?'اعاده ارسال الي المراجعه':'ارسال الي المراجعه'}}</a>--}}
+                                                        {{--class="btn btn-success">{{(!empty($task))?'إعادة إرسال الي المراجعة':'إرسال الي المراجعة'}}</a>--}}
                                                         {{--@else--}}
-                                                        {{--<p>ادخل كل الاسئله للارسال</p>--}}
+                                                        {{--<p>ادخل كل الأسئلة للإرسال</p>--}}
                                                         {{--@endif--}}
                                                         {{--@endif--}}
                                                         {{--QuestionReviewer--}}
 
                                                         @if($easyStatus && $normalStatus && $hardStatus)
-                                                            <a href="{{url('languestic/send/'.$list->id)}}" class="btn btn-success">اعاده ارسال</a>
+                                                            <a href="{{url('languestic/send/'.$list->id)}}" class="btn btn-success">إعادة إرسال</a>
                                                         @else
-                                                            <p>راجع كل المقالات للارسال</p>
+                                                            <p>راجع المقالات للإرسال</p>
                                                         @endif
 
                                                     </td>

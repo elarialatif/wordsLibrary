@@ -45,10 +45,10 @@ class SchoolController extends Controller
             'password.required' => 'كلمة المرور مطلوبة',
             'name.max' => 'الاسم لا يزيد عن 30 حرف',
             'password.max' => 'كلمة المرور لا تزيد عن 30 حرف ',
-            'password.confirmed' => 'تاكيد كلمة المرور غير صحيحة',
+            'password.confirmed' => 'تأكيد كلمة المرور غير صحيحة',
             'name.alpha_num' => 'الاسم يجب ان يكون ارقان وحروف فقط ',
-            'email.required' => 'الايميل مطلوب ',
-            'email.email' => 'الايميل غير صحيح ',
+            'email.required' => 'الإيميل مطلوب ',
+            'email.email' => 'الإيميل غير صحيح ',
             'email.unique' => 'الاميل موجود بالفعل',
         ]);
         SchoolRepository::save($request);
@@ -91,10 +91,10 @@ class SchoolController extends Controller
             'password.required' => 'كلمة المرور مطلوبة',
             'name.max' => 'الاسم لا يزيد عن 30 حرف',
             'password.max' => 'كلمة المرور لا تزيد عن 30 حرف ',
-            'password.confirmed' => 'تاكيد كلمة المرور غير صحيحة',
+            'password.confirmed' => 'تأكيد كلمة المرور غير صحيحة',
             'name.alpha_num' => 'الاسم يجب ان يكون ارقان وحروف فقط ',
-            'email.required' => 'الايميل مطلوب ',
-            'email.email' => 'الايميل غير صحيح ',
+            'email.required' => 'الإيميل مطلوب ',
+            'email.email' => 'الإيميل غير صحيح ',
             'email.unique' => 'الاميل موجود بالفعل',
         ]);
         SchoolRepository::save($request, $school_id);

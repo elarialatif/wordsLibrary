@@ -43,11 +43,11 @@
                      <h5>الموضوعات</h5>
                   </div>
                   <div class="card-block">
-                     <span class="d-block"><i class="fas fa-sort-amount-up"></i>عدد الموضوعات الكليه </span>
+                     <span class="d-block"><i class="fas fa-sort-amount-up"></i>عدد الموضوعات الكلية </span>
                      <h3 class="f-w-300">{{$sharedArrayBetweenUsers['all_lists']}}</h3>
                      <div class="media mt-4 article_media">
                         <div class="photo-table">
-                           <h6>مواضوعات تم الانتهاء منها </h6>
+                           <h6>موضوعات تم الانتهاء منها </h6>
                            <div class="progress">
                               <div class="progress-bar progress-c-theme" role="progressbar"
                                    style="width:{{round(($sharedArrayBetweenUsers['finished']/$sharedArrayBetweenUsers['all_lists'])*100)}}%;height:6px;"
@@ -61,7 +61,7 @@
                      </div>
                      <div class="media mt-4 article_media">
                         <div class="photo-table">
-                           <h6>مواضوعات لم يتم الانتهاء منها</h6>
+                           <h6>موضوعات لم يتم الانتهاء منها</h6>
                            <div class="progress">
                               <div class="progress-bar progress-c-theme2" role="progressbar"
                                    style="width:{{round(($sharedArrayBetweenUsers['underWork']/$sharedArrayBetweenUsers['all_lists'])*100)}}%;height:6px;"
@@ -84,7 +84,7 @@
                      <div class="row align-items-center justify-content-center">
                         <div class="col">
                            <i class="mdi mdi-book-open-page-variant f-30 text-c-purple"></i>
-                           <h5 class="m-0">عدد المقالات الاصليه المرفوعه</h5>
+                           <h5 class="m-0">عدد المقالات الأصلية المرفوعة</h5>
                         </div>
                         <div class="col-auto">
                            <label class="label theme-bg text-white f-14 f-w-400 float-right normal-num-show">{{$editorTasks['num_files']}}</label>
@@ -94,7 +94,7 @@
                      <div class="row align-items-center justify-content-center">
                         <div class="col">
                            <i class="mdi mdi-file-upload f-30 text-c-blue"></i>
-                           <h5 class="m-0">عدد الادخالات للمقالات السهله</h5>
+                           <h5 class="m-0">عدد الإدخالات للمقالات السهلة</h5>
                         </div>
                         <div class="col-auto">
                            <label class="label theme-bg text-white f-14 f-w-400 float-right normal-num-show">{{$editorTasks['num_easy']}}</label>
@@ -103,7 +103,7 @@
                      <div class="row align-items-center justify-content-center">
                         <div class="col">
                            <i class="mdi mdi-file-upload f-30 text-c-blue"></i>
-                           <h5 class="m-0">عدد الادخالات للمقالات المتوسطه</h5>
+                           <h5 class="m-0">عدد الإدخالات للمقالات المتوسطة</h5>
                         </div>
                         <div class="col-auto">
                            <label class="label theme-bg text-white f-14 f-w-400 float-right normal-num-show">{{$editorTasks['num_normal']}}</label>
@@ -112,7 +112,7 @@
                         <div class="row align-items-center justify-content-center">
                            <div class="col">
                               <i class="mdi mdi-file-upload f-30 text-c-blue"></i>
-                              <h5 class="m-0">عدد الادخالات للمقالات الصعبه</h5>
+                              <h5 class="m-0">عدد الإدخالات للمقالات الصعبة</h5>
                            </div>
                            <div class="col-auto">
                               <label class="label theme-bg text-white f-14 f-w-400 float-right normal-num-show">{{$editorTasks['num_hard']}}</label>
@@ -128,7 +128,7 @@
             <div class="{{(auth()->user()->role==\App\Helper\UsersTypes::EDITOR)?'col-md-6 col-xl-6':'col-md-12 col-xl-12'}}">
                <div class="card statistial-visit work-show">
                   <div class="card-header">
-                     <h5>اخر ما تم العمل عليه</h5>
+                     <h5>آخر ما تم العمل عليه</h5>
                   </div>
                   <div class="card-block">
                      <div class="form-group">
@@ -162,7 +162,7 @@
                   <div class="col-md-6 col-xl-6">
                            <div class="card statistial-visit work-show">
                               <div class="card-header">
-                                 <h5>اخر موضوعات مرفوع لها ملفات</h5>
+                                 <h5>آخر موضوعات مرفوع لها ملفات</h5>
                               </div>
                               <div class="card-block">
                                  <div class="form-group">

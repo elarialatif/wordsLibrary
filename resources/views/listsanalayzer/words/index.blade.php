@@ -16,7 +16,7 @@
                                         كل الكلمات
                                     </h5>
                                     <a data-toggle="modal" data-target="#exampleModal" class="btn btn-primary"
-                                       style="color: white;float: left;font-weight: bold">اضافه كلمات
+                                       style="color: white;float: left;font-weight: bold">إضافة كلمات
                                         جديدة<i class="fa fa-plus"></i></a>
                                     {{--model for add new user--}}
                                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
@@ -26,7 +26,7 @@
                                             <form action="{{url('createWords')}}" method="post">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">اضافه كلمات
+                                                        <h5 class="modal-title" id="exampleModalLabel">إضافة كلمات
                                                             جديدة</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">

@@ -20,7 +20,7 @@
                 <li class="nav-item {{request()->is("allLists")?"active":""}}">
                     <a href="{{url('allLists')}}" class="nav-link">
                         <span class="pcoded-micon"><i class="mdi mdi-file"></i></span>
-                        <span class="pcoded-mtext">قائمة الموضوعات</span></a>
+                        <span class="pcoded-mtext">الموضوعات</span></a>
                 </li>
                 <li class="nav-item {{request()->is("levels")?"active":""}}">
                     <a href="{{url('levels')}}" class="nav-link">
@@ -30,7 +30,7 @@
                 <li class="nav-item {{request()->is("userArchive")?"active":""}}">
                     <a href="{{url('userArchive')}}" class="nav-link">
                         <span class="pcoded-micon"><i class="mdi mdi-chart-donut-variant"></i></span>
-                        <span class="pcoded-mtext">الارشيف</span></a>
+                        <span class="pcoded-mtext">الأرشيف</span></a>
                 </li>
                 <li class="nav-item {{request()->is("/tashkel")?"active":""}}">
                     <a href="{{url('/tashkel')}}" class="nav-link">

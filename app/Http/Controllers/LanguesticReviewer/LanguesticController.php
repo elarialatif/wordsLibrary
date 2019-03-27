@@ -92,7 +92,7 @@ class LanguesticController extends Controller
             $task = AssignTask::where(['list_id' => $artical->list_id, 'step' => Steps::Languestic])->first();
             if ($task) {
                 if ($task->user_id != auth()->id()) {
-                    return redirect()->back()->withErrors('هذا الموضوع تابع لمستخدم اخر ');
+                    return redirect()->back()->withErrors('هذا الموضوع تابع لمستخدم آخر ');
                 }
             } elseif (!$task) {
                 TaskRepository::save($artical->list_id, Steps::Languestic);
@@ -100,7 +100,7 @@ class LanguesticController extends Controller
         }
 
         if ($list->step != Steps::Languestic && $list->step != Steps::ResendToLanguestic) {
-            return redirect('languestic/mylists')->withErrors('غير مسموح لك الدخول الى هنا');
+            return redirect('languestic/mylists')->withErrors('غير مسموح لك الدخول إلى هنا');
         }
         return view('languestic.review', compact('vocab', 'artical', 'questionStretch', 'questions', 'page'));
     }
@@ -120,7 +120,7 @@ class LanguesticController extends Controller
             return redirect()->back()->withError('يجب الانتهاء من كل الملاحظات');
         }
         Article::where('id', $artical_id)->update(['status' => 1]);
-        return redirect()->back()->with('success', 'تم المراجعه بنجاح ');
+        return redirect()->back()->with('success', 'تمتالمراجعة بنجاح ');
     }
 
 
@@ -153,10 +153,10 @@ class LanguesticController extends Controller
             NotificationRepository::notify($list_id, Steps::UPLOADING_FILE);
             $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::UPLOADING_FILE);
             $user = UsersRepository::find($user_id);
-            $name = Carbon::now() . "بتاريخ" . $user->name . "تم اعادة الارسال الى المحرر ";
-            Steps::SaveLogRow($name, 'اعادة ارسال', 'content_lists', $list_id);
+            $name = Carbon::now() . "بتاريخ" . $user->name . "تمت إعادة الإرسال إلى المحرر ";
+            Steps::SaveLogRow($name, 'إعادة إرسال', 'content_lists', $list_id);
             ///end Notification////
-            return redirect()->back()->with('success', 'تم الارسال الي مدخل المقالات بنجاح ');
+            return redirect()->back()->with('success', 'تم الإرسال الي مدخل المقالات بنجاح ');
         }
         if ($issuesQuestion->count() > 0) {
             ContentListsRepository::updateStep($list_id, Steps::ResendToQuestionCreator);
@@ -168,13 +168,13 @@ class LanguesticController extends Controller
             ///end Notification////
             $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Create_Question);
             $user = UsersRepository::find($user_id);
-            $name = Carbon::now() . "بتاريخ" . $user->name . "تم اعادة الارسال الى محرر الاسئلة ";
-            Steps::SaveLogRow($name, 'اعادة ارسال', 'content_lists', $list_id);
-            return redirect()->back()->with('success', 'تم الارسال الي مدخل الاسئله بنجاح ');
+            $name = Carbon::now() . "بتاريخ" . $user->name . "تمت إعادة الإرسال إلى محرر الأسئلة ";
+            Steps::SaveLogRow($name, 'إعادة إرسال', 'content_lists', $list_id);
+            return redirect()->back()->with('success', 'تم الإرسال الي مدخل الأسئلة بنجاح ');
         }
 //        if ($issuesSound->count() > 0) {
 //            ContentListsRepository::updateStep($list_id, Steps::ResendToSound);
-//            return redirect()->back()->with('success', 'تم اعاده الارسال الي مدخل الصوت بنجاح ');
+//            return redirect()->back()->with('success', 'تم إعادة الإرسال الي مدخل الصوت بنجاح ');
 //        }
         if ($qualityUser != null) {
 
@@ -184,9 +184,9 @@ class LanguesticController extends Controller
             ContentListsRepository::updateStep($list_id, Steps::ResendToQuality);
             $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Quality);
             $user = UsersRepository::find($user_id);
-            $name = Carbon::now() . "بتاريخ" . $user->name . "تم اعادة الارسال الى الجودة ";
-            Steps::SaveLogRow($name, 'اعادة ارسال', 'content_lists', $list_id);
-            return redirect()->back()->with('success', 'تم اعادة الارسال الي الجودة بنجاح ');
+            $name = Carbon::now() . "بتاريخ" . $user->name . "تمت إعادة الإرسال إلى الجودة ";
+            Steps::SaveLogRow($name, 'إعادة إرسال', 'content_lists', $list_id);
+            return redirect()->back()->with('success', 'تمت إعادة الإرسال الي الجودة بنجاح ');
         } else {
             $data['user_id'] = auth()->id();
             $data['list_id'] = $list_id;
@@ -194,9 +194,9 @@ class LanguesticController extends Controller
             UserRateRepository::save($data);
             ContentListsRepository::updateStep($list_id, Steps::Quality);
 
-            $name = Carbon::now() . "  تم  الارسال الى الجودة بتاريخ ";
-            Steps::SaveLogRow($name, ' ارسال', 'content_lists', $list_id);
-            return redirect()->back()->with('success', 'تم الارسال الي الجودة بنجاح ');
+            $name = Carbon::now() . "  تم  الإرسال إلى الجودة بتاريخ ";
+            Steps::SaveLogRow($name, ' إرسال', 'content_lists', $list_id);
+            return redirect()->back()->with('success', 'تم الإرسال الي الجودة بنجاح ');
         }
     }
 

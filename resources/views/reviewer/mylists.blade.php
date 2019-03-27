@@ -13,7 +13,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h5>
-                                        مواضيعي
+                                        موضوعاتي
                                     </h5>
                                 </div>
                                 <div class="card-block">
@@ -33,7 +33,7 @@
                                                         <th> عرض المقال سهل</th>
                                                         <th>عرض المقال متوسط</th>
                                                         <th>عرض المقال صعب</th>
-                                                        <th>الاجراء</th>
+                                                        <th>الإجراء</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -102,12 +102,12 @@
                                                                 @if($easy->status==App\Helper\ArticleLevels::Review&&$normal->status==App\Helper\ArticleLevels::Review&&$hard->status==App\Helper\ArticleLevels::Review)
                                                                     @if($issueshard->count()>0 || $issuesnormal->count()>0 || $issueseasy->count()>0 )
                                                                         <a class="btn btn-danger"
-                                                                           href="{{url('reviewer/reSendTo/editor/'.$list->id)}}">اعادة
+                                                                           href="{{url('reviewer/reSendTo/editor/'.$list->id)}}">إعادة
                                                                             اراسال
-                                                                            الى المحرر</a>
+                                                                            إلى المحرر</a>
                                                                     @else <a class="btn btn-success"
-                                                                             href="{{url('reviewer/sendto/create/question/'.$list->id)}}">ارسال
-                                                                        الى معد الاسئلة</a>  @endif  @else<span
+                                                                             href="{{url('reviewer/sendto/create/question/'.$list->id)}}">إرسال
+                                                                        إلى معد الأسئلة</a>  @endif  @else<span
                                                                         class="fa fa-ban fa-2x"
                                                                         style="color: #ff2733;font-size: 18px"> قم بمراجعة المقالات </span> @endif
                                                             </td>
@@ -155,11 +155,11 @@
             console.log(arr);
 
             if (arr.length == 3) {
-                var td = "<a href='{{url('reviewer/sendto/create/question/')}}/" + list_id + "' class='btn btn-success' >  ارسال الى معد الاسئلة</a> ";
+                var td = "<a href='{{url('reviewer/sendto/create/question/')}}/" + list_id + "' class='btn btn-success' >  إرسال إلى معد الأسئلة</a> ";
             }
 
             else {
-                var td = "<a href='{{url('reviewer/sendto/create/question/')}}/" + list_id + "' class='btn btn-danger' >  اعادة ارسال الى المحرر</a> ";
+                var td = "<a href='{{url('reviewer/sendto/create/question/')}}/" + list_id + "' class='btn btn-danger' >  إعادة إرسال إلى المحرر</a> ";
             }
             $("#td" + list_id + "").empty();
             $("#td" + list_id + "").append(td);

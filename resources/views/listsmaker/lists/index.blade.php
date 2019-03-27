@@ -6,7 +6,7 @@
         <br>
         <div class="container">
             @if(auth()->user()->role!=\App\Helper\UsersTypes::EDITOR)
-                <a href="{{url('createList')}}" class="btn btn-primary"> اضافه موضوع جديده <i
+                <a href="{{url('createList')}}" class="btn btn-primary"> إضافة موضوع جديدة <i
                             class="fa fa-plus"></i></a>
             @endif
             <br>
@@ -26,10 +26,10 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        المرحله:<br>
+                        المرحلة:<br>
                         <div class="form-group">
                             <select class="form-control" id="level" name="level_id" required>
-                                <option value="">اختر المرحله</option>
+                                <option value="">اختر المرحلة</option>
                                 @foreach($levels as $level)
                                     <option value="{{$level->id}}">{{$level->name}}</option>
                                 @endforeach
@@ -48,7 +48,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">الذهاب الي المواضيع</button>
+                <button type="submit" class="btn btn-primary">الذهاب الي الموضوعات</button>
             </form>
             <script type="text/javascript">
                 $('#level').change(function () {

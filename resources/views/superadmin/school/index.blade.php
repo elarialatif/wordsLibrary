@@ -16,7 +16,7 @@
                                         صفحة المدارس
                                     </h5>
                                     <a href="{{url('add/school')}}" class="btn btn-primary"
-                                       style="color: white;float: left;font-weight: bold">اضافه مدرسة
+                                       style="color: white;float: left;font-weight: bold">إضافة مدرسة
                                         جديد<i
                                                 class="fa fa-plus"></i></a>
                                     {{--model for add new user--}}
@@ -40,8 +40,8 @@
                                         <thead>
                                         <tr>
                                             <th>الاسم</th>
-                                            <th>الايميل</th>
-                                            <th>الاجراءات</th>
+                                            <th>الإيميل</th>
+                                            <th>الإجراءات</th>
                                         </tr>
                                         </thead>
                                         <tbody>

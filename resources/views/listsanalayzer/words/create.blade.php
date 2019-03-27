@@ -26,7 +26,7 @@
                                             <option value="50">50</option>
                                         </select>
                                         <br>
-                                        <button id="btn" class=" btn btn-primary"> اضافه حقول للكلمات</button>
+                                        <button id="btn" class=" btn btn-primary"> إضافة حقول للكلمات</button>
                                     </div>
                                 </div>
                                 <div class="card-block">

@@ -70,7 +70,7 @@ class QuestionController extends Controller
             $task = AssignTask::where(['list_id' => $artical->list_id, 'step' => Steps::Create_Question])->first();
             if ($task) {
                 if ($task->user_id != auth()->id()) {
-                    return redirect()->back()->withErrors('هذا الموضوع تابع لمستخدم اخر ');
+                    return redirect()->back()->withErrors('هذا الموضوع تابع لمستخدم آخر ');
                 }
             } elseif (!$task) {
                 TaskRepository::save($artical->list_id, Steps::Create_Question);
@@ -79,7 +79,7 @@ class QuestionController extends Controller
         }
         $list = ContentList::find($artical->list_id);
         if ($list->step != Steps::Create_Question && $list->step != Steps::ResendToQuestionCreator) {
-            return redirect('question/myList')->withErrors('غير مسموح لك الدخول الى هنا');
+            return redirect('question/myList')->withErrors('غير مسموح لك الدخول إلى هنا');
         }
         return view('questionCreator.question.create', compact('artical'));
     }
@@ -96,20 +96,20 @@ class QuestionController extends Controller
         $messages_array = [
             'question.*.question.required' => 'من فضلك ادخل اسم السؤال',
             'question.*.question.max' => 'اسم السوال يجب الا يزيد عن 191 حرف',
-            'question.*.ans1.required' => 'من فضلك الاجابه الاولى',
-            'question.*.ans2.required' => 'من فضلك الاجابه الثانيه',
-            'question.*.ans3.required' => 'من فضلك الاجابه الثالثه',
-            'question.*.ans4.required' => 'من فضلك الاجابه الرابعه',
-            'question.*.ans1.max' => 'الاجابه الاولى يجب الا تزيد عن 191 حرف',
-            'question.*.ans2.max' => 'الاجابه الثانيه يجب الا تزيد عن 191 حرف',
-            'question.*.ans3.max' => 'الاجابه الثالثه يجب الا تزيد عن 191 حرف',
-            'question.*.ans4.max' => 'الاجابه الرابعه يجب الا تزيد عن 191 حرف',
+            'question.*.ans1.required' => 'من فضلك الإجابة الأولى',
+            'question.*.ans2.required' => 'من فضلك الإجابة الثانية',
+            'question.*.ans3.required' => 'من فضلك الإجابة الثالثة',
+            'question.*.ans4.required' => 'من فضلك الإجابة الرابعة',
+            'question.*.ans1.max' => 'الإجابة الأولى يجب الا تزيد عن 191 حرف',
+            'question.*.ans2.max' => 'الإجابة الثانية يجب الا تزيد عن 191 حرف',
+            'question.*.ans3.max' => 'الإجابة الثالثة يجب الا تزيد عن 191 حرف',
+            'question.*.ans4.max' => 'الإجابة الرابعة يجب الا تزيد عن 191 حرف',
         ];
         foreach ($request->question as $arrIndex => $arrValue) { //add unqiue constraint of answers to each question answers
-            $messages_array["ans1.$arrIndex.not_in"] = "لابد ان تكون الاجابه الاولي مختلفه";
-            $messages_array["ans2.$arrIndex.not_in"] = "لابد ان تكون الاجابه الثانيه مختلفه";
-            $messages_array["ans3.$arrIndex.not_in"] = "لابد ان تكون الاجابه الثالثه مختلفه";
-            $messages_array["ans4.$arrIndex.not_in"] = "لابد ان تكون الاجابه الرابعه مختلفه";
+            $messages_array["ans1.$arrIndex.not_in"] = "لابد ان تكون الإجابة الأولي مختلفه";
+            $messages_array["ans2.$arrIndex.not_in"] = "لابد ان تكون الإجابة الثانية مختلفه";
+            $messages_array["ans3.$arrIndex.not_in"] = "لابد ان تكون الإجابة الثالثة مختلفه";
+            $messages_array["ans4.$arrIndex.not_in"] = "لابد ان تكون الإجابة الرابعة مختلفه";
             $rules_array ["ans1.$arrIndex"] = ["required", Rule::notIn([$request->ans2[$arrIndex], $request->ans3[$arrIndex], $request->ans4[$arrIndex]]), "max:191"];
             $rules_array ["ans2.$arrIndex"] = ["required", Rule::notIn([$request->ans1[$arrIndex], $request->ans3[$arrIndex], $request->ans4[$arrIndex]]), "max:191"];
             $rules_array ["ans3.$arrIndex"] = ["required", Rule::notIn([$request->ans1[$arrIndex], $request->ans2[$arrIndex], $request->ans4[$arrIndex]]), "max:191"];
@@ -120,7 +120,7 @@ class QuestionController extends Controller
         $question = $request->except('_token');
         $question = QuestionsRepository::save($question);
         if($request->submitType && $request->submitType=='lastQuestion' ){
-            return redirect(url('question/myList'))->with('success', 'تم الاضافه بنجاح ');
+            return redirect(url('question/myList'))->with('success', 'تمتالإضافة بنجاح ');
         }
         else{
             $artical = Article::where('id', $question[0]->artical_id)->first();
@@ -172,20 +172,20 @@ class QuestionController extends Controller
         $messages_array = [
             'question.question.required' => 'من فضلك ادخل اسم السؤال',
             'question.question.max' => 'اسم السوال يجب الا يزيد عن 191 حرف',
-            'question.ans1.required' => 'من فضلك الاجابه الاولى',
-            'question.ans2.required' => 'من فضلك الاجابه الثانيه',
-            'question.ans3.required' => 'من فضلك الاجابه الثالثه',
-            'question.ans4.required' => 'من فضلك الاجابه الرابعه',
-            'question.ans1.max' => 'الاجابه الاولى يجب الا تزيد عن 191 حرف',
-            'question.ans2.max' => 'الاجابه الثانيه يجب الا تزيد عن 191 حرف',
-            'question.ans3.max' => 'الاجابه الثالثه يجب الا تزيد عن 191 حرف',
-            'question.ans4.max' => 'الاجابه الرابعه يجب الا تزيد عن 191 حرف',
+            'question.ans1.required' => 'من فضلك الإجابة الأولى',
+            'question.ans2.required' => 'من فضلك الإجابة الثانية',
+            'question.ans3.required' => 'من فضلك الإجابة الثالثة',
+            'question.ans4.required' => 'من فضلك الإجابة الرابعة',
+            'question.ans1.max' => 'الإجابة الأولى يجب الا تزيد عن 191 حرف',
+            'question.ans2.max' => 'الإجابة الثانية يجب الا تزيد عن 191 حرف',
+            'question.ans3.max' => 'الإجابة الثالثة يجب الا تزيد عن 191 حرف',
+            'question.ans4.max' => 'الإجابة الرابعة يجب الا تزيد عن 191 حرف',
         ];
 
-        $messages_array["ans1.not_in"] = "لابد ان تكون الاجابه الاولي مختلفه";
-        $messages_array["ans2.not_in"] = "لابد ان تكون الاجابه الثانيه مختلفه";
-        $messages_array["ans3.not_in"] = "لابد ان تكون الاجابه الثالثه مختلفه";
-        $messages_array["ans4.not_in"] = "لابد ان تكون الاجابه الرابعه مختلفه";
+        $messages_array["ans1.not_in"] = "لابد ان تكون الإجابة الأولي مختلفه";
+        $messages_array["ans2.not_in"] = "لابد ان تكون الإجابة الثانية مختلفه";
+        $messages_array["ans3.not_in"] = "لابد ان تكون الإجابة الثالثة مختلفه";
+        $messages_array["ans4.not_in"] = "لابد ان تكون الإجابة الرابعة مختلفه";
         $rules_array ["ans1"] = ["required", Rule::notIn([$request->ans2, $request->ans3, $request->ans4]), "max:191"];
         $rules_array ["ans2"] = ["required", Rule::notIn([$request->ans1, $request->ans3, $request->ans4]), "max:191"];
         $rules_array ["ans3"] = ["required", Rule::notIn([$request->ans1, $request->ans2, $request->ans4]), "max:191"];
@@ -215,20 +215,20 @@ class QuestionController extends Controller
             ///end Notification////
             $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Review_Question);
             $user = UsersRepository::find($user_id);
-            $name = Carbon::now() . "بتاريخ" . $user->name . "تم اعادة الارسال الى مراجع الاسئلة ";
-            Steps::SaveLogRow($name, 'اعادة ارسال', 'content_lists', $list_id);
+            $name = Carbon::now() . "بتاريخ" . $user->name . "تمت إعادة الإرسال إلى مراجع الأسئلة ";
+            Steps::SaveLogRow($name, 'إعادة إرسال', 'content_lists', $list_id);
             $data['active'] = 1;
             UserRateRepository::update(auth()->id(), $list_id, $data);
-            return redirect()->back()->with('success', 'تم اعاده الارسال الي مراجع الاسئله بنجاح ');
+            return redirect()->back()->with('success', 'تم إعادة الإرسال الي مراجع الأسئلة بنجاح ');
         }
         $data['user_id'] = auth()->id();
         $data['list_id'] = $list_id;
         $data['active'] = 1;
         UserRateRepository::save($data);
         ContentListsRepository::updateStep($list_id, Steps::Review_Question);
-        $name = Carbon::now() . " تم اعادة الارسال الى مراجع الاسئلة بتاريخ ";
-        Steps::SaveLogRow($name, ' ارسال', 'content_lists', $list_id);
-        return redirect()->back()->with('success', 'تم الارسال الي مراجع الاسئله بنجاح ');
+        $name = Carbon::now() . " تمت إعادة الإرسال إلى مراجع الأسئلة بتاريخ ";
+        Steps::SaveLogRow($name, ' إرسال', 'content_lists', $list_id);
+        return redirect()->back()->with('success', 'تم الإرسال الي مراجع الأسئلة بنجاح ');
     }
 
     /**
