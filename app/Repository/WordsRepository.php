@@ -68,7 +68,7 @@ class WordsRepository
     static function filter($garde_id)
     {
         $query = Word::orderBy("id", "desc");
-        if ($garde_id != null && $garde_id!='all') {
+        if ($garde_id != null && $garde_id != 'all') {
             $query->where('grade_id', $garde_id);
         }
         $words = $query->get();
@@ -77,6 +77,8 @@ class WordsRepository
 
     static function AjaxSave($datahard, $dataeasy, $grade_id, $file_id)
     {
+        $array1 = [];
+        $array2 = [];
         $words = Word::where('file_id', $file_id)->get();
         if ($words->count() > 0) {
             Word::where('file_id', $file_id)->delete();

@@ -52,13 +52,20 @@
                                     </div>
                                 </div>
                                 <div class="card-block">
-                                    <form action="{{url('editor/save/article')}}" method="post">
+
+
                                         <div class="row">
 
 
                                             <div class="col-md-6"
                                                  style="border-left: solid 2px black;font-size:18px;line-height: 1.5">
+                                                <h6 style="font-size: 20px">
+                                                    <button class="btn btn-secondary" style="float: left;"
+                                                            onclick="changefont('plus')"><i class="fa fa-plus-square"></i></button>
+                                                    <button class="btn btn-primary" style="float: left;"
+                                                            onclick="changefont('minus')"><i class="fa fa-minus"></i></button>
 
+                                                </h6>
                                                 <div class="color-map ">
                                                     <div class="complete">
                                                         <p class="badge badge-success">سهل</p>
@@ -66,7 +73,8 @@
                                                         <p class="badge badge-danger">صعب</p>
                                                     </div>
                                                 </div>
-
+                                                <form action="{{url('editor/save/article')}}" method="post">
+<div id='font'>
                                                 @php
                                                     foreach ($orginalFile as $key => $value) {
                                                          $word = App\Models\Word::where(['word'=> $value,'grade_id'=>$list->grade_id,'file_id'=>$file_id])->first();
@@ -81,12 +89,12 @@
 
                                                          }
                                                          else {
-                                                             echo"<span style='font-size:14px;' > $value  </span>" . ' ';
+                                                             echo"<span style='font-size:14px;'> $value  </span>" . ' ';
                                                          }
                                                      };
                                                 @endphp
                                             </div>
-
+                                            </div>
                                             <div class="col-md-6">
                                                 @if($type==$articleObject->getNormalArticleValue())
                                                     <label> مقدمة السؤال القبلي </label>
@@ -284,5 +292,20 @@
         $('#2').css('background', '#539af6');
     }
 
+</script>
+<script>
+    var i = 14;
+
+    function changefont(font) {
+
+        if (font === 'plus' && i < 50) {
+            i += 2;
+        }
+        if (font === 'minus' && i > 14) {
+            i -= 2;
+        }
+        $('#font span').css('font-size', i + 'px');
+
+    }
 </script>
 @endsection

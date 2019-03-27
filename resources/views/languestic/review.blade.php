@@ -21,7 +21,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h5>
-                                        صفحة المراجعة اللغوية
+                                        صفحة المراجعة المقال ال{{\App\Helper\ArticleLevels::getLevel($artical->level)}}
                                     </h5>
                                     @if($artical->status!=\App\Helper\ArticleLevels::Review)
                                         <a style="float: left" href="{{url('languestic/done/'.$artical->id)}}"

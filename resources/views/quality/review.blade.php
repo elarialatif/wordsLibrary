@@ -8,6 +8,7 @@
             position: fixed !important
         }
     </style>
+
     <div class="container">
         <div class="container">
 
@@ -20,7 +21,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h5>
-                                        صفحة المراجعة
+                                         صفحة المراجعة المقال ال{{\App\Helper\ArticleLevels::getLevel($artical->level)}}
                                     </h5>
                                     @if($artical->status!=\App\Helper\ArticleLevels::Review)
                                         <a style="float: left" href="{{url('quality/done/'.$artical->id)}}"
