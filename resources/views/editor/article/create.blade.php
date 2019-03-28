@@ -28,7 +28,9 @@
                                                 style="color: blue">{{$list->list}} </span>) (<span
                                                 style="color: blue">{{\App\Helper\ArticleLevels::getLevel($level)}} </span>)
                                     </h5>
-
+                                    @php if($page==null){
+                                    $page="refused/lists";
+                                    }  @endphp
                                     <a href="{{url('editor').'/'.$page}}" style="float: left" class="btn btn-success">
                                         رجوع <span class="fa fa-arrow-left">  </span> </a>
                                     <div style="text-align: center">
@@ -52,130 +54,133 @@
                                 <div class="card-block">
 
 
-                                        <div class="row">
+                                    <div class="row">
 
 
-                                            <div class="col-md-6"
-                                                 style="border-left: solid 2px black;font-size:18px;line-height: 1.5">
-                                                <h6 style="font-size: 20px">
-                                                    <button class="btn btn-secondary" style="float: left;"
-                                                            onclick="changefont('plus')"><i class="fa fa-plus-square"></i></button>
-                                                    <button class="btn btn-primary" style="float: left;"
-                                                            onclick="changefont('minus')"><i class="fa fa-minus"></i></button>
+                                        <div class="col-md-6"
+                                             style="border-left: solid 2px black;font-size:18px;line-height: 1.5">
+                                            <h6 style="font-size: 20px">
+                                                <button class="btn btn-secondary" style="float: left;"
+                                                        onclick="changefont('plus')"><i class="fa fa-plus-square"></i></button>
+                                                <button class="btn btn-primary" style="float: left;"
+                                                        onclick="changefont('minus')"><i class="fa fa-minus"></i></button>
 
-                                                </h6>
-                                                <div class="color-map ">
-                                                    <div class="complete">
-                                                        <p class="badge badge-success">سهل</p>
-                                                        <p class="badge badge-warning">متوسط</p>
-                                                        <p class="badge badge-danger">صعب</p>
-                                                    </div>
+                                            </h6>
+                                            <div class="color-map ">
+                                                <div class="complete">
+                                                    <p class="badge badge-success">سهل</p>
+                                                    <p class="badge badge-warning">متوسط</p>
+                                                    <p class="badge badge-danger">صعب</p>
                                                 </div>
-                                                <form action="{{url('editor/save/article')}}" method="post">
-<div id='font'>
-                                                @php
-                                                    foreach ($orginalFile as $key => $value) {
-                                                         $word = App\Models\Word::where(['word'=> $value,'grade_id'=>$list->grade_id,'file_id'=>$file_id])->first();
-
-
-                                                         if ($word) {
-                                                             if($word->level==App\Helper\ArticleLevels::Easy )
-                                                                 echo "<span style='color: #10cf3b;font-size:14px;'> $value  </span>" . ' ';
-                                                                 if($word->level==App\Helper\ArticleLevels::Hard)
-                                                                 echo "<span style='color: red;font-size:14px;' > $value  </span>" . ' ';
-
-
-                                                         }
-                                                         else {
-                                                             echo"<span style='font-size:14px;'> $value  </span>" . ' ';
-                                                         }
-                                                     };
-                                                @endphp
                                             </div>
-                                            <div class="col-md-6">
-                                                @if($type==$articleObject->getNormalArticleValue())
-                                                    <label> مقدمة السؤال القبلي </label>
-                                                    <textarea type="text" class="form-control" name="hint">@if($article) {{$article->pollHint}} @endif  </textarea>
-                                                    <label> السؤال القبلي والبعدي </label>
-                                                    <textarea type="text" class="form-control" name="poll">@if($article) {{$article->poll}} @endif  </textarea>
-<br>
-                                                @endif
+                                            <form action="{{url('editor/save/article')}}" method="post">
+                                                <div id='font'>
+                                                    @php
+                                                        foreach ($orginalFile as $key => $value) {
+                                                             $word = App\Models\Word::where(['word'=> $value,'grade_id'=>$list->grade_id,'file_id'=>$file_id])->first();
 
-                                                @csrf
-                                                <textarea class="mceEditor"
-                                                          name="article{{$type}}">@if($article) @if($type==$articleObject->getNormalArticleValue()){!! $article->article !!} @else {!! $article->stretchArticle !!}@endif @endif </textarea>
-                                                <input name="image" type="file" id="upload" hidden onchange="">
-                                                <br>
-                                                <br>
-                                                <input type="hidden" name="list_id" value="{{$list->id}}">
-                                                <input type="hidden" name="level" value="{{$level}}">
-                                                <input type="hidden" name="type" value="{{$type}}">
-                                                <button type="submit" class="btn btn-success btn-lg">حفظ</button>
-                                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-                                                        data-target="#myModal"> عرض المقال
-                                                </button>
 
-                                            </div>
+                                                             if ($word) {
+                                                                 if($word->level==App\Helper\ArticleLevels::Easy )
+                                                                     echo "<span style='color: #10cf3b;font-size:14px;'> $value  </span>" . ' ';
+                                                                     if($word->level==App\Helper\ArticleLevels::Hard)
+                                                                     echo "<span style='color: red;font-size:14px;' > $value  </span>" . ' ';
+
+
+                                                             }
+                                                             else {
+                                                                 echo"<span style='font-size:14px;'> $value  </span>" . ' ';
+                                                             }
+                                                         };
+                                                    @endphp
+                                                </div>
                                         </div>
-                                        <div id="myModal" style="width: 100%" class="modal fade bd-example-modal-lg"
-                                             tabindex="-1" role="dialog"
-                                             aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg">
+                                        <div class="col-md-6">
+                                            @if($type==$articleObject->getNormalArticleValue())
+                                                <label> مقدمة السؤال القبلي </label>
+                                                <textarea type="text" class="form-control" name="hint">@if($article) {{$article->pollHint}} @endif  </textarea>
+                                                <label> السؤال القبلي والبعدي </label>
+                                                <textarea type="text" class="form-control" name="poll">@if($article) {{$article->poll}} @endif  </textarea>
+                                                <br>
+                                            @endif
 
-                                                <!-- Modal content-->
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
+                                            @csrf
+                                            <textarea class="mceEditor"
+                                                      name="article{{$type}}">@if($article) @if($type==$articleObject->getNormalArticleValue()){!! $article->article !!} @else {!! $article->stretchArticle !!}@endif @endif </textarea>
+                                            <input name="image" type="file" id="upload" hidden onchange="">
+                                            <br>
+                                            <br>
+                                            <input type="hidden" name="list_id" value="{{$list->id}}">
+                                            <input type="hidden" name="level" value="{{$level}}">
+                                            <input type="hidden" name="type" value="{{$type}}">
+                                            <button type="submit" class="btn btn-success btn-lg">حفظ</button>
+                                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                                                    data-target="#myModal"> عرض المقال
+                                            </button>
 
-                                                        <center><h4 class="modal-title">المقال</h4></center>
+                                        </div>
+                                    </div>
+                                    <div id="myModal" style="width: 100%" class="modal fade bd-example-modal-lg"
+                                         tabindex="-1" role="dialog"
+                                         aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
 
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="row">
-                                                            <div class="col-md-6"
-                                                                 style="border-left: solid 2px black;font-size:14px;line-height: 1.5">
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
 
-                                                                @php
-                                                                    foreach ($orginalFile as $key => $value) {
-                                                                         $word = App\Models\Word::where(['word'=> $value,'grade_id'=>$list->grade_id,'file_id'=>$file_id])->first();
+                                                    <center><h4 class="modal-title">المقال</h4></center>
+
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-md-6"
+                                                             style="border-left: solid 2px black;font-size:14px;line-height: 1.5">
+
+                                                            @php
+                                                                foreach ($orginalFile as $key => $value) {
+                                                                     $word = App\Models\Word::where(['word'=> $value,'grade_id'=>$list->grade_id,'file_id'=>$file_id])->first();
 
 
-                                                                         if ($word) {
-                                                                             if($word->level==App\Helper\ArticleLevels::Easy )
-                                                                                 echo "<span style='color: #10cf3b;font-size:14px;'> $value  </span>" . ' ';
-                                                                                 if($word->level==App\Helper\ArticleLevels::Hard)
-                                                                                 echo "<span style='color: red;font-size:14px;' > $value  </span>" . ' ';
+                                                                     if ($word) {
+                                                                         if($word->level==App\Helper\ArticleLevels::Easy )
+                                                                             echo "<span style='color: #10cf3b;font-size:14px;'> $value  </span>" . ' ';
+                                                                             if($word->level==App\Helper\ArticleLevels::Hard)
+                                                                             echo "<span style='color: red;font-size:14px;' > $value  </span>" . ' ';
 
 
-                                                                         }
-                                                                         else {
-                                                                             echo $value . ' ';
-                                                                         }
-                                                                     };
-                                                                @endphp
-                                                            </div>
+                                                                     }
+                                                                     else {
+                                                                         echo $value . ' ';
+                                                                     }
+                                                                 };
+                                                            @endphp
+                                                        </div>
 
-                                                            <div class="col-md-6"
-                                                                 style="border-left: solid 2px black;font-size:18px;line-height: 1.5">
-                                                                @if($article)
-                                                                    <div id="tinymcFont">    {!! $article->article !!} </div>
-                                                                @endif
-                                                            </div>
+                                                        <div class="col-md-6"
+                                                             style="border-left: solid 2px black;font-size:18px;line-height: 1.5">
+                                                            @if($article)
+                                                                <div id="tinymcFont">    {!! $article->article !!} </div>
+                                                            @endif
                                                         </div>
                                                     </div>
-                                                    <div class="modal-footer">
-                                                        @if($AllArticles->count()==App\Helper\ArticleLevels::NumberOfLevels)
-                                                            <a
-                                                                    class="btn btn-success"
-                                                                    href="{{url('editor/sendArticleOfListToReviewer/'.$article->list_id)}}">إرسال
-                                                                إلى المراجعة</a>  @endif
-                                                            <button type="button" class="btn btn-default"
-                                                                    data-dismiss="modal">غلق
-                                                            </button>&nbsp;&nbsp;&nbsp;
-                                                    </div>
                                                 </div>
+                                                <div class="modal-footer">
 
+                                                    @if($AllArticles->count()==App\Helper\ArticleLevels::NumberOfLevels)
+                                                        <a
+                                                                class="btn btn-success"
+                                                                href="{{url('editor/sendArticleOfListToReviewer/'.$article->list_id)}}">إرسال
+                                                            إلى المراجعة</a>  @endif
+                                                        &nbsp;&nbsp;&nbsp;
+                                                        <button type="button" class="btn btn-default"
+                                                                data-dismiss="modal">غلق
+                                                        </button>
+                                                </div>
                                             </div>
+
                                         </div>
+                                    </div>
                                     </form>
                                     <div class="table-responsive">
 
@@ -243,7 +248,7 @@
 
                                                                             <a href="{{url('issues/chang/step/'.$issue->id.'/'.\App\Helper\IssuesSteps::DoneByEditor)}}"
                                                                                type="button" class="btn btn-success">تم
-                                                                                الانتهاء</a>
+                                                                                النتهاء</a>
                                                                             <button type="button" class="btn btn-danger"
                                                                                     data-dismiss="modal">خروج
                                                                             </button>
