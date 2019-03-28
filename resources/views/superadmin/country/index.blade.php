@@ -14,7 +14,7 @@
                             <div class="alert alert-info">{{session("message")}}</div>
                         @endif
                         <a class="btn btn-info" data-toggle="modal" data-target="#exampleModal"><i
-                                    class="fa fa-flag"></i> اضافة بلدأخري</a>
+                                    class="fa fa-flag"></i> إضافة بلدأخري</a>
                         <br>
                         <br>
                         <div class="row">

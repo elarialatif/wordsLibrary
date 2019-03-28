@@ -61,11 +61,11 @@
                         <form method="post" action="{{url('editor/addVocabulary/'.$file_id.'/'.$level)}}">
                             @csrf
                             <label>الكلمة</label>
-                            <input type="text" name="word[0][word]">
+                            <input type="text" required name="word[0][word]">
                             <label>المعنى</label>
-                            <input type="text" name="word[0][mean]">
+                            <input type="text" required name="word[0][mean]">
 
-                            <button id="addRow"> اضافة</button>
+                            <button id="addRow"> إضافة</button>
                             <div id="empty"></div>
                             <button class="submit">حفظ</button>
                         </form>
@@ -92,8 +92,7 @@
 
                                                 <!-- Modal content-->
                                                 <div class="modal-content">
-                                                    <div class="modal-header">
-
+                                                    <div class="modal-header">تعديل
                                                     </div>
                                                     <div class="modal-body">
                                                         <form method="post"
@@ -101,13 +100,13 @@
                                                             @csrf
                                                             <div class="row">
                                                             <label for="word" class="col-md-2"> الكلمة </label>
-                                                            <input type="text" name="word" class="col-md-8 form-control"  value="{{$word->word}}">
+                                                            <input type="text" name="word"  class="col-md-8 form-control"  value="{{$word->word}}">
                                                             </div>
                                                             <br>
                                                             <div class="row">
-                                                            <label for="name" class="col-md-2">المعنى</label>
+                                                            <label for="mean" class="col-md-2">المعنى</label>
 
-                                                            <textarea name="name" class="col-md-8 form-control" rows="6"
+                                                            <textarea name="mean"  class="col-md-8 form-control" rows="6"
                                                                       cols="40"> {{$word->mean}}</textarea>
                                                             </div>
                                                             <br>
@@ -173,7 +172,7 @@
 
                                                     <!-- Modal Header -->
                                                     <div class="modal-header">
-                                                        <h4 class="modal-title">Modal Heading</h4>
+                                                        <h4 class="modal-title">الملاحظة</h4>
                                                         <button type="button" class="close"
                                                                 data-dismiss="modal">&times;
                                                         </button>
@@ -189,12 +188,12 @@
 
                                                     <!-- Modal footer -->
                                                     <div class="modal-footer">
+                                                        <a href="{{url('issues/chang/step/'.$issue->id.'/'.\App\Helper\IssuesSteps::DoneByEditor)}}"
+                                                        type="button" class="btn btn-success">تم
+                                                            النتهاء</a>
                                                         <button type="button" class="btn btn-danger"
                                                                 data-dismiss="modal">خروج
                                                         </button>
-                                                        <a href="{{url('issues/chang/step/'.$issue->id.'/'.\App\Helper\IssuesSteps::DoneByEditor)}}"
-                                                           type="button" class="btn btn-success">تم
-                                                            النتهاء</a>
                                                     </div>
 
                                                 </div>

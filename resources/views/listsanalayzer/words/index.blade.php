@@ -70,8 +70,8 @@
                                                                 data-dismiss="modal">غلق
                                                         </button>
                                                     </div>
+                                                </div>
                                             </form>
-                                        </div>
                                     </div>
                                 </div>
                                 {{--end modal--}}
@@ -160,7 +160,7 @@
             count++;
             $("<div class='modal-footer' id='ST"+count+"'>" +
                 "<input type = 'hidden' name = 'user_id' value = '{{auth()->id()}}' >" +
-                "<input type = 'text' class = 'form-control' id= 'word[" + count + "]' placeholder = 'الكلمه' name = 'word[" + count + "]' >" +
+                "<input type = 'text' class = 'form-control' id= 'word[" + count + "]' placeholder = 'الكلمة' name = 'word[" + count + "]' >" +
                 "<button class='btn btn-icon btn-outline-danger' id=\"btn[" + count + "]\" onclick='remove("+count+")'> <i class=\"feather icon-minus-square\"></i></button>" +
                 "</div>").insertBefore("#ST0");
         });

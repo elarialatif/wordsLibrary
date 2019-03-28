@@ -232,31 +232,31 @@
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    الاجابة الأولي
+                                                                    الإجابة الأولى
                                                                 </td>
                                                                 <td>{{$question->ans1}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    الاجابة الثانية
+                                                                    الإجابة الثانية
                                                                 </td>
                                                                 <td>{{$question->ans2}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    الاجابة الثالثة
+                                                                    الإجابة الثالثة
                                                                 </td>
                                                                 <td>{{$question->ans3}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    الاجابة الرابعة
+                                                                    الإجابة الرابعة
                                                                 </td>
                                                                 <td>{{$question->ans4}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    الاجابة الصحيحة:
+                                                                    الإجابة الصحيحة:
                                                                     @php $true=$question->true_answer; @endphp
                                                                     {{$question->$true}}</td>
                                                             </tr>
@@ -620,13 +620,8 @@
                                                                             <label><h4>العنوان</h4></label>
                                                                             <input type="text" name="title" class="form-control">
                                                                             <br>
-<<<<<<< HEAD
-                                                                            <label><h4>الملاحظه</h4></label>
-                                                                            <textarea name="name" rows="6" cols="55"> </textarea>
-=======
                                                                             <label><h4>الملاحظة</h4></label>
                                                                             <textarea name="name" rows="6" cols="60"> </textarea>
->>>>>>> 19fb3f10aba858869013e68b3b45b6a29200c402
                                                                             <input type="hidden" name="field_id" value="{{$sound->id}}">
                                                                             <input type="hidden" name="table" value="sound">
                                                                             <br>
@@ -950,31 +945,31 @@
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    الاجابة الأولي
+                                                                    الإجابة الأولى
                                                                 </td>
                                                                 <td>{{$question->ans1}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    الاجابة الثانية
+                                                                    الإجابة الثانية
                                                                 </td>
                                                                 <td>{{$question->ans2}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    الاجابة الثالثة
+                                                                    الإجابة الثالثة
                                                                 </td>
                                                                 <td>{{$question->ans3}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    الاجابة الرابعة
+                                                                    الإجابة الرابعة
                                                                 </td>
                                                                 <td>{{$question->ans4}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    الاجابة الصحيحة:
+                                                                    الإجابة الصحيحة:
                                                                     @php $true=$question->true_answer; @endphp
                                                                     {{$question->$true}}</td>
                                                             </tr>
@@ -1485,8 +1480,8 @@
                                                         style="width:100%;float: left">
                                                     <thead>
                                                     <tr>
-                                                        <th width="50%">الكلمه</th>
-                                                        <th width="50%">المعني</th>
+                                                        <th width="50%">الكلمة</th>
+                                                        <th width="50%">المعنى</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>

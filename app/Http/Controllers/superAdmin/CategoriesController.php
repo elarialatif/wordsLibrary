@@ -106,7 +106,7 @@ class CategoriesController extends Controller
         $categories->save();
 //        $arr['name'] = $categories->name;
 //        $arr['table_name'] = 'التصنيفات';
-//        $arr['type'] = 'اضافة';
+//        $arr['type'] = 'إضافة';
 //        $arr['row_id'] = $categories->id;
 //        LogTimeController::saveLogesTimes($arr);
         // redirect

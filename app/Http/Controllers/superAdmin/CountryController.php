@@ -49,7 +49,7 @@ class CountryController extends Controller
                 'value.unique' => 'تكرار القيمه ممنوع  ',]);
         $countrys=$request->except('_token');
         CountryRepository::save($countrys);
-        return redirect(url('country'))->with('success', 'تمتالإضافة بنجاح ');
+        return redirect(url('country'))->with('success', 'تمت الإضافة بنجاح ');
     }
 
     /**

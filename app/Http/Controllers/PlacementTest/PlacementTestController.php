@@ -23,7 +23,7 @@ class PlacementTestController extends Controller
         $data = $request->except('_token');
         $data['user_id'] = auth()->id();
         PlacementTestRepository::save($data);
-        return redirect()->back()->with('success', 'تمت اضافة الاختبار بنجاح');
+        return redirect()->back()->with('success', 'تمت إضافة الاختبار بنجاح');
     }
 
     public function update(Request $request, $id)

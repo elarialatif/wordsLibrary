@@ -50,7 +50,7 @@
                                             <div class="modal-dialog modal-lg" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">تعديل المقال</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel">إضافة ملاحظة</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
@@ -77,10 +77,10 @@
 
                                                         </div>
                                                         <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-success"> حفظ
+                                                            </button>
                                                             <button type="button" class="btn btn-secondary"
                                                                     data-dismiss="modal">غلق
-                                                            </button>
-                                                            <button type="submit" class="btn btn-success"> حفظ
                                                             </button>
 
                                                         </div>
@@ -121,7 +121,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-default"
-                                                                data-dismiss="modal">Close
+                                                                data-dismiss="modal">غلق
                                                         </button>
                                                     </div>
                                                 </div>
@@ -194,11 +194,11 @@
 
                                                     <!-- Modal footer -->
                                                     <div class="modal-footer">
+                                                        <a href="{{url('issues/chang/step/'.$issue->id.'/'.\App\Helper\IssuesSteps::CloseByCreator)}}"
+                                                           type="button" class="btn btn-success">غلق</a>
                                                         <button type="button" class="btn btn-danger"
                                                                 data-dismiss="modal">خروج
                                                         </button>
-                                                        <a href="{{url('issues/chang/step/'.$issue->id.'/'.\App\Helper\IssuesSteps::CloseByCreator)}}"
-                                                           type="button" class="btn btn-success">غلق</a>
                                                     </div>
 
                                                 </div>
@@ -216,7 +216,7 @@
         </div>
     </div>
 
-    <script>
-        $('#3').css('background', '#539af6');
-    </script>
+    {{--<script>--}}
+        {{--$('#3').css('background', '#539af6');--}}
+    {{--</script>--}}
 @endsection

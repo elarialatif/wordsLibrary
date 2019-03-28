@@ -43,7 +43,7 @@ class VocabController extends Controller
         }
         $vocab = new Vocab();
         $vocab::insert($arrayOfWordsAndMeaning);
-        return redirect()->back()->with('success', 'تمت الاضافة بنجاح');
+        return redirect()->back()->with('success', 'تمت الإضافة بنجاح');
     }
 
     public function deleteVocab($id)

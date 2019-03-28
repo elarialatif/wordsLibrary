@@ -16,7 +16,7 @@ $grouped = $notify->where('read_at',null);
     {{--<a href="javascript:">حذف الكل</a>--}}
     {{--</div>--}}
 </div>
-<ul class="noti-body" id="note">
+<ul class="noti-body" style="height: 300px" id="note">
     <li class="n-title">
         <div class="media" id="newNote">
         </div>

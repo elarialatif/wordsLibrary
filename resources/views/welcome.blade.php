@@ -90,7 +90,7 @@
 
     <thead>
     <th> التكرار</th>
-    <th>الكلمه</th>
+    <th>الكلمة</th>
 
     </thead>
     <tbody>

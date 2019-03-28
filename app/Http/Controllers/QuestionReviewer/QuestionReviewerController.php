@@ -126,7 +126,7 @@ class QuestionReviewerController extends Controller
             return redirect()->back()->withError('يجب الانتهاء من كل الملاحظات');
         }
         Article::where('id', $artical_id)->update(['status' => 1]);
-        return redirect()->back()->with('success', 'تمتالمراجعة بنجاح ');
+        return redirect()->back()->with('success', 'تمت المراجعة بنجاح ');
     }
 
     public function send($list_id)

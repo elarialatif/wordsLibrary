@@ -21,7 +21,7 @@ class IssuesController extends Controller
             'title.required' => 'العنوان مطلوب'
         ]);
         IssuesRepository::save($request);
-        return redirect()->back()->with('success', 'تمت الاضافة بنجاح ');
+        return redirect()->back()->with('success', 'تمت الإضافة بنجاح ');
     }
 
     public function ChangeStep($id, $step)

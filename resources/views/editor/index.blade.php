@@ -77,7 +77,7 @@
                                                             @else
                                                                 <td>
 
-                                                                    <button class="btn btn-default"> مغلق</button>
+                                                                    {{--<button class="btn btn-default"> مغلق</button>--}}
                                                                     <button type="button" class="btn btn-info btn-lg"
                                                                             data-toggle="modal"
                                                                             data-target="#myModal{{$file->id}}">غير المكتمل</button>
@@ -100,33 +100,38 @@
 
                                                                                     @endphp
                                                                                     @if (!$articleForEasyLevel)
-                                                                                    <p style="font-size: 18px;color: green">ادخال المقال المختصر والموسع
+                                                                                    <p style="font-size: 18px;color: green">إدخال المقال المختصر والموسع
                                                                                         للمستوى السهل</p>
                                                                                     @elseif( $articleForEasyLevel && !$articleForEasyLevel->stretchArticle)
                                                                                         <p style="font-size: 18px;color: green">ادخال المقال الموسع
+
                                                                                             للمستوى السهل</p>
                                                                                     @endif
                                                                                     @if (!$articleForNormalLevel)
-                                                                                        <p style="font-size: 18px;color: green">ادخال المقال المختصر والموسع
+                                                                                        <p style="font-size: 18px;color: green">إدخال المقال المختصر والموسع
                                                                                             للمستوى المتوسط</p>
+
                                                                                     @elseif( $articleForNormalLevel && !$articleForNormalLevel->stretchArticle)
                                                                                         <p style="font-size: 18px;color: green">ادخال المقال الموسع
+
                                                                                             للمستوى المتوسط</p>
                                                                                     @endif
 
                                                                                     @if (!$articleForHardLevel)
-                                                                                        <p style="font-size: 18px;color: green">ادخال المقال المختصر والموسع
+                                                                                        <p style="font-size: 18px;color: green">إدخال المقال المختصر والموسع
                                                                                             للمستوى الصعب</p>
+
                                                                                     @elseif( $articleForHardLevel && !$articleForHardLevel->stretchArticle)
                                                                                         <p style="font-size: 18px;color: green">ادخال المقال الموسع
+
                                                                                             للمستوى الصعب</p>
 
                                                                                     @endif
-                                                                                    <p style="font-size: 18px;color: green">{{($vocabsForEasyLevel)?'':' ادخل معاني الكلمات للمقال السهل'}}</p>
+                                                                                    <p style="font-size: 18px;color: green">{{($vocabsForEasyLevel)?'':' إدخال معاني الكلمات للمقال السهل'}}</p>
 
-                                                                                    <p style="font-size: 18px;color: green">{{($vocabsForNormalLevel)?'':' ادخل معاني الكلمات للمقال المتوسط'}}</p>
+                                                                                    <p style="font-size: 18px;color: green">{{($vocabsForNormalLevel)?'':' إدخال معاني الكلمات للمقال المتوسط'}}</p>
 
-                                                                                    <p style="font-size: 18px;color: green">{{($vocabsForHardLevel)?'':' ادخل معاني الكلمات للمقال الصعب'}}</p>
+                                                                                    <p style="font-size: 18px;color: green">{{($vocabsForHardLevel)?'':' إدخال معاني الكلمات للمقال الصعب'}}</p>
                                                                                 </div>
                                                                                 <div class="modal-footer">
                                                                                     <button type="button"

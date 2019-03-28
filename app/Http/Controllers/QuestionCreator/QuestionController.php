@@ -106,7 +106,7 @@ class QuestionController extends Controller
             'question.*.ans4.max' => 'الإجابة الرابعة يجب الا تزيد عن 191 حرف',
         ];
         foreach ($request->question as $arrIndex => $arrValue) { //add unqiue constraint of answers to each question answers
-            $messages_array["ans1.$arrIndex.not_in"] = "لابد ان تكون الإجابة الأولي مختلفه";
+            $messages_array["ans1.$arrIndex.not_in"] = "لابد ان تكون الإجابة الأولى مختلفه";
             $messages_array["ans2.$arrIndex.not_in"] = "لابد ان تكون الإجابة الثانية مختلفه";
             $messages_array["ans3.$arrIndex.not_in"] = "لابد ان تكون الإجابة الثالثة مختلفه";
             $messages_array["ans4.$arrIndex.not_in"] = "لابد ان تكون الإجابة الرابعة مختلفه";
@@ -120,7 +120,7 @@ class QuestionController extends Controller
         $question = $request->except('_token');
         $question = QuestionsRepository::save($question);
         if($request->submitType && $request->submitType=='lastQuestion' ){
-            return redirect(url('question/myList'))->with('success', 'تمتالإضافة بنجاح ');
+            return redirect(url('question/myList'))->with('success', 'تمت الإضافة بنجاح ');
         }
         else{
             $artical = Article::where('id', $question[0]->artical_id)->first();
@@ -182,7 +182,7 @@ class QuestionController extends Controller
             'question.ans4.max' => 'الإجابة الرابعة يجب الا تزيد عن 191 حرف',
         ];
 
-        $messages_array["ans1.not_in"] = "لابد ان تكون الإجابة الأولي مختلفه";
+        $messages_array["ans1.not_in"] = "لابد ان تكون الإجابة الأولى مختلفه";
         $messages_array["ans2.not_in"] = "لابد ان تكون الإجابة الثانية مختلفه";
         $messages_array["ans3.not_in"] = "لابد ان تكون الإجابة الثالثة مختلفه";
         $messages_array["ans4.not_in"] = "لابد ان تكون الإجابة الرابعة مختلفه";

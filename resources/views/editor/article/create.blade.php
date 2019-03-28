@@ -92,7 +92,6 @@
                                                      };
                                                 @endphp
                                             </div>
-                                            </div>
                                             <div class="col-md-6">
                                                 @if($type==$articleObject->getNormalArticleValue())
                                                     <label> مقدمة السؤال القبلي </label>
@@ -164,14 +163,14 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-default"
-                                                                data-dismiss="modal">غلق
-                                                        </button>&nbsp;&nbsp;&nbsp;
                                                         @if($AllArticles->count()==App\Helper\ArticleLevels::NumberOfLevels)
                                                             <a
                                                                     class="btn btn-success"
                                                                     href="{{url('editor/sendArticleOfListToReviewer/'.$article->list_id)}}">إرسال
                                                                 إلى المراجعة</a>  @endif
+                                                            <button type="button" class="btn btn-default"
+                                                                    data-dismiss="modal">غلق
+                                                            </button>&nbsp;&nbsp;&nbsp;
                                                     </div>
                                                 </div>
 

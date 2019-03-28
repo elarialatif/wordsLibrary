@@ -67,11 +67,11 @@
 
                                                     <!-- Modal footer -->
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger"
-                                                                data-dismiss="modal">خروج
-                                                        </button>
                                                         <button type="submit" class="btn btn-info">
                                                             <i style="margin-right: 1px;" class="fa  fas fa-upload"></i>
+                                                        </button>
+                                                        <button type="button" class="btn btn-danger"
+                                                                data-dismiss="modal">خروج
                                                         </button>
                                                     </div>
                                                 </form>
@@ -156,8 +156,8 @@
                                                                         <div class="modal-content">
                                                                             <!-- Modal Header -->
                                                                             <div class="modal-header">
-                                                                                <h4 class="modal-title">Modal
-                                                                                    Heading</h4>
+                                                                                <h4 class="modal-title">تعديل
+                                                                                    الملاحظة</h4>
                                                                                 <button type="button" class="close"
                                                                                         data-dismiss="modal">&times;
                                                                                 </button>
@@ -172,13 +172,14 @@
                                                                             </center>
                                                                             <!-- Modal footer -->
                                                                             <div class="modal-footer">
+                                                                                <a href="{{url('issues/chang/step/'.$issue->id.'/'.\App\Helper\IssuesSteps::DoneByEditor)}}"
+                                                                                   type="button"
+                                                                                   class="btn btn-success">غلق</a>
                                                                                 <button type="button"
                                                                                         class="btn btn-danger"
                                                                                         data-dismiss="modal">خروج
                                                                                 </button>&nbsp;
-                                                                                <a href="{{url('issues/chang/step/'.$issue->id.'/'.\App\Helper\IssuesSteps::DoneByEditor)}}"
-                                                                                   type="button"
-                                                                                   class="btn btn-success">غلق</a>
+
                                                                             </div>
 
                                                                         </div>
@@ -241,12 +242,12 @@
 
                                                         <!-- Modal footer -->
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger"
-                                                                    data-dismiss="modal">خروج
-                                                            </button>
                                                             <button type="submit" class="btn btn-info">
                                                                 <i style="margin-right: 1px;"
                                                                    class="fa  fas fa-upload"></i>
+                                                            </button>
+                                                            <button type="button" class="btn btn-danger"
+                                                                    data-dismiss="modal">خروج
                                                             </button>
                                                         </div>
                                                     </form>
@@ -327,8 +328,7 @@
                                                                         <div class="modal-content">
                                                                             <!-- Modal Header -->
                                                                             <div class="modal-header">
-                                                                                <h4 class="modal-title">Modal
-                                                                                    Heading</h4>
+                                                                                <h4 class="modal-title">تعديل الملاحظة</h4>
                                                                                 <button type="button" class="close"
                                                                                         data-dismiss="modal">&times;
                                                                                 </button>
@@ -343,13 +343,14 @@
                                                                             </center>
                                                                             <!-- Modal footer -->
                                                                             <div class="modal-footer">
+                                                                                <a href="{{url('issues/chang/step/'.$issue->id.'/'.\App\Helper\IssuesSteps::DoneByEditor)}}"
+                                                                                   type="button"
+                                                                                   class="btn btn-success">غلق</a>
                                                                                 <button type="button"
                                                                                         class="btn btn-danger"
                                                                                         data-dismiss="modal">خروج
                                                                                 </button>&nbsp;
-                                                                                <a href="{{url('issues/chang/step/'.$issue->id.'/'.\App\Helper\IssuesSteps::DoneByEditor)}}"
-                                                                                   type="button"
-                                                                                   class="btn btn-success">غلق</a>
+
                                                                             </div>
 
                                                                         </div>

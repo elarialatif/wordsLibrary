@@ -13,7 +13,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h5>
-                                        اضافة كلمات
+                                        إضافة كلمات
                                     </h5>
                                 </div>
                                 <div class="card-header">
@@ -117,7 +117,7 @@
                     "<div class = 'form-group' >" +
                     "<label for= 'word' >  الكلمة</label> " +
                     "<input type = 'hidden' name = 'user_id' value = '{{auth()->id()}}' >" +
-                    "<input type = 'text' class = 'form-control' id= 'word[" + i + "]' placeholder = 'الكلمه' name = 'word[" + i + "]' >" +
+                    "<input type = 'text' class = 'form-control' id= 'word[" + i + "]' placeholder = 'الكلمة' name = 'word[" + i + "]' >" +
                     "</br>" +
                     "<button class='btn btn-danger' id=\"btn[" + i + "]\" onclick='remove()'> حذف</button>" +
                     "</div>" +

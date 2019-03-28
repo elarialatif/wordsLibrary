@@ -13,7 +13,7 @@
                     <div class="con">
                         <div class="t-con">
                             <div class="h4 h-center">
-                                اضافة تصنيف
+                                إضافة تصنيف
                             </div>
                         </div>
                     </div>
