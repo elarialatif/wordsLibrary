@@ -37,7 +37,7 @@
                 </tr>
                 <tr>
                     <td>
-                        الاجابة الصحيحة:
+                        الإجابة الصحيحة:
                         @php $true=$question->true_answer; @endphp
                         {{$question->$true}}</td>
                 </tr>
@@ -232,7 +232,7 @@
                     </tr>
                     <tr>
                         <td>
-                            الاجابة الصحيحة:
+                            الإجابة الصحيحة:
                             @php $true=$question->true_answer; @endphp
                             {{$question->$true}}</td>
                     </tr>

@@ -52,7 +52,7 @@ class SchoolController extends Controller
             'email.unique' => 'الاميل موجود بالفعل',
         ]);
         SchoolRepository::save($request);
-        return redirect()->back()->with('success', 'تمت اضافة المدرسة بنجاح ');
+        return redirect()->back()->with('success', 'تمت إضافة المدرسة بنجاح ');
     }
 
     public function edit($school_id)

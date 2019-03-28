@@ -132,7 +132,7 @@
                     @endphp
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">غلق</button>
                 </div>
             </div>
 
@@ -173,7 +173,7 @@
                 },
             }).done(function () {
 
-                $('#empty').append('<div class=" btn-success"> تمت الاضافة بنجاح</div>');
+                $('#empty').append('<div class=" btn-success"> تمت الإضافة بنجاح</div>');
                 location.reload();
             });
         }

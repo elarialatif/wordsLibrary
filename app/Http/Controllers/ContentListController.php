@@ -41,7 +41,7 @@ class ContentListController extends Controller
             return redirect()->to('allLists')->withErrors('الاسم موجود بالفعل ');
         }
         ContentListsRepository::save($lists);
-        return redirect()->to('allLists')->with('success', 'تمت الاضافة بنجاح ');
+        return redirect()->to('allLists')->with('success', 'تمت الإضافة بنجاح ');
 
     }
 
@@ -66,7 +66,7 @@ class ContentListController extends Controller
 //            ($request->image)->move(public_path() . '/' . 'listsImage', $filename);
 //        }
         if ($checkName->list == $lists['list'] && $checkName->grade_id == $lists['grade_id'] /*&&$checkName->image==$lists['image']*/) {
-            return redirect(url('allLists'))->with('info', 'لا يوجد تغغير ');
+            return redirect(url('allLists'))->with('info', 'لا يوجد تغيير ');
         }
         $list = ContentList::where(['list' => $lists['list'], 'grade_id' => $lists['grade_id']/*,'image'=>$lists['image']*/])->first();
         if ($list) {

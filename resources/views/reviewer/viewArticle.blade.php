@@ -73,12 +73,13 @@
 
                                                         </div>
                                                         <div class="modal-footer">
+
+                                                            <button class="btn btn-primary" type="submit"><span
+                                                                        class="fa fa-plus"></span> إضافة
+                                                            </button>
                                                             <button type="button" class="btn btn-secondary"
                                                                     data-dismiss="modal">
                                                                 غلق
-                                                            </button>
-                                                            <button class="btn btn-primary" type="submit"><span
-                                                                        class="fa fa-plus"></span> إضافة
                                                             </button>
                                                         </div>
                                                     </form>
@@ -121,10 +122,10 @@
 
                                                         </div>
                                                         <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-success"> حفظ
+                                                            </button>
                                                             <button type="button" class="btn btn-secondary"
                                                                     data-dismiss="modal">غلق
-                                                            </button>
-                                                            <button type="submit" class="btn btn-success"> حفظ
                                                             </button>
 
                                                         </div>
@@ -204,14 +205,15 @@
                                                                     </center>
                                                                     <!-- Modal footer -->
                                                                     <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-danger"
-                                                                                data-dismiss="modal">خروج
-                                                                        </button>&nbsp;
+
                                                                         <a href="{{url('issues/chang/step/'.$issue->id.'/'.\App\Helper\IssuesSteps::CloseByCreator)}}"
                                                                            type="button" class="btn btn-success">غلق</a>
                                                                         <a href="{{url('issues/chang/step/'.$issue->id.'/'.\App\Helper\IssuesSteps::Open)}}"
                                                                            type="button" class="btn btn-danger">إعادة
                                                                             إلى المحرر</a>
+                                                                        <button type="button" class="btn btn-danger"
+                                                                                data-dismiss="modal">خروج
+                                                                        </button>&nbsp;
                                                                     </div>
 
                                                                 </div>
@@ -243,6 +245,19 @@
     <script src="{{ asset('public/js/pages/tbl-datatable-custom.js')}}"></script>
 
 @endsection
+<script>
+    if ("{{$type}}" == "{{$articleObject->getNormalArticleValue()}}") {
+        $('#0').css('background', '#green');
+        $('#1').css('background', '#539af6');
+
+    }
+    else {
+        $('#0').css('background', '#green');
+        $('#1').css('background', 'green');
+        $('#2').css('background', '#539af6');
+    }
+
+</script>
 <script>
     if ("{{$flag}}" == "0") {
 

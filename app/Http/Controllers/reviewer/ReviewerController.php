@@ -95,7 +95,7 @@ class ReviewerController extends Controller
                 $user = UsersRepository::find($user_id);
                 $name = Carbon::now() . "بتاريخ" . $user->name . "تمت إعادة الإرسال إلى مدخل الأسئلة ";
                 Steps::SaveLogRow($name, 'إعادة إرسال', 'content_lists', $list_id);
-                return redirect()->back()->with('success', 'تم الإرسال ألى مدخل الأسئلة ');
+                return redirect()->back()->with('success', 'تم الإرسال إلى مدخل الأسئلة ');
             } else {
                 ContentListsRepository::updateStep($list_id, Steps::ResendToLanguestic);
                 NotificationRepository::notify($list_id, Steps::Languestic);
@@ -104,7 +104,7 @@ class ReviewerController extends Controller
                 $user = UsersRepository::find($user_id);
                 $name = Carbon::now() . "بتاريخ" . $user->name . "تمت إعادة الإرسال إلى المراجع اللغوى ";
                 Steps::SaveLogRow($name, 'إعادة إرسال', 'content_lists', $list_id);
-                return redirect()->back()->with('success', 'تم الإرسال ألى المراجع اللغوى');
+                return redirect()->back()->with('success', 'تم الإرسال إلى المراجع اللغوى');
             }
         }
         $data['user_id'] = auth()->id();
@@ -120,7 +120,7 @@ class ReviewerController extends Controller
         }
 
         Steps::SaveLogRow($name, ' إرسال', 'content_lists', $list_id);
-        return redirect()->back()->with('success', ' تم الإرسال ألى مدخل الأسئلة ');
+        return redirect()->back()->with('success', ' تم الإرسال إلى مدخل الأسئلة ');
     }
 
     public function reSendToEditor($list_id)

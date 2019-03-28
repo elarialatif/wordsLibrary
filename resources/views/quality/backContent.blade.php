@@ -26,7 +26,7 @@
                                                 <th>الكود</th>
                                                 <th>الموضوع</th>
                                                 <th>الصف</th>
-                                                <th>إدخال الأسئلة</th>
+                                                <th>عرض</th>
                                                 <th>إرسال</th>
                                             </tr>
                                             </thead>
@@ -74,7 +74,6 @@ $easySound=\App\Repository\IssuesRepository::getAllIssuesForArticle($soundEasy->
                                                         $hardStatus=App\Models\Article::where(['id'=>$articalHard->id,'status'=>1])->first();
                                                     @endphp
                                                     {{--@endif--}}
-                                                    <td>
                                                         {{--for QuestionReviewer--}}
                                                         <a href="{{url('quality/review/'.$articalEasy->id.'/'.'resend')}}"
                                                            class="btn @if($soundEasy){{($easyReviewer->count()==0 && $easySound->count()==0)?'btn-success':'btn-danger'}}@else{{($easyReviewer->count()==0)?'btn-success':'btn-danger'}}@endif">السهل<i

@@ -40,7 +40,7 @@ class PlacementTestQuestionsController extends Controller
             'question.*.ans4.max' => 'الإجابة الرابعة يجب الا تزيد عن 191 حرف',
         ];
         foreach ($request->question as $arrIndex => $arrValue) { //add unqiue constraint of answers to each question answers
-            $messages_array["ans1.$arrIndex.not_in"] = "لابد ان تكون الإجابة الأولي مختلفه";
+            $messages_array["ans1.$arrIndex.not_in"] = "لابد ان تكون الإجابة الأولى مختلفه";
             $messages_array["ans2.$arrIndex.not_in"] = "لابد ان تكون الإجابة الثانية مختلفه";
             $messages_array["ans3.$arrIndex.not_in"] = "لابد ان تكون الإجابة الثالثة مختلفه";
             $messages_array["ans4.$arrIndex.not_in"] = "لابد ان تكون الإجابة الرابعة مختلفه";
@@ -55,7 +55,7 @@ class PlacementTestQuestionsController extends Controller
         $data['user_id'] = auth()->id();
 
         QuestionsPlacementRepository::save($data);
-        return redirect()->back()->with('success', 'تمت اضافة الأسئلة بنجاح');
+        return redirect()->back()->with('success', 'تمت إضافة الأسئلة بنجاح');
     }
 
     public function update(Request $request, $id)
@@ -72,7 +72,7 @@ class PlacementTestQuestionsController extends Controller
             'question.ans4.max' => 'الإجابة الرابعة يجب الا تزيد عن 191 حرف',
         ];
 
-        $messages_array["ans1.not_in"] = "لابد ان تكون الإجابة الأولي مختلفه";
+        $messages_array["ans1.not_in"] = "لابد ان تكون الإجابة الأولى مختلفه";
         $messages_array["ans2.not_in"] = "لابد ان تكون الإجابة الثانية مختلفه";
         $messages_array["ans3.not_in"] = "لابد ان تكون الإجابة الثالثة مختلفه";
         $messages_array["ans4.not_in"] = "لابد ان تكون الإجابة الرابعة مختلفه";

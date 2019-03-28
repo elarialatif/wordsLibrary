@@ -33,7 +33,7 @@
                                     <div class="modal-dialog " role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h6 class="modal-title" id="exampleModalLabel">اضافة موضوع</h6>
+                                                <h6 class="modal-title" id="exampleModalLabel">إضافة موضوع</h6>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -72,12 +72,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
+                                                    <button class="btn btn-primary" type="submit"><span
+                                                                class="fa fa-plus"></span> إضافة
+                                                    </button>
                                                     <button type="button" class="btn btn-secondary"
                                                             data-dismiss="modal">
                                                         غلق
-                                                    </button>
-                                                    <button class="btn btn-primary" type="submit"><span
-                                                                class="fa fa-plus"></span> إضافة
                                                     </button>
 
                                                 </div>
