@@ -65,7 +65,7 @@ Route::group(['middleware' => 'editor'], function () {
         Route::get('index', 'EditorController@index');
         Route::get('mylists', 'EditorController@myLists');
         Route::get('add/article/{file_id}/{level_id}/{page?}/{flag?}', 'EditorController@createArticle');
-        Route::get('addVocabulary/{file_id}/{level}', 'VocabController@createVocab');
+        Route::get('addVocabulary/{file_id}/{level}/{page?}', 'VocabController@createVocab');
         Route::post('addVocabulary/{file_id}/{level}', 'VocabController@saveVocab');
 
         //   Route::post('save/article', 'EditorController@saveArticle');

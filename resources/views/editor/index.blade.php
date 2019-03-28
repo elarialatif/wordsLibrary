@@ -102,14 +102,14 @@
                                                                                     @if (!$articleForEasyLevel)
                                                                                     <p style="font-size: 18px;color: green">ادخال المقال المختصر والموسع
                                                                                         للمستوى السهل</p>
-                                                                                    @elseif( $articleForEasyLevel && $articleForEasyLevel->stretchArticle)
+                                                                                    @elseif( $articleForEasyLevel && !$articleForEasyLevel->stretchArticle)
                                                                                         <p style="font-size: 18px;color: green">ادخال المقال الموسع
                                                                                             للمستوى السهل</p>
                                                                                     @endif
                                                                                     @if (!$articleForNormalLevel)
                                                                                         <p style="font-size: 18px;color: green">ادخال المقال المختصر والموسع
                                                                                             للمستوى المتوسط</p>
-                                                                                    @elseif( $articleForNormalLevel && $articleForNormalLevel->stretchArticle)
+                                                                                    @elseif( $articleForNormalLevel && !$articleForNormalLevel->stretchArticle)
                                                                                         <p style="font-size: 18px;color: green">ادخال المقال الموسع
                                                                                             للمستوى المتوسط</p>
                                                                                     @endif
@@ -117,7 +117,7 @@
                                                                                     @if (!$articleForHardLevel)
                                                                                         <p style="font-size: 18px;color: green">ادخال المقال المختصر والموسع
                                                                                             للمستوى الصعب</p>
-                                                                                    @elseif( $articleForHardLevel && $articleForHardLevel->stretchArticle)
+                                                                                    @elseif( $articleForHardLevel && !$articleForHardLevel->stretchArticle)
                                                                                         <p style="font-size: 18px;color: green">ادخال المقال الموسع
                                                                                             للمستوى الصعب</p>
 

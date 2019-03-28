@@ -28,9 +28,7 @@
                                                 style="color: blue">{{$list->list}} </span>) (<span
                                                 style="color: blue">{{\App\Helper\ArticleLevels::getLevel($level)}} </span>)
                                     </h5>
-                                    @php if($page==null){
-                                    $page="refused/lists";
-                                    }  @endphp
+
                                     <a href="{{url('editor').'/'.$page}}" style="float: left" class="btn btn-success">
                                         رجوع <span class="fa fa-arrow-left">  </span> </a>
                                     <div style="text-align: center">
@@ -246,7 +244,7 @@
 
                                                                             <a href="{{url('issues/chang/step/'.$issue->id.'/'.\App\Helper\IssuesSteps::DoneByEditor)}}"
                                                                                type="button" class="btn btn-success">تم
-                                                                                النتهاء</a>
+                                                                                الانتهاء</a>
                                                                             <button type="button" class="btn btn-danger"
                                                                                     data-dismiss="modal">خروج
                                                                             </button>

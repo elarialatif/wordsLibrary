@@ -88,8 +88,14 @@ class EditorController extends Controller
         } else {
             $request->validate([
                 'articleNormal' => 'required',
+                'hint' => 'required',
+                'poll' => 'required',
             ],
-                ['articleNormal.required' => 'المقال مطلوب ',]);
+                [
+                    'articleNormal.required' => 'المقال مطلوب ',
+                    'hint.required' => 'مقدمة السؤال مطلوبة ',
+                    'poll.required' => 'السؤال  مطلوب ',
+                    ]);
         }
 
 

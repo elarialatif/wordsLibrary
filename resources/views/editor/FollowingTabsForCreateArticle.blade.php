@@ -77,8 +77,8 @@
 <table class="stepbar-progress">
     <tbody>
     <tr>
-        <td class="step-item step-item-first @if(request()->url()==url('editor/add/article/'.$file_id.'/'.$level.'/'.'0'.'/'.'0') ||request()->url()==url('editor/add/article/'.$file_id.'/'.$level) ) pending  @else done @endif" data-step="1">
-            <a href="{{url('editor/add/article/'.$file_id.'/'.$level.'/'.'0'.'/'.'0')}}" >
+        <td class="step-item step-item-first @if(request()->url()==url('editor/add/article/'.$file_id.'/'.$level.'/'.$page.'/'.'0') ||request()->url()==url('editor/add/article/'.$file_id.'/'.$level.'/'.$page) ) pending  @else done @endif" data-step="1">
+            <a href="{{url('editor/add/article/'.$file_id.'/'.$level.'/'.$page.'/'.'0')}}" >
                     <span class="step-body">
                         <span>
                                 مقال مختصر
@@ -91,8 +91,8 @@
                     <span class="body-fill"></span>
                 </span>
         </td>
-        <td class="step-item step-item-middle  @if(request()->url()==url('editor/add/article/'.$file_id.'/'.$level.'/'.'1'.'/'.'1')) pending @elseif(request()->url()==url('editor/addVocabulary/'.$file_id.'/'.$level)) done @endif" data-step="2">
-            <a href="{{url('editor/add/article/'.$file_id.'/'.$level.'/'.'1'.'/'.'1')}}">
+        <td class="step-item step-item-middle  @if(request()->url()==url('editor/add/article/'.$file_id.'/'.$level.'/'.$page.'/'.'1')) pending @elseif(request()->url()==url('editor/addVocabulary/'.$file_id.'/'.$level.'/'.$page)) done @endif" data-step="2">
+            <a href="{{url('editor/add/article/'.$file_id.'/'.$level.'/'.$page.'/'.'1')}}">
                     <span class="step-body">
                        <span> مقال موسع </span>
                     </span>
@@ -103,8 +103,8 @@
                     <span class="body-fill"></span>
                 </span>
         </td>
-        <td class="step-item step-item-last  @if(request()->url()==url('editor/addVocabulary/'.$file_id.'/'.$level)) pending @endif" data-step="3">
-            <a href="{{url('editor/addVocabulary/'.$file_id.'/'.$level)}}">
+        <td class="step-item step-item-last  @if(request()->url()==url('editor/addVocabulary/'.$file_id.'/'.$level.'/'.$page)) pending @endif" data-step="3">
+            <a href="{{url('editor/addVocabulary/'.$file_id.'/'.$level.'/'.$page)}}">
                     <span class="step-body">
                       <span>  معاني الكلمات </span>
                     </span>

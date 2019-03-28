@@ -11,7 +11,7 @@ use App\Http\Controllers\Controller;
 
 class VocabController extends Controller
 {
-    public function createVocab($file_id, $level)
+    public function createVocab($file_id, $level,$page)
     {
         $list_id = ArticleFiles::find($file_id)->list_id;
         $articleCheck = Article::where(['list_id' => $list_id, 'level' => $level])->first();
@@ -22,7 +22,7 @@ class VocabController extends Controller
         } elseif ($articleCheck->stretchArticle == null) {
             return redirect()->back()->withErrors(['ادخل المقال الموسع اولا ']);
         }
-        return view('editor.vocabulary.createVocabulary')->with(compact('file_id'))->with(compact('level'))->with(compact('allVocabularyForTheListAndLevel'))->with(compact('article'));
+        return view('editor.vocabulary.createVocabulary')->with(compact('file_id'))->with(compact('level'))->with(compact('allVocabularyForTheListAndLevel'))->with(compact('article'))->with(compact('page'));
     }
 
     public function saveVocab($file_id, $level)

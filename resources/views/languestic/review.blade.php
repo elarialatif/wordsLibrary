@@ -1180,7 +1180,7 @@
                                                                                     @csrf
                                                                                     <label><h4>العنوان</h4></label>
                                                                                     <input type="text" name="title"
-                                                                                           class="form-control">
+                                                                                           >
                                                                                     <br>
                                                                                     <label><h4>الملاحظة</h4></label>
                                                                                     <textarea name="name" rows="6"
@@ -1230,12 +1230,17 @@
                                                                         <form method="post"
                                                                               action="{{url('editor/editVocabulary/'.$word->id)}}">
                                                                             @csrf
-                                                                            <label> الكلمة </label>
-                                                                            <input type="text" name="word" value="{{$word->word}}">
+                                                                            <div class="row">
+                                                                                <label for="word" class="col-md-2"> الكلمة </label>
+                                                                                <input type="text" name="word" class="col-md-8 form-control"  value="{{$word->word}}">
+                                                                            </div>
                                                                             <br>
-                                                                            <label>المعنى</label>
-                                                                            <textarea name="name" rows="6"
-                                                                                      cols="55"> {{$word->mean}}</textarea>
+                                                                            <div class="row">
+                                                                                <label for="name" class="col-md-2">المعنى</label>
+
+                                                                                <textarea name="name" class="col-md-8 form-control" rows="6"
+                                                                                          cols="40"> {{$word->mean}}</textarea>
+                                                                            </div>
                                                                             <br>
                                                                             <button class="btn btn-success" id="addRow"> تعديل</button>
                                                                         </form>
