@@ -110,9 +110,9 @@
                                                             </div>
                                                             <br>
                                                             <div class="row">
-                                                                <label for="name" class="col-md-2">المعنى</label>
+                                                                <label for="mean" class="col-md-2">المعنى</label>
 
-                                                                <textarea name="name" class="col-md-8 form-control" rows="6"
+                                                                <textarea name="mean" class="col-md-8 form-control" rows="6"
                                                                           cols="40"> {{$word->mean}}</textarea>
                                                             </div>
                                                             <br>
