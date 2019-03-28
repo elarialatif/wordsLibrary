@@ -4,6 +4,7 @@ namespace App\Http\Controllers\editor;
 
 use App\ArticleCategory;
 use App\Helper\Steps;
+use App\Helper\UsersTypes;
 use App\Models\Article;
 use App\Models\ArticleFiles;
 use App\Models\AssignTask;
@@ -88,14 +89,20 @@ class EditorController extends Controller
         } else {
             $request->validate([
                 'articleNormal' => 'required',
-                'hint' => 'required',
-                'poll' => 'required',
             ],
                 [
                     'articleNormal.required' => 'المقال مطلوب ',
-                    'hint.required' => 'مقدمة السؤال مطلوبة ',
-                    'poll.required' => 'السؤال  مطلوب ',
                     ]);
+            if(auth()->user()->role==UsersTypes::EDITOR){
+                $request->validate([
+                    'hint' => 'required',
+                    'poll' => 'required',
+                ],
+                    [
+                        'hint.required' => 'مقدمة السؤال مطلوبة ',
+                        'poll.required' => 'السؤال  مطلوب ',
+                    ]);
+            }
         }
 
 
