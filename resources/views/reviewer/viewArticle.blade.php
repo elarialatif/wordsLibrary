@@ -75,7 +75,7 @@
                                                         <div class="modal-footer">
 
                                                             <button class="btn btn-primary" type="submit"><span
-                                                                        class="fa fa-plus"></span> إضافة
+                                                                        class="fa fa-edit"></span> تعديل
                                                             </button>
                                                             <button type="button" class="btn btn-secondary"
                                                                     data-dismiss="modal">

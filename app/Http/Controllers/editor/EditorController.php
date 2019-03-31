@@ -138,7 +138,7 @@ class EditorController extends Controller
             $article->save();
 
         });
-        session()->flash('success', 'تمت إضافة المقال بنجاح ');
+        session()->flash('success', 'تم ');
         return redirect()->back();
     }
 
