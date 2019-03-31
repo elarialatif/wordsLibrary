@@ -1178,13 +1178,17 @@
                                                                                 <form action="{{url('issues/create')}}"
                                                                                       method="post">
                                                                                     @csrf
-                                                                                    <label><h4>العنوان</h4></label>
-                                                                                    <input type="text" name="title"
+                                                                                    <div class="row">
+                                                                                    <label class="col-md-2"><h4>العنوان</h4></label>
+                                                                                    <input type="text" name="title" class="form-control col-md-8"
                                                                                            >
+                                                                                    </div>
                                                                                     <br>
-                                                                                    <label><h4>الملاحظة</h4></label>
-                                                                                    <textarea name="name" rows="6"
+                                                                                    <div class="row">
+                                                                                    <label class="col-md-2"><h4>الملاحظة</h4></label>
+                                                                                    <textarea name="name" rows="6"  class="form-control col-md-8"
                                                                                               cols="55"> </textarea>
+                                                                                    </div>
                                                                                     <input type="hidden" name="field_id"
                                                                                            value="{{$artical->id}}">
                                                                                     <input type="hidden" name="table"
@@ -1193,6 +1197,7 @@
                                                                                            value="Vocab">
                                                                                     <br>
                                                                                     <br>
+
                                                                                     <button type="submit" class="btn btn-success">
                                                                                         إضافة
                                                                                     </button>

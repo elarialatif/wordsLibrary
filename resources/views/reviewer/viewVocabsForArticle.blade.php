@@ -61,12 +61,17 @@
                                                         <div class="modal-body">
 
                                                             @csrf
-                                                            <label><h4>العنوان</h4></label>
-                                                            <input type="text" name="title" class="form-control">
-                                                            <input type="hidden" name="type" class="form-control">
+                                                            <div class="row">
+                                                                <label class="col-md-2"><h4>العنوان</h4></label>
+                                                                <input type="text" name="title" class="form-control col-md-8"
+                                                                >
+                                                            </div>
                                                             <br>
-                                                            <label><h4>ملاحظة</h4></label>
-                                                            <textarea class="mceEditor" name="name"> </textarea>
+                                                            <div class="row">
+                                                                <label class="col-md-2"><h4>الملاحظة</h4></label>
+                                                                <textarea name="name" rows="6"  class="form-control col-md-8"
+                                                                          cols="55"> </textarea>
+                                                            </div>
                                                             <input type="hidden" name="field_id"
                                                                    value="{{$article->id}}">
                                                             <input type="hidden" name="table" value="article">
