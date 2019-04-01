@@ -21,6 +21,7 @@ class SchoolRepository
 
         DB::transaction(function () use ($request, $id) {
             $school = new  School();
+            $logoName="";
             $user = School::find($id);
             if ($user) {
                 $school = $user;
@@ -46,7 +47,8 @@ class SchoolRepository
             }
             $school->type = UsersTypes::School;
             $school->save();
-            $query = ['start_at' => $request->start_at,
+            $query = [
+                'start_at' => $request->start_at,
                 'created_by' => auth()->id(),
                 'user_id' => $school->id,
                 'end_at' => $request->end_at,
@@ -57,19 +59,22 @@ class SchoolRepository
                 'logo' => $logoName,
                 'website' => $request->website,
                 'mobile' => $request->mobile,
-                'facebook' => $request->facebook,];
+                'facebook' => $request->facebook
+            ];
+
             if ($id != null) {
-                DB::table('studentpedia.schools')->where('user_id', $id)
+
+                DB::table('studentPedia.schools')->where('user_id', $id)
                     ->update(
                         $query
                     );
             } else {
-                DB::table('studentpedia.schools')->insert([
-                    [
-                        $query
-                    ],
+                DB::table('studentPedia.schools')->insert(
 
-                ]);
+                        $query
+
+
+                );
             }
 
 
@@ -80,7 +85,7 @@ class SchoolRepository
     static function findSchool($school_id)
     {
         $user = School::find($school_id);
-        $school = DB::table('studentpedia.schools')
+        $school = DB::table('studentPedia.schools')
             ->select('*')
             ->where('user_id', '=', $school_id)->first();
         $data['user'] = $user;

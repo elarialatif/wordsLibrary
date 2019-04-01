@@ -195,9 +195,9 @@ class HomeController extends Controller
             } else {
                 $arr = [
                     'all_lists' => 0,
-                    'uploadedFile' => 0,
+                    'uploadedFile' => [],
                     'underWork' => 0,
-                    'tasks' => 0,
+                    'tasks' => [],
                     'finished' => 0
                 ];
                 return $arr;

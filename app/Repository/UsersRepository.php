@@ -40,6 +40,7 @@ class UsersRepository
         $user['name'] = $data['name'];
         $user['email'] = $data['email'];
         $user['role'] = $data['role'];
+        $user['active'] = $data['active'];
         if ($data['password'] && $data['password'] != null) {
             $user['password'] = bcrypt($data['password']);
         }
