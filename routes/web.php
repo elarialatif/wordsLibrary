@@ -27,6 +27,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('profile/{id}', 'superAdmin\UserController@updateProfile');
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/userArchive', 'HomeController@userArchive');
+    Route::get('filterFiles/{grade_id}', 'ArticalController@filterFiles');
     Route::get('viewArticle/{article_id}', 'superAdmin\SuperAdminController@viewArticle');
     Route::get('/tashkel', 'WordController@teshkelGet');
     Route::get('/MarkAllSeen', function () {
@@ -127,7 +128,7 @@ Route::get('getGradeList/{level_id}', 'ContentListController@getGradeList')->mid
 Route::post('listsFilter', 'ContentListController@listsFilter')->middleware('listmaker:role');
 Route::group(['middleware' => 'superadmin'], function () {
     Route::get('allFiles', 'ArticalController@allFiles');
-    Route::get('filterFiles/{grade_id}', 'ArticalController@filterFiles');
+
     Route::get('Rates/{userRole}/{time}', 'HomeController@Rates');
     Route::group(['namespace' => 'superAdmin', 'middleware' => 'superadmin'], function () {
         Route::resource('users', 'UserController');

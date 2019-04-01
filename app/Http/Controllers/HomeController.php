@@ -194,11 +194,11 @@ class HomeController extends Controller
                 return $arr;
             } else {
                 $arr = [
-                    'all_lists' => 0,
-                    'uploadedFile' => 0,
-                    'underWork' => 0,
-                    'tasks' => 0,
-                    'finished' => 0
+                    'all_lists' => null,
+                    'uploadedFile' => [],
+                    'underWork' => null,
+                    'tasks' => [],
+                    'finished' => null
                 ];
                 return $arr;
             }
@@ -243,9 +243,13 @@ class HomeController extends Controller
         }
     }
     public function userArchive(){
+        if(auth()->user()->role ==UsersTypes::LISTMAKER){
+            $list=ContentList::where('user_id',auth()->id())->get();
+        }else{
         $userLists=AssignTask::where('user_id',auth()->id())->get()->pluck('list_id')->toArray();
         $userLists=array_unique($userLists);
         $list=ContentList::whereIn('id',$userLists)->get();
+        }
         $grades = GradesRepository::all();
         return view('userArchive',compact('list','grades'));
     }

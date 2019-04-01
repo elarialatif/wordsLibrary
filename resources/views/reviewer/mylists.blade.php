@@ -103,7 +103,7 @@
                                                                     @if($issueshard->count()>0 || $issuesnormal->count()>0 || $issueseasy->count()>0 )
                                                                         <a class="btn btn-danger"
                                                                            href="{{url('reviewer/reSendTo/editor/'.$list->id)}}">إعادة
-                                                                            اراسال
+                                                                            إرسال
                                                                             إلى المحرر</a>
                                                                     @else <a class="btn btn-success"
                                                                              href="{{url('reviewer/sendto/create/question/'.$list->id)}}">إرسال

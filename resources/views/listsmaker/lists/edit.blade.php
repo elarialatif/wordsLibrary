@@ -42,7 +42,7 @@
                 {{--</div>--}}
             {{--</div>--}}
         {{--</div>--}}
-        <button class="btn btn-primary" type="submit"><span class="fa fa-plus"></span>تعديل</button>
+        <button class="btn btn-primary" type="submit"><span class="fa fa-edit"></span> تعديل  </button>
         </form>
     </div>
     <script type="text/javascript">

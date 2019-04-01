@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\superAdmin;
 
+use App\Helper\UsersTypes;
+use App\Models\ContentList;
 use App\Repository\ContentListsRepository;
 use App\Repository\CountryRepository;
 use App\Repository\TaskRepository;
@@ -24,7 +26,11 @@ class UserController extends Controller
 
    public function profile(){
         $user=UsersRepository::find(auth()->id());
+        if(auth()->user()->role==UsersTypes::LISTMAKER){
+            $tasks=ContentList::where('user_id',auth()->id())->get();
+        }else{
         $tasks=TaskRepository::findAllWhere('user_id',$user->id);
+        }
         return view('auth.profile',compact('user','tasks'));
    }
 

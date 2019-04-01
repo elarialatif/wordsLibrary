@@ -390,16 +390,9 @@
                                 <div class="tab-pane fade active show" id="5a" role="tabpanel">
                                     <div class="media friendlist-box align-items-center justify-content-center m-b-20">
                                         <div class="media-body">
-                                            <h6 style="font-size: 20px">المقال
-                                                @if($sound)
-                                                    <audio controls>
-                                                        <source src="{{url('/').'/'.$sound->path}}"
-                                                                type="audio/ogg">
-                                                        Your browser does not support the audio element.
-                                                    </audio>
-                                                @endif
+                                            <h6 style="font-size: 20px">السؤال القبلي
                                             </h6>
-                                            <div id="tinymcFont">  {!! $article->article !!} </div>
+                                            <div id="tinymcFont">  {!! $article->pollHint !!} </div>
                                         </div>
                                     </div>
                                 </div>
@@ -491,75 +484,13 @@
                                     @endif
                                 </div>
                                 <div class="tab-pane fade" id="6a" role="tabpanel">
-                                    @if($questions->count()>0)
                                         <div class="media friendlist-box align-items-center justify-content-center m-b-20">
                                             <div class="media-body">
-                                                <h6 class="m-0 d-inline" style="font-size: 18px">
-                                                    الأسئلة الأساسية
+                                                <h6 class="m-0 d-inline" style="font-size: 18px">السؤال البعدى
                                                 </h6>
-                                                @foreach($questions as $question)
-                                                    <div class="card-header" id="Issues">
-                                                        <h6 style="font-size: 20px">السؤال رقم {{$question->id}}
-                                                        </h6>
-                                                        <div class="table-responsive"
-                                                             style="display: inline-block">
-                                                            <table
-                                                                    class="display table nowrap table-striped table-hover"
-                                                                    style="width:100%;float: right">
-                                                                <thead>
-                                                                <tr>
-                                                                    <th width="50%">/</th>
-                                                                    <th width="50%">القيمة</th>
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                <tr>
-                                                                    <td>
-                                                                        السؤال
-                                                                    </td>
-                                                                    <td>
-                                                                        {!! $question->question !!}
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        الإجابة الأولى
-                                                                    </td>
-                                                                    <td>{{$question->ans1}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        الإجابة الثانية
-                                                                    </td>
-                                                                    <td>{{$question->ans2}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        الإجابة الثالثة
-                                                                    </td>
-                                                                    <td>{{$question->ans3}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        الإجابة الرابعة
-                                                                    </td>
-                                                                    <td>{{$question->ans4}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        الإجابة الصحيحة
-                                                                        @php $true=$question->true_answer; @endphp
-                                                                    </td>
-                                                                    <td>{{$question->$true}}</td>
-                                                                </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                @endforeach
+                                                <div id="tinymcFont">  {!! $article->poll !!} </div>
                                             </div>
                                         </div>
-                                    @endif
                                 </div>
                                 <div class="tab-pane fade" id="3a" role="tabpanel">
                                     <div class="media friendlist-box align-items-center justify-content-center m-b-20">
@@ -578,12 +509,13 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="4a" role="tabpanel">
-                                    @if($questionStretch->count()>0)
+
                                         <div class="media friendlist-box align-items-center justify-content-center m-b-20">
                                             <div class="media-body">
                                                 <h6 class="m-0 d-inline" style="font-size: 18px">
                                                     الأسئلة الإضافية
                                                 </h6>
+                                                @if($questionStretch->count()>0)
                                                 @foreach($questionStretch as $question)
                                                     <div class="card-header" id="Issues">
                                                         <h6 style="font-size: 20px">السؤال رقم {{$question->id}}
@@ -644,9 +576,10 @@
                                                         </div>
                                                     </div>
                                                 @endforeach
+                                                @endif
                                             </div>
                                         </div>
-                                    @endif
+
                                 </div>
                             </div>
                         </div>

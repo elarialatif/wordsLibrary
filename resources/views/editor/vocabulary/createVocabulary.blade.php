@@ -190,7 +190,7 @@
                                                     <div class="modal-footer">
                                                         <a href="{{url('issues/chang/step/'.$issue->id.'/'.\App\Helper\IssuesSteps::DoneByEditor)}}"
                                                         type="button" class="btn btn-success">تم
-                                                            النتهاء</a>
+                                                            الانتهاء</a>
                                                         <button type="button" class="btn btn-danger"
                                                                 data-dismiss="modal">خروج
                                                         </button>

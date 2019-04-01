@@ -50,7 +50,7 @@ class EditorController extends Controller
         return view('editor.mylists', compact('lists', 'categories_all'));
     }
 
-    public function createArticle($file_id, $level, $page = 'refused/lists', $flag = 0)
+    public function createArticle($file_id, $level, $page = 'refusedLists', $flag = 0)
     {
         $articleObject = new Article();
         $type = $articleObject->getNormalArticleValue();

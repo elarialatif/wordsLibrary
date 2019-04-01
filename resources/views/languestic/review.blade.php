@@ -643,6 +643,52 @@
                                                 </div>
                                             </div>
                                             {{--end modal--}}
+                                            {{--model for add Issuses for Article--}}
+                                            <div class="modal fade" id="stretchArticalModal{{$artical->id}}"
+                                                 tabindex="-1" role="dialog"
+                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">إضافة
+                                                                ملاحظة للمقال الإضافي</h5>
+                                                            <button type="button" class="close"
+                                                                    data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="{{url('issues/create')}}"
+                                                                  method="post">
+                                                                @csrf
+                                                                <label><h4>العنوان</h4></label>
+                                                                <input type="text" name="title"
+                                                                       class="form-control">
+                                                                <br>
+                                                                <label><h4>الملاحظة</h4></label>
+                                                                <textarea name="name" rows="6"
+                                                                          cols="55"> </textarea>
+                                                                <input type="hidden" name="field_id"
+                                                                       value="{{$artical->id}}">
+                                                                <input type="hidden" name="table"
+                                                                       value="article">
+                                                                <input type="hidden" name="type" value="Stretch">
+                                                                <br>
+                                                                <br>
+                                                                <button type="submit" class="btn btn-success">
+                                                                    إضافة
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">غلق
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{--end modal--}}
                                             <div id="tinymcFont"><span
                                                         id="articaasdasdl2">{!!$artical->stretchArticle !!}</span></div>
                                             <div id="Issues">
@@ -979,52 +1025,7 @@
                                                         </div>
                                                     </div>
                                                     {{--end modal--}}
-                                                    {{--model for add Issuses for Article--}}
-                                                    <div class="modal fade" id="stretchArticalModal{{$artical->id}}"
-                                                         tabindex="-1" role="dialog"
-                                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">إضافة
-                                                                        ملاحظة للمقال الإضافي</h5>
-                                                                    <button type="button" class="close"
-                                                                            data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <form action="{{url('issues/create')}}"
-                                                                          method="post">
-                                                                        @csrf
-                                                                        <label><h4>العنوان</h4></label>
-                                                                        <input type="text" name="title"
-                                                                               class="form-control">
-                                                                        <br>
-                                                                        <label><h4>الملاحظة</h4></label>
-                                                                        <textarea name="name" rows="6"
-                                                                                  cols="55"> </textarea>
-                                                                        <input type="hidden" name="field_id"
-                                                                               value="{{$artical->id}}">
-                                                                        <input type="hidden" name="table"
-                                                                               value="article">
-                                                                        <input type="hidden" name="type" value="Stretch">
-                                                                        <br>
-                                                                        <br>
-                                                                        <button type="submit" class="btn btn-success">
-                                                                            إضافة
-                                                                        </button>
-                                                                    </form>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                            data-dismiss="modal">غلق
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    {{--end modal--}}
+
                                                     {{--model for edit question--}}
                                                     <div class="modal fade" id="editquestion{{$question->id}}"
                                                          tabindex="-1" role="dialog"

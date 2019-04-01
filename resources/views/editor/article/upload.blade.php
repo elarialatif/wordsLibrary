@@ -181,10 +181,10 @@
                                                                        value="{{$list_id}}">
 
                                                                 <div class="form-group">
-                                                                    <label>الصوره:</label>
+                                                                    <label>الصورة:</label>
                                                                     <input type="file"
                                                                            class="form-control" name="image"
-                                                                           placeholder="الصوره" required>
+                                                                           placeholder="الصورة" required>
 
                                                                 </div>
                                                                 <div class="form-group">

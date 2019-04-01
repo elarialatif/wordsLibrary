@@ -42,11 +42,22 @@
                         </thead>
                         <tbody>
                         @foreach ($tasks as $list)
-                            <tr>
+                                @if(auth()->user()->role==\App\Helper\UsersTypes::LISTMAKER)
+                                    <tr>
+                                    <td>{{$list->id}}</td>
+                                    <td>{{$list->list}}</td>
+                                    <td>{{$list->grade->name}}</td>
+                                    <td>{{$list->created_at->toDateString() }}</td>
+                                    @else
+                                            @if ($list->lists==null)
+                                                @continue
+                                            @endif
+                                        <tr>
                                 <td>{{$list->lists->id}}</td>
                                 <td>{{$list->lists->list}}</td>
                                 <td>{{$list->lists->grade->name}}</td>
                                 <td>{{$list->created_at->toDateString() }}</td>
+                                    @endif
                             </tr>
                         @endforeach
                         </tbody>
@@ -159,7 +170,7 @@
 
                     {{--  --}}
                     <div class="">
-                        <button id="updateImage" class="btn btn-primary" type="button">تعديل الصوره</button>
+                        <button id="updateImage" class="btn btn-primary" type="button">تعديل الصورة</button>
                     </div>
                 </div>
                 <!-- edit form column -->
@@ -169,7 +180,7 @@
                         {{csrf_field()}}
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <label style="display: flex" for="exampleInputFirstName"> الأسم</label>
+                                <label style="display: flex" for="exampleInputFirstName"> الاسم</label>
                                 <input id="img" name="img" type="hidden">
                                 <input type="text" class="form-control" name="name" value="{{$user->name}}"
                                        id="exampleInputFirstName" aria-describedby="emailHelp">
@@ -177,7 +188,7 @@
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label style="display: flex" for="exampleInputEmail1">البريد الألكتروني</label>
+                                <label style="display: flex" for="exampleInputEmail1">البريد الإلكتروني</label>
                                 <input type="email" class="form-control" name="email" value="{{$user->email}}"
                                        id="exampleInputEmail1" aria-describedby="emailHelp" disabled>
                                 {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
@@ -197,7 +208,7 @@
                         {{-- <button type="submit" class="btn btn-primary">حفظ</button>
                         <button pd-popup-close="popupNew" href="#" class="btn btn-danger">إلغاء</button> --}}
                         <div class="modal-footer">
-                            <button class="btn btn-primary" type="submit"><span class="fa fa-plus"></span> حفظ
+                            <button class="btn btn-primary" type="submit"><span class="fa fa-edit"></span> حفظ
                                 التعديل
                             </button>
                             <button aria-label="Close" type="button" class="btn btn-secondary" data-dismiss="modal"

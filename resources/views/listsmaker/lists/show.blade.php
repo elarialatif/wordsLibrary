@@ -98,6 +98,7 @@
                                         <tr>
                                             <th>الموضوع</th>
                                             <th>الصف</th>
+                                            <th>ملف مرفوع</th>
                                             <th>الإجراءات</th>
                                         </tr>
                                         </thead>
@@ -110,8 +111,12 @@
                                         @continue
                                         @endif
                                         <tr>
-                                            <td width="50%">{{$list->list}}</td>
-                                            <td width="50%">{{$list->grade->name}}</td>
+                                            <td >{{$list->list}}</td>
+                                            <td >{{$list->grade->name}}</td>
+                                            <td >@if (($list->step==0))
+                                                    <i class='fas fa-times fa-3x'></i>@else
+                                                    <i class="fas fa-check fa-3x"></i>
+                                            @endif </td>
 
                                             <td>
                                                 @if(auth()->user()->role!=\App\Helper\UsersTypes::EDITOR)
@@ -163,13 +168,15 @@
             });
         }
     });
+    </script>
+<script>
     $(document).ready(function () {
         setTimeout(function () {
             $(" <div class=\"row\">" +
-                "<div class=\"col-md-6\">" +
+                "<div class=\"col-md-4\">" +
                 "<div class=\"form-group\">" +
-                "<select class=\"form-control\" name=\"grade_id\" id=\"grade_id\" onchange='change()'> " +
-                "<option value=\"\">----</option>" +
+                "<select class=\"form-control\" name=\"grade_id\"  id=\"grade_id\" onchange='change()'>" +
+                "<option value=\"\">الصفوف</option>" +
                 "<option value=\"all\">الكل</option>" +
                 "@foreach($grades as $grade)" +
                 "<option value=\"{{$grade->id}}\">{{$grade->name}}</option>" +
@@ -177,17 +184,15 @@
                 "</select>" +
                 "</div>" +
                 "</div>" +
-                "</div>"
-            ).insertAfter(".dataTables_filter");
+                "</div>").insertAfter(".dataTables_filter");
         }, 1000);
     });
 
     function change() {
         var test = $('#grade_id').find(":selected").val();
-        window.location = '{{url('
-        showLists
-        ')}}/' + test;
+        window.location = '{{url('showLists')}}/' + test;
     }
+
 </script>
 @section('css')
 <link rel="stylesheet" href="{{url('public/plugins/data-tables/css/datatables.min.css')}}">

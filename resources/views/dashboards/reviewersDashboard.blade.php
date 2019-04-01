@@ -52,12 +52,12 @@
                                     <h6>موضوعات تم الانتهاء منها </h6>
                                     <div class="progress">
                                         <div class="progress-bar progress-c-theme" role="progressbar"
-                                             style="width:{{round(($sharedArrayBetweenUsers['finished']/$sharedArrayBetweenUsers['all_lists'])*100)}}%;height:6px;"
+                                             style="width:{{($sharedArrayBetweenUsers['all_lists']==0)?0:round(($sharedArrayBetweenUsers['finished']/$sharedArrayBetweenUsers['all_lists'])*100)}}%;height:6px;"
                                              aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                                 <div class="media-body">
-                                    <label class="label theme-bg text-white f-14">{{round(($sharedArrayBetweenUsers['finished']/$sharedArrayBetweenUsers['all_lists'])*100)}}
+                                    <label class="label theme-bg text-white f-14">{{($sharedArrayBetweenUsers['all_lists']==0)? 0 :round(($sharedArrayBetweenUsers['finished']/$sharedArrayBetweenUsers['all_lists'])*100)}}
                                         %</label>
                                 </div>
                             </div>
@@ -66,12 +66,12 @@
                                     <h6>موضوعات لم يتم الانتهاء منها</h6>
                                     <div class="progress">
                                         <div class="progress-bar progress-c-theme2" role="progressbar"
-                                             style="width:{{round(($sharedArrayBetweenUsers['underWork']/$sharedArrayBetweenUsers['all_lists'])*100)}}%;height:6px;"
+                                             style="width:{{($sharedArrayBetweenUsers['all_lists']==0)?0:round(($sharedArrayBetweenUsers['underWork']/$sharedArrayBetweenUsers['all_lists'])*100)}}%;height:6px;"
                                              aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                                 <div class="media-body">
-                                    <label class="label theme-bg2 text-white f-14">{{round(($sharedArrayBetweenUsers['underWork']/$sharedArrayBetweenUsers['all_lists'])*100)}}
+                                    <label class="label theme-bg2 text-white f-14">{{($sharedArrayBetweenUsers['all_lists']==0)?0:round(($sharedArrayBetweenUsers['underWork']/$sharedArrayBetweenUsers['all_lists'])*100)}}
                                         %</label>
                                 </div>
                             </div>
@@ -100,12 +100,14 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+
                                         @foreach($sharedArrayBetweenUsers['tasks'] as $list)
                                             <tr>
                                                 <td>{{$list->id}}</td>
                                                 <td>{{$list->list}}</td>
                                             </tr>
                                         @endforeach
+
                                         </tbody>
                                     </table>
                                     {{--<a style="text-align: center" class="btn btn-primary" href="">المزيد</a>--}}
@@ -114,6 +116,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
             <!-- [ Row 2 ] start -->
 
