@@ -114,8 +114,8 @@
                                             <td >{{$list->list}}</td>
                                             <td >{{$list->grade->name}}</td>
                                             <td >@if (($list->step==0))
-                                                    <i class='fas fa-times fa-3x'></i>@else
-                                                    <i class="fas fa-check fa-3x"></i>
+                                                    <i class='fas fa-times fa-2x'></i>@else
+                                                    <i class="fas fa-check fa-2x"></i>
                                             @endif </td>
 
                                             <td>
