@@ -177,6 +177,7 @@
                                           </tr>
                                           </thead>
                                           <tbody>
+
                                           @foreach($sharedArrayBetweenUsers['uploadedFile'] as $list)
                                              <tr>
                                                 <td>{{$list->id}}</td>

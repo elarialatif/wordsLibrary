@@ -252,39 +252,58 @@
                                                                 </div>
 
                                                             </div>
+                                                            <div class="form-group row">
+                                                                <label for="role"
+                                                                       class="col-md-4 col-form-label text-md-right">{{ __('التفعيل') }}</label>
+                                                                <div class="col-md-6">
+                                                                    <select name="active" class="form-control">
 
-                                                            <div class="modal-footer">
-                                                                <div class="form-group row mb-0">
-                                                                    <div class="col-md-6 offset-md-4">
-                                                                        <button type="submit"
-                                                                                class="btn btn-primary">تعديل
-                                                                        </button>
-                                                                    </div>
+                                                                            <option value="1"{{($user->active==1)?'selected':''}}> مفعل</option>
+                                                                            <option value="0"{{($user->active==0)?'selected':''}}> غير مفعل</option>
+
+                                                                    </select>
+
+
+
                                                                 </div>
-                                                                <button type="button" class="btn btn-secondary"
-                                                                        data-dismiss="modal">
-                                                                    غلق
-                                                                </button>
                                                             </div>
+                                                            <div class="form-group row mb-0">
+                                                                <div class="col-md-6 offset-md-4">
+                                                                    <button type="submit"
+                                                                            class="btn btn-primary">تعديل
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                            data-dismiss="modal">
+                                                                        غلق
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                    <div class="modal-footer">
 
                                                     </div>
-                                                    </form>
 
                                                 </div>
-                                            </div>
-                                            {{--end modal--}}
-                                        @endforeach
-                                        </tbody>
-                                    </table>
+
+
+
                                 </div>
+
+                                {{--end modal--}}
+                                @endforeach
+                                </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    <!-- [ HTML5 Export button ] end -->
-
                 </div>
+                <!-- [ HTML5 Export button ] end -->
+
             </div>
         </div>
+    </div>
     </div>
     </div>
     <script>
