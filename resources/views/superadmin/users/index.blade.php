@@ -138,11 +138,16 @@
                                         </thead>
                                         <tbody>
                                         @foreach($users as $user)
+
                                             <tr>
                                                 <td id="example" onclick="archive({{$user->id}})"><a
                                                             href="#"> {{$user->name}}</a></td>
                                                 <td>{{$user->email}}</td>
+                                                @if($user->role==6 || $user->role==7)
+                                                    <td></td>
+                                                @else
                                                 <td>{{\App\Helper\UsersTypes::ArrayOfPermission[$user->role]}}</td>
+                                                @endif
                                                 <td>
                                                     <a href="#" data-toggle="modal"
                                                        data-target="#editModal{{$user->id}}"

@@ -63,10 +63,10 @@
                                     <label class="label theme-bg text-white f-14 f-w-400 float-right">{{$complete}}</label>
                                 </div>
                             </div>
-                            <h6 class="text-muted mt-4 mb-3">الموضوعات المنتهية {{$complete}}/{{$allLists}} </h6>
+                            <h6 class="text-muted mt-4 mb-3"> الموضوعات المنتهية {{($allLists)?$complete/$allLists:0}} </h6>
                             <div class="progress">
                                 <div class="progress-bar progress-c-theme" role="progressbar"
-                                     style="width:{{round(($complete/$allLists)*100)}}%;height:6px;" aria-valuenow="60"
+                                     style="width:{{($allLists)?round(($complete/$allLists)*100):0}}%;height:6px;" aria-valuenow="60"
                                      aria-valuemin="0"
                                      aria-valuemax="100"></div>
                             </div>
@@ -168,18 +168,18 @@
                                                id="{{\App\Helper\UsersTypes::REVIEWER}}">مراجع
                                                 محتوى</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link user" data-toggle="tab" role="tab" href="#daysub1"
-                                               onclick="Rates({{\App\Helper\UsersTypes::QuestionCreator}})"
-                                               id="{{\App\Helper\UsersTypes::QuestionCreator}}">مدخل
-                                                أسئلة</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link user" data-toggle="tab" role="tab" href="#daysub1"
-                                               onclick="Rates({{\App\Helper\UsersTypes::QuestionReviewer}})"
-                                               id="{{\App\Helper\UsersTypes::QuestionReviewer}}">مراجع
-                                                أسئلة</a>
-                                        </li>
+                                        {{--<li class="nav-item">--}}
+                                        {{--<a class="nav-link user" data-toggle="tab" role="tab" href="#daysub1"--}}
+                                        {{--onclick="Rates({{\App\Helper\UsersTypes::QuestionCreator}})"--}}
+                                        {{--id="{{\App\Helper\UsersTypes::QuestionCreator}}">مدخل--}}
+                                        {{--أسئلة</a>--}}
+                                        {{--</li>--}}
+                                        {{--<li class="nav-item">--}}
+                                        {{--<a class="nav-link user" data-toggle="tab" role="tab" href="#daysub1"--}}
+                                        {{--onclick="Rates({{\App\Helper\UsersTypes::QuestionReviewer}})"--}}
+                                        {{--id="{{\App\Helper\UsersTypes::QuestionReviewer}}">مراجع--}}
+                                        {{--أسئلة</a>--}}
+                                        {{--</li>--}}
                                         <li class="nav-item">
                                             <a class="nav-link user" data-toggle="tab" role="tab" href="#daysub1"
                                                onclick="Rates({{\App\Helper\UsersTypes::Languestic}})"
@@ -217,12 +217,12 @@
                                     <h6>موضوعات بدون ملفات</h6>
                                     <div class="progress">
                                         <div class="progress-bar progress-c-theme" role="progressbar"
-                                             style="width:{{round(($fileUnderUploading/$allLists)*100)}}%;height:6px;"
+                                             style="width:{{($allLists)?round(($fileUnderUploading/$allLists)*100):0}}%;height:6px;"
                                              aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                                 <div class="media-body">
-                                    <label class="label theme-bg text-white f-14">{{round(($fileUnderUploading/$allLists)*100)}}
+                                    <label class="label theme-bg text-white f-14">{{($allLists)?round(($fileUnderUploading/$allLists)*100):0}}
                                         %</label>
                                 </div>
                             </div>
@@ -231,12 +231,12 @@
                                     <h6>موضوعات تحت التحليل</h6>
                                     <div class="progress">
                                         <div class="progress-bar progress-c-theme2" role="progressbar"
-                                             style="width:{{round(($fileUnderAnalizing/$allLists)*100)}}%;height:6px;"
+                                             style="width:{{($allLists)?round(($fileUnderAnalizing/$allLists)*100):0}}%;height:6px;"
                                              aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                                 <div class="media-body">
-                                    <label class="label theme-bg2 text-white f-14">{{round(($fileUnderAnalizing/$allLists)*100)}}
+                                    <label class="label theme-bg2 text-white f-14">{{($allLists)?round(($fileUnderAnalizing/$allLists)*100):0}}
                                         %</label>
                                 </div>
                             </div>
@@ -245,12 +245,12 @@
                                     <h6>موضوعات تم تحليلها</h6>
                                     <div class="progress">
                                         <div class="progress-bar progress-c-blue" role="progressbar"
-                                             style="width:{{round(($analizingFile/$allLists)*100)}}%;height:6px;"
+                                             style="width:{{($allLists)?round(($analizingFile/$allLists)*100):0}}%;height:6px;"
                                              aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                                 <div class="media-body">
-                                    <label class="label bg-c-blue text-white f-14 ">{{round(($analizingFile/$allLists)*100)}}
+                                    <label class="label bg-c-blue text-white f-14 ">{{($allLists)?round(($analizingFile/$allLists)*100):0}}
                                         %</label>
                                 </div>
                             </div>
