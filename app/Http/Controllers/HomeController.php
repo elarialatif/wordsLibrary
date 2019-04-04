@@ -137,11 +137,11 @@ class HomeController extends Controller
             $arr['num_normal'] = Sound::where(['user_id' => auth()->id()])->whereIn('article_id', $normal_article_ids)->count();
             $arr['num_hard'] = Sound::where(['user_id' => auth()->id()])->whereIn('article_id', $hard_article_ids)->count();
         }
-        if (auth()->user()->role == UsersTypes::QuestionCreator) {
-            $arr['num_easy'] = Question::where(['user_id' => auth()->id()])->whereIn('artical_id', $easy_article_ids)->count();
-            $arr['num_normal'] = Question::where(['user_id' => auth()->id()])->whereIn('artical_id', $normal_article_ids)->count();
-            $arr['num_hard'] = Question::where(['user_id' => auth()->id()])->whereIn('artical_id', $hard_article_ids)->count();
-        }
+//        if (auth()->user()->role == UsersTypes::QuestionCreator) {
+//            $arr['num_easy'] = Question::where(['user_id' => auth()->id()])->whereIn('artical_id', $easy_article_ids)->count();
+//            $arr['num_normal'] = Question::where(['user_id' => auth()->id()])->whereIn('artical_id', $normal_article_ids)->count();
+//            $arr['num_hard'] = Question::where(['user_id' => auth()->id()])->whereIn('artical_id', $hard_article_ids)->count();
+//        }
         return $arr;
     }
 
@@ -172,9 +172,10 @@ class HomeController extends Controller
                 $tasks = TaskRepository::userTasks($step);
                 //$last_tasks = ContentList::whereIn('step', $step_for_task)->whereIn('id', $tasks)->latest()->get();
                 $last_tasks_ids = Article::with('lists')->whereIn('list_id', $tasks)->orderBy('updated_at', 'desc')->get()->pluck('list_id')->toArray();
-                if (auth()->user()->role == UsersTypes::QuestionCreator) {
-                    $last_tasks_ids = Question::whereIn('list_id', $tasks)->orderBy('updated_at', 'desc')->get()->pluck('list_id')->toArray();
-                } elseif (auth()->user()->role == UsersTypes::Sound) {
+//                if (auth()->user()->role == UsersTypes::QuestionCreator) {
+//                    $last_tasks_ids = Question::whereIn('list_id', $tasks)->orderBy('updated_at', 'desc')->get()->pluck('list_id')->toArray();
+//                }
+                if (auth()->user()->role == UsersTypes::Sound) {
                     $allArticlesIdsWorkedBySoundUser=Article::whereIn('list_id', $tasks)->get()->pluck('id')->toArray();
                     $last_article_ids_workedBySoundUser = Sound::whereIn('article_id', $allArticlesIdsWorkedBySoundUser)->orderBy('updated_at', 'desc')->get()->pluck('article_id')->toArray();
                     $last_tasks_ids=Article::whereIn('id', $last_article_ids_workedBySoundUser)->get()->pluck('list_id')->toArray();
@@ -220,14 +221,14 @@ class HomeController extends Controller
                 $arr = [Steps::reSendToReviewerFormEditor, $step];
                 return $arr;
                 break;
-            case Steps::Create_Question:
-                $arr = [Steps::ResendToQuestionCreator, $step];
-                return $arr;
-                break;
-            case Steps::Review_Question:
-                $arr = [Steps::ResendToQuestionReviewer, $step];
-                return $arr;
-                break;
+//            case Steps::Create_Question:
+//                $arr = [Steps::ResendToQuestionCreator, $step];
+//                return $arr;
+//                break;
+//            case Steps::Review_Question:
+//                $arr = [Steps::ResendToQuestionReviewer, $step];
+//                return $arr;
+//                break;
             case Steps::Languestic:
                 $arr = [Steps::ResendToLanguestic, $step];
                 return $arr;

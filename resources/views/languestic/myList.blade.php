@@ -74,29 +74,29 @@
                                                         {{--@endif--}}
                                                         {{--for QuestionReviewer--}}
                                                         @if(empty($easyStatus))
-                                                            <a href="{{url('languestic/review/'.$articalEasy->id)}}"
+                                                            <a href="{{(auth()->user()->role==\App\Helper\UsersTypes::Languestic)?url('languestic/review/'.$articalEasy->id):url('reviewer/review/'.$articalEasy->id)}}"
                                                                class="btn {{(empty($easyReviewer))?'btn-info':'btn-danger'}} ">السهل<i
                                                                         class="fa {{(empty($easyReviewer))?'':'fa-eye'}}"></i></a>
                                                         @else
-                                                            <a href="{{url('languestic/review/'.$articalEasy->id)}}"
+                                                            <a href="{{(auth()->user()->role==\App\Helper\UsersTypes::Languestic)?url('languestic/review/'.$articalEasy->id):url('reviewer/review/'.$articalEasy->id)}}"
                                                                class="btn {{(empty($easyReviewer))?'btn-success':'btn-danger'}} ">السهل<i
                                                                         class="fa {{(empty($easyReviewer))?'fa-check-circle':'fa-check-circle'}}"></i></a>
                                                         @endif
                                                         @if(empty($normalStatus))
-                                                            <a href="{{url('languestic/review/'.$articalNormal->id)}}"
+                                                            <a href="{{(auth()->user()->role==\App\Helper\UsersTypes::Languestic)?url('languestic/review/'.$articalNormal->id):url('reviewer/review/'.$articalNormal->id)}}"
                                                                class="btn {{(empty($normalReviewer))?'btn-info':'btn-danger'}} ">المتوسط<i
                                                                         class="fa {{(empty($normalReviewer))?'':'fa-eye'}}"></i></a>
                                                         @else
-                                                            <a href="{{url('languestic/review/'.$articalNormal->id)}}"
+                                                            <a href="{{(auth()->user()->role==\App\Helper\UsersTypes::Languestic)?url('languestic/review/'.$articalNormal->id):url('reviewer/review/'.$articalNormal->id)}}"
                                                                class="btn {{(empty($normalReviewer))?'btn-success':'btn-danger'}} ">المتوسط<i
                                                                         class="fa {{(empty($normalReviewer))?'fa-check-circle':'fa-check-circle'}}"></i></a>
                                                         @endif
                                                         @if(empty($hardStatus))
-                                                            <a href="{{url('languestic/review/'.$articalHard->id)}}"
+                                                            <a href="{{(auth()->user()->role==\App\Helper\UsersTypes::Languestic)?url('languestic/review/'.$articalHard->id):url('reviewer/review/'.$articalHard->id)}}"
                                                                class="btn {{(empty($hardReviewer))?'btn-info':'btn-danger'}} ">الصعب<i
                                                                         class="fa {{(empty($hardReviewer))?'':'fa-eye'}}"></i></a>
                                                         @else
-                                                            <a href="{{url('languestic/review/'.$articalHard->id)}}"
+                                                            <a href="{{(auth()->user()->role==\App\Helper\UsersTypes::Languestic)?url('languestic/review/'.$articalHard->id):url('reviewer/review/'.$articalHard->id)}}"
                                                                class="btn {{(empty($hardReviewer))?'btn-success':'btn-danger'}} ">الصعب<i
                                                                         class="fa {{(empty($hardReviewer))?'fa-check-circle':'fa-check-circle'}}"></i></a>
                                                         @endif
@@ -104,7 +104,7 @@
                                                     </td>
                                                     <td>
                                                         @if($easyStatus && $normalStatus && $hardStatus)
-                                                            <a href="{{url('languestic/send/'.$list->id)}}" class="btn btn-success">إرسال</a>
+                                                            <a href="{{(auth()->user()->role==\App\Helper\UsersTypes::Languestic)?url('languestic/send/'.$list->id):url('reviewer/send/'.$list->id)}}" class="btn btn-success">إرسال</a>
                                                         @else
                                                             <p>راجع المقالات للإرسال</p>
                                                         @endif

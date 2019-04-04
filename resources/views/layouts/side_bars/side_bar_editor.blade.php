@@ -26,8 +26,8 @@
                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                         <span class="pcoded-mtext">إدخال مقال</span></a>
                 </li>
-                <li class="nav-item {{request()->is("editor/refused/lists")?"active":""}}">
-                    <a href="{{url('editor/refused/lists')}}" class="nav-link">
+                <li class="nav-item {{request()->is("editor/refusedLists")?"active":""}}">
+                    <a href="{{url('editor/refusedLists')}}" class="nav-link">
                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                         <span class="pcoded-mtext">موضوعات معادة</span></a>
                 </li>

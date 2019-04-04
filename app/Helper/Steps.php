@@ -19,10 +19,10 @@ class Steps
     const REVIEW_ARTICLE = 3;
     const reSendToEditorFormReviewer = 4;
     const reSendToReviewerFormEditor = 5;
-    const Create_Question = 6;
-    const Review_Question = 7;
-    const ResendToQuestionCreator = 8;
-    const ResendToQuestionReviewer = 9;
+//    const Create_Question = 6;
+//    const Review_Question = 7;
+//    const ResendToQuestionCreator = 8;
+//    const ResendToQuestionReviewer = 9;
     const Languestic = 10;
     const ResendToLanguestic = 11;
     const Sound = 12;
@@ -38,10 +38,10 @@ class Steps
         '3' => 'مراجعه المقالات',
         '4' => 'إعادة إرسال إلى المحرر',
         '5' => 'إعادة إرسال إلى المراجع',
-        '6' => 'إدخال الأسئلة',
-        '7' => 'مراجعه الأسئلة',
-        '8' => 'إعادة إرسال إلى إلى محرر الأسئلة',
-        '9' => 'إعادة إرسال إلى مراجع الأسئلة ',
+//        '6' => 'إدخال الأسئلة',
+//        '7' => 'مراجعه الأسئلة',
+//        '8' => 'إعادة إرسال إلى إلى محرر الأسئلة',
+//        '9' => 'إعادة إرسال إلى مراجع الأسئلة ',
         '10' => 'مراجعه لغويه ',
         '11' => 'إعادة إرسال إلى المراجعة لغويه   ',
         '12' => 'تسجيل الصوت ',
@@ -65,24 +65,24 @@ class Steps
         if ($step == self::REVIEW_ARTICLE) {
             return 'جارى مراجعه المقال ';
         }
-        if ($step == self::Create_Question) {
-            return 'جارى إدخال الأسئلة ';
-        }
-        if ($step == self::Review_Question) {
-            return 'جارى مراجعه الأسئلة ';
-        }
+//        if ($step == self::Create_Question) {
+//            return 'جارى إدخال الأسئلة ';
+//        }
+//        if ($step == self::Review_Question) {
+//            return 'جارى مراجعه الأسئلة ';
+//        }
         if ($step == self::reSendToEditorFormReviewer) {
             return ' تم رفضه من مراجع المحتوى';
         }
         if ($step == self::Quality) {
             return 'جارى فحص الجوده ';
         }
-        if ($step == self::ResendToQuestionCreator) {
-            return 'تم رفضه من مراجع الأسئلة';
-        }
-        if ($step == self::ResendToQuestionReviewer) {
-            return 'إعادة الي مراجع الأسئلة';
-        }
+//        if ($step == self::ResendToQuestionCreator) {
+//            return 'تم رفضه من مراجع الأسئلة';
+//        }
+//        if ($step == self::ResendToQuestionReviewer) {
+//            return 'إعادة الي مراجع الأسئلة';
+//        }
         if ($step == self::ResendToSound) {
             return 'إعادة الي مسجل الصوت ';
         }

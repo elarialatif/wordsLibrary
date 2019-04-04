@@ -24,16 +24,16 @@
                                         صفحة المراجعة المقال ال{{\App\Helper\ArticleLevels::getLevel($artical->level)}}
                                     </h5>
                                     @if($artical->status!=\App\Helper\ArticleLevels::Review)
-                                        <a style="float: left" href="{{url('languestic/done/'.$artical->id)}}"
+                                        <a style="float: left" href="{{(auth()->user()->role==\App\Helper\UsersTypes::Languestic)?url('languestic/done/'.$artical->id):url('reviewer/done/'.$artical->id)}}"
                                            class="btn btn-success">
                                             تمت المراجعة <i class="fas fa-question-circle"></i>
                                         </a>
 
                                     @else
                                         <p class="btn btn-info" style="float:left;font-weight: bold;">تمت المراجعة
-                                            اللغويه <i class="fas fa-check-circle"></i></p>
+                                            <i class="fas fa-check-circle"></i></p>
                                     @endif
-                                    <a href="{{url('languestic/'.$page)}}" class="btn btn-dark"
+                                    <a href="{{(auth()->user()->role==\App\Helper\UsersTypes::Languestic)?url('languestic/'.$page):url('reviewer/'.$page)}}" class="btn btn-dark"
                                        style="float:left">رجوع<i class="fas fa-reply"></i></a>
 
                                 </div>
@@ -102,7 +102,13 @@
                                             <div id="Issues">
                                                 <div class="table-responsive">
                                                     @php
-                                                        $issue=\App\Models\Issues::where(['field_id'=>$artical->id,'table'=>'article','type'=>'Normal','user_id'=>auth()->id()                                           ])->get();@endphp
+                                                    if(auth()->user()->role==\App\Helper\UsersTypes::Languestic){
+                                                    $issue=\App\Models\Issues::where(['field_id'=>$artical->id,'table'=>'article','type'=>'Normal','user_id'=>auth()->id()])->get();
+                                                    }else{
+                                                    $issue=\App\Models\Issues::where(['field_id'=>$artical->id,'table'=>'article','type'=>'Normal'])->get();
+                                                    }
+
+                                                    @endphp
                                                     @if($issue->count()>0)
                                                         <table
                                                                 class="display table nowrap table-striped table-hover"
@@ -276,7 +282,11 @@
                                                             </tbody>
                                                         </table>
                                                         @php
-                                                            $issue=\App\Models\Issues::where(['field_id'=>$question->id,'table'=>'question','user_id'=>auth()->id()])->get();    @endphp
+                                                            if(auth()->user()->role==\App\Helper\UsersTypes::Languestic){
+                                                                $issue=\App\Models\Issues::where(['field_id'=>$question->id,'table'=>'question','user_id'=>auth()->id()])->get();}else{
+                                                                $issue=\App\Models\Issues::where(['field_id'=>$question->id,'table'=>'question'])->get();
+                                                                }
+                                                        @endphp
                                                         @if($issue->count()>0)
                                                             <table
                                                                     class="display table nowrap table-striped table-hover"
@@ -694,7 +704,12 @@
                                             <div id="Issues">
                                                 <div class="table-responsive">
                                                     @php
-                                                        $issue=\App\Models\Issues::where(['field_id'=>$artical->id,'table'=>'article','type'=>'Stretch','user_id'=>auth()->id()                                           ])->get();@endphp
+                                                        if(auth()->user()->role==\App\Helper\UsersTypes::Languestic){
+                                                            $issue=\App\Models\Issues::where(['field_id'=>$artical->id,'table'=>'article','type'=>'Stretch','user_id'=>auth()->id()])->get();
+                                                            }else{
+                                                            $issue=\App\Models\Issues::where(['field_id'=>$artical->id,'table'=>'article','type'=>'Stretch'])->get();
+                                                            }
+                                                    @endphp
                                                     @if($issue->count()>0)
                                                         <table
                                                                 class="display table nowrap table-striped table-hover"
@@ -868,7 +883,11 @@
                                                             </tbody>
                                                         </table>
                                                         @php
-                                                            $issue=\App\Models\Issues::where(['field_id'=>$question->id,'table'=>'question','user_id'=>auth()->id()])->get();    @endphp
+                                                            if(auth()->user()->role==\App\Helper\UsersTypes::Languestic){
+                                                                $issue=\App\Models\Issues::where(['field_id'=>$question->id,'table'=>'question','user_id'=>auth()->id()])->get();}else{
+                                                                 $issue=\App\Models\Issues::where(['field_id'=>$question->id,'table'=>'question'])->get();
+                                                                }
+                                                        @endphp
                                                         @if($issue->count()>0)
                                                             <table
                                                                     class="display table nowrap table-striped table-hover"
@@ -1265,7 +1284,12 @@
                                                 </tbody>
                                             </table>
                                             @php
-                                                $issue=\App\Models\Issues::where(['field_id'=>$artical->id,'type'=>'Vocab','table'=>'article','user_id'=>auth()->id()])->get();    @endphp
+                                                if(auth()->user()->role==\App\Helper\UsersTypes::Languestic){
+                                                   $issue=\App\Models\Issues::where(['field_id'=>$artical->id,'type'=>'Vocab','table'=>'article','user_id'=>auth()->id()])->get();
+                                            }else{
+                                            $issue=\App\Models\Issues::where(['field_id'=>$artical->id,'type'=>'Vocab','table'=>'article'])->get();
+                                            }
+                                            @endphp
                                             @if($issue->count()>0)
                                                 <table
                                                         class="display table nowrap table-striped table-hover"

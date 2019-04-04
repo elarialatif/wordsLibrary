@@ -8,10 +8,10 @@
         @include('layouts.side_bars.side_bar_listsanalayzer')
     @elseif(auth()->user()->role==\App\Helper\UsersTypes::REVIEWER)
         @include('layouts.side_bars.side_bar_reviewer')
-    @elseif(auth()->user()->role==\App\Helper\UsersTypes::QuestionCreator)
-        @include('layouts.side_bars.side_bar_questionCreator')
-    @elseif(auth()->user()->role==\App\Helper\UsersTypes::QuestionReviewer)
-        @include('layouts.side_bars.side_bar_questionReviewer')
+    {{--@elseif(auth()->user()->role==\App\Helper\UsersTypes::QuestionCreator)--}}
+        {{--@include('layouts.side_bars.side_bar_questionCreator')--}}
+    {{--@elseif(auth()->user()->role==\App\Helper\UsersTypes::QuestionReviewer)--}}
+        {{--@include('layouts.side_bars.side_bar_questionReviewer')--}}
     @elseif(auth()->user()->role==\App\Helper\UsersTypes::Languestic)
         @include('layouts.side_bars.side_bar_lang')
     @elseif(auth()->user()->role==\App\Helper\UsersTypes::Sound)

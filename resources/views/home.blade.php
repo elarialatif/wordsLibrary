@@ -7,13 +7,12 @@
     @php
 
         $editorsUser=array(
-        \App\Helper\UsersTypes::EDITOR
-        ,\App\Helper\UsersTypes::QuestionCreator,
+        \App\Helper\UsersTypes::EDITOR,
         \App\Helper\UsersTypes::Sound);
 
        $reviewersUsers=array(
         \App\Helper\UsersTypes::REVIEWER,
-        \App\Helper\UsersTypes::QuestionReviewer,
+
         \App\Helper\UsersTypes::Languestic,
        \App\Helper\UsersTypes::quality,
         \App\Helper\UsersTypes::LISTANALYZER,

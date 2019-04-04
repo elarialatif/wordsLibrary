@@ -62,26 +62,27 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($artical_id)
+    public function create($file_id,$level,$page='refusedLists')
     {
-
-        $artical = Article::where('id', $artical_id)->first();
-        if (auth()->user()->role != UsersTypes::SUPERADMIN && auth()->user()->role != UsersTypes::ADMIN) {
-            $task = AssignTask::where(['list_id' => $artical->list_id, 'step' => Steps::Create_Question])->first();
-            if ($task) {
-                if ($task->user_id != auth()->id()) {
-                    return redirect()->back()->withErrors('هذا الموضوع تابع لمستخدم آخر ');
-                }
-            } elseif (!$task) {
-                TaskRepository::save($artical->list_id, Steps::Create_Question);
-                //ContentListsRepository::updateStep($artical->list_id, Steps::Create_Question);
-            }
+        $list_id=\App\Models\ArticleFiles::find($file_id)->list_id;
+        $article_id=\App\Models\Article::where(['list_id'=>$list_id,'level'=>$level])->first()->id;
+        $artical = Article::where('id', $article_id)->first();
+        if($artical->article=='' ||$artical->article==null){
+            return redirect()->back()->with('error','لا يوجد مقال مختصر. أدخل المقال المختصر');
+        }else {
+            return view('questionCreator.question.create', compact('artical', 'file_id', 'level', 'page'));
         }
-        $list = ContentList::find($artical->list_id);
-        if ($list->step != Steps::Create_Question && $list->step != Steps::ResendToQuestionCreator) {
-            return redirect('question/myList')->withErrors('غير مسموح لك الدخول إلى هنا');
-        }
-        return view('questionCreator.question.create', compact('artical'));
+    }
+    public function createAdditional($file_id,$level,$page='refusedLists')
+    {
+        $list_id=\App\Models\ArticleFiles::find($file_id)->list_id;
+        $article_id=\App\Models\Article::where(['list_id'=>$list_id,'level'=>$level])->first()->id;
+        $artical = Article::where('id', $article_id)->first();
+       if($artical->stretchArticle==''){
+           return redirect()->back()->with('error','لا يوجد مقال موسع. أدخل المقال الموسع');
+       }else{
+           return view('questionCreator.question.createBefore', compact('artical','file_id','level','page'));
+       }
     }
 
     /**
@@ -119,13 +120,8 @@ class QuestionController extends Controller
         request()->validate($rules_array, $messages_array);
         $question = $request->except('_token');
         $question = QuestionsRepository::save($question);
-        if($request->submitType && $request->submitType=='lastQuestion' ){
-            return redirect(url('question/myList'))->with('success', 'تمت الإضافة بنجاح ');
-        }
-        else{
-            $artical = Article::where('id', $question[0]->artical_id)->first();
-            return view('questionCreator.question.createBefore', compact('artical'));
-        }
+
+            return redirect()->back()->with('success', 'تمت الإضافة بنجاح ');
     }
 
     /**
@@ -134,18 +130,19 @@ class QuestionController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($artical_id, $page = 'myList')
+    public function show($file_id,$level, $page = 'myList')
     {
         $questionType=new Article();
-
-        $questions=\App\Models\Question::where(['artical_id'=>$artical_id,'type'=>$questionType->getNormalArticleValue()])->get();
-        $questionStretch=\App\Models\Question::where(['artical_id'=>$artical_id,'type'=>$questionType->getStretchArticleValue()])->get();
-        $artical = Article::where('id', $artical_id)->first();
+        $list_id=\App\Models\ArticleFiles::find($file_id)->list_id;
+        $article_id=\App\Models\Article::where(['list_id'=>$list_id,'level'=>$level])->first()->id;
+        $questions=\App\Models\Question::where(['artical_id'=>$article_id,'type'=>$questionType->getNormalArticleValue()])->get();
+        $questionStretch=\App\Models\Question::where(['artical_id'=>$article_id,'type'=>$questionType->getStretchArticleValue()])->get();
+        $artical = Article::where('id', $article_id)->first();
         $list = ContentList::find($artical->list_id);
         if ($list == null) {
             return redirect()->back()->with('error', 'المقال غير موجود');
         }
-        return view('questionCreator.question.show', compact('questions','questionStretch', 'page', 'artical'));
+        return view('questionCreator.question.show', compact('questions','questionStretch','file_id','level', 'page', 'artical'));
     }
 
     /**

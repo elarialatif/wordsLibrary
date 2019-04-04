@@ -54,9 +54,9 @@
                                                     {{--<a href="{{url('question/create/'.$articalHard->id)}}" class="btn btn-info">الصعب<i class="fa fa-plus"></i></a>--}}
                                                     {{--@endif--}}
                                                     {{--@if(auth()->user()->role==\App\Helper\UsersTypes::QuestionReviewer)--}}
-                                                    <a href="{{url('languestic/review/'.$articalEasy->id)}}" class="btn btn-info">السهل</a>
-                                                    <a href="{{url('languestic/review/'.$articalNormal->id)}}" class="btn btn-info">المتوسط</a>
-                                                    <a href="{{url('languestic/review/'.$articalHard->id)}}" class="btn btn-info">الصعب</a>
+                                                    <a href="{{(auth()->user()->role==\App\Helper\UsersTypes::Languestic)?url('languestic/review/'.$articalEasy->id):url('reviewer/review/'.$articalEasy->id)}}" class="btn btn-info">السهل</a>
+                                                    <a href="{{(auth()->user()->role==\App\Helper\UsersTypes::Languestic)?url('languestic/review/'.$articalNormal->id):url('reviewer/review/'.$articalNormal->id)}}" class="btn btn-info">المتوسط</a>
+                                                    <a href="{{(auth()->user()->role==\App\Helper\UsersTypes::Languestic)?url('languestic/review/'.$articalHard->id):url('reviewer/review/'.$articalHard->id)}}" class="btn btn-info">الصعب</a>
                                                     {{--@endif--}}
                                                 </td>
                                             </tr>

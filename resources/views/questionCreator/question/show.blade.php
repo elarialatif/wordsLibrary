@@ -3,15 +3,21 @@
     <br>
     <br>
     <div class="container">
-        <a href="{{url('question/create/'.$questions[0]->artical_id)}}" class="btn btn-primary"> إضافة اسئله جديدة <i
+        @include('editor.FollowingTabsForCreateArticle')
+        <a href="{{url('editor/create/'.$file_id.'/'.$level)}}" class="btn btn-primary"> إضافة اسئله جديدة للمقال الأساسى <i
                     class="fa fa-plus"></i></a>
         <a style="float: left" href="{{url('question/'.$page)}}" class="btn btn-dark"> رجوع </a>
         <br>
         <br>
         <div>
             <h3>الأسئلة الأساسية</h3>
-        <div id="tinymcFont">    {!! $artical->article !!} </div>
-        @foreach($questions as $question)
+            <div class="row">
+                <div class="col-md-12" id="tinymcFont" >
+                    <span id="articaasdasdl">{!! $artical->article !!}</span>
+                </div>
+            </div>
+           {{--<div class="col-md-12" ><span id="articaasdasdl" >{!! $artical->article !!}</span></div>--}}
+         @foreach($questions as $question)
             <table class="table table-condensed">
                 <thead>
                 <tr>
@@ -205,7 +211,13 @@
         <hr>
         <div>
             <h3>الأسئلة الإضافية</h3>
-            <div id="tinymcFont">    المقال الموسع </div>
+            <a href="{{url('editor/createAdditional/'.$file_id.'/'.$level)}}" class="btn btn-primary"> إضافة اسئله جديدة للمقال الموسع <i
+                        class="fa fa-plus"></i></a>
+            <div class="row">
+                <div class="col-md-12" id="tinymcFont" >
+                    <span id="articaasdasdl">{!!$artical->stretchArticle !!}</span>
+                </div>
+            </div>
             @foreach($questionStretch as $question)
                 <table class="table table-condensed">
                     <thead>
@@ -400,4 +412,11 @@
         <br>
         <br>
         <br>
+        <script>
+            $(document).ready(function(){
+                $('#articaasdasdl').children("div:first").removeClass('col-md-6');
+                $('#articaasdasdl>div.col-md-6').children().last().remove();
+            });
+
+        </script>
 @endsection

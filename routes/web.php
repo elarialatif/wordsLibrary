@@ -59,6 +59,12 @@ Route::group(['middleware' => 'editor'], function () {
     Route::get('saveUploadArticleFilter', 'ArticalController@filter');
 
 
+    Route::group(['namespace' => 'QuestionCreator','prefix' => 'editor'], function () {
+    Route::get('create/{file_id}/{level_id}', 'QuestionController@create');
+    Route::get('createAdditional/{file_id}/{level_id}', 'QuestionController@createAdditional');
+    Route::post('create/{file_id}/{level_id}', 'QuestionController@store');
+    Route::get('show/{file_id}/{level_id}/{page?}', 'QuestionController@show');
+    });
     //get Lists by grade and country when upload file
     Route::get('Ajax/getLists/{grade_id}/{country_id}', 'ContentListController@AjaxGetLists');
 
@@ -71,7 +77,7 @@ Route::group(['middleware' => 'editor'], function () {
 
         //   Route::post('save/article', 'EditorController@saveArticle');
         Route::get('sendArticleOfListToReviewer/{list_id}', 'EditorController@sendArticleOfListToReviewer');
-        Route::get('refused/lists', 'EditorController@refusedLists');
+        Route::get('refusedLists', 'EditorController@refusedLists');
         Route::get('reSendListOfArticleToReviewer/{list_id}', 'EditorController@reSendListOfArticleToReviewer');
     });
 });
@@ -115,13 +121,19 @@ Route::group(['middleware' => 'listanalyzer'], function () {
 
 });
 Route::group(['middleware' => 'reviewer', 'namespace' => 'reviewer', 'prefix' => 'reviewer'], function () {
-    Route::get('index', 'ReviewerController@index');
-    Route::get('view/article/{list_id}/{level}/{page?}/{flag?}', 'ReviewerController@viewArticle');
-    Route::get('viewVocabsForArticle/{list_id}/{level}', 'ReviewerController@viewVocabsForArticle');
-    Route::get('mylists/{page?}', 'ReviewerController@myLists');
-    Route::get('sendto/create/question/{list_id}', 'ReviewerController@SendToCreateQuestion');
-    Route::get('reSendTo/editor/{list_id}', 'ReviewerController@reSendToEditor');
-    Route::get('resending/lists', 'ReviewerController@resendingLists');
+    Route::get('', 'ReviewerController@home');
+    Route::get('myList', 'ReviewerController@index');
+    Route::get('review/{artical_id}/{page?}', 'ReviewerController@review');
+    Route::get('done/{artical_id}', 'ReviewerController@done');
+    Route::get('send/{list_id}', 'ReviewerController@send');
+    Route::get('resend', 'ReviewerController@backFromCreator');
+//    Route::get('index', 'ReviewerController@index');
+//    Route::get('view/article/{list_id}/{level}/{page?}/{flag?}', 'ReviewerController@viewArticle');
+//    Route::get('viewVocabsForArticle/{list_id}/{level}', 'ReviewerController@viewVocabsForArticle');
+//    Route::get('mylists/{page?}', 'ReviewerController@myLists');
+//    Route::get('sendto/create/question/{list_id}', 'ReviewerController@SendToCreateQuestion');
+//    Route::get('reSendTo/editor/{list_id}', 'ReviewerController@reSendToEditor');
+//    Route::get('resending/lists', 'ReviewerController@resendingLists');
 });
 Route::get('allLists', 'ContentListController@index')->middleware('listmaker:role');
 Route::get('getGradeList/{level_id}', 'ContentListController@getGradeList')->middleware('listmaker:role');
@@ -170,7 +182,7 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 // Password Reset Routes...
 
 ////QUESTIONCREATOR///
-Route::group(['middleware' => 'questionCreator', 'namespace' => 'QuestionCreator', 'prefix' => 'question'], function () {
+Route::group(['middleware' => 'editor', 'namespace' => 'QuestionCreator', 'prefix' => 'question'], function () {
     Route::get('', 'QuestionController@home');
     Route::get('create/{artical_id}', 'QuestionController@create');
     Route::post('create/{artical_id}', 'QuestionController@store');
@@ -192,6 +204,7 @@ Route::group(['middleware' => 'questionReviewer', 'namespace' => 'QuestionReview
     Route::get('resend', 'QuestionReviewerController@backFromCreator');
 
 });
+//Languestic
 Route::group(['middleware' => 'languestic', 'namespace' => 'LanguesticReviewer', 'prefix' => 'languestic'], function () {
     Route::get('', 'LanguesticController@home');
     Route::get('myList', 'LanguesticController@index');

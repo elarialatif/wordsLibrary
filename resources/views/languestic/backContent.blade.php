@@ -76,58 +76,20 @@
                                                     <td>
                                                         {{--for QuestionReviewer--}}
 
-                                                        <a href="{{url('languestic/review/'.$articalEasy->id.'/'.'resend')}}"
+                                                        <a href="{{(auth()->user()->role==\App\Helper\UsersTypes::Languestic)?url('languestic/review/'.$articalEasy->id.'/'.'resend'):url('reviewer/review/'.$articalEasy->id.'/'.'resend')}}"
                                                            class="btn {{($easyReviewer->count()==0)?'btn-success':'btn-danger'}} ">السهل<i
                                                                     class="fa {{(empty($easyStatus))?'':'fa-check-circle'}}"></i></a>
-                                                        <a href="{{url('languestic/review/'.$articalNormal->id.'/'.'resend')}}"
+                                                        <a href="{{(auth()->user()->role==\App\Helper\UsersTypes::Languestic)?url('languestic/review/'.$articalNormal->id.'/'.'resend'):url('reviewer/review/'.$articalNormal->id.'/'.'resend')}}"
                                                            class="btn {{($normalReviewer->count()==0)?'btn-success':'btn-danger'}} ">المتوسط<i
                                                                     class="fa {{(empty($normalStatus))?'':'fa-check-circle'}}"></i></a>
-                                                        <a href="{{url('languestic/review/'.$articalHard->id.'/'.'resend')}}"
+                                                        <a href="{{(auth()->user()->role==\App\Helper\UsersTypes::Languestic)?url('languestic/review/'.$articalHard->id.'/'.'resend'):url('reviewer/review/'.$articalHard->id.'/'.'resend')}}"
                                                            class="btn {{($hardReviewer->count()==0)?'btn-success':'btn-danger'}} ">الصعب<i
                                                                     class="fa {{(empty($hardStatus))?'':'fa-check-circle'}}"></i></a>
-
-                                                        {{--//////for QuestionCreator//////////--}}
-                                                        {{--@if(auth()->user()->role==\App\Helper\UsersTypes::QuestionCreator)--}}
-                                                        {{--@if(empty($easyQuestions))--}}
-                                                        {{--<a href="{{url('question/create/'.$articalEasy->id)}}" class="btn btn-info">السهل<i--}}
-                                                        {{--class="fa fa-plus"></i></a>--}}
-                                                        {{--@else--}}
-                                                        {{--<a href="{{url('question/show/'.$articalEasy->id.'/'.'resend')}}"--}}
-                                                        {{--class="btn {{($easyIssues->count()==0)?'btn-success':'btn-danger'}}">السهل<i--}}
-                                                        {{--class="{{($easyIssues->count()==0)?'fa fa-check-circle':''}}"></i></a>--}}
-                                                        {{--@endif--}}
-                                                        {{--@if(empty($normalQuestions))--}}
-                                                        {{--<a href="{{url('question/create/'.$articalNormal->id)}}" class="btn btn-info">المتوسط<i--}}
-                                                        {{--class="fa fa-plus"></i></a>--}}
-                                                        {{--@else--}}
-                                                        {{--<a href="{{url('question/show/'.$articalNormal->id.'/'.'resend')}}"--}}
-                                                        {{--class="btn {{($normalIssues->count()==0)?'btn-success':'btn-danger'}}">المتوسط<i--}}
-                                                        {{--class="{{($normalIssues->count()==0)?'fa fa-check-circle':''}}"></i></a>--}}
-                                                        {{--@endif--}}
-                                                        {{--@if(empty($hardQuestions))--}}
-                                                        {{--<a href="{{url('question/create/'.$articalHard->id)}}" class="btn btn-info">الصعب<i--}}
-                                                        {{--class="fa fa-plus"></i></a>--}}
-                                                        {{--@else--}}
-                                                        {{--<a href="{{url('question/show/'.$articalHard->id.'/'.'resend')}}"--}}
-                                                        {{--class="btn {{($hardIssues->count()==0)?'btn-success':'btn-danger'}}">الصعب<i--}}
-                                                        {{--class="{{($hardIssues->count()==0)?'fa fa-check-circle':''}}"></i></a>--}}
-                                                        {{--@endif--}}
-                                                        {{--@endif--}}
                                                     </td>
                                                     <td>
-                                                        {{--QuestionCreator--}}
-                                                        {{--@if(auth()->user()->role==\App\Helper\UsersTypes::QuestionCreator)--}}
-                                                        {{--@if($easyQuestions && $normalQuestions && $hardQuestions)--}}
-                                                        {{--<a href="{{url('question/sendToReviwer/'.$list->id)}}"--}}
-                                                        {{--class="btn btn-success">{{(!empty($task))?'إعادة إرسال الي المراجعة':'إرسال الي المراجعة'}}</a>--}}
-                                                        {{--@else--}}
-                                                        {{--<p>ادخل كل الأسئلة للإرسال</p>--}}
-                                                        {{--@endif--}}
-                                                        {{--@endif--}}
-                                                        {{--QuestionReviewer--}}
 
                                                         @if($easyStatus && $normalStatus && $hardStatus)
-                                                            <a href="{{url('languestic/send/'.$list->id)}}" class="btn btn-success">إعادة إرسال</a>
+                                                            <a href="{{(auth()->user()->role==\App\Helper\UsersTypes::Languestic)?url('languestic/send/'.$list->id):url('reviewer/send/'.$list->id)}}" class="btn btn-success">إعادة إرسال</a>
                                                         @else
                                                             <p>راجع المقالات للإرسال</p>
                                                         @endif

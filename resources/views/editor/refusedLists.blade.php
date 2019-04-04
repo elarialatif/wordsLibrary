@@ -46,12 +46,30 @@
                                                                             $easy=App\Repository\ArticalRepository::getArticleByLevel($list->id,\App\Helper\ArticleLevels::Easy);
                                                                 $normal=App\Repository\ArticalRepository::getArticleByLevel($list->id,\App\Helper\ArticleLevels::Normal);
                                                                 $hard=App\Repository\ArticalRepository::getArticleByLevel($list->id,\App\Helper\ArticleLevels::Hard);
-                                                                        if($easy)
-                                                                        $issueseasy=\App\Models\Issues::where(['table' => 'article', 'field_id' => $easy->id,'step'=>\App\Helper\IssuesSteps::Open])->get();
+                                                                $easyQuestions=App\Models\Question::where('artical_id',$easy->id)->get()->pluck('id')->toArray();
+                                                            $normalQuestions=App\Models\Question::where('artical_id',$normal->id)->get()->pluck('id')->toArray();
+                                                            $hardQuestions=App\Models\Question::where('artical_id',$hard->id)->get()->pluck('id')->toArray();
+                                                                   /*     if($easy)
+                                                                        $issueseasy=\App\Models\Issues::where(['table' => 'article', 'field_id' => $easy->id,'step'=>\App\Helper\IssuesSteps::Open])->orWhere(['table' => 'question', 'field_id' => $easy->id,'step'=>\App\Helper\IssuesSteps::Open])->get();
                                                                         if($normal)
-                                                                        $issuesnormal=\App\Models\Issues::where(['table' => 'article', 'field_id' => $normal->id,'step'=>\App\Helper\IssuesSteps::Open])->get();
+                                                                        $issuesnormal=\App\Models\Issues::where(['table' => 'article', 'field_id' => $normal->id,'step'=>\App\Helper\IssuesSteps::Open])->orWhere(['table' => 'question', 'field_id' => $normal->id,'step'=>\App\Helper\IssuesSteps::Open])->get();
                                                                         if($hard)
-                                                                        $issueshard=\App\Models\Issues::where(['table' => 'article', 'field_id' => $hard->id,'step'=>\App\Helper\IssuesSteps::Open])->get();
+                                                                        $issueshard=\App\Models\Issues::where(['table' => 'article', 'field_id' => $hard->id,'step'=>\App\Helper\IssuesSteps::Open])->orWhere(['table' => 'question', 'field_id' => $hard->id,'step'=>\App\Helper\IssuesSteps::Open])->get();*/
+                                                        @endphp
+
+                                                        @php
+                                                        if($easy)
+                                                            $var=$easy->id;
+                                                            $issueseasy=App\Models\Issues::where('step','==',\App\Helper\IssuesSteps::Open)->whereIn('field_id',$easyQuestions)->where(['table'=>'question'])->orwhere(function ($query) use ($var){
+                                $query->Where('field_id',$var);$query->Where('table','article');$query->Where('step','==',\App\Helper\IssuesSteps::Open);})->get();
+                                if($normal)
+                                                            $var2=$normal->id;
+                                                            $issuesnormal=App\Models\Issues::where('step','==',\App\Helper\IssuesSteps::Open)->whereIn('field_id',$normalQuestions)->where(['table'=>'question'])->orwhere(function ($query) use ($var2){
+                                $query->Where('field_id',$var2);$query->Where('table','article');$query->Where('step','==',\App\Helper\IssuesSteps::Open);})->get();
+                                if($hard)
+                                                            $var3= $hard->id;
+                                                            $issueshard=App\Models\Issues::where('step','==',\App\Helper\IssuesSteps::Open)->whereIn('field_id',$hardQuestions)->where(['table'=>'question'])->orwhere(function ($query) use ($var3) {
+                                $query->Where('field_id',$var3);$query->Where('table','article');$query->Where('step','==',\App\Helper\IssuesSteps::Open);})->get();
                                                         @endphp
                                                         @if($list->step!=\App\Helper\Steps::reSendToEditorFormReviewer)
                                                             @continue

@@ -16,18 +16,18 @@
                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                         <span class="pcoded-mtext">الرئيسية</span></a>
                 </li>
-                <li class="nav-item {{request()->is("reviewer/index")?"active":""}}">
-                    <a href="{{url('reviewer/index')}}" class="nav-link">
+                <li class="nav-item {{request()->is("reviewer")?"active":""}}">
+                    <a href="{{url('reviewer')}}" class="nav-link">
                         <span class="pcoded-micon"><i class="mdi mdi-file"></i></span>
                         <span class="pcoded-mtext">موضوعات جديدة </span></a>
                 </li>
-                <li class="nav-item {{request()->is("reviewer/mylists")?"active":""}}">
-                    <a href="{{url('reviewer/mylists')}}" class="nav-link">
+                <li class="nav-item {{request()->is("reviewer/myList")?"active":""}}">
+                    <a href="{{url('reviewer/myList')}}" class="nav-link">
                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                         <span class="pcoded-mtext">موضوعاتى</span></a>
                 </li>
-                <li class="nav-item {{request()->is("reviewer/resending/lists")?"active":""}}">
-                    <a href="{{url('reviewer/resending/lists')}}" class="nav-link">
+                <li class="nav-item {{request()->is("reviewer/resend")?"active":""}}">
+                    <a href="{{url('reviewer/resend')}}" class="nav-link">
                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                         <span class="pcoded-mtext">موضوعات معادة</span></a>
                 </li>

@@ -168,22 +168,22 @@ class QualityController extends Controller
             $data['active'] = 0;
             UserRateRepository::update($user_id, $list_id, $data);
             if ($issuesQuestion->count() > 0) {
-                $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Create_Question);
+                $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::UPLOADING_FILE);
                 $data['active'] = 0;
                 UserRateRepository::update($user_id, $list_id, $data);
             }
             return redirect()->back()->with('success', 'تم الإرسال الي مدخل المقالات بنجاح ');
         }
         if ($issuesQuestion->count() > 0) {
-            ContentListsRepository::updateStep($list_id, Steps::ResendToQuestionCreator);
+            ContentListsRepository::updateStep($list_id, Steps::reSendToEditorFormReviewer);
             //Notification/////
-            NotificationRepository::notify($list_id, Steps::Create_Question);
+            NotificationRepository::notify($list_id, Steps::UPLOADING_FILE);
             ///end Notification////
-            $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Create_Question);
+            $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::UPLOADING_FILE);
             $user = UsersRepository::find($user_id);
             $name = Carbon::now() . "بتاريخ" . $user->name . "تمت إعادة الإرسال إلى محرر الأسئلة ";
             Steps::SaveLogRow($name, 'إعادة إرسال', 'content_lists', $list_id);
-            $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::Create_Question);
+            $user_id = TaskRepository::findWhereAndStep('list_id', $list_id, Steps::UPLOADING_FILE);
             $data['active'] = 0;
             UserRateRepository::update($user_id, $list_id, $data);
             return redirect()->back()->with('success', 'تم الإرسال الي مدخل الأسئلة بنجاح ');

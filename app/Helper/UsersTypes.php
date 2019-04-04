@@ -18,8 +18,8 @@ class UsersTypes
     const LISTMAKER = 3;
     const LISTANALYZER = 4;
     const REVIEWER = 5;
-    const QuestionCreator = 6;
-    const QuestionReviewer = 7;
+//    const QuestionCreator = 6;
+//    const QuestionReviewer = 7;
     const Languestic = 8;
     const Sound = 9;
     const quality = 10;
@@ -34,8 +34,8 @@ class UsersTypes
         '3' => 'معد موضوعات',
         '4' => 'محلل مقالات',
         '5' => 'مراجع محتوى',
-        '6' => 'مدخل أسئلة',
-        '7' => 'مراجع أسئلة',
+//        '6' => 'مدخل أسئلة',
+//        '7' => 'مراجع أسئلة',
         '8' => 'مراجع لغوى',
         '9' => 'تسجيل صوت ',
         '10' => 'الجودة',

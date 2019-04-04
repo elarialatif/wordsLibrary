@@ -32,13 +32,9 @@
     <div class="container" style="height: 800px;overflow-x: hidden;
     overflow-y: hidden;">
         <div class="container">
-
+            @include('editor.FollowingTabsForCreateArticle')
             <div class="main-body">
                 <div class="page-wrapper">
-                    <div style="text-align: center">
-                        <p class="question-type finish-question">الأسئلة الأساسية</p>
-                        <p class="question-type active-question">الأسئلة الإضافية</p>
-                    </div>
                     <!-- [ Main Content ] start -->
                     <div class="row">
                         <!-- [ HTML5 Export button ] start -->
@@ -58,7 +54,7 @@
                                                  id="pinned">
                                                 {{-- <div id="tinymcFont" style="max-width: 200px">  --}} {{--</div>--}}
                                                 {{--<span id="articaasdasdl">{!! $artical->article !!}</span>--}}
-                                                <span id="articaasdasdl">المقال الموسع</span>
+                                                <span id="articaasdasdl">{!!$artical->stretchArticle!!}</span>
                                             </div>
                                             {{--  --}}
                                             {{--  --}}
@@ -238,7 +234,7 @@
                                                     <div id="empty">
                                                     </div>
                                                     <input type="hidden" name="submitType" value="lastQuestion">
-                                                    <button style="margin-bottom: 20px" class="btn btn-primary" type="submit"><span
+                                                    <button style="margin-bottom: 100px" class="btn btn-primary" type="submit"><span
                                                                 class="fa fa-plus"></span>إضافة
                                                     </button>
 
