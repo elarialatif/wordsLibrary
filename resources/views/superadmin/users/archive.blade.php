@@ -35,11 +35,15 @@
                         <th>الكود</th>
                         <th>الموضوع</th>
                         <th>الصف</th>
+                        @if($user->role!=App\Helper\UsersTypes::LISTMAKER)
+                        <th>المرحلة</th>
+                        @endif
                         <th>التاريخ</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach ($tasks as $list)
+                        @if($user->role!=App\Helper\UsersTypes::LISTMAKER)
                       @if($list->lists==null)
                           @continue
                           @endif
@@ -47,8 +51,30 @@
                             <td>{{$list->lists->id}}</td>
                             <td>{{$list->lists->list}}</td>
                             <td>{{$list->lists->grade->name}}</td>
+                            @if($user->role==\App\Helper\UsersTypes::EDITOR &&$list->lists->step==\App\Helper\Steps::REVIEW_ARTICLE||$list->lists->step==\App\Helper\Steps::ANALYZING_FILE)
+                                <td>   <i class="fas fa-check fa-2x"></i></td>
+                            @elseif($user->role==\App\Helper\UsersTypes::REVIEWER &&$list->lists->step==\App\Helper\Steps::Languestic)
+                                <td>   <i class="fas fa-check fa-2x"></i></td>
+                            @elseif($user->role==\App\Helper\UsersTypes::LISTANALYZER &&$list->lists->step==\App\Helper\Steps::INSERTING_ARTICLE)
+                                <td>   <i class="fas fa-check fa-2x"></i></td>
+                            @elseif($user->role==\App\Helper\UsersTypes::Languestic &&$list->lists->step==\App\Helper\Steps::Quality)
+                                <td>   <i class="fas fa-check fa-2x"></i></td>
+                            @elseif($user->role==\App\Helper\UsersTypes::quality &&$list->lists->step==\App\Helper\Steps::Publish)
+                                <td>   <i class="fas fa-check fa-2x"></i></td>
+                            @else
+                                <td><i class='fas fa-times fa-2x'></i></td>
+
+                            @endif
                             <td>{{$list->created_at->toDateString() }}</td>
                         </tr>
+                            @else
+                            <tr>
+                                <td>{{$list->id}}</td>
+                                <td>{{$list->list}}</td>
+                                <td>{{$list->grade->name}}</td>
+                                <td>{{$list->created_at->toDateString() }}</td>
+                            </tr>
+                        @endif
                     @endforeach
                     </tbody>
                 </table>

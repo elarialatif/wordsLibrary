@@ -18,6 +18,7 @@ use App\Repository\GradesRepository;
 use App\Repository\LevelsRepository;
 use app\Repository\ListRepository;
 use App\Repository\TaskRepository;
+use App\Repository\UserRateRepository;
 use Complex\Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -91,7 +92,10 @@ class ArticalController extends Controller
                     TaskRepository::save($request->list_id, Steps::UPLOADING_FILE);
                 }
                 ArticalRepository::save($request);
-
+                $data['user_id'] = auth()->id();
+                $data['list_id'] = $request->list_id;
+                $data['active'] = 1;
+                UserRateRepository::save($data);
 
             });
 

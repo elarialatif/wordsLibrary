@@ -65,13 +65,15 @@ class QuestionController extends Controller
     public function create($file_id,$level,$page='refusedLists')
     {
         $list_id=\App\Models\ArticleFiles::find($file_id)->list_id;
-        $article_id=\App\Models\Article::where(['list_id'=>$list_id,'level'=>$level])->first()->id;
-        $artical = Article::where('id', $article_id)->first();
-        if($artical->article=='' ||$artical->article==null){
+        $article_id=\App\Models\Article::where(['list_id'=>$list_id,'level'=>$level])->first();
+        if(!$article_id){
             return redirect()->back()->with('error','لا يوجد مقال مختصر. أدخل المقال المختصر');
         }else {
+            $artical = Article::where('id', $article_id->id)->first();
             return view('questionCreator.question.create', compact('artical', 'file_id', 'level', 'page'));
         }
+
+
     }
     public function createAdditional($file_id,$level,$page='refusedLists')
     {
@@ -237,6 +239,6 @@ class QuestionController extends Controller
     public function destroy($id)
     {
         QuestionsRepository::delete($id);
-        return redirect(url('question/myList'))->with('success', 'تم المسح بنجاح ');
+        return redirect()->back()->with('success', 'تم المسح بنجاح ');
     }
 }

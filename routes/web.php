@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('issues/delete/{id}', 'IssuesController@destroy');
     Route::get('issues/chang/step/{artical_id}/{step}', 'IssuesController@ChangeStep');
     Route::post('editor/save/article', 'editor\EditorController@saveArticle');
+    Route::post('editor/edit/article', 'editor\EditorController@editArticle');
     Route::post('question/edit/{id}', 'QuestionCreator\QuestionController@update');
     Route::get('editor/deleteVocabulary/{id}', 'editor\VocabController@deleteVocab');
     Route::post('editor/editVocabulary/{id}', 'editor\VocabController@updateVocab');

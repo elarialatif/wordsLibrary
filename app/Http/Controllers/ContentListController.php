@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ContentList;
 use App\Repository\GradesRepository;
 use App\Repository\CountryRepository;
+use App\Repository\UserRateRepository;
 use Illuminate\Http\Request;
 use App\Repository\ContentListsRepository;
 use App\Repository\LevelsRepository;
@@ -40,7 +41,11 @@ class ContentListController extends Controller
         if ($list) {
             return redirect()->to('allLists')->withErrors('الاسم موجود بالفعل ');
         }
-        ContentListsRepository::save($lists);
+        $list= ContentListsRepository::save($lists);
+        $data['user_id'] = auth()->id();
+        $data['list_id'] = $list->id;
+        $data['active'] = 1;
+        UserRateRepository::save($data);
         return redirect()->to('allLists')->with('success', 'تمت الإضافة بنجاح ');
 
     }

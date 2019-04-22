@@ -83,7 +83,8 @@
                 "searchreplace wordcount visualblocks visualchars code fullscreen",
                 "insertdatetime media nonbreaking save table contextmenu directionality",
                 "emoticons template paste textcolor colorpicker textpattern table wordcount"],
-            toolbar1: 'ltr rtl | ContentSeperator  | formatselect | bold italic strikethrough forecolor backcolor | image link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent | removeformat',
+            toolbar1: 'ltr rtl | pagebreak | ContentSeperator  | formatselect | bold italic strikethrough forecolor backcolor | image link | alignleft aligncenter alignright alignjustify | numlist bullist outdent indent | removeformat',
+           // pagebreak_split_block: true,
 
             // toolbar2: "sizeselect | bold italic | fontselect |  fontsizeselect ",
             paste_data_images: true,
@@ -151,17 +152,17 @@
 </script>
 <script>
 
-    $('body').bind("contextmenu", function (e) {
-        e.preventDefault();
-
-        var top = e.pageY - 120;
-        $("#cntnr").css("left", e.pageX);
-        $("#cntnr").css("top", top);
-        // $("#cntnr").hide(100);
-        $("#cntnr").fadeIn(200, startFocusOut());
-
-
-    });
+    // $('body').bind("contextmenu", function (e) {
+    //     e.preventDefault();
+    //
+    //     var top = e.pageY - 120;
+    //     $("#cntnr").css("left", e.pageX);
+    //     $("#cntnr").css("top", top);
+    //     // $("#cntnr").hide(100);
+    //     $("#cntnr").fadeIn(200, startFocusOut());
+    //
+    //
+    // });
 
     function startFocusOut() {
         $(document).on("click", function () {

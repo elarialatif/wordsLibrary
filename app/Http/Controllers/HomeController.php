@@ -85,7 +85,22 @@ class HomeController extends Controller
     {
 
         $users = UsersRepository::findWhere('role', $userRole);
-        $query = UserRate::whereIn('user_id', $users->pluck('id')->toArray())->where('active', 1);
+
+        if($userRole==0){
+            $users = UsersRepository::findWhere('role', UsersTypes::EDITOR);
+            $lists_idWithDeletedLists= ArticleFiles::whereIn('user_id', $users->pluck('id')->toArray())->pluck('list_id')->toArray();
+            $query=ArticleFiles::whereHas('lists',function ($query)use($lists_idWithDeletedLists){
+                $query->whereIn('id', $lists_idWithDeletedLists);
+            })->whereIn('user_id', $users->pluck('id')->toArray());
+        }
+        elseif($userRole==3){
+            $users = UsersRepository::findWhere('role', UsersTypes::LISTMAKER);
+            $query = ContentList::whereIn('user_id', $users->pluck('id')->toArray());
+        }
+        else{
+            $query = UserRate::whereIn('user_id', $users->pluck('id')->toArray())->where('active', 1);
+        }
+
         if ($time == 'yesterday') {
             $time = Carbon::yesterday()->toDateString();
             $query->where('created_at', 'like', $time . '%');
@@ -102,6 +117,7 @@ class HomeController extends Controller
         arsort($arr);
         $result = [];
         $i = 0;
+
         foreach ($arr as $key => $value) {
             if ($i == 3) {
                 break;
@@ -111,6 +127,7 @@ class HomeController extends Controller
             $result[] = array('img' => $user->img, 'name' => $user->name, 'rate' => $value, 'role' => UsersTypes::ArrayOfPermission[$user->role], 'id' => $user->id);
             $i++;
         }
+
 
         return response()->json($result);
     }

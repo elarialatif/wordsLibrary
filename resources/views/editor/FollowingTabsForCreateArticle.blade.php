@@ -129,7 +129,7 @@ $step=\App\Models\ContentList::find($list_id)->step;
             </td>
         @else
 
-            <td class="step-item step-item-first @if(request()->url()==url('editor/show/'.$file_id.'/'.$level.'/'.$page)) pending  @elseif(request()->url()!=url('editor/add/article/'.$file_id.'/'.$level.'/'.$page.'/'.'0')) done @endif"
+            <td class="step-item step-item-first @if(request()->url()==url('editor/show/'.$file_id.'/'.$level.'/'.$page)) pending  @elseif(request()->url()!=url('editor/add/article/'.$file_id.'/'.$level.'/'.$page)) done @endif"
                 data-step="1">
                 <a href="{{url('editor/show/'.$file_id.'/'.$level.'/'.$page)}}">
                     <span class="step-body">

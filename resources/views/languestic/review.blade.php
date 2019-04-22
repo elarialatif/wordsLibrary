@@ -33,6 +33,64 @@
                                 </div>
                                 <div class="card-header">
                                     <div class="row">
+                                    <div class="col-md-12">
+                                <v style="right: 0;background-color: #1aa62a;position: absolute;
+                                    left: -25px;top: 3;width: 4px;height: 20px;">
+                                </v>
+                                <h6 style="font-size: 20px">السؤال القبلى والبعدى</h6>
+                                <a href="" data-toggle="modal"
+                                   data-target="#editPoll"
+                                   class="btn btn-icon btn-outline-info radbor"><i class="fas fa-edit"></i></a>
+                                    <br>
+                                    {!! $artical->pollHint !!}
+                                    <br>
+                                    {!! $artical->poll !!}
+                                        <br>
+                                    </div>
+                                    </div>
+                                {{--model for edit artical--}}
+                                <div class="modal fade" id="editPoll"
+                                     tabindex="-1" role="dialog"
+                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" style="max-width: 80%!important;"
+                                         role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">تعديل السؤال القبلى والبعدى</h5>
+                                                <button type="button" class="close"
+                                                        data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="POST"
+                                                      action="{{url('editor/edit/article')}}">
+                                                    @csrf
+                                                    <div class="form-group">
+                                                        <label for="hint" class="col-form-label">مقدمة السؤال:</label>
+                                                        <textarea class="form-control" required
+                                                                  name="pollHint">{!! $artical->pollHint !!}</textarea>
+                                                        <label for="hint" class="col-form-label">السؤال:</label>
+                                                        <textarea class="form-control" required
+                                                                  name="poll">{!! $artical->poll!!}</textarea>
+                                                        <input type="hidden" name="article_id"
+                                                               value="{{$artical->id}}">
+                                                    </div>
+                                                    <button class="btn btn-primary" type="submit">
+                                                        <span class="fa fa-plus"></span>إضافة
+                                                    </button>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">غلق
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{--end modal--}}
+                                    <div class="row">
                                         <div class="col-md-6">
                                             <v style="right: 0;background-color: #1aa62a;position: absolute;
                                     left: -25px;top: 3;width: 4px;height: 20px;">
@@ -221,7 +279,8 @@
                                                                 <td>
                                                                     السؤال
                                                                 </td>
-                                                                <td>
+                                                                <td style="text-wrap: normal;
+word-wrap: break-word;">
                                                                     {!! $question->question !!}
                                                                 </td>
                                                             </tr>
@@ -821,7 +880,8 @@
                                                                 <td>
                                                                     السؤال
                                                                 </td>
-                                                                <td>
+                                                                <td style="text-wrap: normal;
+word-wrap: break-word;">
                                                                     {!! $question->question !!}
                                                                 </td>
                                                             </tr>

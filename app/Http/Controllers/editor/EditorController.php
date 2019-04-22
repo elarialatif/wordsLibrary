@@ -110,19 +110,13 @@ class EditorController extends Controller
             $articleCheck = Article::where(['list_id' => \request('list_id'), 'level' => \request('level')])->first();
             if ($articleCheck) {
                 $article = Article::find($articleCheck->id);
-
             } else {
                 $article = new Article();
-
-
-
             }
-            if(\request('hint')){
+            if(\request('hint')||\request('poll')){
                 $article->pollHint = \request('hint');
                 $article->poll = \request('poll');
             }
-
-
             $article->list_id = \request('list_id');
             $article->level = \request('level');
 
@@ -131,15 +125,17 @@ class EditorController extends Controller
                 $article->stretchArticle = \request('articleStretch');
             } else {
                 $article->article = \request('articleNormal');
-
             }
-
             //  $article->step = Steps::INSERTING_ARTICLE;
             $article->save();
-
         });
         session()->flash('success', 'تم ');
         return redirect()->back();
+    }
+    public function editArticle(Request $request){
+        $data=$request->except('_token','article_id');
+        Article::where('id',$request->article_id)->update($data);
+        return redirect()->back()->with('success','تم التعديل بنجاح');
     }
 
     public function sendArticleOfListToReviewer($List_id)
