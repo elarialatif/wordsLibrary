@@ -15,14 +15,16 @@
                                 <h5>
                                     صفحة الموضوعات
                                 </h5>
+
                                 @if(auth()->user()->role!=\App\Helper\UsersTypes::EDITOR)
                                     @php $article=\App\Models\ArticleFiles::whereIn('list_id',$lists->pluck('id')->toArray())->get(); @endphp
                                     <br>
-                                <h4>
+                                <p>
                                     {{$lists->count()}} موضوع
                                     <br>
-                                          تم رفع ملف إلى{{$article->count()}} موضوع
-                                </h4>
+
+                                          تم رفع مقال اصلى إلى{{$article->count()}} موضوع
+                                </p>
                                     <a href="#" class="btn btn-primary" data-toggle="modal"
                                    data-target="#exampleModal0"
                                    style="color: white;float: left;font-weight: bold"> إضافة موضوع جديد <i
@@ -98,7 +100,7 @@
                                         <tr>
                                             <th>الموضوع</th>
                                             <th>الصف</th>
-                                            <th>ملف مرفوع</th>
+                                            <th>مقال اصلى مرفوع</th>
                                             <th>الإجراءات</th>
                                         </tr>
                                         </thead>

@@ -1,6 +1,10 @@
 @extends('layouts.app')
 @section('content')
-
+<style>
+    .ui.selection.dropdown .menu>.item{
+        font-size: 18px!important;
+    }
+</style>
     <div class="container">
         <div class="container">
 

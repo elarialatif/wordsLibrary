@@ -283,16 +283,16 @@
 
 @endsection
 <script>
-    if ("{{$type}}" == "{{$articleObject->getNormalArticleValue()}}") {
-        $('#0').css('background', '#green');
-        $('#1').css('background', '#539af6');
+    {{--if ("{{$type}}" == "{{$articleObject->getNormalArticleValue()}}") {--}}
+        {{--$('#0').css('background', '#green');--}}
+        {{--$('#1').css('background', '#539af6');--}}
 
-    }
-    else {
-        $('#0').css('background', '#green');
-        $('#1').css('background', 'green');
-        $('#2').css('background', '#539af6');
-    }
+    {{--}--}}
+    {{--else {--}}
+        {{--$('#0').css('background', '#green');--}}
+        {{--$('#1').css('background', 'green');--}}
+        {{--$('#2').css('background', '#539af6');--}}
+    {{--}--}}
 
 </script>
 <script>

@@ -74,8 +74,8 @@
     background: #04a9f5;
 }
 .home .nested-content .media{
-    display: block;
-    padding: 1rem 0;
+    /*display: block;*/
+    /*padding: 1rem 0;*/
 }
 .home .nested-content {
     padding: 1rem;

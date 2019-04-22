@@ -26,7 +26,12 @@ class UsersTypes
     const PlacementTestEditor = 11;
 ////////////////////////////////////////
 /// types of user for student pedia project
+
     const School = 0;
+    const Teacher = 1;
+    const Student = 2;
+    const virtualSchool = 3;
+
     const ArrayOfPermission = array(
         '0' => 'الإداره',
         '1' => 'رئيس',
@@ -43,6 +48,7 @@ class UsersTypes
     );
     const PermissionForShool = array(
         '0' => 'مدرسة',
+        '3' => 'مدرسة وهمية',
 
     );
 }

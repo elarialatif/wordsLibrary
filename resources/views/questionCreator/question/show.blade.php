@@ -21,7 +21,8 @@
             <table class="table table-condensed">
                 <thead>
                 <tr>
-                    <th>{!! $question->question !!}
+                    <th style="text-wrap: normal;
+word-wrap: break-word;">{!! $question->question !!}
                         <a style="float:left" href="{{url('question/delete/'.$question->id)}}" class="btn btn-danger">مسح</a>
                         <a style="float:left" data-toggle="modal" data-target="#editModal{{$question->id}}"
                            class="btn btn-info">تعديل</a>
@@ -222,7 +223,8 @@
                 <table class="table table-condensed">
                     <thead>
                     <tr>
-                        <th>{!! $question->question !!}
+                        <th style="text-wrap: normal;
+word-wrap: break-word;">{!! $question->question !!}
                             <a style="float:left" href="{{url('question/delete/'.$question->id)}}" class="btn btn-danger">مسح</a>
                             <a style="float:left" data-toggle="modal" data-target="#editModal{{$question->id}}"
                                class="btn btn-info">تعديل</a>

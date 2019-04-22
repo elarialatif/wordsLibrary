@@ -23,6 +23,7 @@
                                     <h5>
                                         صفحة المراجعة المقال ال{{\App\Helper\ArticleLevels::getLevel($artical->level)}}
                                     </h5>
+
                                     @if($artical->status!=\App\Helper\ArticleLevels::Review)
                                         <a style="float: left" href="{{(auth()->user()->role==\App\Helper\UsersTypes::Languestic)?url('languestic/done/'.$artical->id):url('reviewer/done/'.$artical->id)}}"
                                            class="btn btn-success">
@@ -37,7 +38,9 @@
                                        style="float:left">رجوع<i class="fas fa-reply"></i></a>
 
                                 </div>
-
+                                <h1>السؤال القبلى والبعدى</h1>
+                                <p>{!! $artical->pollHint !!}</p>
+                                <p>{!! $artical->poll !!}</p>
                                 <div class="card-header">
                                     <div class="row">
                                         <div class="col-md-6">
@@ -231,7 +234,8 @@
                                                                 <td>
                                                                     السؤال
                                                                 </td>
-                                                                <td>
+                                                                <td style="text-wrap: normal;
+word-wrap: break-word;">
                                                                     {!! $question->question !!}
                                                                 </td>
                                                             </tr>
@@ -832,7 +836,8 @@
                                                                 <td>
                                                                     السؤال
                                                                 </td>
-                                                                <td>
+                                                                <td style="text-wrap: normal;
+word-wrap: break-word;">
                                                                     {!! $question->question !!}
                                                                 </td>
                                                             </tr>

@@ -14,10 +14,11 @@
     <div class="navbar-wrapper">
         <div class="navbar-brand header-logo">
             <a href="{{url('home')}}" class="b-brand">
-                <div class="b-bg">
-                    <i class="feather icon-trending-up"></i>
-                </div>
-                <span class="b-title">برمجيات القراءة</span>
+                <img src="{{asset('Studentpublic/images/logo.png')}}" alt="">
+                {{--<div class="b-bg">--}}
+                    {{--<i class="feather icon-trending-up"></i>--}}
+                {{--</div>--}}
+                {{--<span class="b-title">برمجيات القراءة</span>--}}
             </a>
             <a class="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
         </div>
@@ -32,10 +33,7 @@
     <div class="m-header">
         <a class="mobile-menu" id="mobile-collapse1" href="javascript:"><span></span></a>
         <a href="{{url('home')}}" class="b-brand">
-            <div class="b-bg">
-                <i class="feather icon-trending-up"></i>
-            </div>
-            <span class="b-title">برمجيات القراءة</span>
+            <img src="{{asset('public/images/logo.png')}}" alt="" style="width: 200px">
         </a>
     </div>
     <a class="mobile-menu" id="mobile-header" href="javascript:">

@@ -119,7 +119,10 @@ class LogTimeController extends Controller
         $arr = [];
 
         foreach ($res as $data) {
-            $userPermission = UsersTypes::ArrayOfPermission[$data->user->role];
+            if( $data->user->role==6|| $data->user->role==7){
+                continue;
+            }
+            $userPermission = UsersTypes::ArrayOfPermission[ $data->user->role];
             $date = $data->created_at->format('Y:m:d') . " الساعه " . $data->created_at->format('H');
             $table_name = \App\Helper\TABLES_NAMES_IN_ARABIC::getTableNameInArabic($data->table_name);
             if ($data->name != 'null') {

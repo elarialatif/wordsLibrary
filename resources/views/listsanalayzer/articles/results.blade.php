@@ -29,7 +29,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h5>
-                                    صفحة تحليل الملف
+                                      صفحة تحليل ملف ({{$list->list}})
                                 </h5>
                                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
                                         data-target="#myModal" style="float: left">عرض الملف الأصلي
@@ -183,7 +183,7 @@
                 $(" <div class=\"row\">" +
                     "<div class=\"col-md-6\">" +
                     "<div class=\"form-group\">" +
-                    "<input class=\"btn btn-info btn btn-glow-success btn-lg\"style=\"width: 65%;\n" +
+                    "<input class=\"btn btn-info btn btn-glow-success btn-lg\"style=\"width: 80%;\n" +
                     "    text-align: right;\n" +
                     "    font-size: 14px;\n" +
                     "    font-weight: bold;\n" +

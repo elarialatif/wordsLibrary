@@ -43,6 +43,11 @@ class UserController extends Controller
    public function userArchive($id){
        $user=UsersRepository::find($id);
        $tasks=TaskRepository::findAllWhere('user_id',$user->id);
+
+       if($user->role==UsersTypes::LISTMAKER){
+           $tasks=ContentList::where('user_id',$id)->get();
+       }
+
        return view('superadmin.users.archive',compact('user','tasks'));
    }
 

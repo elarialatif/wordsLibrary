@@ -89,7 +89,7 @@
                                                         <th>سهل</th>
                                                         <th>متوسط</th>
                                                         <th>صعب</th>
-                                                        <th>عرض</th>
+                                                        <th> المقال الاصلى</th>
                                                         <th>الحالة</th>
                                                     </tr>
                                                     </thead>
@@ -99,7 +99,7 @@
                                                             $list=\App\Models\ContentList::with('level','grade','user')->where('id',$file->list_id)->first();
 
                                                         @endphp
-                                                        @if ($list==null)
+                                                        @if ($list==null||$list->step==9||$list->step==6)
 
                                                         @continue;
                                                         @endif
@@ -148,14 +148,7 @@
                                                                                 <span>مراجع:</span>
                                                                                 <span> {{($users->where('role',\App\Helper\UsersTypes::REVIEWER)->first())?$users->where('role',\App\Helper\UsersTypes::REVIEWER)->first()->name:"لا يوجد"}}</span>
                                                                             </div>
-                                                                            <div class="details">
-                                                                                <span> مدخل أسئلة:</span>
-                                                                                <span>{{($users->where('role',\App\Helper\UsersTypes::QuestionCreator)->first())?$users->where('role',\App\Helper\UsersTypes::QuestionCreator)->first()->name:"لا يوجد"}}</span>
-                                                                            </div>
-                                                                            <div class="details">
-                                                                                <span>مراجع أسئلة:</span>
-                                                                                <span>{{($users->where('role',\App\Helper\UsersTypes::QuestionReviewer)->first())?$users->where('role',\App\Helper\UsersTypes::QuestionReviewer)->first()->name:"لا يوجد"}}</hspan6>
-                                                                            </div>
+
                                                                             <div class="details">
                                                                                 <span>مراجع لغوى:</span>
                                                                                 <span>{{($users->where('role',\App\Helper\UsersTypes::Languestic)->first())?$users->where('role',\App\Helper\UsersTypes::Languestic)->first()->name:"لا يوجد"}}</span>

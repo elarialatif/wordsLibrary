@@ -45,6 +45,7 @@ class TABLES_NAMES_IN_ARABIC
             'ملفات الصوت' => 'sounds',
             'المستخدمين' => 'users',
             'المصطلحات' => 'vocabs',
+            'التصنيف' => 'categories',
         );
         $key = array_search($table, $array);
         return $key;
