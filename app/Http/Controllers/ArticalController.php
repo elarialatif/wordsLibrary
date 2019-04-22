@@ -33,7 +33,6 @@ class ArticalController extends Controller
         $this->articalRepo = $articalRepo;
     }
 
-
     public function uploadArticleFile($list_id)
     {
 

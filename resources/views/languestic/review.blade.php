@@ -7,11 +7,9 @@
         .mce-tooltip {
                            position: fixed !important
                        }
-
     </style>
     <div class="container">
         <div class="container">
-
             <div class="main-body">
                 <div class="page-wrapper">
                     <!-- [ Main Content ] start -->
@@ -20,24 +18,19 @@
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h5>
-                                        صفحة المراجعة المقال ال{{\App\Helper\ArticleLevels::getLevel($artical->level)}}
-                                    </h5>
+                                    <h5>صفحة المراجعة المقال ال{{\App\Helper\ArticleLevels::getLevel($artical->level)}}</h5>
                                     @if($artical->status!=\App\Helper\ArticleLevels::Review)
                                         <a style="float: left" href="{{(auth()->user()->role==\App\Helper\UsersTypes::Languestic)?url('languestic/done/'.$artical->id):url('reviewer/done/'.$artical->id)}}"
                                            class="btn btn-success">
                                             تمت المراجعة <i class="fas fa-question-circle"></i>
                                         </a>
-
                                     @else
                                         <p class="btn btn-info" style="float:left;font-weight: bold;">تمت المراجعة
                                             <i class="fas fa-check-circle"></i></p>
                                     @endif
                                     <a href="{{(auth()->user()->role==\App\Helper\UsersTypes::Languestic)?url('languestic/'.$page):url('reviewer/'.$page)}}" class="btn btn-dark"
                                        style="float:left">رجوع<i class="fas fa-reply"></i></a>
-
                                 </div>
-
                                 <div class="card-header">
                                     <div class="row">
                                         <div class="col-md-6">
@@ -82,7 +75,6 @@
                                                                     <input type="hidden" name="level"
                                                                            value="{{$artical->level}}">
                                                                 </div>
-
                                                                 <button class="btn btn-primary" type="submit">
                                                                     <span class="fa fa-plus"></span>إضافة
                                                                 </button>
@@ -107,7 +99,6 @@
                                                     }else{
                                                     $issue=\App\Models\Issues::where(['field_id'=>$artical->id,'table'=>'article','type'=>'Normal'])->get();
                                                     }
-
                                                     @endphp
                                                     @if($issue->count()>0)
                                                         <table
@@ -208,7 +199,6 @@
                                                     @endif
                                                 </div>
                                             </div>
-
                                             <div class="card-header" id="Issues">
                                                 <v style="right: 0;background-color: #1b4b72;position: absolute;
                                         left: -25px;top: 3;width: 4px;height: 20px;">
@@ -809,7 +799,6 @@
                                                     @endif
                                                 </div>
                                             </div>
-
                                             <div class="card-header" id="Issues">
                                                 <v style="right: 0;background-color: #1b4b72;position: absolute;
                                         left: -25px;top: 3;width: 4px;height: 20px;">
@@ -1149,7 +1138,6 @@
                                                     </div>
                                                     {{--end modal--}}
                                                 @endforeach
-
                                             </div>
                                         </div>
                                     </div>
